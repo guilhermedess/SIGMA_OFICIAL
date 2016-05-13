@@ -40,7 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aluno.cs" />
+    <Compile Include="Atividade.cs" />
+    <Compile Include="Certificado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubTopico.cs" />
+    <Compile Include="Topico.cs" />
+    <Compile Include="Video.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
