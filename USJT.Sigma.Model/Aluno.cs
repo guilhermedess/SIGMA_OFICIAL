@@ -11,7 +11,6 @@ namespace USJT.Sigma.Model
         public int IdAluno { get; set; }
         public Topico IdTopico { get; set; }
         public string Nome { get; set; }
-        public string SobreNome { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
         public DateTime DataNascimento { get; set; }
