@@ -156,6 +156,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\Timeline.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -185,6 +186,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
+    <Compile Include="Controllers\SubTopicoController.cs" />
+    <Compile Include="Controllers\TopicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +201,9 @@
     </Content>
     <Content Include="Views\Aluno\Cadastrar.cshtml" />
     <Content Include="Views\Shared\_LayoutPadrao.cshtml" />
+    <Content Include="Views\Topico\Topicos.cshtml" />
+    <Content Include="Views\SubTopico\ImpAmostragem.cshtml" />
+    <Content Include="Views\SubTopico\Conceitos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -208,6 +214,20 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\USJT.Sigma.DataAccess\USJT.Sigma.DataAccess.csproj">
+      <Project>{692a9bd1-8472-4d0f-b13a-b1ef8b61d60e}</Project>
+      <Name>USJT.Sigma.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USJT.Sigma.Model\USJT.Sigma.Model.csproj">
+      <Project>{db46c63d-7d5e-4f76-ab61-294f09aa63ff}</Project>
+      <Name>USJT.Sigma.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\USJT.Sigma.Repositorio\USJT.Sigma.Repositorio.csproj">
+      <Project>{e5343793-7f69-4a5f-9e0e-e59e7c7bb23a}</Project>
+      <Name>USJT.Sigma.Repositorio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

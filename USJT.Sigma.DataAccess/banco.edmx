@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SIGMAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_ALUNO">
+          <Key>
+            <PropertyRef Name="NUM_CPF" />
+          </Key>
+          <Property Name="ID_ALUNO" Type="int" Nullable="false" />
+          <Property Name="ID_TOPICO" Type="int" />
+          <Property Name="NOM_ALUNO" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="NUM_CPF" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="DES_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DAT_NASCIMENTO" Type="datetime" Nullable="false" />
+          <Property Name="NOM_LOGIN" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="DES_SENHA" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SIGMA.dbo.TB_ATIVIDADE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TB_ATIVIDADE">
+          <Key>
+            <PropertyRef Name="ID_ATIVIDADE" />
+            <PropertyRef Name="NOM_ATIVIDADE" />
+          </Key>
+          <Property Name="ID_ATIVIDADE" Type="int" Nullable="false" />
+          <Property Name="NOM_ATIVIDADE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOM_IMAGEM" Type="varchar" MaxLength="65" />
+          <Property Name="VAL_NOTA" Type="float" />
+          <Property Name="QTD_PROGRESSO" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SIGMA.dbo.TB_CERTIFICADO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TB_CERTIFICADO">
+          <Key>
+            <PropertyRef Name="ID_CERTIFICADO" />
+            <PropertyRef Name="ID_ALUNO" />
+            <PropertyRef Name="DES_URL_CERTIFICADO" />
+          </Key>
+          <Property Name="ID_CERTIFICADO" Type="int" Nullable="false" />
+          <Property Name="ID_ALUNO" Type="int" Nullable="false" />
+          <Property Name="DES_URL_CERTIFICADO" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SIGMA.dbo.TB_SUBTOPICO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TB_SUBTOPICO">
+          <Key>
+            <PropertyRef Name="ID_SUBTOPICO" />
+            <PropertyRef Name="ID_TOPICO" />
+            <PropertyRef Name="ID_VIDEO" />
+            <PropertyRef Name="ID_ATIVIDADE" />
+            <PropertyRef Name="NOM_SUBTOPICO" />
+          </Key>
+          <Property Name="ID_SUBTOPICO" Type="int" Nullable="false" />
+          <Property Name="ID_TOPICO" Type="int" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="int" Nullable="false" />
+          <Property Name="ID_ATIVIDADE" Type="int" Nullable="false" />
+          <Property Name="NOM_SUBTOPICO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="CHK_STATUS" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_TOPICO">
+          <Key>
+            <PropertyRef Name="ID_TOPICO" />
+          </Key>
+          <Property Name="ID_TOPICO" Type="int" Nullable="false" />
+          <Property Name="NOM_TOPICO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="DES_CONTEUDO" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TB_VIDEO">
+          <Key>
+            <PropertyRef Name="ID_VIDEO" />
+          </Key>
+          <Property Name="ID_VIDEO" Type="int" Nullable="false" />
+          <Property Name="NOM_VIDEO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DES_URL" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SIGMAModelStoreContainer">
+          <EntitySet Name="TB_ALUNO" EntityType="Self.TB_ALUNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_TOPICO" EntityType="Self.TB_TOPICO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_VIDEO" EntityType="Self.TB_VIDEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ATIVIDADE" EntityType="Self.TB_ATIVIDADE" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TB_ATIVIDADE].[ID_ATIVIDADE] AS [ID_ATIVIDADE], 
+    [TB_ATIVIDADE].[NOM_ATIVIDADE] AS [NOM_ATIVIDADE], 
+    [TB_ATIVIDADE].[NOM_IMAGEM] AS [NOM_IMAGEM], 
+    [TB_ATIVIDADE].[VAL_NOTA] AS [VAL_NOTA], 
+    [TB_ATIVIDADE].[QTD_PROGRESSO] AS [QTD_PROGRESSO]
+    FROM [dbo].[TB_ATIVIDADE] AS [TB_ATIVIDADE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TB_CERTIFICADO" EntityType="Self.TB_CERTIFICADO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TB_CERTIFICADO].[ID_CERTIFICADO] AS [ID_CERTIFICADO], 
+    [TB_CERTIFICADO].[ID_ALUNO] AS [ID_ALUNO], 
+    [TB_CERTIFICADO].[DES_URL_CERTIFICADO] AS [DES_URL_CERTIFICADO]
+    FROM [dbo].[TB_CERTIFICADO] AS [TB_CERTIFICADO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TB_SUBTOPICO" EntityType="Self.TB_SUBTOPICO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TB_SUBTOPICO].[ID_SUBTOPICO] AS [ID_SUBTOPICO], 
+    [TB_SUBTOPICO].[ID_TOPICO] AS [ID_TOPICO], 
+    [TB_SUBTOPICO].[ID_VIDEO] AS [ID_VIDEO], 
+    [TB_SUBTOPICO].[ID_ATIVIDADE] AS [ID_ATIVIDADE], 
+    [TB_SUBTOPICO].[NOM_SUBTOPICO] AS [NOM_SUBTOPICO], 
+    [TB_SUBTOPICO].[CHK_STATUS] AS [CHK_STATUS]
+    FROM [dbo].[TB_SUBTOPICO] AS [TB_SUBTOPICO]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SIGMAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SIGMAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_ALUNO" EntityType="SIGMAModel.TB_ALUNO" />
+          <EntitySet Name="TB_TOPICO" EntityType="SIGMAModel.TB_TOPICO" />
+          <EntitySet Name="TB_VIDEO" EntityType="SIGMAModel.TB_VIDEO" />
+          <EntitySet Name="TB_ATIVIDADE" EntityType="SIGMAModel.TB_ATIVIDADE" />
+          <EntitySet Name="TB_CERTIFICADO" EntityType="SIGMAModel.TB_CERTIFICADO" />
+          <EntitySet Name="TB_SUBTOPICO" EntityType="SIGMAModel.TB_SUBTOPICO" />
+        </EntityContainer>
+        <EntityType Name="TB_ALUNO">
+          <Key>
+            <PropertyRef Name="NUM_CPF" />
+          </Key>
+          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TOPICO" Type="Int32" />
+          <Property Name="NOM_ALUNO" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_CPF" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="DES_EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DAT_NASCIMENTO" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NOM_LOGIN" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DES_SENHA" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_TOPICO">
+          <Key>
+            <PropertyRef Name="ID_TOPICO" />
+          </Key>
+          <Property Name="ID_TOPICO" Type="Int32" Nullable="false" />
+          <Property Name="NOM_TOPICO" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DES_CONTEUDO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_VIDEO">
+          <Key>
+            <PropertyRef Name="ID_VIDEO" />
+          </Key>
+          <Property Name="ID_VIDEO" Type="Int32" Nullable="false" />
+          <Property Name="NOM_VIDEO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DES_URL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_ATIVIDADE">
+          <Key>
+            <PropertyRef Name="ID_ATIVIDADE" />
+            <PropertyRef Name="NOM_ATIVIDADE" />
+          </Key>
+          <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" />
+          <Property Name="NOM_ATIVIDADE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_IMAGEM" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
+          <Property Name="VAL_NOTA" Type="Double" />
+          <Property Name="QTD_PROGRESSO" Type="Double" />
+        </EntityType>
+        <EntityType Name="TB_CERTIFICADO">
+          <Key>
+            <PropertyRef Name="ID_CERTIFICADO" />
+            <PropertyRef Name="ID_ALUNO" />
+            <PropertyRef Name="DES_URL_CERTIFICADO" />
+          </Key>
+          <Property Name="ID_CERTIFICADO" Type="Int32" Nullable="false" />
+          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
+          <Property Name="DES_URL_CERTIFICADO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_SUBTOPICO">
+          <Key>
+            <PropertyRef Name="ID_SUBTOPICO" />
+            <PropertyRef Name="ID_TOPICO" />
+            <PropertyRef Name="ID_VIDEO" />
+            <PropertyRef Name="ID_ATIVIDADE" />
+            <PropertyRef Name="NOM_SUBTOPICO" />
+          </Key>
+          <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TOPICO" Type="Int32" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="Int32" Nullable="false" />
+          <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" />
+          <Property Name="NOM_SUBTOPICO" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="CHK_STATUS" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SIGMAModelStoreContainer" CdmEntityContainer="SIGMAEntities">
+          <EntitySetMapping Name="TB_ALUNO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_ALUNO">
+              <MappingFragment StoreEntitySet="TB_ALUNO">
+                <ScalarProperty Name="DES_SENHA" ColumnName="DES_SENHA" />
+                <ScalarProperty Name="NOM_LOGIN" ColumnName="NOM_LOGIN" />
+                <ScalarProperty Name="DAT_NASCIMENTO" ColumnName="DAT_NASCIMENTO" />
+                <ScalarProperty Name="DES_EMAIL" ColumnName="DES_EMAIL" />
+                <ScalarProperty Name="NUM_CPF" ColumnName="NUM_CPF" />
+                <ScalarProperty Name="NOM_ALUNO" ColumnName="NOM_ALUNO" />
+                <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
+                <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TOPICO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_TOPICO">
+              <MappingFragment StoreEntitySet="TB_TOPICO">
+                <ScalarProperty Name="DES_CONTEUDO" ColumnName="DES_CONTEUDO" />
+                <ScalarProperty Name="NOM_TOPICO" ColumnName="NOM_TOPICO" />
+                <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_VIDEO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_VIDEO">
+              <MappingFragment StoreEntitySet="TB_VIDEO">
+                <ScalarProperty Name="DES_URL" ColumnName="DES_URL" />
+                <ScalarProperty Name="NOM_VIDEO" ColumnName="NOM_VIDEO" />
+                <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ATIVIDADE">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_ATIVIDADE">
+              <MappingFragment StoreEntitySet="TB_ATIVIDADE">
+                <ScalarProperty Name="QTD_PROGRESSO" ColumnName="QTD_PROGRESSO" />
+                <ScalarProperty Name="VAL_NOTA" ColumnName="VAL_NOTA" />
+                <ScalarProperty Name="NOM_IMAGEM" ColumnName="NOM_IMAGEM" />
+                <ScalarProperty Name="NOM_ATIVIDADE" ColumnName="NOM_ATIVIDADE" />
+                <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CERTIFICADO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_CERTIFICADO">
+              <MappingFragment StoreEntitySet="TB_CERTIFICADO">
+                <ScalarProperty Name="DES_URL_CERTIFICADO" ColumnName="DES_URL_CERTIFICADO" />
+                <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
+                <ScalarProperty Name="ID_CERTIFICADO" ColumnName="ID_CERTIFICADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SUBTOPICO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_SUBTOPICO">
+              <MappingFragment StoreEntitySet="TB_SUBTOPICO">
+                <ScalarProperty Name="CHK_STATUS" ColumnName="CHK_STATUS" />
+                <ScalarProperty Name="NOM_SUBTOPICO" ColumnName="NOM_SUBTOPICO" />
+                <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />
+                <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
+                <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
+                <ScalarProperty Name="ID_SUBTOPICO" ColumnName="ID_SUBTOPICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
