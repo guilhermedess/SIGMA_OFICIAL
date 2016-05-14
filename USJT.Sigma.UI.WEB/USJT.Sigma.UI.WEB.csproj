@@ -204,6 +204,7 @@
     <Content Include="Views\Topico\Topicos.cshtml" />
     <Content Include="Views\SubTopico\ImpAmostragem.cshtml" />
     <Content Include="Views\SubTopico\Conceitos.cshtml" />
+    <Content Include="Views\SubTopico\_PartialAmostragem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
