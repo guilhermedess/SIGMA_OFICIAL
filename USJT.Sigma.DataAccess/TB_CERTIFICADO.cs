@@ -17,5 +17,7 @@ namespace USJT.Sigma.DataAccess
         public int ID_CERTIFICADO { get; set; }
         public int ID_ALUNO { get; set; }
         public string DES_URL_CERTIFICADO { get; set; }
+    
+        public virtual TB_ALUNO TB_ALUNO { get; set; }
     }
 }

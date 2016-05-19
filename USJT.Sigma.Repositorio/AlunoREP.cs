@@ -43,6 +43,23 @@ namespace USJT.Sigma.Repositorio
             }
         }
 
+        public void checkSubAluno(Aluno aluno, bool feito)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var alunoNovo = conexao.TB_ALUNO.Single(x => x.ID_ALUNO == 1);
+                
+                conexao.SaveChanges();
+            }
+        }
+
+        public bool ValidarLogin(Aluno dadosLogin)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                return conexao.TB_ALUNO.Any(x => x.NOM_LOGIN == dadosLogin.Usuário && x.DES_SENHA == dadosLogin.Senha);
+            }
+        }
 
     }
 }

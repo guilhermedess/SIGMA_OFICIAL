@@ -15,9 +15,14 @@ namespace USJT.Sigma.DataAccess
     public partial class TB_ATIVIDADE
     {
         public int ID_ATIVIDADE { get; set; }
+        public int ID_ALUNO { get; set; }
+        public int ID_SUBTOPICO { get; set; }
         public string NOM_ATIVIDADE { get; set; }
         public string NOM_IMAGEM { get; set; }
         public Nullable<double> VAL_NOTA { get; set; }
         public Nullable<double> QTD_PROGRESSO { get; set; }
+    
+        public virtual TB_ALUNO TB_ALUNO { get; set; }
+        public virtual TB_SUBTOPICO TB_SUBTOPICO { get; set; }
     }
 }

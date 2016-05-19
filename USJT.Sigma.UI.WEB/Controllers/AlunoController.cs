@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using USJT.Sigma.Model;
 using USJT.Sigma.Repositorio;
 
@@ -51,6 +52,32 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 return View();
             }
             
+        }
+
+        [HttpPost]
+        public ActionResult Login(Aluno dadosLogin)
+        {
+            var alunoREP = new AlunoREP();
+
+            //VERIFICAMOS SE O USUARIO EXISTE
+            if (!alunoREP.ValidarLogin(dadosLogin))
+            {
+                //DISPARAMOS A MENSAGEM DE USUARIO OU SENHA NAO EXISTE
+                //TempData.Add("Mensagem", "Usuário ou Senha Invalidos");
+
+                return View();
+            }
+
+            //AUTORIZAMOS O USUARIO A ACESSAR AS ACTIONS
+            //FormsAuthentication.SetAuthCookie(dadosLogin.Usuário, true);
+
+            //MANDAMOS REDIRECIONAR PARA A ACTION LOGIN
+            return View("Topicos","Topico");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
         }
     }
 }

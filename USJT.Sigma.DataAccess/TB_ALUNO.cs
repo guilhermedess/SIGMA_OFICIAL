@@ -14,13 +14,27 @@ namespace USJT.Sigma.DataAccess
     
     public partial class TB_ALUNO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TB_ALUNO()
+        {
+            this.TB_ATIVIDADE = new HashSet<TB_ATIVIDADE>();
+            this.TB_CERTIFICADO = new HashSet<TB_CERTIFICADO>();
+            this.TB_TOPICO = new HashSet<TB_TOPICO>();
+        }
+    
         public int ID_ALUNO { get; set; }
-        public Nullable<int> ID_TOPICO { get; set; }
         public string NOM_ALUNO { get; set; }
         public string NUM_CPF { get; set; }
         public string DES_EMAIL { get; set; }
         public System.DateTime DAT_NASCIMENTO { get; set; }
         public string NOM_LOGIN { get; set; }
         public string DES_SENHA { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_ATIVIDADE> TB_ATIVIDADE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_CERTIFICADO> TB_CERTIFICADO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_TOPICO> TB_TOPICO { get; set; }
     }
 }

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AlunoREP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubTopicoREP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

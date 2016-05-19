@@ -1,0 +1,93 @@
+﻿@model USJT.Sigma.Model.Aluno
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+
+    <!--Importamos os scripts do JQuery-->
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+    <!--Importamos os scripts do Bootstrap-->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!--Importamos as bibliotecas de CSS-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.yeti.min.css" rel="stylesheet" />
+    <link href="~/Content/padrao.css" rel="stylesheet" />
+
+    @*Inserimos o logo das Abas*@
+    @*<link href="~/Content/Images/img_LogoAba.png" rel="shortcut icon" />*@
+
+</head>
+<body>
+    <header>
+
+        @*<img src="~/Content/Images/img_LogoPrincipal.png" title="Logotipo da Empresa" />*@
+
+        <hgroup class="text-center text-uppercase">
+            <h1>Login</h1>
+            <h3>Sigma</h3>
+        </hgroup>
+
+    </header>
+
+    @* INSERIMOS AS MENSAGENS *@
+    <section>
+        @{
+            if (TempData["Mensagem"] != null)
+            {
+                @Html.Partial("_PartialMensagem")
+            }
+        }
+
+    </section>
+
+    <section class="container">
+        <fieldset>
+            <legend>Informe seus dados:</legend>
+
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+                        @Html.LabelFor(x => x.Usuário)
+                        @Html.TextBoxFor(x => x.Usuário, new { @class = "form-control", placeholder = "Usuário", required = "required" })
+                        @Html.ValidationMessageFor(x => x.Usuário)
+                    </div>
+
+                    <div class="col-sm-6 col-md-6 col-lg-6 form-group">
+                        @Html.LabelFor(x => x.Senha)
+                        @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha", required = "required" })
+                        @Html.ValidationMessageFor(x => x.Senha)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="logar" id="logar" value="Logar" class="btn btn-success" />
+                </div>
+            }
+
+        </fieldset>
+    </section>
+
+    <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container text-center text-uppercase">
+                <p>&copy; Todos os direitos reservados ao<strong> Malandrox</strong></p>
+            </div>
+        </nav>
+    </footer>
+</body>
+</html>

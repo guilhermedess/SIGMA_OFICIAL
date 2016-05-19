@@ -7,105 +7,170 @@
     <Schema Namespace="SIGMAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TB_ALUNO">
           <Key>
-            <PropertyRef Name="NUM_CPF" />
+            <PropertyRef Name="ID_ALUNO" />
           </Key>
-          <Property Name="ID_ALUNO" Type="int" Nullable="false" />
-          <Property Name="ID_TOPICO" Type="int" />
+          <Property Name="ID_ALUNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOM_ALUNO" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="NUM_CPF" Type="varchar" MaxLength="14" Nullable="false" />
-          <Property Name="DES_EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DES_EMAIL" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="DAT_NASCIMENTO" Type="datetime" Nullable="false" />
-          <Property Name="NOM_LOGIN" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="DES_SENHA" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="NOM_LOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DES_SENHA" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SIGMA.dbo.TB_ATIVIDADE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TB_ATIVIDADE">
           <Key>
             <PropertyRef Name="ID_ATIVIDADE" />
-            <PropertyRef Name="NOM_ATIVIDADE" />
           </Key>
-          <Property Name="ID_ATIVIDADE" Type="int" Nullable="false" />
+          <Property Name="ID_ATIVIDADE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ALUNO" Type="int" Nullable="false" />
+          <Property Name="ID_SUBTOPICO" Type="int" Nullable="false" />
           <Property Name="NOM_ATIVIDADE" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="NOM_IMAGEM" Type="varchar" MaxLength="65" />
+          <Property Name="NOM_IMAGEM" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VAL_NOTA" Type="float" />
           <Property Name="QTD_PROGRESSO" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SIGMA.dbo.TB_CERTIFICADO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TB_CERTIFICADO">
           <Key>
             <PropertyRef Name="ID_CERTIFICADO" />
-            <PropertyRef Name="ID_ALUNO" />
-            <PropertyRef Name="DES_URL_CERTIFICADO" />
           </Key>
-          <Property Name="ID_CERTIFICADO" Type="int" Nullable="false" />
+          <Property Name="ID_CERTIFICADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_ALUNO" Type="int" Nullable="false" />
           <Property Name="DES_URL_CERTIFICADO" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SIGMA.dbo.TB_SUBTOPICO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="TB_SUBTOPICO">
           <Key>
             <PropertyRef Name="ID_SUBTOPICO" />
-            <PropertyRef Name="ID_TOPICO" />
-            <PropertyRef Name="ID_VIDEO" />
-            <PropertyRef Name="ID_ATIVIDADE" />
-            <PropertyRef Name="NOM_SUBTOPICO" />
           </Key>
-          <Property Name="ID_SUBTOPICO" Type="int" Nullable="false" />
+          <Property Name="ID_SUBTOPICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_TOPICO" Type="int" Nullable="false" />
-          <Property Name="ID_VIDEO" Type="int" Nullable="false" />
-          <Property Name="ID_ATIVIDADE" Type="int" Nullable="false" />
-          <Property Name="NOM_SUBTOPICO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="int" />
+          <Property Name="ID_ATIVIDADE" Type="int" />
+          <Property Name="NOM_SUBTOPICO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="QTD_PROGRESSO" Type="float" />
           <Property Name="CHK_STATUS" Type="bit" />
         </EntityType>
         <EntityType Name="TB_TOPICO">
           <Key>
             <PropertyRef Name="ID_TOPICO" />
           </Key>
-          <Property Name="ID_TOPICO" Type="int" Nullable="false" />
-          <Property Name="NOM_TOPICO" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ID_TOPICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ALUNO" Type="int" />
+          <Property Name="NOM_TOPICO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DES_CONTEUDO" Type="varchar" MaxLength="255" />
+          <Property Name="QTD_PROGRESSO" Type="float" />
         </EntityType>
         <EntityType Name="TB_VIDEO">
           <Key>
             <PropertyRef Name="ID_VIDEO" />
           </Key>
-          <Property Name="ID_VIDEO" Type="int" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_SUBTOPICO" Type="int" Nullable="false" />
           <Property Name="NOM_VIDEO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DES_URL" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <Association Name="FK_TB_ATIVIDADE_TB_ALUNO">
+          <End Role="TB_ALUNO" Type="Self.TB_ALUNO" Multiplicity="1" />
+          <End Role="TB_ATIVIDADE" Type="Self.TB_ATIVIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALUNO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Principal>
+            <Dependent Role="TB_ATIVIDADE">
+              <PropertyRef Name="ID_ALUNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_ATIVIDADE_TB_SUBTOPICO">
+          <End Role="TB_SUBTOPICO" Type="Self.TB_SUBTOPICO" Multiplicity="1" />
+          <End Role="TB_ATIVIDADE" Type="Self.TB_ATIVIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUBTOPICO">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Principal>
+            <Dependent Role="TB_ATIVIDADE">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_CERTIFICADO_TB_ALUNO">
+          <End Role="TB_ALUNO" Type="Self.TB_ALUNO" Multiplicity="1" />
+          <End Role="TB_CERTIFICADO" Type="Self.TB_CERTIFICADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALUNO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Principal>
+            <Dependent Role="TB_CERTIFICADO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_SUBTOPICO_TB_TOPICO">
+          <End Role="TB_TOPICO" Type="Self.TB_TOPICO" Multiplicity="1" />
+          <End Role="TB_SUBTOPICO" Type="Self.TB_SUBTOPICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TOPICO">
+              <PropertyRef Name="ID_TOPICO" />
+            </Principal>
+            <Dependent Role="TB_SUBTOPICO">
+              <PropertyRef Name="ID_TOPICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_TOPICO_TB_ALUNO">
+          <End Role="TB_ALUNO" Type="Self.TB_ALUNO" Multiplicity="0..1" />
+          <End Role="TB_TOPICO" Type="Self.TB_TOPICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALUNO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Principal>
+            <Dependent Role="TB_TOPICO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_VIDEO_TB_SUBTOPICO">
+          <End Role="TB_SUBTOPICO" Type="Self.TB_SUBTOPICO" Multiplicity="1" />
+          <End Role="TB_VIDEO" Type="Self.TB_VIDEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUBTOPICO">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Principal>
+            <Dependent Role="TB_VIDEO">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SIGMAModelStoreContainer">
           <EntitySet Name="TB_ALUNO" EntityType="Self.TB_ALUNO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ATIVIDADE" EntityType="Self.TB_ATIVIDADE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CERTIFICADO" EntityType="Self.TB_CERTIFICADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_SUBTOPICO" EntityType="Self.TB_SUBTOPICO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_TOPICO" EntityType="Self.TB_TOPICO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_VIDEO" EntityType="Self.TB_VIDEO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TB_ATIVIDADE" EntityType="Self.TB_ATIVIDADE" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TB_ATIVIDADE].[ID_ATIVIDADE] AS [ID_ATIVIDADE], 
-    [TB_ATIVIDADE].[NOM_ATIVIDADE] AS [NOM_ATIVIDADE], 
-    [TB_ATIVIDADE].[NOM_IMAGEM] AS [NOM_IMAGEM], 
-    [TB_ATIVIDADE].[VAL_NOTA] AS [VAL_NOTA], 
-    [TB_ATIVIDADE].[QTD_PROGRESSO] AS [QTD_PROGRESSO]
-    FROM [dbo].[TB_ATIVIDADE] AS [TB_ATIVIDADE]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TB_CERTIFICADO" EntityType="Self.TB_CERTIFICADO" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TB_CERTIFICADO].[ID_CERTIFICADO] AS [ID_CERTIFICADO], 
-    [TB_CERTIFICADO].[ID_ALUNO] AS [ID_ALUNO], 
-    [TB_CERTIFICADO].[DES_URL_CERTIFICADO] AS [DES_URL_CERTIFICADO]
-    FROM [dbo].[TB_CERTIFICADO] AS [TB_CERTIFICADO]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TB_SUBTOPICO" EntityType="Self.TB_SUBTOPICO" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TB_SUBTOPICO].[ID_SUBTOPICO] AS [ID_SUBTOPICO], 
-    [TB_SUBTOPICO].[ID_TOPICO] AS [ID_TOPICO], 
-    [TB_SUBTOPICO].[ID_VIDEO] AS [ID_VIDEO], 
-    [TB_SUBTOPICO].[ID_ATIVIDADE] AS [ID_ATIVIDADE], 
-    [TB_SUBTOPICO].[NOM_SUBTOPICO] AS [NOM_SUBTOPICO], 
-    [TB_SUBTOPICO].[CHK_STATUS] AS [CHK_STATUS]
-    FROM [dbo].[TB_SUBTOPICO] AS [TB_SUBTOPICO]</DefiningQuery>
-          </EntitySet>
+          <AssociationSet Name="FK_TB_ATIVIDADE_TB_ALUNO" Association="Self.FK_TB_ATIVIDADE_TB_ALUNO">
+            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
+            <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_ATIVIDADE_TB_SUBTOPICO" Association="Self.FK_TB_ATIVIDADE_TB_SUBTOPICO">
+            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
+            <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_CERTIFICADO_TB_ALUNO" Association="Self.FK_TB_CERTIFICADO_TB_ALUNO">
+            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
+            <End Role="TB_CERTIFICADO" EntitySet="TB_CERTIFICADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_SUBTOPICO_TB_TOPICO" Association="Self.FK_TB_SUBTOPICO_TB_TOPICO">
+            <End Role="TB_TOPICO" EntitySet="TB_TOPICO" />
+            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_TOPICO_TB_ALUNO" Association="Self.FK_TB_TOPICO_TB_ALUNO">
+            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
+            <End Role="TB_TOPICO" EntitySet="TB_TOPICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_VIDEO_TB_SUBTOPICO" Association="Self.FK_TB_VIDEO_TB_SUBTOPICO">
+            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
+            <End Role="TB_VIDEO" EntitySet="TB_VIDEO" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -113,78 +178,184 @@ warning 6002: The table/view 'SIGMA.dbo.TB_SUBTOPICO' does not have a primary ke
       <Schema Namespace="SIGMAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SIGMAEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TB_ALUNO" EntityType="SIGMAModel.TB_ALUNO" />
-          <EntitySet Name="TB_TOPICO" EntityType="SIGMAModel.TB_TOPICO" />
-          <EntitySet Name="TB_VIDEO" EntityType="SIGMAModel.TB_VIDEO" />
           <EntitySet Name="TB_ATIVIDADE" EntityType="SIGMAModel.TB_ATIVIDADE" />
           <EntitySet Name="TB_CERTIFICADO" EntityType="SIGMAModel.TB_CERTIFICADO" />
           <EntitySet Name="TB_SUBTOPICO" EntityType="SIGMAModel.TB_SUBTOPICO" />
+          <EntitySet Name="TB_TOPICO" EntityType="SIGMAModel.TB_TOPICO" />
+          <EntitySet Name="TB_VIDEO" EntityType="SIGMAModel.TB_VIDEO" />
+          <AssociationSet Name="FK_TB_ATIVIDADE_TB_ALUNO" Association="SIGMAModel.FK_TB_ATIVIDADE_TB_ALUNO">
+            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
+            <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_CERTIFICADO_TB_ALUNO" Association="SIGMAModel.FK_TB_CERTIFICADO_TB_ALUNO">
+            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
+            <End Role="TB_CERTIFICADO" EntitySet="TB_CERTIFICADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_TOPICO_TB_ALUNO" Association="SIGMAModel.FK_TB_TOPICO_TB_ALUNO">
+            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
+            <End Role="TB_TOPICO" EntitySet="TB_TOPICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_ATIVIDADE_TB_SUBTOPICO" Association="SIGMAModel.FK_TB_ATIVIDADE_TB_SUBTOPICO">
+            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
+            <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_SUBTOPICO_TB_TOPICO" Association="SIGMAModel.FK_TB_SUBTOPICO_TB_TOPICO">
+            <End Role="TB_TOPICO" EntitySet="TB_TOPICO" />
+            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_VIDEO_TB_SUBTOPICO" Association="SIGMAModel.FK_TB_VIDEO_TB_SUBTOPICO">
+            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
+            <End Role="TB_VIDEO" EntitySet="TB_VIDEO" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TB_ALUNO">
           <Key>
-            <PropertyRef Name="NUM_CPF" />
+            <PropertyRef Name="ID_ALUNO" />
           </Key>
-          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
-          <Property Name="ID_TOPICO" Type="Int32" />
+          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOM_ALUNO" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="NUM_CPF" Type="String" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="DES_EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DES_EMAIL" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="DAT_NASCIMENTO" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="NOM_LOGIN" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="DES_SENHA" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_LOGIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DES_SENHA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_ATIVIDADE" Relationship="SIGMAModel.FK_TB_ATIVIDADE_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_ATIVIDADE" />
+          <NavigationProperty Name="TB_CERTIFICADO" Relationship="SIGMAModel.FK_TB_CERTIFICADO_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_CERTIFICADO" />
+          <NavigationProperty Name="TB_TOPICO" Relationship="SIGMAModel.FK_TB_TOPICO_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_TOPICO" />
+        </EntityType>
+        <EntityType Name="TB_ATIVIDADE">
+          <Key>
+            <PropertyRef Name="ID_ATIVIDADE" />
+          </Key>
+          <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
+          <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" />
+          <Property Name="NOM_ATIVIDADE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_IMAGEM" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VAL_NOTA" Type="Double" />
+          <Property Name="QTD_PROGRESSO" Type="Double" />
+          <NavigationProperty Name="TB_ALUNO" Relationship="SIGMAModel.FK_TB_ATIVIDADE_TB_ALUNO" FromRole="TB_ATIVIDADE" ToRole="TB_ALUNO" />
+          <NavigationProperty Name="TB_SUBTOPICO" Relationship="SIGMAModel.FK_TB_ATIVIDADE_TB_SUBTOPICO" FromRole="TB_ATIVIDADE" ToRole="TB_SUBTOPICO" />
+        </EntityType>
+        <EntityType Name="TB_CERTIFICADO">
+          <Key>
+            <PropertyRef Name="ID_CERTIFICADO" />
+          </Key>
+          <Property Name="ID_CERTIFICADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
+          <Property Name="DES_URL_CERTIFICADO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_ALUNO" Relationship="SIGMAModel.FK_TB_CERTIFICADO_TB_ALUNO" FromRole="TB_CERTIFICADO" ToRole="TB_ALUNO" />
+        </EntityType>
+        <EntityType Name="TB_SUBTOPICO">
+          <Key>
+            <PropertyRef Name="ID_SUBTOPICO" />
+          </Key>
+          <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_TOPICO" Type="Int32" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="Int32" />
+          <Property Name="ID_ATIVIDADE" Type="Int32" />
+          <Property Name="NOM_SUBTOPICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QTD_PROGRESSO" Type="Double" />
+          <Property Name="CHK_STATUS" Type="Boolean" />
+          <NavigationProperty Name="TB_ATIVIDADE" Relationship="SIGMAModel.FK_TB_ATIVIDADE_TB_SUBTOPICO" FromRole="TB_SUBTOPICO" ToRole="TB_ATIVIDADE" />
+          <NavigationProperty Name="TB_TOPICO" Relationship="SIGMAModel.FK_TB_SUBTOPICO_TB_TOPICO" FromRole="TB_SUBTOPICO" ToRole="TB_TOPICO" />
+          <NavigationProperty Name="TB_VIDEO" Relationship="SIGMAModel.FK_TB_VIDEO_TB_SUBTOPICO" FromRole="TB_SUBTOPICO" ToRole="TB_VIDEO" />
         </EntityType>
         <EntityType Name="TB_TOPICO">
           <Key>
             <PropertyRef Name="ID_TOPICO" />
           </Key>
-          <Property Name="ID_TOPICO" Type="Int32" Nullable="false" />
-          <Property Name="NOM_TOPICO" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TOPICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ALUNO" Type="Int32" />
+          <Property Name="NOM_TOPICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DES_CONTEUDO" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="QTD_PROGRESSO" Type="Double" />
+          <NavigationProperty Name="TB_ALUNO" Relationship="SIGMAModel.FK_TB_TOPICO_TB_ALUNO" FromRole="TB_TOPICO" ToRole="TB_ALUNO" />
+          <NavigationProperty Name="TB_SUBTOPICO" Relationship="SIGMAModel.FK_TB_SUBTOPICO_TB_TOPICO" FromRole="TB_TOPICO" ToRole="TB_SUBTOPICO" />
         </EntityType>
         <EntityType Name="TB_VIDEO">
           <Key>
             <PropertyRef Name="ID_VIDEO" />
           </Key>
-          <Property Name="ID_VIDEO" Type="Int32" Nullable="false" />
+          <Property Name="ID_VIDEO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" />
           <Property Name="NOM_VIDEO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DES_URL" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_SUBTOPICO" Relationship="SIGMAModel.FK_TB_VIDEO_TB_SUBTOPICO" FromRole="TB_VIDEO" ToRole="TB_SUBTOPICO" />
         </EntityType>
-        <EntityType Name="TB_ATIVIDADE">
-          <Key>
-            <PropertyRef Name="ID_ATIVIDADE" />
-            <PropertyRef Name="NOM_ATIVIDADE" />
-          </Key>
-          <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" />
-          <Property Name="NOM_ATIVIDADE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="NOM_IMAGEM" Type="String" MaxLength="65" FixedLength="false" Unicode="false" />
-          <Property Name="VAL_NOTA" Type="Double" />
-          <Property Name="QTD_PROGRESSO" Type="Double" />
-        </EntityType>
-        <EntityType Name="TB_CERTIFICADO">
-          <Key>
-            <PropertyRef Name="ID_CERTIFICADO" />
-            <PropertyRef Name="ID_ALUNO" />
-            <PropertyRef Name="DES_URL_CERTIFICADO" />
-          </Key>
-          <Property Name="ID_CERTIFICADO" Type="Int32" Nullable="false" />
-          <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
-          <Property Name="DES_URL_CERTIFICADO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="TB_SUBTOPICO">
-          <Key>
-            <PropertyRef Name="ID_SUBTOPICO" />
-            <PropertyRef Name="ID_TOPICO" />
-            <PropertyRef Name="ID_VIDEO" />
-            <PropertyRef Name="ID_ATIVIDADE" />
-            <PropertyRef Name="NOM_SUBTOPICO" />
-          </Key>
-          <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" />
-          <Property Name="ID_TOPICO" Type="Int32" Nullable="false" />
-          <Property Name="ID_VIDEO" Type="Int32" Nullable="false" />
-          <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" />
-          <Property Name="NOM_SUBTOPICO" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="CHK_STATUS" Type="Boolean" />
-        </EntityType>
-      </Schema>
+        <Association Name="FK_TB_ATIVIDADE_TB_ALUNO">
+          <End Type="SIGMAModel.TB_ALUNO" Role="TB_ALUNO" Multiplicity="1" />
+          <End Type="SIGMAModel.TB_ATIVIDADE" Role="TB_ATIVIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALUNO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Principal>
+            <Dependent Role="TB_ATIVIDADE">
+              <PropertyRef Name="ID_ALUNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_CERTIFICADO_TB_ALUNO">
+          <End Type="SIGMAModel.TB_ALUNO" Role="TB_ALUNO" Multiplicity="1" />
+          <End Type="SIGMAModel.TB_CERTIFICADO" Role="TB_CERTIFICADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALUNO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Principal>
+            <Dependent Role="TB_CERTIFICADO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_TOPICO_TB_ALUNO">
+          <End Type="SIGMAModel.TB_ALUNO" Role="TB_ALUNO" Multiplicity="0..1" />
+          <End Type="SIGMAModel.TB_TOPICO" Role="TB_TOPICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ALUNO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Principal>
+            <Dependent Role="TB_TOPICO">
+              <PropertyRef Name="ID_ALUNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_ATIVIDADE_TB_SUBTOPICO">
+          <End Type="SIGMAModel.TB_SUBTOPICO" Role="TB_SUBTOPICO" Multiplicity="1" />
+          <End Type="SIGMAModel.TB_ATIVIDADE" Role="TB_ATIVIDADE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUBTOPICO">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Principal>
+            <Dependent Role="TB_ATIVIDADE">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_SUBTOPICO_TB_TOPICO">
+          <End Type="SIGMAModel.TB_TOPICO" Role="TB_TOPICO" Multiplicity="1" />
+          <End Type="SIGMAModel.TB_SUBTOPICO" Role="TB_SUBTOPICO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TOPICO">
+              <PropertyRef Name="ID_TOPICO" />
+            </Principal>
+            <Dependent Role="TB_SUBTOPICO">
+              <PropertyRef Name="ID_TOPICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_VIDEO_TB_SUBTOPICO">
+          <End Type="SIGMAModel.TB_SUBTOPICO" Role="TB_SUBTOPICO" Multiplicity="1" />
+          <End Type="SIGMAModel.TB_VIDEO" Role="TB_VIDEO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SUBTOPICO">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Principal>
+            <Dependent Role="TB_VIDEO">
+              <PropertyRef Name="ID_SUBTOPICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -199,26 +370,7 @@ warning 6002: The table/view 'SIGMA.dbo.TB_SUBTOPICO' does not have a primary ke
                 <ScalarProperty Name="DES_EMAIL" ColumnName="DES_EMAIL" />
                 <ScalarProperty Name="NUM_CPF" ColumnName="NUM_CPF" />
                 <ScalarProperty Name="NOM_ALUNO" ColumnName="NOM_ALUNO" />
-                <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
                 <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TB_TOPICO">
-            <EntityTypeMapping TypeName="SIGMAModel.TB_TOPICO">
-              <MappingFragment StoreEntitySet="TB_TOPICO">
-                <ScalarProperty Name="DES_CONTEUDO" ColumnName="DES_CONTEUDO" />
-                <ScalarProperty Name="NOM_TOPICO" ColumnName="NOM_TOPICO" />
-                <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TB_VIDEO">
-            <EntityTypeMapping TypeName="SIGMAModel.TB_VIDEO">
-              <MappingFragment StoreEntitySet="TB_VIDEO">
-                <ScalarProperty Name="DES_URL" ColumnName="DES_URL" />
-                <ScalarProperty Name="NOM_VIDEO" ColumnName="NOM_VIDEO" />
-                <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -229,6 +381,8 @@ warning 6002: The table/view 'SIGMA.dbo.TB_SUBTOPICO' does not have a primary ke
                 <ScalarProperty Name="VAL_NOTA" ColumnName="VAL_NOTA" />
                 <ScalarProperty Name="NOM_IMAGEM" ColumnName="NOM_IMAGEM" />
                 <ScalarProperty Name="NOM_ATIVIDADE" ColumnName="NOM_ATIVIDADE" />
+                <ScalarProperty Name="ID_SUBTOPICO" ColumnName="ID_SUBTOPICO" />
+                <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
                 <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -246,11 +400,33 @@ warning 6002: The table/view 'SIGMA.dbo.TB_SUBTOPICO' does not have a primary ke
             <EntityTypeMapping TypeName="SIGMAModel.TB_SUBTOPICO">
               <MappingFragment StoreEntitySet="TB_SUBTOPICO">
                 <ScalarProperty Name="CHK_STATUS" ColumnName="CHK_STATUS" />
+                <ScalarProperty Name="QTD_PROGRESSO" ColumnName="QTD_PROGRESSO" />
                 <ScalarProperty Name="NOM_SUBTOPICO" ColumnName="NOM_SUBTOPICO" />
                 <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />
                 <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
                 <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
                 <ScalarProperty Name="ID_SUBTOPICO" ColumnName="ID_SUBTOPICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TOPICO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_TOPICO">
+              <MappingFragment StoreEntitySet="TB_TOPICO">
+                <ScalarProperty Name="QTD_PROGRESSO" ColumnName="QTD_PROGRESSO" />
+                <ScalarProperty Name="DES_CONTEUDO" ColumnName="DES_CONTEUDO" />
+                <ScalarProperty Name="NOM_TOPICO" ColumnName="NOM_TOPICO" />
+                <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
+                <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_VIDEO">
+            <EntityTypeMapping TypeName="SIGMAModel.TB_VIDEO">
+              <MappingFragment StoreEntitySet="TB_VIDEO">
+                <ScalarProperty Name="DES_URL" ColumnName="DES_URL" />
+                <ScalarProperty Name="NOM_VIDEO" ColumnName="NOM_VIDEO" />
+                <ScalarProperty Name="ID_SUBTOPICO" ColumnName="ID_SUBTOPICO" />
+                <ScalarProperty Name="ID_VIDEO" ColumnName="ID_VIDEO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

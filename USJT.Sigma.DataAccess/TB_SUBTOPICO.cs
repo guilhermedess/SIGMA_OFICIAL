@@ -14,11 +14,25 @@ namespace USJT.Sigma.DataAccess
     
     public partial class TB_SUBTOPICO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TB_SUBTOPICO()
+        {
+            this.TB_ATIVIDADE = new HashSet<TB_ATIVIDADE>();
+            this.TB_VIDEO = new HashSet<TB_VIDEO>();
+        }
+    
         public int ID_SUBTOPICO { get; set; }
         public int ID_TOPICO { get; set; }
-        public int ID_VIDEO { get; set; }
-        public int ID_ATIVIDADE { get; set; }
+        public Nullable<int> ID_VIDEO { get; set; }
+        public Nullable<int> ID_ATIVIDADE { get; set; }
         public string NOM_SUBTOPICO { get; set; }
+        public Nullable<double> QTD_PROGRESSO { get; set; }
         public Nullable<bool> CHK_STATUS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_ATIVIDADE> TB_ATIVIDADE { get; set; }
+        public virtual TB_TOPICO TB_TOPICO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_VIDEO> TB_VIDEO { get; set; }
     }
 }

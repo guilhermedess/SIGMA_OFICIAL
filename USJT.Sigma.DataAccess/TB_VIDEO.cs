@@ -15,7 +15,10 @@ namespace USJT.Sigma.DataAccess
     public partial class TB_VIDEO
     {
         public int ID_VIDEO { get; set; }
+        public int ID_SUBTOPICO { get; set; }
         public string NOM_VIDEO { get; set; }
         public string DES_URL { get; set; }
+    
+        public virtual TB_SUBTOPICO TB_SUBTOPICO { get; set; }
     }
 }
