@@ -43,6 +43,22 @@ namespace USJT.Sigma.Repositorio
             }
         }
 
+        public Aluno buscaDadosAluno(Aluno dadosLogin)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var alunoRecuperado = conexao.TB_ALUNO.Single(modelAluno => modelAluno.NOM_LOGIN.Equals(dadosLogin.Usuário));
+
+                dadosLogin.IdAluno = alunoRecuperado.ID_ALUNO;
+                dadosLogin.Nome = alunoRecuperado.NOM_ALUNO;
+                dadosLogin.CPF = alunoRecuperado.NUM_CPF;
+                dadosLogin.DataNascimento = alunoRecuperado.DAT_NASCIMENTO;
+                dadosLogin.Email = alunoRecuperado.DES_EMAIL;
+
+                return dadosLogin;
+            }
+        }
+
         public void checkSubAluno(Aluno aluno, bool feito)
         {
             using (var conexao = new SIGMAEntities())

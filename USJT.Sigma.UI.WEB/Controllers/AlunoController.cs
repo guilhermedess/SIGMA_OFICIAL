@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Security;
 using USJT.Sigma.Model;
 using USJT.Sigma.Repositorio;
@@ -12,6 +13,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
     public class AlunoController : Controller
     {
         private AlunoREP alunoREP = new AlunoREP();
+        private SubTopicoREP subTopicoREP = new SubTopicoREP();
 
         public ActionResult Cadastrar()
         {
@@ -59,6 +61,8 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             var alunoREP = new AlunoREP();
 
+            Session["dadosAlunoLogado"] = alunoREP.buscaDadosAluno(dadosLogin);
+
             //VERIFICAMOS SE O USUARIO EXISTE
             if (!alunoREP.ValidarLogin(dadosLogin))
             {
@@ -72,7 +76,9 @@ namespace USJT.Sigma.UI.WEB.Controllers
             //FormsAuthentication.SetAuthCookie(dadosLogin.Usuário, true);
 
             //MANDAMOS REDIRECIONAR PARA A ACTION LOGIN
-            return View("Topicos","Topico");
+            //return RedirectToAction("Topicos","Topico", dadosLogin);
+            return new RedirectToRouteResult(new RouteValueDictionary(
+               new { action = "Topicos", controller = "Topico" }));
         }
 
         public ActionResult Login()

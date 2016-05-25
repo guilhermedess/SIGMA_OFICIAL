@@ -11,7 +11,9 @@ namespace USJT.Sigma.UI.WEB.Controllers
         // GET: Topico
         public ActionResult Topicos()
         {
-            return View();
+            var dadosAlunoLogado = Session["dadosAlunoLogado"];
+    
+            return View(dadosAlunoLogado);
         }
     }
 }

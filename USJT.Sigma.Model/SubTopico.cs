@@ -9,6 +9,7 @@ namespace USJT.Sigma.Model
     public class SubTopico
     {
         public int IdSubTopico { get; set; }
+        public int IdAluno { get; set; }
         public Topico IdTopico { get; set; }
         public Video IdVideo { get; set; }
         public Atividade IdAtividade { get; set; }

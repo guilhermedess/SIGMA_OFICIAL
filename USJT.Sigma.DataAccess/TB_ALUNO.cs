@@ -19,6 +19,7 @@ namespace USJT.Sigma.DataAccess
         {
             this.TB_ATIVIDADE = new HashSet<TB_ATIVIDADE>();
             this.TB_CERTIFICADO = new HashSet<TB_CERTIFICADO>();
+            this.TB_SUBTOPICO = new HashSet<TB_SUBTOPICO>();
             this.TB_TOPICO = new HashSet<TB_TOPICO>();
         }
     
@@ -34,6 +35,8 @@ namespace USJT.Sigma.DataAccess
         public virtual ICollection<TB_ATIVIDADE> TB_ATIVIDADE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_CERTIFICADO> TB_CERTIFICADO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_SUBTOPICO> TB_SUBTOPICO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_TOPICO> TB_TOPICO { get; set; }
     }

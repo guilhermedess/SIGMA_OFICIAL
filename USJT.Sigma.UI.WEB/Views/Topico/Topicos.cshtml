@@ -1,4 +1,5 @@
-﻿
+﻿@model USJT.Sigma.Model.Aluno
+
 @{
     ViewBag.Title = "Topicos";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
@@ -6,5 +7,21 @@
 
 <h2>Topicos</h2>
 
-@* label, metodo e controle *@
-@Html.ActionLink("Amostragem","ImpAmostragem", "SubAmostragem")
+@* label, metodo e controle*@
+
+@*@using (Html.BeginForm("ImpAmostragem", "SubAmostragem"))
+{
+    <input type="submit" value="AMOSTRAGEM" />
+}*@
+
+<form action="~/SubAmostragem/ImpAmostragem" method="get">
+
+    <input type="submit" value="AMOSTRAGEM" />
+
+</form>
+
+    @*@Html.ActionLink("Amostragem", "ImpAmostragem", new RouteValueDictionary(new { action = "ImpAmostragem", controller = "SubAmostragem" }), usuarioLogado)*@
+
+    @*<a href="ImpAmostragem/@Model">
+            Amostragem
+        </a>*@

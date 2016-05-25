@@ -10,19 +10,68 @@ namespace USJT.Sigma.Repositorio
 {
     public class SubTopicoREP
     {
-        public void checkSubTopico(Aluno aluno, bool feito)
+        public void AdicionaSubTopico(Aluno aluno, string nomeTopico, string nomeSubTopico, bool feito)
         {
             using (var conexao = new SIGMAEntities())
             {
-                var alunoNovo = conexao.TB_ALUNO.Single(x => x.ID_ALUNO == 5);
+                var alunoNovo = conexao.TB_ALUNO.Single(x => x.ID_ALUNO == aluno.IdAluno);
 
-                var novo = conexao.TB_SUBTOPICO.Single(x => x.ID_SUBTOPICO == 9);
-                
-                //var novo = new TB_SUBTOPICO();
+                //verificar se o subtopico já existe
+                //check == true -> adiciono na tabela SubTopico uma linha 
+                if (ExisteSubTopico(alunoNovo.ID_ALUNO, nomeSubTopico))
+                {
+                    if (feito == true)
+                    {
+                        //verifica se o topico existe
+                        TopicoREP topicoREP = new TopicoREP();
+                        int idTopicoResgatado = topicoREP.AdicionaTopico(alunoNovo, nomeTopico);
 
-                novo.CHK_STATUS = feito;
+                        var novoSubTopico = new TB_SUBTOPICO();
 
-                conexao.SaveChanges();
+                        novoSubTopico.ID_ALUNO = alunoNovo.ID_ALUNO;
+                        novoSubTopico.ID_TOPICO = idTopicoResgatado;
+                        //novoSubTopico.ID_VIDEO 
+                        //novoSubTopico.ID_ATIVIDADE
+                        novoSubTopico.NOM_SUBTOPICO = nomeSubTopico;
+                        //novoSubTopico.QTD_PROGRESSO
+                        novoSubTopico.CHK_STATUS = true;
+
+                        conexao.TB_SUBTOPICO.Add(novoSubTopico);
+                        conexao.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public bool ExisteSubTopico(int idAluno, string nomeSubTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_SUBTOPICO
+                               where C.ID_ALUNO == idAluno && C.NOM_SUBTOPICO == nomeSubTopico
+                               select new SubTopico
+                               {
+                                   IdAluno = idAluno,
+                                   Nome = nomeSubTopico,
+                                   //IdAtividade = C.ID_ATIVIDADE,
+                                   IdSubTopico = C.ID_SUBTOPICO,
+                                   IdTopico = new Topico
+                                   {
+                                       IdTopico = C.ID_TOPICO
+                                   }
+                                   //IdVideo = C.ID_VIDEO,
+                                   //Status = C.CHK_STATUS
+                               }).ToList();
+
+                if (retorno.Count != 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+
             }
         }
     }

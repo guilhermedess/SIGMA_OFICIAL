@@ -9,6 +9,7 @@ namespace USJT.Sigma.Model
     public class Topico
     {
         public int IdTopico { get; set; }
+        public int IdAluno { get; set; }
         public string Nome { get; set; }
     }
 }
