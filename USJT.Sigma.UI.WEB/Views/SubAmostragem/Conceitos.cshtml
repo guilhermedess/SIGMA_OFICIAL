@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Conceitos";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<h2>Conceitos Básicos de Amostragem</h2>
+
+<form action="~/SubAmostragem/Conceitos?feito=false" method="post">
+
+    @Html.Partial("_PartialAmostragem")
+
+    <input @*href="ImpAmostragem@false"*@ type="submit" name="salvarSubTopico" value="Salvar" class="btn btn-default">
+    @*<button type="submit" href="/SubAmostragem/ImpAmostragem?feito=false">salvar</button>*@
+    @*<a href="/SubAmostragem/ImpAmostragem?feito=false"><b>SALVAR</b></a>*@
+
+</form>

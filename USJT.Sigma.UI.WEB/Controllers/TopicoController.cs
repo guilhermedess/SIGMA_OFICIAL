@@ -8,7 +8,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
 {
     public class TopicoController : Controller
     {
-        // GET: Topico
         public ActionResult Topicos()
         {
             var dadosAlunoLogado = Session["dadosAlunoLogado"];

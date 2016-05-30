@@ -165,6 +165,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\Timeline.css" />
+    <Content Include="Content\topico.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
@@ -177,6 +178,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-2.2.3.intellisense.js" />
+    <Content Include="scripts\botoes-topico.js" />
     <Content Include="scripts\jquery-2.2.3.js" />
     <Content Include="scripts\jquery-2.2.3.min.js" />
     <Content Include="scripts\jquery-2.2.3.min.map" />
@@ -210,14 +212,14 @@
     <Content Include="Views\Aluno\Cadastrar.cshtml" />
     <Content Include="Views\Shared\_LayoutPadrao.cshtml" />
     <Content Include="Views\Topico\Topicos.cshtml" />
-    <Content Include="Views\SubAmostragem\ImpAmostragem.cshtml" />
-    <Content Include="Views\SubAmostragem\Conceitos.cshtml" />
     <Content Include="Views\SubAmostragem\_PartialAmostragem.cshtml" />
     <Content Include="Views\SubAmostragem\AleatoriaSimples.cshtml" />
     <Content Include="Views\SubAmostragem\AleatoriaEstratificada.cshtml" />
     <Content Include="Views\SubAmostragem\Conglomerado.cshtml" />
     <Content Include="Views\SubAmostragem\Sistematica.cshtml" />
     <Content Include="Views\Aluno\Login.cshtml" />
+    <Content Include="Views\SubAmostragem\Conceitos.cshtml" />
+    <Content Include="Views\SubAmostragem\ImpAmostragem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

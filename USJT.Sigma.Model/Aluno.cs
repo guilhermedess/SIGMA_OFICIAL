@@ -16,6 +16,5 @@ namespace USJT.Sigma.Model
         public DateTime DataNascimento { get; set; }
         public string Usuário { get; set; }
         public string Senha { get; set; }
-
     }
 }
