@@ -10,7 +10,7 @@ namespace USJT.Sigma.Repositorio
 {
     public class SubTopicoREP
     {
-        public void AdicionaSubTopico(Aluno aluno, string nomeTopico, string nomeSubTopico, bool feito)
+        public int AdicionaSubTopico(Aluno aluno, string nomeTopico, string nomeSubTopico, bool feito)
         {
             using (var conexao = new SIGMAEntities())
             {
@@ -20,25 +20,29 @@ namespace USJT.Sigma.Repositorio
                 //check == true -> adiciono na tabela SubTopico uma linha 
                 if (ExisteSubTopico(alunoNovo.ID_ALUNO, nomeSubTopico))
                 {
-                    if (feito == true)
-                    {
-                        //verifica se o topico existe
-                        TopicoREP topicoREP = new TopicoREP();
-                        int idTopicoResgatado = topicoREP.AdicionaTopico(alunoNovo, nomeTopico);
+                    //verifica se o topico existe
+                    TopicoREP topicoREP = new TopicoREP();
+                    int idTopicoResgatado = topicoREP.AdicionaTopico(alunoNovo, nomeTopico);
 
-                        var novoSubTopico = new TB_SUBTOPICO();
+                    var novoSubTopico = new TB_SUBTOPICO();
 
-                        novoSubTopico.ID_ALUNO = alunoNovo.ID_ALUNO;
-                        novoSubTopico.ID_TOPICO = idTopicoResgatado;
-                        //novoSubTopico.ID_VIDEO 
-                        //novoSubTopico.ID_ATIVIDADE
-                        novoSubTopico.NOM_SUBTOPICO = nomeSubTopico;
-                        //novoSubTopico.QTD_PROGRESSO
-                        novoSubTopico.CHK_STATUS = true;
+                    novoSubTopico.ID_ALUNO = alunoNovo.ID_ALUNO;
+                    novoSubTopico.ID_TOPICO = idTopicoResgatado;
+                    //novoSubTopico.ID_VIDEO 
+                    //novoSubTopico.ID_ATIVIDADE
+                    novoSubTopico.NOM_SUBTOPICO = nomeSubTopico;
+                    //novoSubTopico.QTD_PROGRESSO
+                    novoSubTopico.CHK_STATUS = true;
 
-                        conexao.TB_SUBTOPICO.Add(novoSubTopico);
-                        conexao.SaveChanges();
-                    }
+                    conexao.TB_SUBTOPICO.Add(novoSubTopico);
+                    conexao.SaveChanges();
+
+                    return novoSubTopico.ID_SUBTOPICO;
+                }
+                else
+                {
+                    SubTopicoREP subTopicoREP = new SubTopicoREP();
+                    return subTopicoREP.ConsultaIdSubTopico(alunoNovo.ID_ALUNO, nomeSubTopico);
                 }
             }
         }
@@ -72,6 +76,23 @@ namespace USJT.Sigma.Repositorio
                     return true;
                 }
 
+            }
+        }
+
+        public int ConsultaIdSubTopico(int idAluno, string nomeSubTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = from A in conexao.TB_SUBTOPICO
+                              where A.ID_ALUNO == idAluno && A.NOM_SUBTOPICO == nomeSubTopico
+                              select A;
+                
+                int idSubTopicoRecuperado = 0;
+
+                foreach (var aux in retorno)
+                    idSubTopicoRecuperado = (int)aux.ID_TOPICO;
+
+                return idSubTopicoRecuperado;
             }
         }
     }

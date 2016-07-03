@@ -29,9 +29,20 @@ namespace USJT.Sigma.UI.WEB.Controllers
             aluno = (Aluno) Session["dadosAlunoLogado"];
 
             var feito = true;
-            
-            if(atividade.Resposta == true)
-                subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico, feito);
+
+            if (atividade.Resposta == true)
+            {
+                //consulta atividade pra ver se ja existe
+
+                int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico, feito);
+
+                var nomeAtividade = "AtvImpAmostragem";
+
+                //parei aqui
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+                atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+            }
 
             return View();
         }
