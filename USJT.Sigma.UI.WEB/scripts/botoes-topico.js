@@ -4,6 +4,7 @@
     $("#subMedidasPosicao").toggle();
     $("#subMedidasDispersao").toggle();
     $("#subProbabilidade").toggle();
+    $("#progresso").toggle();
 });
 
 $(document).ready(function () {
@@ -21,5 +22,8 @@ $(document).ready(function () {
     });
     $("#ocultaProbabilidade").click(function () {
         $("#subProbabilidade").toggle();
+    });
+    $("#ocultaProgresso").click(function () {
+        $("#progresso").toggle();
     });
 });

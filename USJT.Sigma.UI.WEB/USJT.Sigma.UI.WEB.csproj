@@ -131,6 +131,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.yeti.css" />
     <Content Include="Content\bootstrap.yeti.min.css" />
+    <Content Include="Content\corpo-padrao.css" />
+    <Content Include="Content\mega-menu.css" />
+    <Content Include="Content\progresso.css" />
+    <Content Include="Content\progresso2.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -191,12 +195,16 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\mega-menu.js" />
+    <Content Include="scripts\progresso.js" />
+    <Content Include="scripts\progresso2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\SubAmostragemController.cs" />
+    <Compile Include="Controllers\SubDistribuicaoController.cs" />
     <Compile Include="Controllers\TopicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +228,13 @@
     <Content Include="Views\Aluno\Login.cshtml" />
     <Content Include="Views\SubAmostragem\Conceitos.cshtml" />
     <Content Include="Views\SubAmostragem\ImpAmostragem.cshtml" />
+    <Content Include="Views\Topico\_PartialProgresso.cshtml" />
+    <Content Include="Views\SubDistribuicao\_PartialDistribuicao.cshtml" />
+    <Content Include="Views\SubDistribuicao\ConceitosDeDistribuicao.cshtml" />
+    <Content Include="Views\SubDistribuicao\Elementos.cshtml" />
+    <Content Include="Views\SubDistribuicao\RegrasParaElaboracao.cshtml" />
+    <Content Include="Views\SubDistribuicao\Graficos.cshtml" />
+    <Content Include="Views\Topico\_PartialProgresso2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

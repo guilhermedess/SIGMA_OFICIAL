@@ -1,0 +1,57 @@
+﻿    @model USJT.Sigma.Model.Aluno
+
+<head>
+    <script src="~/scripts/progresso.js"></script>
+    <link href="~/Content/progresso.css" rel="stylesheet" />
+</head>
+
+<div class="panel panel-default" style="width:90%; margin:20px">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Progresso
+        </h3>
+    </div>
+
+    <div class="panel-body" style="margin:0px; width:105%;">
+        <div id="Main">
+            <a name="poll_bar" title="Total">Total</a> <span name="poll_val">@Model.ProgressoTotal%</span><br />
+        </div>
+
+        <div id="Total">
+            <a name="poll_bar" title="Distribuição">Distribuição</a> <span name="poll_val">@Model.ProgressoDistribuicao%</span><br />
+            <a name="poll_bar" title="Medidas&nbsp;de&nbsp;Tendência&nbsp;Central">Medidas&nbsp;de&nbsp;Tendência&nbsp;Central</a> <span name="poll_val">@Model.ProgressoMedidasDeTendenciaCentral% </span><br />
+            <a name="poll_bar" title="Medidas&nbsp;de&nbsp;disperção">Medidas&nbsp;de&nbsp;disperção</a> <span name="poll_val">@Model.ProgressoMedidasDeDispersao%  </span><br />
+            <a name="poll_bar" title="Amostragem&nbsp;e&nbsp;estimadores">Amostragem&nbsp;e&nbsp;estimadores</a> <span name="poll_val">@Model.ProgressoAmostragemEstimadores%  </span><br />
+        </div>
+
+        @*<div id="Distribuição">
+            <a name="poll_bar" title="Conceitos">Conceitos</a> <span name="poll_val">60% </span><br />
+            <a name="poll_bar" title="Elementos">Elementos</a> <span name="poll_val">55% </span><br />
+            <a name="poll_bar" title="Regras para elaboração">Regras para elaboração</a> <span name="poll_val">46%  </span><br />
+            <a name="poll_bar" title="Gráficos">Gráficos</a> <span name="poll_val">34%  </span><br />
+        </div>
+
+        <div id="Medidas&nbsp;de&nbsp;Tendência&nbsp;Central">
+            <a name="poll_bar" title="Introdução">Introdução</a> <span name="poll_val">60% </span><br />
+            <a name="poll_bar" title="Média aritmética simples e ponderada">Média aritmética simples e ponderada</a> <span name="poll_val">40% </span><br />
+            <a name="poll_bar" title="Moda">Moda</a> <span name="poll_val">15%  </span><br />
+            <a name="poll_bar" title="Mediana">Mediana</a> <span name="poll_val">15%  </span><br />
+            <a name="poll_bar" title="Media geométrica">Media geométrica</a> <span name="poll_val">15%  </span><br />
+            <a name="poll_bar" title="Media harmônic">Media harmônica</a> <span name="poll_val">15%  </span><br />
+            <a name="poll_bar" title="Separatrizes">Separatrizes</a> <span name="poll_val">15%  </span><br />
+        </div>
+
+        <div id="Medidas&nbsp;de&nbsp;disperção">
+            <a name="poll_bar" title="Dispersão">Dispersão</a> <span name="poll_val">60% </span><br />
+            <a name="poll_bar" title="Assimetria">Assimetria</a> <span name="poll_val">55% </span><br />
+            <a name="poll_bar" title="Curtose">Curtose</a> <span name="poll_val">46%  </span><br />
+        </div>
+
+        <div id="Amostragem&nbsp;e&nbsp;estimadores">
+            <a name="poll_bar" title="Experimento aleatório, espaço amostral e eventos">Experimento aleatório, espaço amostral e eventos</a> <span name="poll_val">60% </span><br />
+            <a name="poll_bar" title="Definição clássica e frequência relativa">Definição clássica e frequência relativa</a> <span name="poll_val">55% </span><br />
+            <a name="poll_bar" title="Tipos de eventos">Tipos de eventos</a> <span name="poll_val">46%  </span><br />
+            <a name="poll_bar" title="Axioma de probabilidade">Axioma de probabilidade</a> <span name="poll_val">46%  </span><br />
+        </div>*@
+    </div>
+</div>

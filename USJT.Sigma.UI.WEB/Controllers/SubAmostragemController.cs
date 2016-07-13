@@ -23,27 +23,51 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ImpAmostragem(Aluno aluno, Atividade atividade/*Aluno aluno, SubTopico subTopico, bool feito*/)
         {
+            //var nomeTopico = "Amostragem";
+            //var nomeSubTopico = "Importância da Amostragem";
+
+            //aluno = (Aluno) Session["dadosAlunoLogado"];
+
+            ////var feito = true;
+
+            //if (atividade.Resposta == true)
+            //{
+            //    //consulta atividade pra ver se ja existe
+
+            //    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico/*, feito*/);
+
+            //    var nomeAtividade = "AtvImpAmostragem";
+
+            //    //parei aqui
+
+            //    AtividadeREP atividadeREP = new AtividadeREP();
+            //    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+            //}
+
+            //return View();
+
+            AtividadeREP atividadeREP = new AtividadeREP();
             var nomeTopico = "Amostragem";
             var nomeSubTopico = "Importância da Amostragem";
 
-            aluno = (Aluno) Session["dadosAlunoLogado"];
+            aluno = (Aluno)Session["dadosAlunoLogado"];
 
-            var feito = true;
-
-            if (atividade.Resposta == true)
+            if (atividade.Resposta)
             {
-                //consulta atividade pra ver se ja existe
-
-                int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico, feito);
-
                 var nomeAtividade = "AtvImpAmostragem";
 
-                //parei aqui
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                AtividadeREP atividadeREP = new AtividadeREP();
-                atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
             }
-
             return View();
         }
 

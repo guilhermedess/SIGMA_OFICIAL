@@ -77,5 +77,76 @@ namespace USJT.Sigma.Repositorio
             }
         }
 
+        public double ProgressoTotal(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno
+                               select new Atividade { }).ToList();
+                
+                //quantidadeAtividadeFeitas / quantidadeTotalAtividadesExistentes
+                return (retorno.Count * 100) / 20;
+            }
+        }
+
+        public double ProgressoDistribuicao(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvConceitosDeDistribuicao" || 
+                               C.NOM_ATIVIDADE == "AtvElementos" || C.NOM_ATIVIDADE == "AtvRegrasParaElaboracao" || C.NOM_ATIVIDADE == "AtvGraficos")
+                               select new Atividade { }).ToList();
+
+                //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao
+                return (retorno.Count * 100) / 4;
+            }
+        }
+
+        public double ProgressoMedidasDeTendenciaCentral(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvIntroducaoMedidasDeTendenciaCentral" ||
+                               C.NOM_ATIVIDADE == "AtvMediaSimplesPonderada" || C.NOM_ATIVIDADE == "AtvModa" || C.NOM_ATIVIDADE == "AtvMediana"
+                               || C.NOM_ATIVIDADE == "AtvMediaGeometrica" || C.NOM_ATIVIDADE == "AtvMediaHarmonica" || C.NOM_ATIVIDADE == "AtvSeparatrizes")
+                               select new Atividade { }).ToList();
+                
+                return (retorno.Count * 100) / 7;
+            }
+        }
+
+        public double ProgressoMedidasDeDispersao(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvDispersao" ||
+                               C.NOM_ATIVIDADE == "AtvAssimetria" || C.NOM_ATIVIDADE == "AtvCurtose")
+                               select new Atividade { }).ToList();
+
+                //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao
+                return (retorno.Count * 100) / 3;
+            }
+        }
+
+        public double ProgressoAmostragemEstimadores(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvImpAmostragem" ||
+                               C.NOM_ATIVIDADE == "AtvConceitosFundamentaisAmostragem" || C.NOM_ATIVIDADE == "AtvAleatoriaSimples"
+                               || C.NOM_ATIVIDADE == "AtvAleatoriaEstratificada" || C.NOM_ATIVIDADE == "AtvConglomerado"
+                               || C.NOM_ATIVIDADE == "AtvSistematica")
+                               select new Atividade { }).ToList();
+
+                //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao
+                return (retorno.Count * 100) / 6;
+            }
+        }
+
     }
 }

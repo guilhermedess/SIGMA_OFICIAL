@@ -16,5 +16,10 @@ namespace USJT.Sigma.Model
         public DateTime DataNascimento { get; set; }
         public string Usuário { get; set; }
         public string Senha { get; set; }
+        public double ProgressoTotal { get; set; }
+        public double ProgressoDistribuicao { get; set; }
+        public double ProgressoMedidasDeTendenciaCentral { get; set; }
+        public double ProgressoMedidasDeDispersao { get; set; }
+        public double ProgressoAmostragemEstimadores { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace USJT.Sigma.Repositorio
 {
     public class SubTopicoREP
     {
-        public int AdicionaSubTopico(Aluno aluno, string nomeTopico, string nomeSubTopico, bool feito)
+        public int AdicionaSubTopico(Aluno aluno, string nomeTopico, string nomeSubTopico/*, bool feito*/)
         {
             using (var conexao = new SIGMAEntities())
             {
@@ -90,7 +90,7 @@ namespace USJT.Sigma.Repositorio
                 int idSubTopicoRecuperado = 0;
 
                 foreach (var aux in retorno)
-                    idSubTopicoRecuperado = (int)aux.ID_TOPICO;
+                    idSubTopicoRecuperado = (int)aux.ID_SUBTOPICO;
 
                 return idSubTopicoRecuperado;
             }

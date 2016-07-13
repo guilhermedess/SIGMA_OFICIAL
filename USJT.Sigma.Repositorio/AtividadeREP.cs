@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using USJT.Sigma.DataAccess;
+using USJT.Sigma.Model;
 
 namespace USJT.Sigma.Repositorio
 {
@@ -24,9 +25,27 @@ namespace USJT.Sigma.Repositorio
             }
         }
 
-        public void ExisteAtividade()
+        public bool ExisteAtividade(int idAluno, string nomeAtividade)
         {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno && C.NOM_ATIVIDADE == nomeAtividade
+                               select new Atividade
+                               {
+                                   IdAluno = idAluno
+                               }).ToList();
 
+                if (retorno.Count != 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
+        
     }
 }
