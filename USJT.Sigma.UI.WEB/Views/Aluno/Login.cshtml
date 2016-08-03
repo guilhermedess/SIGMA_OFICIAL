@@ -18,6 +18,8 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/bootbox.min.js"></script>
+    @*dns*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!--Importamos os scripts do Bootstrap-->
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -28,19 +30,12 @@
     @*<link href="~/Content/padrao.css" rel="stylesheet" />*@
     <link href="~/Content/estilo.css" rel="stylesheet" />
 
+
     @*Inserimos o logo das Abas*@
     @*<link href="~/Content/Images/img_LogoAba.png" rel="shortcut icon" />*@
 
 </head>
-<body>
-    @*<header>*@
-    @*<img src="~/Content/Images/img_LogoPrincipal.png" title="Logotipo da Empresa" />*@
-
-    @*<hgroup class="text-center text-uppercase">
-                <h1>Login</h1>
-                <h3>Sigma</h3>
-            </hgroup>
-        </header>*@
+<body class="body-margem-top">
 
     @* INSERIMOS AS MENSAGENS *@
     <section>
@@ -52,99 +47,145 @@
         }
     </section>
 
-    <div class="jumbotron jumb-login">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 linhaCinza">
-                <div class="page-header text-center">
-                    <h1>SIGMA <small>Sistema de ensino em estátiscica</small></h1>
+    <!--menu -->
+    <nav class="navbar navbar-inverse navbar-fixed-top nav-top">
+        <div class="container ">
+            <div class="navbar-header transparencia">
+                <button type="button" class="navbar-toggle"
+                        data-toggle="collapse" data-target="#menu-navegacao">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand nav-brand" href="#carrocel">
+                    SIGMA
+                    <img alt="Brand" src="~/Content/img/icon_sigma-92.png">
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse menu-navegacao" id="menu-navegacao">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="" href="#sobre">Sobre</a>
+                    </li>
+                    <li>
+                        <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Login
+                        </a>
+
+                        <div class="collapse " id="collapseExample">
+                            <div class="well">
+                                <div class="row ">
+                                    @using (Html.BeginForm())
+                                    {
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 form-group">
+                                                @Html.LabelFor(x => x.Usuário, new { @class = "div-log" })
+                                                @Html.TextBoxFor(x => x.Usuário, new { @class = "form-control", placeholder = "Usuário", required = "required" })
+                                                @Html.ValidationMessageFor(x => x.Usuário)
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-12 form-group">
+                                                @Html.LabelFor(x => x.Senha, new { @class = "div-log" })
+                                                @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha", required = "required" })
+                                                @Html.ValidationMessageFor(x => x.Senha)
+                                            </div>
+                                        </div>
+                                        <input type="submit" name="logar" id="logar" value="Logar" class="btn btn-lg btn-info" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--// menu-->
+    <!-- slider -->
+    <div id="carrocel" class="divslider">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/Content/img/slider/slider1_1360-600.png" alt="First slide" class="largura-cheia">
+
+                </div>
+                <div class="item">
+                    <img src="~/Content/img/slider/slider2_1360-600.png" alt="Second slide" class="largura-cheia">
+
+                </div>
+                <div class="item">
+                    <img src="~/Content/img/slider/slider3_1360-600.png" alt="Second slide" class="largura-cheia">
+                </div>
+            </div>
+
+            <!-- Controls -->
+            @*<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>*@
+        </div>
+    </div>
+    <!--// slider-->
+    <!--sobre-->
+    <section id="sobre" class="sec-sobre ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="page-header text-center">
+                        <br />
+                        <br />
+                        <h1 class="sobre-h1"><strong>MAIS SOBRE O SIGMA</strong></h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h4><strong>MISSÃO E VISÃO</strong></h4>
+                    <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
+                    <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
+                </div>
+                <div class="col-md-6">
+                    <h4><strong>VALORES</strong></h4>
+                    <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
+                    <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
+                </div>
+            </div>
+            @*img-sobre*@
+            <div class="row">
+                <div class="col-xs-12">
+                    <div><img src="~/Content/img/sobre/sobre_1600-400.png" class="img-responsive grayscale" /></div>
                 </div>
             </div>
         </div>
-
-        @*<hgroup class="text-center text-uppercase">
-            <h1>Sigma</h1>
-            <h3>Login</h3>
-        </hgroup>*@
-
-        <div class="row text-center div-log" >
-            <h1>SIGMA</h1>
-        </div>
-
-        <section class="container">
-            <fieldset>
-                <h3>Informe seus dado:</h3>
-
-                @using (Html.BeginForm())
-            {
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-6 form-group">
-                            @Html.LabelFor(x => x.Usuário, new { @class = "div-log" })
-                            @Html.TextBoxFor(x => x.Usuário, new { @class = "form-control", placeholder = "Usuário", required = "required" })
-                            @Html.ValidationMessageFor(x => x.Usuário)
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-6 form-group">
-                            @Html.LabelFor(x => x.Senha, new { @class = "div-log" })
-                            @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha", required = "required" })
-                            @Html.ValidationMessageFor(x => x.Senha)
-                        </div>
-                    </div>
-
-                    <div class="form-group btn-lg">
-                        <input type="submit" name="logar" id="logar" value="Logar" class="btn btn-lg btn-success" />
-                    </div>
-                }
-
-            </fieldset>
-        </section>
-    </div>
-
+    </section>
+    @*// sobre*@
     <footer>
-        <div class="jumbotron footer-Jumb" >
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 bordalinha">
-                        <h5>Nossa missão</h5>
-                    </div>
-                    <div class="col-md-4 col-sm-4 bordalinha">
-                        <h5>Contato</h5>
-                    </div>
-                    <div class="col-md-4 col-sm-4 bordalinha">
-                        <h5>Sigma imagens</h5>
-                    </div>
+        <div class="page-header text-center text-info"><h2>Apredizagem em estatística.</h2></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="~/Content/img/icon_sigma-92.png" class="img-rounded">
                 </div>
-
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 bordalinha">
-                        <a href="#"><h5>link Nossa missão</h5></a>
-                    </div>
-                    <div class="col-md-4 col-sm-4 bordalinha">
-                        <a href="#"><h5>link Contato</h5></a>
-                    </div>
-                    <div class="col-md-4 col-sm-4 bordalinha">
-                        <img src="~/Content/img/sigma.png" class="img-rounded">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <hr style="width: 100%; color: black; height: 1px; background-color:black;" />
-                    <div class="col-md-12 col-sm-12">
-                        <p>&copy; Todos os direitos reservados ao<strong>SIGMA</strong></p>
-                    </div>
+                <div class="col-xs-12">
+                    <p>&copy; Todos os direitos reservados ao<strong> SIGMA</strong></p>
                 </div>
             </div>
         </div>
     </footer>
-
-    @*<footer>
-            <nav class="nav nav-tabs" >
-                <div class="container text-center text-uppercase">
-                    <p>&copy; Todos os direitos reservados ao<strong>SIGMA</strong></p>
-                </div>
-            </nav>
-        </footer>*@
-
 </body>
 </html>

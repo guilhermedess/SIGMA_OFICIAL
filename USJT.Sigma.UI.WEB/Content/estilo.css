@@ -1,22 +1,35 @@
-﻿
-/*comp tela de login*/
-.jumb-login {
-    font-family: Helvetica, Arial;
-    background-color: #69F0AE;
-    color: white;
-    margin-top: 0px;
-    margin-bottom: 0px;
+﻿.body-margem-top {
+    padding-top: 100px;
 }
 
-/*div login*/
+.nav-top {
+    height: 100px;
+    padding-top: 25px;
+    background-color: #1abc9c;
+    font-family: Helvetica, Arial;
+    font-size: 24px;
+}
+
+.nav-brand {
+    font-family: Helvetica, Arial;
+    font-size: 24px;
+}
+
 .div-log {
     font-family: Helvetica, Arial;
-    font-size: large;
+    font-size: 18px;
 }
 
-.footer-Jumb {
+.sec-sobre {
     font-family: Helvetica, Arial;
-    background-color: #E0E0E0;
+    background: url(img/bgslider.png);
 }
 
- 
+.sobre-h1 {
+    color: white;
+}
+
+.largura-cheia {
+    width: 100%;
+    height: 600px;
+}
