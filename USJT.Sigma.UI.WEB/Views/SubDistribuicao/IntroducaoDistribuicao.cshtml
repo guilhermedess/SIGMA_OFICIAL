@@ -1,20 +1,23 @@
-﻿
+﻿@model USJT.Sigma.Model.Aluno
+
 @{
-    ViewBag.Title = "RegrasParaElaboracao";
+    ViewBag.Title = "Introdução a Distribuição";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
 }
+<link href="~/Content/corpo-padrao.css" rel="stylesheet" />
 
-<h2>Regras Para Elaboracao</h2>
+<h2>Introdução a Distribuição</h2>
 
 @Html.Partial("_PartialDistribuicao")
 
 @using (Html.BeginForm())
 {
     <div class="form-group text-center">
-        <p>Regras para Elaboração</p>
-        <p>Regras para Elaboração</p>
-        <p>Regras para Elaboração</p>
-        <p>Regras para Elaboração</p>
+        <p>Introdução</p>
+        <p>Introdução</p>
+        <p>Introdução</p>
+        <p>Introdução</p>        
+        @*<embed type="image/svg+xml" src="~/Content/img/graficos/teste.svg" />*@
     </div>
 
     <div>

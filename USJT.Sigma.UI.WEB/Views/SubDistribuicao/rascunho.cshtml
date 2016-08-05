@@ -1,0 +1,44 @@
+﻿<script>
+    function teste() {
+        var largura = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var altura = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        var quadro = document.getElementById("quadro");
+        quadro.setAttribute("width", largura);
+        quadro.setAttribute("height", altura);
+
+        var ctx = quadro.getContext("2d");
+
+        var desenhando = false;
+
+        quadro.onmousedown = function (evt) {
+            ctx.moveTo(evt.clientX, evt.clientY);
+            desenhando = true;
+        }
+
+        quadro.onmouseup = function () {
+            desenhando = false;
+        }
+
+        quadro.onmousemove = function (evt) {
+            if (desenhando) {
+                ctx.lineTo(evt.clientX, evt.clientY);
+                ctx.stroke();
+            }
+        }
+    }
+    
+    function teste1() {
+        document.body.style.background = '';
+    }
+</script>
+
+@{
+    ViewBag.Title = "rascunho";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<canvas id="quadro" style="background:beige"></canvas>
+
+<button onclick="teste()">TESTE</button>
+<button onclick="teste1()">set background</button>

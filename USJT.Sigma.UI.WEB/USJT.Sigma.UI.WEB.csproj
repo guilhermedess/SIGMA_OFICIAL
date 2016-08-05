@@ -132,6 +132,8 @@
     <Content Include="Content\bootstrap.yeti.css" />
     <Content Include="Content\bootstrap.yeti.min.css" />
     <Content Include="Content\corpo-padrao.css" />
+    <Content Include="Content\img\graficos\teste.svg" />
+    <Content Include="Content\img\img_sair.png" />
     <Content Include="Content\mega-menu.css" />
     <Content Include="Content\progresso.css" />
     <Content Include="Content\progresso2.css" />
@@ -169,6 +171,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\Timeline.css" />
+    <Content Include="Content\timeline-zigzag.css" />
     <Content Include="Content\topico.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -183,6 +186,8 @@
     <Content Include="scripts\bootstrap.min.js" />
     <None Include="scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="scripts\botoes-topico.js" />
+    <Content Include="scripts\dica2.js" />
+    <Content Include="scripts\dica1.js" />
     <Content Include="scripts\jquery-2.2.3.js" />
     <Content Include="scripts\jquery-2.2.3.min.js" />
     <Content Include="scripts\jquery-2.2.3.min.map" />
@@ -198,13 +203,16 @@
     <Content Include="scripts\mega-menu.js" />
     <Content Include="scripts\progresso.js" />
     <Content Include="scripts\progresso2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\SubAmostragemController.cs" />
     <Compile Include="Controllers\SubDistribuicaoController.cs" />
+    <Compile Include="Controllers\SubMedidasTendenciaController.cs" />
     <Compile Include="Controllers\TopicoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,11 +238,26 @@
     <Content Include="Views\SubAmostragem\ImpAmostragem.cshtml" />
     <Content Include="Views\Topico\_PartialProgresso.cshtml" />
     <Content Include="Views\SubDistribuicao\_PartialDistribuicao.cshtml" />
-    <Content Include="Views\SubDistribuicao\ConceitosDeDistribuicao.cshtml" />
+    <Content Include="Views\SubDistribuicao\IntroducaoDistribuicao.cshtml" />
+    <Content Include="Views\SubDistribuicao\PontosOuValores.cshtml" />
     <Content Include="Views\SubDistribuicao\Elementos.cshtml" />
-    <Content Include="Views\SubDistribuicao\RegrasParaElaboracao.cshtml" />
-    <Content Include="Views\SubDistribuicao\Graficos.cshtml" />
+    <Content Include="Views\SubDistribuicao\ClassesOuIntervalos.cshtml" />
     <Content Include="Views\Topico\_PartialProgresso2.cshtml" />
+    <Content Include="Views\SubDistribuicao\FrequenciaRelativaPercentual.cshtml" />
+    <Content Include="Views\SubDistribuicao\FrequenciaAcumuladaSimplesAbsoluta.cshtml" />
+    <Content Include="Views\SubDistribuicao\FrequenciaAcumuladaRelativaPercentual.cshtml" />
+    <Content Include="Views\SubDistribuicao\ApresentacaoDistribuicaoFrequencia.cshtml" />
+    <Content Include="Views\SubDistribuicao\ApresentacaoPontosOuValores.cshtml" />
+    <Content Include="Views\SubDistribuicao\ApresentacaoClassesOuIntervalos.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\IntroducaoMedidasTendencia.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\_PartialMedidasTendencia.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\Media.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\MediaSimples.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\MediaPonderada.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\Moda.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\Mediana.cshtml" />
+    <Content Include="Views\Shared\_PartialMensagem.cshtml" />
+    <Content Include="Views\SubDistribuicao\rascunho.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

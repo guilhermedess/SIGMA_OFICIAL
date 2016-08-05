@@ -1,0 +1,109 @@
+﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="~/scripts/dica1.js"></script>
+<script src="~/scripts/dica2.js"></script>
+
+@{
+    ViewBag.Title = "MediaSimples";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+@Html.Partial("_PartialMedidasTendencia")
+<br />
+<br />
+
+<div class="container">
+    <div class="col-lg-10 col-md-10 col-sm-10" style="float:right">
+
+        <fieldset>
+            <legend class="h2">
+                Média Aritmética Simples
+                <input type="button" id="dica" value="Dicas" class="btn btn-default" style="float:right" />
+            </legend>
+
+            @* dicas *@
+            <div id="dialog" title="Dica 1">
+                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
+                <hr />
+                <input type="button" id="dica2" value="Dica 2" class="btn btn-default" />
+            </div>
+            <div id="dialog2" title="Dica 2">
+                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
+                <p>Primeiro Realizamos todas as somas. Logo após dividimos por 10 que é o número de elementos.</p>
+                <p>Média: 7,8</p>
+            </div>
+
+            <div>
+                <p>É uma das medidas de tendência central mais utilizadas no cotidiano. É determinada pelo resultado da divisão do somatório dos números dados pela quantidade de números somados.</p>
+                <br />
+                <p><strong>Para obter a média aritmética simples, você deverá realizar as seguintes operações:</strong></p>
+                <p><strong>1º -</strong> Somar as quantidades de objeto.</p>
+                <p><strong>2º -</strong> Dividir o resultado obtido da soma das quantidades pelo número de parcelas.</p>
+            </div>
+            <br />
+            <br />
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <fieldset>
+                            <legend>Exercício</legend>
+                        </fieldset>
+                        <p>
+                            <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
+
+                            Matemática: 7,5<br />
+                            Português: 6,3<br />
+                            História: 8,0<br />
+                            Geografia: 7,2<br />
+                            Inglês: 6,6<br />
+                            Espanhol: 8,4<br />
+                            Física: 9,0<br />
+                            Química: 7,2<br />
+                            Biologia: 8,0<br />
+                            Educação Física: 9,5<br /><br />
+
+                            <strong>Determine a média aritmética anual do aluno.</strong>
+                        </p>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <fieldset>
+                            <legend>Resposta</legend>
+                        </fieldset>
+
+                        <div>
+                            @Html.RadioButton("Resposta", false) 7,2
+                            <br /><br />
+                            @Html.RadioButton("Resposta", false) 6,8
+                            <br /><br />
+                            @Html.RadioButton("Resposta", false) 7,5
+                            <br /><br />
+                            @Html.RadioButton("Resposta", true) 7,8
+                            <br /><br />
+                            @Html.RadioButton("Resposta", false) 8,1
+                            <br /><br />
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <hr />
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
+                        <br />
+                    </div>
+                    <br />
+                    <hr />
+                </div>
+            }
+        </fieldset>
+
+    </div>
+
+</div>

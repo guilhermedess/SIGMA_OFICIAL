@@ -85,5 +85,12 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             return View();
         }
+
+        public ActionResult Sair()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Aluno/Login");
+        }
     }
 }

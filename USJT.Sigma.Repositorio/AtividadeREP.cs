@@ -21,7 +21,7 @@ namespace USJT.Sigma.Repositorio
                 novaAtividade.NOM_ATIVIDADE = nomeAtividade;
                 novaAtividade.NOM_IMAGEM = "nome da imagem";
                 conexao.TB_ATIVIDADE.Add(novaAtividade);
-                conexao.SaveChanges();      
+                conexao.SaveChanges();    
             }
         }
 

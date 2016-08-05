@@ -12,23 +12,89 @@ namespace USJT.Sigma.UI.WEB.Controllers
     {
         SubTopicoREP subTopicoREP = new SubTopicoREP();
 
-        public ActionResult ConceitosDeDistribuicao()
+        public ActionResult IntroducaoDistribuicao()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult ConceitosDeDistribuicao(Aluno aluno, Atividade atividade)
+        public ActionResult IntroducaoDistribuicao(Aluno aluno, Atividade atividade)
         {
             AtividadeREP atividadeREP = new AtividadeREP();
             var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Conceitos de Distribuicao";
+            var nomeSubTopico = "Introducao a Distribuicao";
 
             aluno = (Aluno)Session["dadosAlunoLogado"];
 
             if (atividade.Resposta == true)
             {
-                var nomeAtividade = "AtvConceitosDeDistribuicao";
+                var nomeAtividade = "AtvIntroducaoDeDistribuicao";
+
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
+
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult PontosOuValores()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PontosOuValores(Aluno aluno, Atividade atividade)
+        {
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var nomeTopico = "Distribuicao";
+            var nomeSubTopico = "Pontos ou Valores";
+
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            if (atividade.Resposta == true)
+            {
+                var nomeAtividade = "AtvPontosOuValores";
+
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
+
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ClassesOuIntervalos()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ClassesOuIntervalos(Aluno aluno, Atividade atividade)
+        {
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var nomeTopico = "Distribuicao";
+            var nomeSubTopico = "Classes ou Intervalos";
+
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            if (atividade.Resposta == true)
+            {
+                var nomeAtividade = "AtvClassesOuIntevalos";
 
                 //consulta atividade pra ver se ja existe
                 if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
@@ -78,23 +144,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult RegrasParaElaboracao()
+        public ActionResult FrequenciaRelativaPercentual()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult RegrasParaElaboracao(Aluno aluno, Atividade atividade)
+        public ActionResult FrequenciaRelativaPercentual(Aluno aluno, Atividade atividade)
         {
             AtividadeREP atividadeREP = new AtividadeREP();
             var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Regras para Elaboracao";
+            var nomeSubTopico = "Frequencia Relativa Percentual";
 
             aluno = (Aluno)Session["dadosAlunoLogado"];
 
             if (atividade.Resposta == true)
             {
-                var nomeAtividade = "AtvRegrasParaElaboracao";
+                var nomeAtividade = "AtvFrequenciaRelativaPercentual";
 
                 //consulta atividade pra ver se ja existe
                 if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
@@ -111,23 +177,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult Graficos()
+        public ActionResult FrequenciaAcumuladaSimplesAbsoluta()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Graficos(Aluno aluno, Atividade atividade)
+        public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno, Atividade atividade)
         {
             AtividadeREP atividadeREP = new AtividadeREP();
             var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Graficos";
+            var nomeSubTopico = "Frequencia Acumulada Simples Absoluta";
 
             aluno = (Aluno)Session["dadosAlunoLogado"];
 
             if (atividade.Resposta == true)
             {
-                var nomeAtividade = "AtvGraficos";
+                var nomeAtividade = "AtvFrequenciaAcumuladaSimplesAbsoluta";
 
                 //consulta atividade pra ver se ja existe
                 if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
@@ -144,5 +210,141 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
+        public ActionResult FrequenciaAcumuladaRelativaPercentual()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno, Atividade atividade)
+        {
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var nomeTopico = "Distribuicao";
+            var nomeSubTopico = "Frequencia AcumuladaRelativa Percentual";
+
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            if (atividade.Resposta == true)
+            {
+                var nomeAtividade = "AtvFrequenciaAcumuladaRelativaPercentual";
+
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
+
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ApresentacaoDistribuicaoFrequencia()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ApresentacaoDistribuicaoFrequencia(Aluno aluno, Atividade atividade)
+        {
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var nomeTopico = "Distribuicao";
+            var nomeSubTopico = "Apresentacao Distribuicao Frequencia";
+
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            if (atividade.Resposta == true)
+            {
+                var nomeAtividade = "AtvApresentacaoDistribuicaoFrequencia";
+
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
+
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ApresentacaoPontosOuValores()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ApresentacaoPontosOuValores(Aluno aluno, Atividade atividade)
+        {
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var nomeTopico = "Distribuicao";
+            var nomeSubTopico = "Apresentacao Pontos ou Valores";
+
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            if (atividade.Resposta == true)
+            {
+                var nomeAtividade = "AtvApresentacaoPontosOuValores";
+
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
+
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult ApresentacaoClassesOuIntervalos()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno, Atividade atividade)
+        {
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var nomeTopico = "Distribuicao";
+            var nomeSubTopico = "Apresentacao Classes ou Intervalos";
+
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            if (atividade.Resposta == true)
+            {
+                var nomeAtividade = "AtvApresentacaoClassesOuIntervalos";
+
+                //consulta atividade pra ver se ja existe
+                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                {
+                    return View();
+                }
+                else
+                {
+                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
+
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                }
+            }
+            return View();
+        }
+
+        public ActionResult rascunho()
+        {
+            return View();
+        }
     }
 }

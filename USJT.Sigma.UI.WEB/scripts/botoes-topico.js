@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $("#subAmostragem").toggle();
     $("#subDistribuicao").toggle();
-    $("#subMedidasPosicao").toggle();
+    $("#subMedidasTendencia").toggle();
     $("#subMedidasDispersao").toggle();
     $("#subProbabilidade").toggle();
     $("#progresso").toggle();
@@ -14,8 +14,8 @@ $(document).ready(function () {
     $("#ocultaDistribuicao").click(function () {
         $("#subDistribuicao").toggle();
     });
-    $("#ocultaMedidasPosicao").click(function () {
-        $("#subMedidasPosicao").toggle();
+    $("#ocultaMedidasTendencia").click(function () {
+        $("#subMedidasTendencia").toggle();
     });
     $("#ocultaMedidasDispersao").click(function () {
         $("#subMedidasDispersao").toggle();

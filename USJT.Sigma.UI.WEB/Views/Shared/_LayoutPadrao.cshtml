@@ -29,6 +29,7 @@
 
 </head>
 <body>
+
     <header>
         <div class="container">
             <nav class="navbar navbar-default">
@@ -131,7 +132,7 @@
                                                 <label class="sr-only" for="email">Email address</label>
                                                 <input type="email" class="form-control" id="email" placeholder="Enter email">
                                             </div>
-                                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                            <a href="~/Aluno/Login/Sair" class="btn btn-primary btn-block">Sair</a>
                                         </form>
                                     </ul>
                                 </li>
@@ -143,6 +144,20 @@
         </div>
 
     </header>
+
+    @*SECTION: CRIAMOS UMA SESSÃO PARA CARREGAR OS PARTIALMENSAGEM
+          (ALERTS - BOOTBOX.JS)
+        HELPER HTML (RAZOR)PARTIAL: CHAMAMOS A ESTRURA DE HTMLS *@
+    <section>
+
+        @*INSERIMOS UMA CONDIÇÃO PARA INICIALIZAR O ALERT*@
+
+        @if (TempData["Mensagem"] != null)
+        {
+            @Html.Partial("_PartialMensagem")
+        }
+
+    </section>
 
     <section>
         @RenderBody()
