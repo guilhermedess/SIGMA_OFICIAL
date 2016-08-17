@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using USJT.Sigma.Model;
 using USJT.Sigma.Repositorio;
 
@@ -12,37 +13,56 @@ namespace USJT.Sigma.UI.WEB.Controllers
     {
         SubTopicoREP subTopicoREP = new SubTopicoREP();
 
-        public ActionResult IntroducaoDistribuicao()
+        public ActionResult IntroducaoDistribuicao(Aluno aluno)
         {
-            return View();
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            AtividadeREP atividadeREP = new AtividadeREP();
+
+            List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+            
+            return View(atividadesFeitas);
         }
 
         [HttpPost]
         public ActionResult IntroducaoDistribuicao(Aluno aluno, Atividade atividade)
         {
             AtividadeREP atividadeREP = new AtividadeREP();
+
             var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Introducao a Distribuicao";
+            var nomeSubTopico = "IntroducaoADistribuicao";
 
             aluno = (Aluno)Session["dadosAlunoLogado"];
 
             if (atividade.Resposta == true)
             {
-                var nomeAtividade = "AtvIntroducaoDeDistribuicao";
+                //var nomeAtividade = "AtvIntroducaoADistribuicao";
+                var nomeAtividade = atividade.NomeAtv;
 
                 //consulta atividade pra ver se ja existe
                 if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
                 {
-                    return View();
+                    atividadeREP.ExisteAtividadeFirst(aluno.IdAluno, nomeAtividade);
+
+                    TempData.Add("Mensagem", "Resposta Correta. Para relembrar esta atividade já foi feita em outra oportunidade.");
+
+                    return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
                 }
                 else
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
                     atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+
+                    TempData.Add("Mensagem", "Resposta correta!");
                 }
             }
-            return View();
+            else
+            {
+                TempData.Add("Mensagem", "Resposta Errada!");
+            }
+
+            return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
         }
 
         public ActionResult PontosOuValores()

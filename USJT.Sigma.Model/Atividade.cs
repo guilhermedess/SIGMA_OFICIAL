@@ -11,7 +11,7 @@ namespace USJT.Sigma.Model
         public int IdAtividade { get; set; }    
         public int IdAluno { get; set; }
         public int IdSubTopico { get; set; }
-        public string Nome { get; set; }
+        public string NomeAtv { get; set; }
         public string Imagem { get; set; }
         public Double Nota { get; set; }
         public Double Progresso { get; set; }

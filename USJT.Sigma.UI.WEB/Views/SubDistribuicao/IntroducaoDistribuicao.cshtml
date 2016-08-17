@@ -1,14 +1,20 @@
-﻿@model USJT.Sigma.Model.Aluno
+﻿@*@model USJT.Sigma.Model.Aluno*@
+@model List<USJT.Sigma.Model.Atividade>
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="~/scripts/dica1.js"></script>
 <script src="~/scripts/dica2.js"></script>
 
+@foreach (var atividadesFeitas in Model)
+{
+    <script>
+        $(document).ready(function () {
+            $("#@atividadesFeitas.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
+        });
+    </script>
+}
+
 @{
-    ViewBag.Title = "MediaSimples";
+    ViewBag.Title = "Introducao a Distribuicao";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
 }
 
@@ -17,157 +23,277 @@
 <br />
 
 <div class="container">
+    <div class="col-lg-10 col-md-10 col-sm-10" style="float:right">
 
-    
-    <script>
-  $( function() {
-      $("#accordion").accordion({
-          collapsible: true
-      });
-  } );
-    </script>
+        @Html.Partial("_PartialDicas")
 
-        <div id="accordion">
-            <h3>Section 1</h3>
+        <fieldset>
+            <legend class="h2">
+                Introdução e Conceitos de Distribuição
+            </legend>
+
             <div>
-                <p>
-                    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-                    ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-                    amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-                    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-                </p>
-                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-            </div>
-            <h3>Section 2</h3>
-            <div>
-                <p>
-                    Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-                    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-                    velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-                    suscipit faucibus urna.
-                </p>
-                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-            </div>
-            <h3>Section 3</h3>
-            <div>
-                <p>
-                    Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-                    Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-                    ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-                    lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-                </p>
-                <ul>
-                    <li>List item one</li>
-                    <li>List item two</li>
-                    <li>List item three</li>
-                </ul>
-            </div>
-            <h3>Section 4</h3>
-            <div>
-                <p>
-                    Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-                    et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-                    faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-                    mauris vel est.
-                </p>
-                <p>
-                    Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-                    inceptos himenaeos.
-                </p>
-            </div>
-        </div>
-
-
-        <div class="col-lg-10 col-md-10 col-sm-10" style="float:right">
-
-            <fieldset>
-                <legend class="h2">
-                    Introdução e Conceitos de Distribuição
-                    <input type="button" id="dica" value="Dicas" class="btn btn-default" style="float:right" />
-                </legend>
-
-                @* dicas *@
-                <div id="dialog" title="Dica 1">
-                    <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
-                    <hr />
-                    <input type="button" id="dica2" value="Dica 2" class="btn btn-default" />
-                </div>
-                <div id="dialog2" title="Dica 2">
-                    <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
-                    <p>Primeiro Realizamos todas as somas. Logo após dividimos por 10 que é o número de elementos.</p>
-                    <p>Média: 7,8</p>
-                </div>
-
-                <div>
-                    <p>É uma das medidas de tendência central mais utilizadas no cotidiano. É determinada pelo resultado da divisão do somatório dos números dados pela quantidade de números somados.</p>
-                    <br />
-                    <p><strong>Para obter a média aritmética simples, você deverá realizar as seguintes operações:</strong></p>
-                    <p><strong>1º -</strong> Somar as quantidades de objeto.</p>
-                    <p><strong>2º -</strong> Dividir o resultado obtido da soma das quantidades pelo número de parcelas.</p>
-                </div>
+                <p>É uma das medidas de tendência central mais utilizadas no cotidiano. É determinada pelo resultado da divisão do somatório dos números dados pela quantidade de números somados.</p>
                 <br />
-                <br />
-                @using (Html.BeginForm())
-            {
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <fieldset>
-                                <legend>Exercício</legend>
-                            </fieldset>
-                            <p>
-                                <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
+                <p><strong>Para obter a média aritmética simples, você deverá realizar as seguintes operações:</strong></p>
+                <p><strong>1º -</strong> Somar as quantidades de objeto.</p>
+                <p><strong>2º -</strong> Dividir o resultado obtido da soma das quantidades pelo número de parcelas.</p>
+            </div>
+            <br />
 
-                                Matemática: 7,5<br />
-                                Português: 6,3<br />
-                                História: 8,0<br />
-                                Geografia: 7,2<br />
-                                Inglês: 6,6<br />
-                                Espanhol: 8,4<br />
-                                Física: 9,0<br />
-                                Química: 7,2<br />
-                                Biologia: 8,0<br />
-                                Educação Física: 9,5<br /><br />
+            <script>
+                $(function () {
+                    $("#accordion").accordion({
+                        collapsible: true,
+                        heightStyle: "content"
+                    });
+                });
+            </script>
 
-                                <strong>Determine a média aritmética anual do aluno.</strong>
-                            </p>
-                        </div>
+            <div id="accordion">
+                <h3>Questão 1</h3>
+                <div id="questao1">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Exercício</legend>
+                                </fieldset>
+                                <p>
+                                    <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
 
+                                    Matemática: 7,5<br />
+                                    Português: 6,3<br />
+                                    História: 8,0<br />
+                                    Geografia: 7,2<br />
+                                    Inglês: 6,6<br />
+                                    Espanhol: 8,4<br />
+                                    Física: 9,0<br />
+                                    Química: 7,2<br />
+                                    Biologia: 8,0<br />
+                                    Educação Física: 9,5<br /><br />
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <fieldset>
-                                <legend>Resposta</legend>
-                            </fieldset>
-
-                            <div>
-                                @Html.RadioButton("Resposta", false) 7,2
-                                <br /><br />
-                                @Html.RadioButton("Resposta", false) 6,8
-                                <br /><br />
-                                @Html.RadioButton("Resposta", false) 7,5
-                                <br /><br />
-                                @Html.RadioButton("Resposta", true) 7,8
-                                <br /><br />
-                                @Html.RadioButton("Resposta", false) 8,1
-                                <br /><br />
+                                    <strong>Determine a média aritmética anual do aluno.</strong>
+                                </p>
                             </div>
 
 
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Resposta</legend>
+                                </fieldset>
+
+                                <div>
+                                    @Html.Hidden("NomeAtv", "Atv1IntroducaoADistribuicao")
+
+                                    @Html.RadioButton("Resposta", false, true) 7,2
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 6,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 7,5
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", true) 7,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 8,1
+                                    <br /><br />
+                                </div>
+                            </div>
                         </div>
 
-                    </div>
-                    <div class="row">
-                        <hr />
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-                            <br />
+                        <div>
+                            <div id="divDica1" hidden="hidden">
+                                <hr />
+                                <p>Dica 1</p>
+                                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
+                            </div>
+                            <div id="divDica2" hidden="hidden">
+                                <hr />
+                                <p>Dica 2</p>
+                                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
+                                <p>Primeiro Realizamos todas as somas. Logo após dividimos por 10 que é o número de elementos.</p>
+                                <p>Média: 7,8</p>
+                            </div>
+                            <div id="divDica3" hidden="hidden">
+                                <hr />
+                                <p>Dica de numero 3</p>
+                            </div>
                         </div>
-                        <br />
-                        <hr />
-                    </div>
-                }
-            </fieldset>
 
-        </div>
+                        <script>
+                            function Dica1() {
+                                $("#divDica1").removeAttr("hidden");
+                                $("#btnDica1").attr("id", "btnDica2");
+                                $("#btnDica2").attr("onclick", "Dica2()");
+                            }
+
+                            function Dica2() {
+                                $("#divDica2").removeAttr("hidden");
+                                $("#btnDica2").prop("disabled", true);
+                                //$("#btnDica2").attr("id", "btnDica3");
+                                //$("#btnDica3").attr("onclick", "Dica3()");
+                            }
+
+                            //function Dica3() {
+                            //    $("#divDica3").removeAttr("hidden");
+                            //}
+                        </script>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <hr />
+                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <span id="Atv1IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <input id="btnDica1" type="button" onclick="Dica1()" value="Dicas" class="btn btn-warning" style="float: unset" />
+
+                                </div>
+
+                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                    <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <h3>Questão 2</h3>
+                <div>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Exercício</legend>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Resposta</legend>
+                                </fieldset>
+
+                                <div>
+                                    @Html.Hidden("NomeAtv", "Atv2IntroducaoADistribuicao")
+
+                                    @Html.RadioButton("Resposta", false, true) 7,2
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 6,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 7,5
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", true) 7,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 8,1
+                                    <br /><br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <hr />
+                                <span id="Atv2IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
+                            </div>
+                        </div>
+                    }
+                </div>
+                <h3>Questão 3</h3>
+                <div>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Exercício 3</legend>
+                                </fieldset>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Resposta</legend>
+                                </fieldset>
+
+                                <div>
+                                    @Html.Hidden("NomeAtv", "Atv3IntroducaoADistribuicao")
+
+                                    @Html.RadioButton("Resposta", false, true) 7,2
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 6,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 7,5
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", true) 7,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 8,1
+                                    <br /><br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <hr />
+                                <span id="Atv3IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
+                            </div>
+                        </div>
+                    }
+                </div>
+                <h3>Questão 4</h3>
+                <div>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Exercício 4</legend>
+                                </fieldset>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <fieldset>
+                                    <legend>Resposta</legend>
+                                </fieldset>
+
+                                <div>
+                                    @Html.Hidden("NomeAtv", "Atv4IntroducaoADistribuicao")
+
+                                    @Html.RadioButton("Resposta", false, true) 7,2
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 6,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 7,5
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", true) 7,8
+                                    <br /><br />
+                                    @Html.RadioButton("Resposta", false) 8,1
+                                    <br /><br />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <hr />
+                                <span id="Atv4IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </fieldset>
+
+    </div>
 
 </div>

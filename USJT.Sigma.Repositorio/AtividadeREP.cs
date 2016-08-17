@@ -21,7 +21,7 @@ namespace USJT.Sigma.Repositorio
                 novaAtividade.NOM_ATIVIDADE = nomeAtividade;
                 novaAtividade.NOM_IMAGEM = "nome da imagem";
                 conexao.TB_ATIVIDADE.Add(novaAtividade);
-                conexao.SaveChanges();    
+                conexao.SaveChanges();
             }
         }
 
@@ -46,6 +46,48 @@ namespace USJT.Sigma.Repositorio
                 }
             }
         }
-        
+
+        public string ExisteAtividadeFirst(int idAluno, string nomeAtividade)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var retorno = (from C in conexao.TB_ATIVIDADE
+                               where C.ID_ALUNO == idAluno && C.NOM_ATIVIDADE == nomeAtividade
+                               select new Atividade
+                               {
+                                   IdAluno = idAluno,
+                                   IdAtividade = C.ID_ATIVIDADE,
+                                   IdSubTopico = C.ID_SUBTOPICO,
+                                   NomeAtv = C.NOM_ATIVIDADE
+                               }).ToList().FirstOrDefault();
+
+                return retorno.NomeAtv;
+            }
+        }
+
+        public List<Atividade> AtividadesFeitas(int idAluno)
+        {
+            //List<Atividade> retorno = new List<Atividade>();
+
+            using (var conexao = new SIGMAEntities())
+            {
+                List<Atividade> buscaFeita = (from C in conexao.TB_ATIVIDADE
+                                              where C.ID_ALUNO == idAluno
+                                              select new Atividade
+                                              {
+                                                  NomeAtv = C.NOM_ATIVIDADE
+                                              }).ToList();
+
+
+                return buscaFeita;
+
+                //foreach (var lista in buscaFeita)
+                //{
+                //    retorno.Add(lista);
+                //}
+            }
+
+        }
+
     }
 }
