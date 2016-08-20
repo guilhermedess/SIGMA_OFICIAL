@@ -1,9 +1,17 @@
 ﻿@model List<USJT.Sigma.Model.Atividade>
 
-<script src="~/scripts/accordion.js"></script>
+<head>
+    <link href="~/Content/wizardAtividade.css" rel="stylesheet" />
+    <script src="~/scripts/wizard.js"></script>
+    <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
+    <script src="~/scripts/dicas1.js"></script>
+    <script src="~/scripts/dicas2.js"></script>
+    <script src="~/scripts/dicas3.js"></script>
+    <script src="~/scripts/dicas4.js"></script>
+</head>
 
 @{
-    ViewBag.Title = "Introducao a Distribuicao";
+    ViewBag.Title = "Introdução e Conceitos de Distribuição";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
 }
 
@@ -15,6 +23,7 @@
         <script>
             $(document).ready(function () {
                 $("#@atividadesFeitas.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
+                $("#@atividadesFeitas.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
             });
         </script>
 
@@ -22,9 +31,9 @@
     }
 
     <script>
-            $(document).ready(function () {
-                $("#infoNota").text("Pontos: " + "@notaTotal");
-            });
+        $(document).ready(function () {
+            $("#infoNota").text("Pontos: " + "@notaTotal");
+        });
     </script>
 }
 
@@ -33,10 +42,10 @@
 <br />
 
 <div class="container">
-    <div class="col-lg-10 col-md-10 col-sm-10" style="float:right">
+    <div class="col-lg-10 col-md-10 col-sm-10 jumbotron2" style="float:right">
         <fieldset>
             <legend class="h2">
-                Introdução e Conceitos de Distribuição
+                Distribuição de frequências por classes ou intervalos
                 <span id="infoNota" title="Pontos" class="badge dir"></span>
             </legend>
 
@@ -44,260 +53,267 @@
                 <iframe width="816" height="459" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allowfullscreen></iframe>
             </div>
 
-            <div>
-                <p>É uma das medidas de tendência central mais utilizadas no cotidiano. É determinada pelo resultado da divisão do somatório dos números dados pela quantidade de números somados.</p>
-                <br />
-                <p><strong>Para obter a média aritmética simples, você deverá realizar as seguintes operações:</strong></p>
-                <p><strong>1º -</strong> Somar as quantidades de objeto.</p>
-                <p><strong>2º -</strong> Dividir o resultado obtido da soma das quantidades pelo número de parcelas.</p>
-            </div>
-            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
 
-            <div id="accordion">
-                <h3>Questão 1 <span id="infoNota" title="Pontos" class="badge dir">50</span></h3>
-                <div id="questao1">
-                    @using (Html.BeginForm())
-                    {
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Exercício</legend>
-                                </fieldset>
-                                <p>
-                                    <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
+                        <div class="wizard">
+                            <div class="wizard-inner">
+                                <div class="connecting-line"></div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Distribuição de frequência">
+                                            <span class="round-tab">
+                                                <div><span id="Atv1IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">25</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
 
-                                    Matemática: 7,5<br />
-                                    Português: 6,3<br />
-                                    História: 8,0<br />
-                                    Geografia: 7,2<br />
-                                    Inglês: 6,6<br />
-                                    Espanhol: 8,4<br />
-                                    Física: 9,0<br />
-                                    Química: 7,2<br />
-                                    Biologia: 8,0<br />
-                                    Educação Física: 9,5<br /><br />
+                                    <li role="presentation">
+                                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Medidas de Tendência Central">
+                                            <span class="round-tab">
+                                                <div><span id="Atv2IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">50</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
 
-                                    <strong>Determine a média aritmética anual do aluno.</strong>
-                                </p>
+                                    <li role="presentation">
+                                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Medidas de Dispersão">
+                                            <span class="round-tab">
+                                                <div><span id="Atv3IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">65</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li role="presentation">
+                                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Amostragem e Estimadores">
+                                            <span class="round-tab">
+                                                <div><span id="Atv4IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">80</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
+                        </div>
+
+                        <form role="form">
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="step1">
+
+                                    @* Questão 1 *@
+                                    <div id="questao1">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Exercício</legend>
+                                                    </fieldset>
+                                                    <p>
+                                                        <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
+
+                                                        Matemática: 7,5<br />
+                                                        Português: 6,3<br />
+                                                        História: 8,0<br />
+                                                        Geografia: 7,2<br />
+                                                        Inglês: 6,6<br />
+                                                        Espanhol: 8,4<br />
+                                                        Física: 9,0<br />
+                                                        Química: 7,2<br />
+                                                        Biologia: 8,0<br />
+                                                        Educação Física: 9,5<br /><br />
+
+                                                        <strong>Determine a média aritmética anual do aluno.</strong>
+                                                    </p>
+                                                </div>
 
 
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Resposta</legend>
-                                </fieldset>
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Resposta</legend>
+                                                    </fieldset>
 
-                                <div>
-                                    @Html.Hidden("NomeAtv", "Atv1IntroducaoADistribuicao")
-                                    @Html.Hidden("Nota", 50)
+                                                    <div>
+                                                        @Html.Hidden("NomeAtv", "Atv1IntroducaoADistribuicao")
+                                                        @Html.Hidden("Nota", 25)
 
-                                    @Html.RadioButton("Resposta", false, true) 7,2
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 6,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 7,5
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", true) 7,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 8,1
-                                    <br /><br />
+                                                        @Html.RadioButton("Resposta", false, true) 7,2
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 6,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 7,5
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", true) 7,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 8,1
+                                                        <br /><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao1")
+                                        }
+                                    </div>
+
+                                    <hr />
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
+                                    </ul>
                                 </div>
-                            </div>
-                        </div>
+                                <div class="tab-pane" role="tabpanel" id="step2">
 
-                        <div>
-                            <div id="divDica1" hidden="hidden">
-                                <hr />
-                                <p><strong>Dica 1</strong></p>
-                                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
-                            </div>
-                            <div id="divDica2" hidden="hidden">
-                                <hr />
-                                <p><strong>Dica 2</strong></p>
-                                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
-                                <p>Primeiro Realizamos todas as somas. Logo após dividimos por 10 que é o número de elementos.</p>
-                                <p>Média: 7,8</p>
-                            </div>
-                            <div id="divDica3" hidden="hidden">
-                                <hr />
-                                <p>Dica de numero 3</p>
-                            </div>
-                        </div>
+                                    @* Questão 2 *@
+                                    <div id="questao2">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Exercício</legend>
+                                                    </fieldset>
+                                                    @*  *@
+                                                </div>
 
-                        <script>
-                            function Dica1() {
-                                $("#divDica1").removeAttr("hidden");
-                                $("#btnDica1").attr("id", "btnDica2");
-                                $("#btnDica2").attr("onclick", "Dica2()");
-                            }
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Resposta</legend>
+                                                    </fieldset>
 
-                            function Dica2() {
-                                $("#divDica2").removeAttr("hidden");
-                                $("#btnDica2").prop("disabled", true);
-                                //$("#btnDica2").attr("id", "btnDica3");
-                                //$("#btnDica3").attr("onclick", "Dica3()");
-                            }
+                                                    <div>
+                                                        @Html.Hidden("NomeAtv", "Atv2IntroducaoADistribuicao")
+                                                        @Html.Hidden("Nota", 50)
 
-                            //function Dica3() {
-                            //    $("#divDica3").removeAttr("hidden");
-                            //}
-                        </script>
+                                                        @Html.RadioButton("Resposta", false, true) 7,2
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 6,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 7,5
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", true) 7,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 8,1
+                                                        <br /><br />
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <hr />
-                                <div class="col-lg-5 col-md-5 col-sm-5">
-                                    <span id="Atv1IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao2")
+                                        }
+                                    </div>
 
+                                    <hr />
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                        <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
+                                    </ul>
                                 </div>
+                                <div class="tab-pane" role="tabpanel" id="step3">
 
-                                <div class="col-lg-2 col-md-2 col-sm-2">
-                                    <input id="btnDica1" type="button" onclick="Dica1()" value="Dicas" class="btn btn-warning" style="float: unset" />
+                                    @* Questão 3 *@
+                                    <div id="questao3">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Exercício</legend>
+                                                    </fieldset>
+                                                    @*  *@
+                                                </div>
 
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Resposta</legend>
+                                                    </fieldset>
+
+                                                    <div>
+                                                        @Html.Hidden("NomeAtv", "Atv3IntroducaoADistribuicao")
+                                                        @Html.Hidden("Nota", 65)
+
+                                                        @Html.RadioButton("Resposta", false, true) 7,2
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 6,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 7,5
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", true) 7,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 8,1
+                                                        <br /><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao3")
+                                        }
+                                    </div>
+
+                                    <hr />
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                        <li><button type="button" class="btn btn-primary btn-info-full next-step">Proximo >></button></li>
+                                    </ul>
                                 </div>
+                                <div class="tab-pane" role="tabpanel" id="complete">
 
-                                <div class="col-lg-5 col-md-5 col-sm-5">
-                                    <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                    @* Questão 4 *@
+                                    <div id="questao4">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Exercício</legend>
+                                                    </fieldset>
+                                                    @*  *@
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                                    <fieldset>
+                                                        <legend>Resposta</legend>
+                                                    </fieldset>
+
+                                                    <div>
+                                                        @Html.Hidden("NomeAtv", "Atv4IntroducaoADistribuicao")
+                                                        @Html.Hidden("Nota", 80)
+
+                                                        @Html.RadioButton("Resposta", false, true) 7,2
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 6,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 7,5
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", true) 7,8
+                                                        <br /><br />
+                                                        @Html.RadioButton("Resposta", false) 8,1
+                                                        <br /><br />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao4")
+                                        }
+                                    </div>
+
+                                    <hr />
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                    </ul>
                                 </div>
+                                <div class="clearfix"></div>
                             </div>
-                        </div>
-                    }
-                </div>
-                <h3>Questão 2</h3>
-                <div>
-                    @using (Html.BeginForm())
-                    {
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Exercício</legend>
-                                </fieldset>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Resposta</legend>
-                                </fieldset>
-
-                                <div>
-                                    @Html.Hidden("NomeAtv", "Atv2IntroducaoADistribuicao")
-
-                                    @Html.RadioButton("Resposta", false, true) 7,2
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 6,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 7,5
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", true) 7,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 8,1
-                                    <br /><br />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <hr />
-                                <span id="Atv2IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
-
-                                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-                            </div>
-                        </div>
-                    }
-                </div>
-                <h3>Questão 3</h3>
-                <div>
-                    @using (Html.BeginForm())
-                    {
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Exercício 3</legend>
-                                </fieldset>
-                            </div>
-
-
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Resposta</legend>
-                                </fieldset>
-
-                                <div>
-                                    @Html.Hidden("NomeAtv", "Atv3IntroducaoADistribuicao")
-
-                                    @Html.RadioButton("Resposta", false, true) 7,2
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 6,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 7,5
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", true) 7,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 8,1
-                                    <br /><br />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <hr />
-                                <span id="Atv3IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
-
-                                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-                            </div>
-                        </div>
-                    }
-                </div>
-                <h3>Questão 4</h3>
-                <div>
-                    @using (Html.BeginForm())
-                    {
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Exercício 4</legend>
-                                </fieldset>
-                            </div>
-
-
-                            <div class="col-lg-6 col-md-6 col-sm-6">
-                                <fieldset>
-                                    <legend>Resposta</legend>
-                                </fieldset>
-
-                                <div>
-                                    @Html.Hidden("NomeAtv", "Atv4IntroducaoADistribuicao")
-
-                                    @Html.RadioButton("Resposta", false, true) 7,2
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 6,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 7,5
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", true) 7,8
-                                    <br /><br />
-                                    @Html.RadioButton("Resposta", false) 8,1
-                                    <br /><br />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <hr />
-                                <span id="Atv4IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
-
-                                <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-                            </div>
-                        </div>
-
-                    }
+                        </form>
+                    </div>
                 </div>
             </div>
         </fieldset>
-
     </div>
-
 </div>

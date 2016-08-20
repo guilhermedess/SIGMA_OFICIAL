@@ -30,8 +30,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
                 return RedirectToAction("Login", "Aluno");
-            }
-            
+            }            
         }
 
         [HttpPost]
@@ -80,9 +79,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             
         }
 
-        public ActionResult PontosOuValores()
+        public ActionResult PontosOuValores(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -113,9 +127,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult ClassesOuIntervalos()
+        public ActionResult ClassesOuIntervalos(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -146,9 +175,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult Elementos()
+        public ActionResult Elementos(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -179,9 +223,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult FrequenciaRelativaPercentual()
+        public ActionResult FrequenciaRelativaPercentual(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -212,9 +271,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult FrequenciaAcumuladaSimplesAbsoluta()
+        public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -245,9 +319,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult FrequenciaAcumuladaRelativaPercentual()
+        public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -278,9 +367,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult ApresentacaoDistribuicaoFrequencia()
+        public ActionResult ApresentacaoDistribuicaoFrequencia(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -311,9 +415,24 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View();
         }
 
-        public ActionResult ApresentacaoPontosOuValores()
+        public ActionResult ApresentacaoPontosOuValores(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]

@@ -201,8 +201,10 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\botoes-topico.js" />
-    <Content Include="scripts\dica2.js" />
-    <Content Include="scripts\dica1.js" />
+    <Content Include="scripts\dicas4.js" />
+    <Content Include="scripts\dicas3.js" />
+    <Content Include="scripts\dicas2.js" />
+    <Content Include="scripts\dicas1.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -292,6 +294,25 @@
     <Content Include="Views\Aluno\Progresso.cshtml" />
     <Content Include="Views\Aluno\_PartialWizard.cshtml" />
     <Content Include="Views\Aluno\_PartialAtividadesDistribuicao.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoDistribuicaoFrequencia.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoPontosOuValores.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasClassesOuIntervalos.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasElementos.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaRelativaPercentual.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaRelativaPercentual.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
