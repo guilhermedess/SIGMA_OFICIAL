@@ -1,21 +1,31 @@
-﻿@*@model USJT.Sigma.Model.Aluno*@
-@model List<USJT.Sigma.Model.Atividade>
+﻿@model List<USJT.Sigma.Model.Atividade>
 
-<script src="~/scripts/dica1.js"></script>
-<script src="~/scripts/dica2.js"></script>
-
-@foreach (var atividadesFeitas in Model)
-{
-    <script>
-        $(document).ready(function () {
-            $("#@atividadesFeitas.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
-        });
-    </script>
-}
+<script src="~/scripts/accordion.js"></script>
 
 @{
     ViewBag.Title = "Introducao a Distribuicao";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+@{
+    double notaTotal = 0;
+
+    foreach (var atividadesFeitas in Model)
+    {
+        <script>
+            $(document).ready(function () {
+                $("#@atividadesFeitas.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
+            });
+        </script>
+
+        notaTotal += atividadesFeitas.Nota;
+    }
+
+    <script>
+            $(document).ready(function () {
+                $("#infoNota").text("Pontos: " + "@notaTotal");
+            });
+    </script>
 }
 
 @Html.Partial("_PartialDistribuicao")
@@ -24,13 +34,15 @@
 
 <div class="container">
     <div class="col-lg-10 col-md-10 col-sm-10" style="float:right">
-
-        @Html.Partial("_PartialDicas")
-
         <fieldset>
             <legend class="h2">
                 Introdução e Conceitos de Distribuição
+                <span id="infoNota" title="Pontos" class="badge dir"></span>
             </legend>
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="816" height="459" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allowfullscreen></iframe>
+            </div>
 
             <div>
                 <p>É uma das medidas de tendência central mais utilizadas no cotidiano. É determinada pelo resultado da divisão do somatório dos números dados pela quantidade de números somados.</p>
@@ -41,17 +53,8 @@
             </div>
             <br />
 
-            <script>
-                $(function () {
-                    $("#accordion").accordion({
-                        collapsible: true,
-                        heightStyle: "content"
-                    });
-                });
-            </script>
-
             <div id="accordion">
-                <h3>Questão 1</h3>
+                <h3>Questão 1 <span id="infoNota" title="Pontos" class="badge dir">50</span></h3>
                 <div id="questao1">
                     @using (Html.BeginForm())
                     {
@@ -86,6 +89,7 @@
 
                                 <div>
                                     @Html.Hidden("NomeAtv", "Atv1IntroducaoADistribuicao")
+                                    @Html.Hidden("Nota", 50)
 
                                     @Html.RadioButton("Resposta", false, true) 7,2
                                     <br /><br />
@@ -104,12 +108,12 @@
                         <div>
                             <div id="divDica1" hidden="hidden">
                                 <hr />
-                                <p>Dica 1</p>
+                                <p><strong>Dica 1</strong></p>
                                 <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
                             </div>
                             <div id="divDica2" hidden="hidden">
                                 <hr />
-                                <p>Dica 2</p>
+                                <p><strong>Dica 2</strong></p>
                                 <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
                                 <p>Primeiro Realizamos todas as somas. Logo após dividimos por 10 que é o número de elementos.</p>
                                 <p>Média: 7,8</p>
@@ -153,7 +157,7 @@
                                 </div>
 
                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                    <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
+                                    <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                 </div>
                             </div>
                         </div>

@@ -133,8 +133,15 @@
     <Content Include="Content\bootstrap.yeti.min.css" />
     <Content Include="Content\icon.css" />
     <Content Include="Content\corpo-padrao.css" />
-    <Content Include="Content\img\graficos\teste.svg" />
+    <Content Include="Content\img\Distribuicao\Bronze.png" />
+    <Content Include="Content\img\Distribuicao\desabilitado.png" />
+    <Content Include="Content\img\Distribuicao\DESABILITADO2.png" />
+    <Content Include="Content\img\Distribuicao\Ouro.png" />
+    <Content Include="Content\img\Distribuicao\Platina.png" />
+    <Content Include="Content\img\Distribuicao\Prata.png" />
     <Content Include="Content\img\img_sair.png" />
+    <Content Include="Content\img\topico\distribuicao.png" />
+    <Content Include="Content\img\topico\hexagono.png" />
     <Content Include="Content\mega-menu.css" />
     <Content Include="Content\progresso.css" />
     <Content Include="Content\progresso2.css" />
@@ -182,8 +189,11 @@
     <Content Include="Content\Timeline.css" />
     <Content Include="Content\timeline-zigzag.css" />
     <Content Include="Content\topico.css" />
+    <Content Include="Content\wizardAtividade.css" />
+    <Content Include="Content\wizard.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="scripts\accordion.js" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\bootbox.js" />
@@ -216,9 +226,11 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\marcacao-atividade-pontos-total.js" />
     <Content Include="scripts\mega-menu.js" />
     <Content Include="scripts\progresso.js" />
     <Content Include="scripts\progresso2.js" />
+    <Content Include="scripts\wizard.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -277,6 +289,9 @@
     <Content Include="scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="scripts\jquery-3.1.0.min.map" />
     <Content Include="Views\SubDistribuicao\_PartialDicas.cshtml" />
+    <Content Include="Views\Aluno\Progresso.cshtml" />
+    <Content Include="Views\Aluno\_PartialWizard.cshtml" />
+    <Content Include="Views\Aluno\_PartialAtividadesDistribuicao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

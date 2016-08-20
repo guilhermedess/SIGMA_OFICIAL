@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -91,6 +92,28 @@ namespace USJT.Sigma.UI.WEB.Controllers
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Aluno/Login");
+        }
+
+        public ActionResult Progresso(Aluno aluno)
+        {
+            try
+            {
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                dynamic meusModelos = new ExpandoObject();
+
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+                meusModelos.AtividadesFeitas = (List<Atividade>) atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(meusModelos);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
     }
 }

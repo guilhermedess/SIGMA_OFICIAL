@@ -95,8 +95,9 @@ namespace USJT.Sigma.Repositorio
             using (var conexao = new SIGMAEntities())
             {
                 var retorno = (from C in conexao.TB_ATIVIDADE
-                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvConceitosDeDistribuicao" || 
-                               C.NOM_ATIVIDADE == "AtvElementos" || C.NOM_ATIVIDADE == "AtvRegrasParaElaboracao" || C.NOM_ATIVIDADE == "AtvGraficos")
+                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "Atv1IntroducaoADistribuicao" || 
+                               C.NOM_ATIVIDADE == "Atv2IntroducaoADistribuicao" || C.NOM_ATIVIDADE == "Atv3IntroducaoADistribuicao" || 
+                               C.NOM_ATIVIDADE == "Atv4IntroducaoADistribuicao")
                                select new Atividade { }).ToList();
 
                 //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao

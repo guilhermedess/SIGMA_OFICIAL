@@ -38,7 +38,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -71,7 +71,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -106,7 +106,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
 
                     TempData.Add("Mensagem", "Resposta correta!");
                 }
@@ -145,7 +145,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -178,7 +178,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -211,7 +211,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();

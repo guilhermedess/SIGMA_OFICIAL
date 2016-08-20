@@ -15,54 +15,69 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
         public ActionResult IntroducaoDistribuicao(Aluno aluno)
         {
-            aluno = (Aluno)Session["dadosAlunoLogado"];
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
 
-            AtividadeREP atividadeREP = new AtividadeREP();
+                AtividadeREP atividadeREP = new AtividadeREP();
 
-            List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
             
-            return View(atividadesFeitas);
         }
 
         [HttpPost]
         public ActionResult IntroducaoDistribuicao(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "IntroducaoADistribuicao";
-
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
+            try
             {
-                //var nomeAtividade = "AtvIntroducaoADistribuicao";
-                var nomeAtividade = atividade.NomeAtv;
+                AtividadeREP atividadeREP = new AtividadeREP();
 
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
+                var nomeTopico = "Distribuicao";
+                var nomeSubTopico = "IntroducaoADistribuicao";
+
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                if (atividade.Resposta == true)
                 {
-                    atividadeREP.ExisteAtividadeFirst(aluno.IdAluno, nomeAtividade);
+                    //consulta atividade pra ver se ja existe
+                    if (atividadeREP.ExisteAtividade(aluno.IdAluno, atividade.NomeAtv))
+                    {
+                        TempData.Add("Mensagem", "Resposta Correta. Para relembrar esta atividade já foi feita em outra oportunidade.");
 
-                    TempData.Add("Mensagem", "Resposta Correta. Para relembrar esta atividade já foi feita em outra oportunidade.");
+                        return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
+                    }
+                    else
+                    {
+                        int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
+                        atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, atividade.NomeAtv, atividade.Nota);
+
+                        TempData.Add("Mensagem", "Resposta correta!");
+                    }
                 }
                 else
                 {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
-
-                    TempData.Add("Mensagem", "Resposta correta!");
+                    TempData.Add("Mensagem", "Resposta Errada!");
                 }
-            }
-            else
-            {
-                TempData.Add("Mensagem", "Resposta Errada!");
-            }
 
-            return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
+                return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
+
+                return RedirectToAction("Login", "Aluno");
+            }
+            
         }
 
         public ActionResult PontosOuValores()
@@ -92,7 +107,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade,0);
                 }
             }
             return View();
@@ -125,7 +140,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -158,7 +173,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -191,7 +206,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -224,7 +239,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -257,7 +272,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -290,7 +305,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
@@ -323,15 +338,30 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();
         }
 
-        public ActionResult ApresentacaoClassesOuIntervalos()
+        public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno)
         {
-            return View();
+            try
+            {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
+
+                return View(atividadesFeitas);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         [HttpPost]
@@ -356,7 +386,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
 
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade);
+                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
                 }
             }
             return View();

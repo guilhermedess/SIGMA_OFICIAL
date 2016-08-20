@@ -1,8 +1,8 @@
-﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+﻿/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);*/
 body {
-  font-family: 'Open Sans', 'sans-serif';
-  background: #f0f0f0;
-  background: url(https://pcbx.us/bfjb.jpg);
+  /*font-family: 'Open Sans', 'sans-serif';*/
+  background-color: #d8dbe0;
+  /*background: url(https://pcbx.us/bfjb.jpg);*/
 }
 
 h1,

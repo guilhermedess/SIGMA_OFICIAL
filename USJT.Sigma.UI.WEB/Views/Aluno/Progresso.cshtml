@@ -1,0 +1,144 @@
+﻿@*@model List<USJT.Sigma.Model.Atividade>*@
+@*@using USJT.Sigma;*@
+
+<head>
+    <link href="~/Content/wizard.css" rel="stylesheet" />
+    <script src="~/scripts/wizard.js"></script>
+    <script src="~/scripts/botoes-topico.js"></script>
+    <link href="~/Content/topico.css" rel="stylesheet" />
+    <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
+</head>
+
+@model dynamic
+
+@{
+    ViewBag.Title = "Progresso";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+@{
+    foreach (var atividadesFeitas in Model.AtividadesFeitas)
+    {
+        <script>
+            $(document).ready(function () {
+                $("#@atividadesFeitas.NomeAtv").removeClass("panel-default").addClass("panel-green");
+            });
+        </script>
+    }
+
+    <script>
+        $(document).ready(function () {
+            var x = 100;
+
+            if(x >= 25 && x <= 49) {
+                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
+            } else {
+                if(x >= 50 && x <= 74) {
+                    $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
+                    $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");                    
+                } else {
+                    if (x >= 75 && x <= 99) {
+                        $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
+                        $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");
+                        $("#medalhaOuro").attr("src", "/Content/img/Distribuicao/Ouro.png");
+                    } else {
+                        if (x == 100) {
+                            $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
+                            $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");
+                            $("#medalhaOuro").attr("src", "/Content/img/Distribuicao/Ouro.png");
+                            $("#medalhaPlatina").attr("src", "/Content/img/Distribuicao/Platina.png");
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="text-center">
+                <h2>Medalhas</h2>
+                <HR NOSHADE WIDTH=250>
+            </div>
+        </div>
+    </div>
+    @*<script>
+            function Bronze(x) {
+                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
+            }
+
+            function Desabilitado1(x) {
+                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/DESABILITADO2.png");
+            }
+
+            function Desabilitado2(x) {
+                $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/DESABILITADO2.png");
+            }
+
+            function Prata(x) {
+                $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");
+            }
+
+            function Ouro(x) {
+                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/DESABILITADO2.png");
+            }
+        </script>*@
+
+    <center>
+        <div class="container row">
+            <div class="col-lg-12 col-md-12 col-sm-12 jumbotron">
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a>
+                        <img id="medalhaBronze" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                    </a>
+                    <p>Bronze</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a>
+                        <img id="medalhaPrata" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                    </a>
+                    <p>Prata</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a>
+                        <img id="medalhaOuro" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                    </a>
+                    <p>Ouro</p>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <a>
+                        <img id="medalhaPlatina" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                    </a>
+                    <p>Platina</p>
+                </div>
+            </div>
+        </div>
+    </center>
+
+    @Html.Partial("_PartialWizard")
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="text-center">
+                <h2>Progresso</h2>
+                <HR NOSHADE WIDTH=250>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            @Html.Partial("~/Views/Topico/_PartialProgresso.cshtml", (USJT.Sigma.Model.Aluno)Model.Aluno)
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            @Html.Partial("~/Views/Topico/_PartialProgresso2.cshtml", (USJT.Sigma.Model.Aluno)Model.Aluno)
+        </div>
+    </div>
+    <br /><br />
+  
+        
+
+</div>
+
