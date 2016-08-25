@@ -1,5 +1,4 @@
-﻿@*@model List<USJT.Sigma.Model.Atividade>*@
-@*@using USJT.Sigma;*@
+﻿@model dynamic
 
 <head>
     <link href="~/Content/wizard.css" rel="stylesheet" />
@@ -7,9 +6,8 @@
     <script src="~/scripts/botoes-topico.js"></script>
     <link href="~/Content/topico.css" rel="stylesheet" />
     <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
+    <script src="~/scripts/medalhas.js"></script>
 </head>
-
-@model dynamic
 
 @{
     ViewBag.Title = "Progresso";
@@ -17,40 +15,21 @@
 }
 
 @{
-    foreach (var atividadesFeitas in Model.AtividadesFeitas)
+    if (Model.AtividadesFeitas != null)
     {
-        <script>
-            $(document).ready(function () {
-                $("#@atividadesFeitas.NomeAtv").removeClass("panel-default").addClass("panel-green");
-            });
-        </script>
+        foreach (var atividadesFeitas in Model.AtividadesFeitas)
+        {
+            <script>
+                $(document).ready(function () {
+                    $("#@atividadesFeitas.NomeAtv").removeClass("panel-red").addClass("panel-green");
+                });
+            </script>
+        }
     }
 
     <script>
         $(document).ready(function () {
-            var x = 100;
-
-            if(x >= 25 && x <= 49) {
-                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
-            } else {
-                if(x >= 50 && x <= 74) {
-                    $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
-                    $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");                    
-                } else {
-                    if (x >= 75 && x <= 99) {
-                        $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
-                        $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");
-                        $("#medalhaOuro").attr("src", "/Content/img/Distribuicao/Ouro.png");
-                    } else {
-                        if (x == 100) {
-                            $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
-                            $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");
-                            $("#medalhaOuro").attr("src", "/Content/img/Distribuicao/Ouro.png");
-                            $("#medalhaPlatina").attr("src", "/Content/img/Distribuicao/Platina.png");
-                        }
-                    }
-                }
-            }
+            Medalhas(@Model.Aluno.ProgressoTotal);
         });
     </script>
 }
@@ -64,27 +43,6 @@
             </div>
         </div>
     </div>
-    @*<script>
-            function Bronze(x) {
-                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/Bronze.png");
-            }
-
-            function Desabilitado1(x) {
-                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/DESABILITADO2.png");
-            }
-
-            function Desabilitado2(x) {
-                $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/DESABILITADO2.png");
-            }
-
-            function Prata(x) {
-                $("#medalhaPrata").attr("src", "/Content/img/Distribuicao/Prata.png");
-            }
-
-            function Ouro(x) {
-                $("#medalhaBronze").attr("src", "/Content/img/Distribuicao/DESABILITADO2.png");
-            }
-        </script>*@
 
     <center>
         <div class="container row">
@@ -137,8 +95,5 @@
         </div>
     </div>
     <br /><br />
-  
-        
-
 </div>
 

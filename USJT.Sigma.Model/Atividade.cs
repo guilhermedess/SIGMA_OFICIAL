@@ -16,5 +16,6 @@ namespace USJT.Sigma.Model
         public Double Nota { get; set; }
         public Double Progresso { get; set; }
         public bool Resposta { get; set; }
+        public List<object> ListRespostas { get; set; }
     }
 }

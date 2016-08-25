@@ -1,0 +1,47 @@
+﻿.body-margem-top {
+    padding-top: 100px;
+}
+
+.nav-top {
+    height: 100px;
+    padding-top: 25px;
+    background-color: rgba(22, 160, 133, .8);
+    font-family: Helvetica, Arial;
+    font-size: 24px;
+}
+
+    .nav-top img {
+        position: relative;
+        top: -37px;
+    }
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: none;
+    background-color: transparent;
+}
+
+.login-usuario {
+    font-family: Helvetica, Arial;
+    font-size: 18px;
+}
+
+#sobre {
+    font-family: Helvetica, Arial;
+    background: url(../img/bgslider.png);
+}
+
+    #sobre h1 {
+        font-family: Helvetica, Arial;
+        color: #ecf0f1;
+    }
+
+    #sobre h4, p {
+        font-family: Helvetica, Arial;
+        color: #34495e;
+    }
+
+footer h2, p {
+    font-family: Helvetica, Arial;
+    color: #34495e;
+}

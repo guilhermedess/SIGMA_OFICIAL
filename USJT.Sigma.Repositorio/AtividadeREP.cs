@@ -75,7 +75,23 @@ namespace USJT.Sigma.Repositorio
                                               select new Atividade
                                               {
                                                   NomeAtv = C.NOM_ATIVIDADE,
-                                                  Nota = (double) C.VAL_NOTA
+                                                  Nota = (double)C.VAL_NOTA
+                                              }).ToList();
+                return buscaFeita;
+            }
+
+        }
+
+        public List<Atividade> AtividadesFeitasDeUmSubTopico(int idAluno, string parteNomeAtvidade)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                List<Atividade> buscaFeita = (from C in conexao.TB_ATIVIDADE
+                                              where C.ID_ALUNO == idAluno && C.NOM_ATIVIDADE.Contains(parteNomeAtvidade)
+                                              select new Atividade
+                                              {
+                                                  NomeAtv = C.NOM_ATIVIDADE,
+                                                  Nota = (double)C.VAL_NOTA
                                               }).ToList();
                 return buscaFeita;
             }

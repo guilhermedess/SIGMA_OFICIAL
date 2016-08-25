@@ -84,6 +84,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 14.0\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,8 +135,15 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.yeti.css" />
     <Content Include="Content\bootstrap.yeti.min.css" />
+    <Content Include="Content\bootstrap_social_button\assets\css\bootstrap.css" />
+    <Content Include="Content\bootstrap_social_button\assets\css\docs.css" />
+    <Content Include="Content\bootstrap_social_button\assets\css\font-awesome.css" />
+    <Content Include="Content\bootstrap_social_button\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\bootstrap_social_button\bootstrap-social.css" />
+    <Content Include="Content\estilocss\estilo.css" />
     <Content Include="Content\icon.css" />
     <Content Include="Content\corpo-padrao.css" />
+    <Content Include="Content\img\bgslider.png" />
     <Content Include="Content\img\Distribuicao\Bronze.png" />
     <Content Include="Content\img\Distribuicao\desabilitado.png" />
     <Content Include="Content\img\Distribuicao\DESABILITADO2.png" />
@@ -140,6 +151,11 @@
     <Content Include="Content\img\Distribuicao\Platina.png" />
     <Content Include="Content\img\Distribuicao\Prata.png" />
     <Content Include="Content\img\img_sair.png" />
+    <Content Include="Content\img\logo100p.png" />
+    <Content Include="Content\img\slider\slider1_1360-600.png" />
+    <Content Include="Content\img\slider\slider2_1360-600.png" />
+    <Content Include="Content\img\slider\slider3_1360-600.png" />
+    <Content Include="Content\img\sobre\sobre_1600-400.png" />
     <Content Include="Content\img\topico\distribuicao.png" />
     <Content Include="Content\img\topico\hexagono.png" />
     <Content Include="Content\mega-menu.css" />
@@ -213,6 +229,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap_social_button\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\bootstrap_social_button\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\bootstrap_social_button\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\bootstrap_social_button\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\bootstrap_social_button\assets\fonts\FontAwesome.otf" />
+    <Content Include="Content\bootstrap_social_button\bootstrap-social.less" />
+    <Content Include="Content\bootstrap_social_button\bootstrap-social.scss" />
     <None Include="scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="scripts\jquery-3.1.0.js" />
     <Content Include="scripts\jquery-3.1.0.min.js" />
@@ -229,6 +252,7 @@
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\marcacao-atividade-pontos-total.js" />
+    <Content Include="scripts\medalhas.js" />
     <Content Include="scripts\mega-menu.js" />
     <Content Include="scripts\progresso.js" />
     <Content Include="scripts\progresso2.js" />
@@ -290,10 +314,9 @@
     <Content Include="Views\SubDistribuicao\rascunho.cshtml" />
     <Content Include="scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="scripts\jquery-3.1.0.min.map" />
-    <Content Include="Views\SubDistribuicao\_PartialDicas.cshtml" />
     <Content Include="Views\Aluno\Progresso.cshtml" />
     <Content Include="Views\Aluno\_PartialWizard.cshtml" />
-    <Content Include="Views\Aluno\_PartialAtividadesDistribuicao.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvTodas.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores1.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao1.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos1.cshtml" />
@@ -334,6 +357,17 @@
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta2.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta3.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta4.cshtml" />
+    <Content Include="Views\Aluno\_PartialMensagem.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvIntroducaoADistribuicao.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvPontosValores.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvClassesIntervalos.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvElementos.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvRelativaPercentual.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvAcumuladaSimplesOuAbsoluta.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvAcumuladaRelativaOuPercentual.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvApresentacaoDeDistribuicaoFreq.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvFrequenciaPontosOuValores.cshtml" />
+    <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvFrequenciaClassesOuIntervalos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -343,6 +377,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Certificado\" />
+    <Folder Include="Content\img\certificado\" />
+    <Folder Include="Content\img\graficos\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +395,9 @@
       <Project>{e5343793-7f69-4a5f-9e0e-e59e7c7bb23a}</Project>
       <Name>USJT.Sigma.Repositorio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="RepCertificado.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
