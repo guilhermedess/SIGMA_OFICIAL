@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,63 +13,72 @@ namespace USJT.Sigma.UI.WEB.Controllers
     public class SubDistribuicaoController : Controller
     {
         SubTopicoREP subTopicoREP = new SubTopicoREP();
+        AtividadeREP atividadeREP = new AtividadeREP();
+        AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+        dynamic meusModelos = new ExpandoObject();
 
+        public ActionResult ConferirRespotaRecebida(Atividade atividade, string metodo, string controle)
+        {
+            Aluno aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            var respostaDoAluno = "";
+
+            foreach (var respostas in atividade.ListaDeRespostas)
+            {
+                respostaDoAluno += respostas;
+            }
+
+            if (respostaDoAluno.Equals(atividadeREP.RespostaExata(atividade.IdAtividade)))
+            {
+                //consulta atividade pra ver se ja existe
+                if (atividadeAlunoREP.ExisteAtividadeFeita(aluno.IdAluno, atividade.IdAtividade))
+                {
+                    TempData.Add("Mensagem", "Resposta Correta. Atividade feita anteriormente.");
+
+                    return RedirectToAction(metodo, controle);
+                }
+                else
+                {
+                    atividadeAlunoREP.AdicionaAtividadeAluno(aluno.IdAluno, atividade.IdAtividade);
+
+                    TempData.Add("Mensagem", "Resposta correta!");
+                }
+            }
+            else
+            {
+                TempData.Add("Mensagem", "Resposta Errada!");
+            }
+
+            return RedirectToAction(metodo, controle);
+        }
+        public ActionResult RenderizarView(Aluno aluno, int idSubTopico)
+        {
+            aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            meusModelos.atividades = atividadeREP.TodasAtividadesDeUmSubTopico(idSubTopico);
+            meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
+
+            return View(meusModelos);
+        }
         public ActionResult IntroducaoDistribuicao(Aluno aluno)
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 1);
             }
             catch (Exception)
             {
                 TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
                 return RedirectToAction("Login", "Aluno");
-            }            
+            }
         }
-
         [HttpPost]
-        public ActionResult IntroducaoDistribuicao(Aluno aluno, Atividade atividade)
+        public ActionResult IntroducaoDistribuicao(Atividade atividade)
         {
             try
             {
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                var nomeTopico = "Distribuicao";
-                var nomeSubTopico = "IntroducaoADistribuicao";
-
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                if (atividade.Resposta == true)
-                {
-                    //consulta atividade pra ver se ja existe
-                    if (atividadeREP.ExisteAtividade(aluno.IdAluno, atividade.NomeAtv))
-                    {
-                        TempData.Add("Mensagem", "Resposta Correta. Para relembrar esta atividade já foi feita em outra oportunidade.");
-
-                        return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
-                    }
-                    else
-                    {
-                        int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                        atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, atividade.NomeAtv, atividade.Nota);
-
-                        TempData.Add("Mensagem", "Resposta correta!");
-                    }
-                }
-                else
-                {
-                    TempData.Add("Mensagem", "Resposta Errada!");
-                }
-
-                return RedirectToAction("IntroducaoDistribuicao", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, "IntroducaoDistribuicao", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -76,20 +86,13 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
                 return RedirectToAction("Login", "Aluno");
             }
-            
         }
 
         public ActionResult PontosOuValores(Aluno aluno)
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 2);
             }
             catch (Exception)
             {
@@ -102,28 +105,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult PontosOuValores(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Pontos ou Valores";
 
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvPontosOuValores";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade,0);
-                }
-            }
             return View();
         }
 
@@ -150,28 +132,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ClassesOuIntervalos(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Classes ou Intervalos";
 
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvClassesOuIntevalos";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 
@@ -198,28 +159,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult Elementos(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Elementos";
-
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvElementos";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 
@@ -227,13 +166,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 5);
             }
             catch (Exception)
             {
@@ -246,29 +179,16 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult FrequenciaRelativaPercentual(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Frequencia Relativa Percentual";
-
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
+            try
             {
-                var nomeAtividade = "AtvFrequenciaRelativaPercentual";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
+                return ConferirRespotaRecebida(atividade, "FrequenciaRelativaPercentual", "SubDistribuicao");
             }
-            return View();
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno)
@@ -294,28 +214,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Frequencia Acumulada Simples Absoluta";
 
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvFrequenciaAcumuladaSimplesAbsoluta";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 
@@ -342,28 +241,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Frequencia AcumuladaRelativa Percentual";
 
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvFrequenciaAcumuladaRelativaPercentual";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 
@@ -390,28 +268,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ApresentacaoDistribuicaoFrequencia(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Apresentacao Distribuicao Frequencia";
 
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvApresentacaoDistribuicaoFrequencia";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 
@@ -438,28 +295,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ApresentacaoPontosOuValores(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Apresentacao Pontos ou Valores";
-
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvApresentacaoPontosOuValores";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 
@@ -486,28 +321,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno, Atividade atividade)
         {
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var nomeTopico = "Distribuicao";
-            var nomeSubTopico = "Apresentacao Classes ou Intervalos";
-
-            aluno = (Aluno)Session["dadosAlunoLogado"];
-
-            if (atividade.Resposta == true)
-            {
-                var nomeAtividade = "AtvApresentacaoClassesOuIntervalos";
-
-                //consulta atividade pra ver se ja existe
-                if (atividadeREP.ExisteAtividade(aluno.IdAluno, nomeAtividade))
-                {
-                    return View();
-                }
-                else
-                {
-                    int idSubTopicoAdicionado = subTopicoREP.AdicionaSubTopico(aluno, nomeTopico, nomeSubTopico);
-
-                    atividadeREP.AdicionaAtividade(aluno.IdAluno, idSubTopicoAdicionado, nomeAtividade, 0);
-                }
-            }
             return View();
         }
 

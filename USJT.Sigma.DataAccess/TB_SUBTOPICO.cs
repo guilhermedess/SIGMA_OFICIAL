@@ -24,7 +24,6 @@ namespace USJT.Sigma.DataAccess
         public int ID_SUBTOPICO { get; set; }
         public Nullable<int> ID_ALUNO { get; set; }
         public int ID_TOPICO { get; set; }
-        public Nullable<int> ID_VIDEO { get; set; }
         public Nullable<int> ID_ATIVIDADE { get; set; }
         public string NOM_SUBTOPICO { get; set; }
         public Nullable<double> QTD_PROGRESSO { get; set; }

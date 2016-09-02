@@ -116,7 +116,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 aluno = (Aluno)Session["dadosAlunoLogado"];
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
 
-                meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno); ;
+                //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno); ;
                 meusModelos.todas = "todas";
 
                 return View(meusModelos);
@@ -151,7 +151,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
                     CarregarComboDistribuicao();
 
-                    meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
+                    //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
                     meusModelos.todas = "todas";
 
                     return View(meusModelos);
@@ -160,14 +160,14 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 {
                     if (procurarAtv.Equals("todas"))
                     {
-                        meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
+                        //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
                         meusModelos.todas = "todas";
                     }
                     else
                     {
                         if (procurarAtv.Equals("todasPendentes"))
                         {
-                            meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
+                            //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
                         }
                         else
                         {

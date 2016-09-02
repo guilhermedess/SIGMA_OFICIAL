@@ -73,6 +73,9 @@
     <Compile Include="TB_ATIVIDADE.cs">
       <DependentUpon>banco.tt</DependentUpon>
     </Compile>
+    <Compile Include="TB_ATIVIDADE_ALUNO.cs">
+      <DependentUpon>banco.tt</DependentUpon>
+    </Compile>
     <Compile Include="TB_CERTIFICADO.cs">
       <DependentUpon>banco.tt</DependentUpon>
     </Compile>
@@ -87,15 +90,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="banco.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>banco.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="banco.edmx.diagram">
       <DependentUpon>banco.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="banco.Context.tt">
@@ -108,9 +114,6 @@
       <DependentUpon>banco.edmx</DependentUpon>
       <LastGenOutput>banco.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

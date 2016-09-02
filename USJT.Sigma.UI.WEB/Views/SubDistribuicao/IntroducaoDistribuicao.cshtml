@@ -1,38 +1,60 @@
-﻿@model List<USJT.Sigma.Model.Atividade>
+﻿@using USJT.Sigma.Repositorio
+@model dynamic
 
 <head>
     <link href="~/Content/wizardAtividade.css" rel="stylesheet" />
     <script src="~/scripts/wizard.js"></script>
     <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
-    <script src="~/scripts/dicas1.js"></script>
-    <script src="~/scripts/dicas2.js"></script>
-    <script src="~/scripts/dicas3.js"></script>
-    <script src="~/scripts/dicas4.js"></script>
 </head>
 
 @{
     ViewBag.Title = "Introdução e Conceitos de Distribuição";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+    VideoREP videoREP = new VideoREP();
+    AtividadeREP atividadeREP = new AtividadeREP();
 }
 
 @{
     double notaTotal = 0;
-
-    foreach (var atividadesFeitas in Model)
+    //if (Model.Count > 0)
+    //{
+    foreach (var atividadesFeitas in Model.atividadesFeitas)
     {
         <script>
             $(document).ready(function () {
-                $("#@atividadesFeitas.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
-                $("#@atividadesFeitas.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
+                $("#@atividadesFeitas.Atividade.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
+                $("#@atividadesFeitas.Atividade.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
             });
         </script>
 
-        notaTotal += atividadesFeitas.Nota;
+        notaTotal += atividadesFeitas.Atividade.Nota;
     }
+    //}
 
     <script>
         $(document).ready(function () {
             $("#infoNota").text("Pontos: " + "@notaTotal");
+        });
+    </script>
+}
+
+@for (int i = 0; i < Model.atividades.Count; i++)
+{
+    <div id="camposAtividade">
+        <fieldset>
+            <legend>@Model.atividades[i].DescricaoTitulo - @Model.atividades[i].DescricaoSubTitulo</legend>
+        </fieldset>
+        <p>
+            <strong>Descrição:</strong> @Model.atividades[i].DescricaoAtividade
+        </p>
+        <p>
+            <strong>@Model.atividades[i].DescricaoPergunta</strong>
+        </p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#divCamposAtv" + @i).append($("#camposAtividade"));
         });
     </script>
 }
@@ -50,13 +72,12 @@
             </legend>
 
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="816" height="459" src="https://www.youtube.com/embed/zpOULjyy-n8" frameborder="0" allowfullscreen></iframe>
+                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(1, "IntroducaoADistribuicao")" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-
                         <div class="wizard">
                             <div class="wizard-inner">
                                 <div class="connecting-line"></div>
@@ -64,7 +85,7 @@
                                     <li role="presentation" class="active">
                                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Distribuição de frequência">
                                             <span class="round-tab">
-                                                <div><span id="Atv1IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">25</span></div>
+                                                <div><span id="Atv1IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">@Model.atividades[0].Nota</span></div>
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </span>
                                         </a>
@@ -73,7 +94,7 @@
                                     <li role="presentation">
                                         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Medidas de Tendência Central">
                                             <span class="round-tab">
-                                                <div><span id="Atv2IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">50</span></div>
+                                                <div><span id="Atv2IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">@Model.atividades[1].Nota</span></div>
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </span>
                                         </a>
@@ -82,7 +103,7 @@
                                     <li role="presentation">
                                         <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Medidas de Dispersão">
                                             <span class="round-tab">
-                                                <div><span id="Atv3IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">65</span></div>
+                                                <div><span id="Atv3IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">@Model.atividades[2].Nota</span></div>
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </span>
                                         </a>
@@ -91,7 +112,7 @@
                                     <li role="presentation">
                                         <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Amostragem e Estimadores">
                                             <span class="round-tab">
-                                                <div><span id="Atv4IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">80</span></div>
+                                                <div><span id="Atv4IntroducaoADistribuicao1" title="Pontos" class="badge-red dir">@Model.atividades[3].Nota</span></div>
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </span>
                                         </a>
@@ -100,227 +121,226 @@
                             </div>
                         </div>
 
-                        <form role="form">
-                            <div class="tab-content">
-                                <div class="tab-pane active" role="tabpanel" id="step1">
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+                                @* Questão 1 *@
+                                <div id="questao1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        <div class="row">
+                                            <div id="divCamposAtv0" class="col-lg-12 col-md-12 col-sm-12">
 
-                                    @* Questão 1 *@
-                                    <div id="questao1">
-                                        @using (Html.BeginForm())
-                                        {
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Exercício</legend>
-                                                    </fieldset>
-                                                    <p>
-                                                        <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
-
-                                                        Matemática: 7,5<br />
-                                                        Português: 6,3<br />
-                                                        História: 8,0<br />
-                                                        Geografia: 7,2<br />
-                                                        Inglês: 6,6<br />
-                                                        Espanhol: 8,4<br />
-                                                        Física: 9,0<br />
-                                                        Química: 7,2<br />
-                                                        Biologia: 8,0<br />
-                                                        Educação Física: 9,5<br /><br />
-
-                                                        <strong>Determine a média aritmética anual do aluno.</strong>
-                                                    </p>
-                                                </div>
-
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Resposta</legend>
-                                                    </fieldset>
-
-                                                    <div>
-                                                        @Html.Hidden("NomeAtv", "Atv1IntroducaoADistribuicao")
-                                                        @Html.Hidden("Nota", 25)
-
-                                                        @Html.RadioButton("Resposta", false, true) 7,2
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 6,8
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 7,5
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", true) 7,8
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 8,1
-                                                        <br /><br />
-                                                    </div>
-                                                </div>
                                             </div>
 
-                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao1")
-                                        }
-                                    </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div>
+                                                    @Html.Hidden("IdAtividade", 1)
 
-                                    <hr />
+                                                    @Html.RadioButton("ListaDeRespostas", atividadeREP.RespostaExata(1), true) @atividadeREP.RespostaExata(1)
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "Uma distribuição de frequência é uma tabela com valores aleatórios.") Uma distribuição de frequência é uma tabela com valores aleatórios. Desde que os valores não ultrapassem o limite de 128 valores.
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "Uma distribuição de frequência é um método de se dispersar dados em classes.") Uma distribuição de frequência é um método de se dispersar dados em classes.
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "Uma distribuição de frequência é formada por 4 linhas e 10 colunas (por padrão).") Uma distribuição de frequência é formada por 4 linhas e 10 colunas (por padrão).
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "A distribuição de frequência é desenvolvida com valores entre 1 e 99.") A distribuição de frequência é desenvolvida com valores entre 1 e 99.
+                                                    <br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv1IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input type="button" value="Dicas" class="disabled btn btn-warning" style="float: unset" />
+                                                </div>
+
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <hr />
+
+                                <div>
                                     <ul class="list-inline pull-right">
                                         <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
                                     </ul>
                                 </div>
-                                <div class="tab-pane" role="tabpanel" id="step2">
-
-                                    @* Questão 2 *@
-                                    <div id="questao2">
-                                        @using (Html.BeginForm())
-                                        {
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Exercício 2</legend>
-                                                    </fieldset>
-                                                    @*  *@
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                    <p>x</p>
-                                                </div>
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Resposta</legend>
-                                                    </fieldset>
-
-                                                    <div>
-                                                        @Html.Hidden("NomeAtv", "Atv2IntroducaoADistribuicao")
-                                                        @Html.Hidden("Nota", 50)
-
-                                                        @Html.TextBox("ListRespostas")
-                                                        <br /><br />
-                                                        @Html.TextBox("ListRespostas")
-                                                        <br /><br />
-                                                        @Html.TextBox("ListRespostas")
-                                                        <br /><br />
-                                                        @Html.TextBox("ListRespostas")
-                                                        <br /><br />
-                                                        @Html.TextBox("ListRespostas")
-                                                        <br /><br />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao2")
-                                        }
-                                    </div>
-
-                                    <hr />
-
-                                    <ul class="list-inline pull-right">
-                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
-                                        <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
-                                    </ul>
-                                </div>
-                                <div class="tab-pane" role="tabpanel" id="step3">
-
-                                    @* Questão 3 *@
-                                    <div id="questao3">
-                                        @using (Html.BeginForm())
-                                        {
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Exercício</legend>
-                                                    </fieldset>
-                                                    @*  *@
-                                                </div>
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Resposta</legend>
-                                                    </fieldset>
-
-                                                    <div>
-                                                        @Html.Hidden("NomeAtv", "Atv3IntroducaoADistribuicao")
-                                                        @Html.Hidden("Nota", 65)
-
-                                                        @Html.RadioButton("Resposta", false, true) 7,2
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 6,8
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 7,5
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", true) 7,8
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 8,1
-                                                        <br /><br />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao3")
-                                        }
-                                    </div>
-
-                                    <hr />
-
-                                    <ul class="list-inline pull-right">
-                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
-                                        <li><button type="button" class="btn btn-primary btn-info-full next-step">Proximo >></button></li>
-                                    </ul>
-                                </div>
-                                <div class="tab-pane" role="tabpanel" id="complete">
-
-                                    @* Questão 4 *@
-                                    <div id="questao4">
-                                        @using (Html.BeginForm())
-                                        {
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Exercício</legend>
-                                                    </fieldset>
-                                                    @*  *@
-                                                </div>
-
-                                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                                    <fieldset>
-                                                        <legend>Resposta</legend>
-                                                    </fieldset>
-
-                                                    <div>
-                                                        @Html.Hidden("NomeAtv", "Atv4IntroducaoADistribuicao")
-                                                        @Html.Hidden("Nota", 80)
-
-                                                        @Html.RadioButton("Resposta", false, true) 7,2
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 6,8
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 7,5
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", true) 7,8
-                                                        <br /><br />
-                                                        @Html.RadioButton("Resposta", false) 8,1
-                                                        <br /><br />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            @Html.Partial("DicasDistribuicao/_DicasIntroducaoDistribuicao4")
-                                        }
-                                    </div>
-
-                                    <hr />
-
-                                    <ul class="list-inline pull-right">
-                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
-                                    </ul>
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
-                        </form>
+
+                            <div class="tab-pane" role="tabpanel" id="step2">
+                                @* Questão 2 *@
+                                <div id="questao1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        <div class="row">
+                                            <div id="divCamposAtv1" class="col-lg-12 col-md-12 col-sm-12">
+
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div>
+                                                    @Html.Hidden("IdAtividade", 2)
+
+                                                    @Html.RadioButton("ListaDeRespostas", atividadeREP.RespostaExata(2), true) @atividadeREP.RespostaExata(2)
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "Para melhor vizualizar os valores individuais.") Para melhor vizualizar os valores individuais.
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "Para vizualizar os valores em questão.") Para vizualizar os valores em questão.
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "A distribuição de frequência não tem uma definição.") A distribuição de frequência não tem uma definição.
+                                                    <br /><br />
+                                                    @Html.RadioButton("ListaDeRespostas", "Nenhuma alternativa define de fato a distribuição de frequência.") Nenhuma alternativa define de fato a distribuição de frequência.
+                                                    <br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv2IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input type="button" value="Dicas" class="disabled btn btn-warning" style="float: unset" />
+                                                </div>
+
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <hr />
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step3">
+
+                                @* Questão 3 *@
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="row">
+                                        <div id="divCamposAtv2" class="col-lg-12 col-md-12 col-sm-12">
+
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div>
+                                                @Html.Hidden("IdAtividade", 3)
+
+                                                @Html.RadioButton("ListaDeRespostas", atividadeREP.RespostaExata(3), true) @atividadeREP.RespostaExata(3)
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Somente em Porcentagem.") Somente em Porcentagem.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Somente em Porcentagem.") Somente em Quantidade.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Linhas e Colunas.") Linhas e Colunas.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Tabele e Unidade.") Tabele e Unidade.
+                                                <br /><br />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    @* BOTOES FIXOS *@
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <hr />
+                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                                <span id="Atv3IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                                <input type="button" value="Dicas" class="disabled btn btn-warning" style="float: unset" />
+                                            </div>
+
+                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <hr />
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                    <li><button type="button" class="btn btn-primary btn-info-full next-step">Proximo >></button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="complete">
+
+                                @* Questão 4 *@
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="row">
+                                        <div id="divCamposAtv3" class="col-lg-12 col-md-12 col-sm-12">
+
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div>
+                                                @Html.Hidden("IdAtividade", 4)
+
+                                                @Html.RadioButton("ListaDeRespostas", atividadeREP.RespostaExata(4), true) @atividadeREP.RespostaExata(4)
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Tabelas e gráficos, podemos obter: a média aritmética e o desvio padrão.") Tabelas e gráficos, podemos obter: a média aritmética e o desvio padrão.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Somente gráficos, podemos obter: a média aritmética e ponderada.") Somente gráficos, podemos obter: a média aritmética e ponderada.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Somente tabelas, podemos obter: a média aritmética e ponderada.") Somente tabelas, podemos obter: a média aritmética e ponderada.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "Somente tabelas, podemos obter: a média aritmética, ponderada e desvio.") Somente tabelas, podemos obter: a média aritmética, ponderada e desvio.
+                                                <br /><br />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @* BOTOES FIXOS *@
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <hr />
+                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                                <span id="Atv4IntroducaoADistribuicao" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                                <input type="button" value="Dicas" class="disabled btn btn-warning" style="float: unset" />
+                                            </div>
+
+                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <hr />
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
             </div>

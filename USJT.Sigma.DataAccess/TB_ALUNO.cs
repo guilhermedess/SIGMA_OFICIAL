@@ -17,6 +17,7 @@ namespace USJT.Sigma.DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TB_ALUNO()
         {
+            this.TB_ATIVIDADE_ALUNO = new HashSet<TB_ATIVIDADE_ALUNO>();
             this.TB_ATIVIDADE = new HashSet<TB_ATIVIDADE>();
             this.TB_CERTIFICADO = new HashSet<TB_CERTIFICADO>();
             this.TB_SUBTOPICO = new HashSet<TB_SUBTOPICO>();
@@ -31,6 +32,8 @@ namespace USJT.Sigma.DataAccess
         public string NOM_LOGIN { get; set; }
         public string DES_SENHA { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_ATIVIDADE_ALUNO> TB_ATIVIDADE_ALUNO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_ATIVIDADE> TB_ATIVIDADE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

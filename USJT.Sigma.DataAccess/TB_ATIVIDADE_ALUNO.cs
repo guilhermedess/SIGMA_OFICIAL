@@ -12,15 +12,14 @@ namespace USJT.Sigma.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class TB_VIDEO
+    public partial class TB_ATIVIDADE_ALUNO
     {
-        public int ID_VIDEO { get; set; }
-        public Nullable<int> ID_ATIVIDADE { get; set; }
-        public Nullable<int> ID_SUBTOPICO { get; set; }
-        public string NOM_VIDEO { get; set; }
-        public string DES_URL { get; set; }
+        public int ID_ATIVIDADE_ALUNO { get; set; }
+        public int ID_ATIVIDADE { get; set; }
+        public int ID_ALUNO { get; set; }
+        public Nullable<bool> CHK_STATUS { get; set; }
     
+        public virtual TB_ALUNO TB_ALUNO { get; set; }
         public virtual TB_ATIVIDADE TB_ATIVIDADE { get; set; }
-        public virtual TB_SUBTOPICO TB_SUBTOPICO { get; set; }
     }
 }

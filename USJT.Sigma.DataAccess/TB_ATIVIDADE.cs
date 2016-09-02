@@ -14,15 +14,31 @@ namespace USJT.Sigma.DataAccess
     
     public partial class TB_ATIVIDADE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TB_ATIVIDADE()
+        {
+            this.TB_ATIVIDADE_ALUNO = new HashSet<TB_ATIVIDADE_ALUNO>();
+            this.TB_VIDEO = new HashSet<TB_VIDEO>();
+        }
+    
         public int ID_ATIVIDADE { get; set; }
-        public int ID_ALUNO { get; set; }
+        public Nullable<int> ID_ALUNO { get; set; }
         public int ID_SUBTOPICO { get; set; }
         public string NOM_ATIVIDADE { get; set; }
-        public string NOM_IMAGEM { get; set; }
+        public string DES_TITULO { get; set; }
+        public string DES_SUBTITULO { get; set; }
+        public string DES_ATIVIDADE { get; set; }
+        public Nullable<int> NUM_PERGUNTA { get; set; }
+        public string DES_PERGUNTA { get; set; }
+        public string DES_RESPOSTA { get; set; }
         public Nullable<double> VAL_NOTA { get; set; }
         public Nullable<double> QTD_PROGRESSO { get; set; }
     
         public virtual TB_ALUNO TB_ALUNO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_ATIVIDADE_ALUNO> TB_ATIVIDADE_ALUNO { get; set; }
         public virtual TB_SUBTOPICO TB_SUBTOPICO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TB_VIDEO> TB_VIDEO { get; set; }
     }
 }

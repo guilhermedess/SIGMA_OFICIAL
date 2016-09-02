@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\adicional.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -256,6 +257,7 @@
     <Content Include="scripts\mega-menu.js" />
     <Content Include="scripts\progresso.js" />
     <Content Include="scripts\progresso2.js" />
+    <Content Include="scripts\video.js" />
     <Content Include="scripts\wizard.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -317,46 +319,42 @@
     <Content Include="Views\Aluno\Progresso.cshtml" />
     <Content Include="Views\Aluno\_PartialWizard.cshtml" />
     <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvTodas.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasIntroducaoDistribuicao3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasPontosOuValores4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoClassesOuIntervalos3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasElementos1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasElementos2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasElementos3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasElementos4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasClassesOuIntervalos1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasClassesOuIntervalos2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasClassesOuIntervalos3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasClassesOuIntervalos4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoPontosOuValores1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoPontosOuValores2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoPontosOuValores3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoPontosOuValores4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaRelativaPercentual1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaRelativaPercentual2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaRelativaPercentual3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaRelativaPercentual4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaRelativaPercentual1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaRelativaPercentual2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaRelativaPercentual3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaRelativaPercentual4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoDistribuicaoFrequencia1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoDistribuicaoFrequencia2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoDistribuicaoFrequencia3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasApresentacaoDistribuicaoFrequencia4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\_DicasFrequenciaAcumuladaSimplesAbsoluta4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\2\_DicasPontosOuValores1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\2\_DicasPontosOuValores2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\2\_DicasPontosOuValores3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\2\_DicasPontosOuValores4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.1\_DicasApresentacaoPontosOuValores1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.1\_DicasApresentacaoPontosOuValores2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.1\_DicasApresentacaoPontosOuValores3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.1\_DicasApresentacaoPontosOuValores4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.3\_DicasFrequenciaAcumuladaRelativaPercentual1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.3\_DicasFrequenciaAcumuladaRelativaPercentual2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.3\_DicasFrequenciaAcumuladaRelativaPercentual3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.3\_DicasFrequenciaAcumuladaRelativaPercentual4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia4.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta1.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta2.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta3.cshtml" />
+    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta4.cshtml" />
     <Content Include="Views\Aluno\_PartialMensagem.cshtml" />
     <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvIntroducaoADistribuicao.cshtml" />
     <Content Include="Views\Aluno\PaineisAtividades\_PartialAtvPontosValores.cshtml" />
@@ -381,6 +379,7 @@
     <Folder Include="Content\img\certificado\" />
     <Folder Include="Content\img\graficos\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\SubDistribuicao\DicasDistribuicao\1\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\USJT.Sigma.DataAccess\USJT.Sigma.DataAccess.csproj">

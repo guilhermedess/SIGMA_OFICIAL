@@ -12,10 +12,13 @@ namespace USJT.Sigma.Model
         public int IdAluno { get; set; }
         public int IdSubTopico { get; set; }
         public string NomeAtv { get; set; }
-        public string Imagem { get; set; }
+        public string DescricaoTitulo { get; set; }
+        public string DescricaoSubTitulo { get; set; }
+        public string DescricaoAtividade { get; set; }
+        public string DescricaoPergunta { get; set; }
         public Double Nota { get; set; }
         public Double Progresso { get; set; }
-        public bool Resposta { get; set; }
-        public List<object> ListRespostas { get; set; }
+        public string Resposta { get; set; }
+        public List<object> ListaDeRespostas { get; set; }
     }
 }

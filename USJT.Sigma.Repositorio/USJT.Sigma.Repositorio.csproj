@@ -41,6 +41,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\USJT.Sigma.UI.WEB\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlunoREP.cs" />
+    <Compile Include="AtividadeAlunoREP.cs" />
+    <Compile Include="VideoREP.cs" />
     <Compile Include="AtividadeREP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubTopicoREP.cs" />
@@ -68,6 +73,9 @@
       <Project>{db46c63d-7d5e-4f76-ab61-294f09aa63ff}</Project>
       <Name>USJT.Sigma.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
