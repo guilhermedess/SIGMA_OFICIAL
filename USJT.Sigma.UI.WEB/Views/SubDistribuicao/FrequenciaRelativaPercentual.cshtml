@@ -25,43 +25,43 @@
     //{
     foreach (var atividadesFeitas in Model.atividadesFeitas)
     {
-<script>
-    $(document).ready(function () {
-        $("#@atividadesFeitas.Atividade.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
-        $("#@atividadesFeitas.Atividade.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
-    });
-</script>
+        <script>
+            $(document).ready(function () {
+                $("#@atividadesFeitas.Atividade.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
+                $("#@atividadesFeitas.Atividade.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
+            });
+        </script>
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
     //}
 
-<script>
-    $(document).ready(function () {
-        $("#infoNota").text("Pontos: " + "@notaTotal");
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $("#infoNota").text("Pontos: " + "@notaTotal");
+        });
+    </script>
 }
 
 @for (int i = 0; i < Model.atividades.Count; i++)
 {
-<div id="camposAtividade">
-    <fieldset>
-        <legend>@Model.atividades[i].DescricaoTitulo - @Model.atividades[i].DescricaoSubTitulo</legend>
-    </fieldset>
-    <p>
-        <strong>Descrição:</strong> @Model.atividades[i].DescricaoAtividade
-    </p>
-    <p>
-        <strong>@Model.atividades[i].DescricaoPergunta</strong>
-    </p>
-</div>
+    <div id="camposAtividade">
+        <fieldset>
+            <legend>@Model.atividades[i].DescricaoTitulo - @Model.atividades[i].DescricaoSubTitulo</legend>
+        </fieldset>
+        <p>
+            <strong>Descrição:</strong> @Model.atividades[i].DescricaoAtividade
+        </p>
+        <p>
+            <strong>@Model.atividades[i].DescricaoPergunta</strong>
+        </p>
+    </div>
 
-<script>
-    $(document).ready(function () {
-        $("#divCamposAtv" + @i).append($("#camposAtividade"));
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $("#divCamposAtv" + @i).append($("#camposAtividade"));
+        });
+    </script>
 }
 
 @Html.Partial("_PartialDistribuicao")
@@ -77,7 +77,7 @@
             </legend>
 
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(1, "IntroducaoADistribuicao")" frameborder="0" allowfullscreen></iframe>
+                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div class="container-fluid">
@@ -134,123 +134,123 @@
                                 <div id="questao1">
                                     @using (Html.BeginForm())
                                     {
-                                    @Html.Hidden("IdAtividade", 20)
+                                        @Html.Hidden("IdAtividade", 13)
 
-                                    <div class="row">
-                                        <div id="divCamposAtv0" class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="row">
+                                            <div id="divCamposAtv0" class="col-lg-12 col-md-12 col-sm-12">
 
-                                        </div>
+                                            </div>
 
-                                        <div class="col-lg-4 col-md-4 col-sm-4">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Resultados</th>
-                                                            <th></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Futebol</td>
-                                                            <td>70</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Volei</td>
-                                                            <td>50</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Basquete</td>
-                                                            <td>40</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Natação</td>
-                                                            <td>20</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Tênis</td>
-                                                            <td>15</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ciclismo</td>
-                                                            <td>5</td>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
+                                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Resultados</th>
+                                                                <th></th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Futebol</td>
+                                                                <td>70</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Volei</td>
+                                                                <td>50</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Basquete</td>
+                                                                <td>40</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Natação</td>
+                                                                <td>20</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tênis</td>
+                                                                <td>15</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Ciclismo</td>
+                                                                <td>5</td>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Modalidade Esportiva</th>
+                                                                <th>Frequência Absoluta</th>
+                                                                <th>Modalidade Relativa</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Futebol</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Volei</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Basquete</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Natação</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Tênis</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Ciclismo</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Total</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-8 col-md-8 col-sm-8">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Modalidade Esportiva</th>
-                                                            <th>Frequência Absoluta</th>
-                                                            <th>Modalidade Relativa</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>Futebol</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Volei</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Basquete</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Natação</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Tênis</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Ciclismo</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>Total</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                        @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual1")
+
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv1RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1A" type="button" onclick="Dica1A()" value="Dicas" class="btn btn-warning" style="float: unset" />
+
+                                                </div>
+
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual1")
-
-                                    @* BOTOES FIXOS *@
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <hr />
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <span id="Atv1RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
-
-                                            </div>
-
-                                            <div class="col-lg-2 col-md-2 col-sm-2">
-                                                <input id="btnDica1A" type="button" onclick="Dica1A()" value="Dicas" class="btn btn-warning" style="float: unset" />
-
-                                            </div>
-
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
-                                            </div>
-                                        </div>
-                                    </div>
                                     }
                                 </div>
 
@@ -266,79 +266,79 @@
                                 <div id="questao2">
                                     @using (Html.BeginForm())
                                     {
-                                    @Html.Hidden("IdAtividade", 21)
+                                        @Html.Hidden("IdAtividade", 14)
 
-                                    <div class="row">
-                                        <div id="divCamposAtv1" class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="row">
+                                            <div id="divCamposAtv1" class="col-lg-12 col-md-12 col-sm-12">
 
-                                        </div>
+                                            </div>
 
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>R$</th>
-                                                            <th>Frequência Absoluta</th>
-                                                            <th>Frequência Relativa</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>600 a 900</td>
-                                                            <td>6</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>690 a 780</td>
-                                                            <td>15</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>780 a 870</td>
-                                                            <td>30</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>870 a 960</td>
-                                                            <td>6</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>960 a 1050</td>
-                                                            <td>3</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Total</td>
-                                                            <td>60</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>R$</th>
+                                                                <th>Frequência Absoluta</th>
+                                                                <th>Frequência Relativa</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>600 a 900</td>
+                                                                <td>6</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>690 a 780</td>
+                                                                <td>15</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>780 a 870</td>
+                                                                <td>30</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>870 a 960</td>
+                                                                <td>6</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>960 a 1050</td>
+                                                                <td>3</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Total</td>
+                                                                <td>60</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual2")
+                                        @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual2")
 
-                                    @* BOTOES FIXOS *@
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <hr />
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <span id="Atv2RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
-                                            </div>
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv2RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                                </div>
 
-                                            <div class="col-lg-2 col-md-2 col-sm-2">
-                                                <input id="btnDica1B" type="button" onclick="Dica1B()" value="Dicas" class="btn btn-warning" style="float: unset" />
-                                            </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1B" type="button" onclick="Dica1B()" value="Dicas" class="btn btn-warning" style="float: unset" />
+                                                </div>
 
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     }
                                 </div>
 
@@ -355,81 +355,81 @@
                                 <div id="questao3">
                                     @using (Html.BeginForm())
                                     {
-                                    @Html.Hidden("IdAtividade", 22)
+                                        @Html.Hidden("IdAtividade", 15)
 
-                                    <div class="row">
-                                        <div id="divCamposAtv2" class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="row">
+                                            <div id="divCamposAtv2" class="col-lg-12 col-md-12 col-sm-12">
 
-                                        </div>
+                                            </div>
 
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Elemento</th>
-                                                            <th>Frequência Absoluta</th>
-                                                            <th>Frequência Relativa</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>3</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>5</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>6</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>7</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Total</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                            <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Elemento</th>
+                                                                <th>Frequência Absoluta</th>
+                                                                <th>Frequência Relativa</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>6</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>7</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Total</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual3")
+                                        @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual3")
 
-                                    @* BOTOES FIXOS *@
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <hr />
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <span id="Atv3RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv3RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
 
-                                            </div>
+                                                </div>
 
-                                            <div class="col-lg-2 col-md-2 col-sm-2">
-                                                <input id="btnDica1C" type="button" onclick="Dica1C()" value="Dicas" class="btn btn-warning" style="float: unset" />
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1C" type="button" onclick="Dica1C()" value="Dicas" class="btn btn-warning" style="float: unset" />
 
-                                            </div>
+                                                </div>
 
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     }
                                 </div>
 
@@ -446,112 +446,102 @@
                                 <div id="questao4">
                                     @using (Html.BeginForm())
                                     {
-                                    @Html.Hidden("IdAtividade", 23)
+                                        @Html.Hidden("IdAtividade", 16)
 
-                                    <div class="row">
-                                        <div id="divCamposAtv3" class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="row">
+                                            <div id="divCamposAtv3" class="col-lg-12 col-md-12 col-sm-12">
 
-                                        </div>
+                                            </div>
 
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover table-striped">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Valores</th>
-                                                                    <th>Frequência Absoluta</th>
-                                                                    <th>Frequência Relativa</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>1</td>
-                                                                    <td>4</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "X4", new { @class = "form-control" })</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>2</td>
-                                                                    <td>8</td>
-                                                                    <td>18%</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "X1", new { @class = "form-control" })</td>
-                                                                    <td>16%</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>4</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "X2", new { @class = "form-control" })</td>
-                                                                    <td>13%</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>5</td>
-                                                                    <td>9</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "X5", new { @class = "form-control" })</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>6</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "X3", new { @class = "form-control" })</td>
-                                                                    <td>22%</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>7</td>
-                                                                    <td>1</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "X6", new { @class = "form-control" })</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Total</td>
-                                                                    <td>45</td>
-                                                                    <td>100%</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div>
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Valores</th>
+                                                                        <th>Frequência Absoluta</th>
+                                                                        <th>Frequência Relativa</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>4</td>
+                                                                        <td>@Html.TextBox("ListaDeRespostas", "X4", new { @class = "form-control" })</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>2</td>
+                                                                        <td>8</td>
+                                                                        <td>18%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>3</td>
+                                                                        <td>@Html.TextBox("ListaDeRespostas", "X1", new { @class = "form-control" })</td>
+                                                                        <td>16%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>4</td>
+                                                                        <td>@Html.TextBox("ListaDeRespostas", "X2", new { @class = "form-control" })</td>
+                                                                        <td>13%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>5</td>
+                                                                        <td>9</td>
+                                                                        <td>@Html.TextBox("ListaDeRespostas", "X5", new { @class = "form-control" })</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>6</td>
+                                                                        <td>@Html.TextBox("ListaDeRespostas", "X3", new { @class = "form-control" })</td>
+                                                                        <td>22%</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>7</td>
+                                                                        <td>1</td>
+                                                                        <td>@Html.TextBox("ListaDeRespostas", "X6", new { @class = "form-control" })</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Total</td>
+                                                                        <td>45</td>
+                                                                        <td>100%</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual4")
+                                        @Html.Partial("DicasDistribuicao/4.1/_DicasFrequenciaRelativaPercentual4")
 
-                                    @* BOTOES FIXOS *@
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <hr />
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <span id="Atv4RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv4RelativaPercentual" class="glyphicon glyphicon-remove red icon-lg"></span>
 
-                                            </div>
+                                                </div>
 
-                                            <div class="col-lg-2 col-md-2 col-sm-2">
-                                                <input id="btnDica1D" type="button" onclick="Dica1D()" value="Dicas" class="btn btn-warning" style="float: unset" />
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1D" type="button" onclick="Dica1D()" value="Dicas" class="btn btn-warning" style="float: unset" />
 
-                                            </div>
+                                                </div>
 
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     }
                                 </div>
 
                                 <hr />
 
-                                <div id="videoAtividade1">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe width="816" height="459" src="@videoREP.BuscaVideoPorIdAtividade(1, "Atv1IntroducaoADistribuicao")" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                </div>
-
                                 <div>
                                     <br />
-                                    <p class="red">
-                                        <strong>Imperrou? Assista mais 1 vídeo</strong>
-                                    </p>
-                                    <input type="button" id="btnVideoAtividade1" value="Assistir" class="btn btn-danger" />
 
                                     <ul class="list-inline pull-right">
                                         <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
@@ -560,6 +550,21 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
+
+                        @* Video de exercicio fixo para as guias *@
+                        <div id="videoAtividade1">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "Atv1RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="red">
+                                <strong>Imperrou? Assista mais 1 vídeo</strong>
+                            </p>
+                            <input type="button" id="btnVideoAtividade1" value="Assistir" class="btn btn-danger" />
+                        </div>
+
                     </div>
                 </div>
             </div>

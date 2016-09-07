@@ -39,7 +39,6 @@
                     </ul>
                 </div>
 
-                @*<form role="form">*@
                 @using (Html.BeginForm())
                 {
                     <div class="tab-content">
@@ -60,40 +59,25 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     @{
-                                        if (Model.AtividadesFeitas == null)
+                                        foreach (var todasAtividades in Model.todasAtividades)
                                         {
-                                            @Html.Partial("PaineisAtividades/_PartialAtvTodas")
-                                        }
-                                        else
-                                        {
-                                            if (Model.todas.Equals("todas"))
-                                            {
-                                                @Html.Partial("PaineisAtividades/_PartialAtvTodas")
-                                            }
-                                            else
-                                            {
-                                                if (Model.todas.Equals("todasPendentes"))
-                                                {
-                                                    @Html.Partial("PaineisAtividades/_PartialAtvTodas")
-
-                                                    foreach (var atividadesFeitas in Model.AtividadesFeitas)
-                                                    {
-                                                        <script>
-                                                            $(document).ready(function () {
-                                                                $("#@atividadesFeitas.NomeAtv" + "Painel").remove();
-                                                            });
-                                                        </script>
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                                            @Html.Partial("PaineisAtividades/_PartialAtv" + (string)Model.todas)
-                                                        </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                                <div class="panel-group">
+                                                    <div id="@todasAtividades.IdAtividade" class="panel panel-red">
+                                                        <div class="panel-heading" title="@todasAtividades.DescricaoTitulo">@todasAtividades.DescricaoTitulo</div>
+                                                        <div class="panel-body">@todasAtividades.DescricaoAtividade</div>
                                                     </div>
-                                                }
-                                            }
+                                                </div>
+                                            </div>
+                                        }
+
+                                        foreach (var atividadesFeitas in Model.atividadesFeitas)
+                                        {
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $("#@atividadesFeitas.Atividade.IdAtividade").removeClass("panel-red").addClass("panel-green");
+                                                });
+                                            </script>
                                         }
                                     }
                                 </div>
@@ -126,7 +110,6 @@
                         <div class="clearfix"></div>
                     </div>
                                         }
-                @*</form>*@
             </div>
         </section>
     </div>

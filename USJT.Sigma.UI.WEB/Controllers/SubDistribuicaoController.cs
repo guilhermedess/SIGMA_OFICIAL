@@ -105,21 +105,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult PontosOuValores(Aluno aluno, Atividade atividade)
         {
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "PontosOuValores", "SubDistribuicao");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
-            return View();
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         public ActionResult ClassesOuIntervalos(Aluno aluno)
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 3);
             }
             catch (Exception)
             {
@@ -132,41 +134,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ClassesOuIntervalos(Aluno aluno, Atividade atividade)
         {
-
-            return View();
-        }
-
-        public ActionResult Elementos(Aluno aluno)
-        {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return ConferirRespotaRecebida(atividade, "ClassesOuIntervalos", "SubDistribuicao");
             }
             catch (Exception)
             {
-                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
                 return RedirectToAction("Login", "Aluno");
             }
-        }
-
-        [HttpPost]
-        public ActionResult Elementos(Aluno aluno, Atividade atividade)
-        {
-            return View();
         }
 
         public ActionResult FrequenciaRelativaPercentual(Aluno aluno)
         {
             try
             {
-                return RenderizarView(aluno, 5);
+                return RenderizarView(aluno, 4);
             }
             catch (Exception)
             {
@@ -195,13 +179,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 5);
             }
             catch (Exception)
             {
@@ -214,21 +192,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno, Atividade atividade)
         {
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
-            return View();
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno)
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 6);
             }
             catch (Exception)
             {
@@ -241,48 +221,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno, Atividade atividade)
         {
-
-            return View();
-        }
-
-        public ActionResult ApresentacaoDistribuicaoFrequencia(Aluno aluno)
-        {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return ConferirRespotaRecebida(atividade, "FrequenciaAcumuladaRelativaPercentual", "SubDistribuicao");
             }
             catch (Exception)
             {
-                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
                 return RedirectToAction("Login", "Aluno");
             }
-        }
-
-        [HttpPost]
-        public ActionResult ApresentacaoDistribuicaoFrequencia(Aluno aluno, Atividade atividade)
-        {
-
-            return View();
         }
 
         public ActionResult ApresentacaoPontosOuValores(Aluno aluno)
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 7);
             }
             catch (Exception)
             {
@@ -295,20 +250,23 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ApresentacaoPontosOuValores(Aluno aluno, Atividade atividade)
         {
-            return View();
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "ApresentacaoPontosOuValores", "SubDistribuicao");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno)
         {
             try
             {
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                List<Atividade> atividadesFeitas = atividadeREP.AtividadesFeitas(aluno.IdAluno);
-
-                return View(atividadesFeitas);
+                return RenderizarView(aluno, 8);
             }
             catch (Exception)
             {
@@ -321,7 +279,16 @@ namespace USJT.Sigma.UI.WEB.Controllers
         [HttpPost]
         public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno, Atividade atividade)
         {
-            return View();
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "ApresentacaoClassesOuIntervalos", "SubDistribuicao");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
 
         public ActionResult rascunho()

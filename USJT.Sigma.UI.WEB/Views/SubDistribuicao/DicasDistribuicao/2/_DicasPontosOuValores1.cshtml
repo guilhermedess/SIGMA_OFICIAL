@@ -4,6 +4,7 @@
         <p><strong>Dica 1</strong></p>
 
         @* DICA 1 *@
+        <p>Some os valores repetidos da tabela.</p>
 
     </div>
     <div id="divDica2A" hidden="hidden">
@@ -11,6 +12,7 @@
         <p><strong>Dica 2</strong></p>
 
         @* DICA 2 *@
+        <p>Por exemplo, 6 funcionários possuem 0 filhos.</p>
 
     </div>
     <div id="divDica3A" hidden="hidden">
@@ -18,26 +20,45 @@
         <p><strong>Dica 3</strong></p>
 
         @* DICA 3 *@
-
-    </div>
-</div>
-
-@* BOTOES FIXOS *@
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <hr />
+        <p><strong>Resposta</strong></p>
         <div class="col-lg-5 col-md-5 col-sm-5">
-            <span id="Atv1PontosOuValores" class="glyphicon glyphicon-remove red icon-lg"></span>
-
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Quantidade de Filhos</th>
+                            <th>Quantidade de Funcionários</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <th>6</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <th>7</th>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <th>5</th>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <th>3</th>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <th>2</th>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <th>1</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <div class="col-lg-2 col-md-2 col-sm-2">
-            <input id="btnDica1A" type="button" onclick="Dica1A()" value="Dicas" class="btn btn-warning" style="float: unset" />
-
-        </div>
-
-        <div class="col-lg-5 col-md-5 col-sm-5">
-            <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
-        </div>
     </div>
 </div>

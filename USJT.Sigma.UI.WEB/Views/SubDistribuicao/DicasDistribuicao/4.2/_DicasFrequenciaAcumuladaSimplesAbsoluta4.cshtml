@@ -4,7 +4,7 @@
         <p><strong>Dica 1</strong></p>
         
         @* DICA 1 *@
-        .......
+        <p>Tem apenas 1 valor que se enquadra entre 200 e 250, no caso é o valor “233”.</p>
 
     </div>
     <div id="divDica2D" hidden="hidden">
@@ -12,6 +12,7 @@
         <p><strong>Dica 2</strong></p>
         
         @* DICA 2 *@
+        <p>A frequência acumulada da primeira linha é igual a 1, pois não tem nenhum valor que antecede esta faixa.</p>
 
     </div>
     <div id="divDica3D" hidden="hidden">
@@ -19,26 +20,36 @@
         <p><strong>Dica 3</strong></p>
 
         @* DICA 3 *@
-
-    </div>
-</div>
-
-@* BOTOES FIXOS *@
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <hr />
-        <div class="col-lg-5 col-md-5 col-sm-5">
-            <span id="Atv4AcumuladaSimplesOuAbsoluta" class="glyphicon glyphicon-remove red icon-lg"></span>
-
-        </div>
-
-        <div class="col-lg-2 col-md-2 col-sm-2">
-            <input id="btnDica1D" type="button" onclick="Dica1D()" value="Dicas" class="btn btn-warning" style="float: unset" />
-
-        </div>
-
-        <div class="col-lg-5 col-md-5 col-sm-5">
-            <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+        <p><strong>Resposta</strong></p>
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Valores</th>
+                            <th>Frequência (F)</th>
+                            <th>Frequência Acumulada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>200-250</td>
+                            <th>1</th>
+                            <th>1</th>
+                        </tr>
+                        <tr>
+                            <td>251-300</td>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+                        <tr>
+                            <td>301-350</td>
+                            <th>2</th>
+                            <th>7</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

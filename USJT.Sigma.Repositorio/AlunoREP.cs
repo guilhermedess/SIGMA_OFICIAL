@@ -77,25 +77,25 @@ namespace USJT.Sigma.Repositorio
             }
         }
 
-        public double ProgressoTotal(int idAluno)
-        {
-            using (var conexao = new SIGMAEntities())
-            {
-                var retorno = (from C in conexao.TB_ATIVIDADE
-                               where C.ID_ALUNO == idAluno
-                               select new Atividade { }).ToList();
+        //public double ProgressoTotal(int idAluno)
+        //{
+        //    using (var conexao = new SIGMAEntities())
+        //    {
+        //        var retorno = (from C in conexao.TB_ATIVIDADE
+        //                       where C.ID_ALUNO == idAluno
+        //                       select new Atividade { }).ToList();
                 
-                //quantidadeAtividadeFeitas / quantidadeTotalAtividadesExistentes
-                return (retorno.Count * 100) / 20;
-            }
-        }
+        //        //quantidadeAtividadeFeitas / quantidadeTotalAtividadesExistentes
+        //        return (retorno.Count * 100) / 20;
+        //    }
+        //}
 
         public double ProgressoDistribuicao(int idAluno)
         {
             using (var conexao = new SIGMAEntities())
             {
                 var retorno = (from C in conexao.TB_ATIVIDADE
-                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "Atv1IntroducaoADistribuicao" || 
+                               where /*C.ID_ALUNO == idAluno &&*/ (C.NOM_ATIVIDADE == "Atv1IntroducaoADistribuicao" || 
                                C.NOM_ATIVIDADE == "Atv2IntroducaoADistribuicao" || C.NOM_ATIVIDADE == "Atv3IntroducaoADistribuicao" || 
                                C.NOM_ATIVIDADE == "Atv4IntroducaoADistribuicao")
                                select new Atividade { }).ToList();
@@ -110,7 +110,7 @@ namespace USJT.Sigma.Repositorio
             using (var conexao = new SIGMAEntities())
             {
                 var retorno = (from C in conexao.TB_ATIVIDADE
-                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvIntroducaoMedidasDeTendenciaCentral" ||
+                               where /*C.ID_ALUNO == idAluno && */(C.NOM_ATIVIDADE == "AtvIntroducaoMedidasDeTendenciaCentral" ||
                                C.NOM_ATIVIDADE == "AtvMediaSimplesPonderada" || C.NOM_ATIVIDADE == "AtvModa" || C.NOM_ATIVIDADE == "AtvMediana"
                                || C.NOM_ATIVIDADE == "AtvMediaGeometrica" || C.NOM_ATIVIDADE == "AtvMediaHarmonica" || C.NOM_ATIVIDADE == "AtvSeparatrizes")
                                select new Atividade { }).ToList();
@@ -124,7 +124,7 @@ namespace USJT.Sigma.Repositorio
             using (var conexao = new SIGMAEntities())
             {
                 var retorno = (from C in conexao.TB_ATIVIDADE
-                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvDispersao" ||
+                               where /*C.ID_ALUNO == idAluno && */(C.NOM_ATIVIDADE == "AtvDispersao" ||
                                C.NOM_ATIVIDADE == "AtvAssimetria" || C.NOM_ATIVIDADE == "AtvCurtose")
                                select new Atividade { }).ToList();
 
@@ -138,7 +138,7 @@ namespace USJT.Sigma.Repositorio
             using (var conexao = new SIGMAEntities())
             {
                 var retorno = (from C in conexao.TB_ATIVIDADE
-                               where C.ID_ALUNO == idAluno && (C.NOM_ATIVIDADE == "AtvImpAmostragem" ||
+                               where /*C.ID_ALUNO == idAluno && */(C.NOM_ATIVIDADE == "AtvImpAmostragem" ||
                                C.NOM_ATIVIDADE == "AtvConceitosFundamentaisAmostragem" || C.NOM_ATIVIDADE == "AtvAleatoriaSimples"
                                || C.NOM_ATIVIDADE == "AtvAleatoriaEstratificada" || C.NOM_ATIVIDADE == "AtvConglomerado"
                                || C.NOM_ATIVIDADE == "AtvSistematica")

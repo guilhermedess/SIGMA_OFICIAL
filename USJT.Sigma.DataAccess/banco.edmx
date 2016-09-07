@@ -22,7 +22,6 @@
             <PropertyRef Name="ID_ATIVIDADE" />
           </Key>
           <Property Name="ID_ATIVIDADE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_ALUNO" Type="int" />
           <Property Name="ID_SUBTOPICO" Type="int" Nullable="false" />
           <Property Name="NOM_ATIVIDADE" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DES_TITULO" Type="varchar" MaxLength="50" />
@@ -30,7 +29,7 @@
           <Property Name="DES_ATIVIDADE" Type="varchar(max)" />
           <Property Name="NUM_PERGUNTA" Type="int" />
           <Property Name="DES_PERGUNTA" Type="varchar(max)" />
-          <Property Name="DES_RESPOSTA" Type="varchar" MaxLength="50" />
+          <Property Name="DES_RESPOSTA" Type="varchar(max)" />
           <Property Name="VAL_NOTA" Type="float" />
           <Property Name="QTD_PROGRESSO" Type="float" />
         </EntityType>
@@ -56,9 +55,7 @@
             <PropertyRef Name="ID_SUBTOPICO" />
           </Key>
           <Property Name="ID_SUBTOPICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_ALUNO" Type="int" />
           <Property Name="ID_TOPICO" Type="int" Nullable="false" />
-          <Property Name="ID_ATIVIDADE" Type="int" />
           <Property Name="NOM_SUBTOPICO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="QTD_PROGRESSO" Type="float" />
           <Property Name="CHK_STATUS" Type="bit" />
@@ -107,18 +104,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TB_ATIVIDADE_TB_ALUNO">
-          <End Role="TB_ALUNO" Type="Self.TB_ALUNO" Multiplicity="0..1" />
-          <End Role="TB_ATIVIDADE" Type="Self.TB_ATIVIDADE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TB_ALUNO">
-              <PropertyRef Name="ID_ALUNO" />
-            </Principal>
-            <Dependent Role="TB_ATIVIDADE">
-              <PropertyRef Name="ID_ALUNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TB_ATIVIDADE_TB_SUBTOPICO">
           <End Role="TB_SUBTOPICO" Type="Self.TB_SUBTOPICO" Multiplicity="1" />
           <End Role="TB_ATIVIDADE" Type="Self.TB_ATIVIDADE" Multiplicity="*" />
@@ -139,18 +124,6 @@
               <PropertyRef Name="ID_ALUNO" />
             </Principal>
             <Dependent Role="TB_CERTIFICADO">
-              <PropertyRef Name="ID_ALUNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TB_SUBTOPICO_TB_ALUNO">
-          <End Role="TB_ALUNO" Type="Self.TB_ALUNO" Multiplicity="0..1" />
-          <End Role="TB_SUBTOPICO" Type="Self.TB_SUBTOPICO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TB_ALUNO">
-              <PropertyRef Name="ID_ALUNO" />
-            </Principal>
-            <Dependent Role="TB_SUBTOPICO">
               <PropertyRef Name="ID_ALUNO" />
             </Dependent>
           </ReferentialConstraint>
@@ -219,10 +192,6 @@
             <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
             <End Role="TB_ATIVIDADE_ALUNO" EntitySet="TB_ATIVIDADE_ALUNO" />
           </AssociationSet>
-          <AssociationSet Name="FK_TB_ATIVIDADE_TB_ALUNO" Association="Self.FK_TB_ATIVIDADE_TB_ALUNO">
-            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
-            <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
-          </AssociationSet>
           <AssociationSet Name="FK_TB_ATIVIDADE_TB_SUBTOPICO" Association="Self.FK_TB_ATIVIDADE_TB_SUBTOPICO">
             <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
             <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
@@ -230,10 +199,6 @@
           <AssociationSet Name="FK_TB_CERTIFICADO_TB_ALUNO" Association="Self.FK_TB_CERTIFICADO_TB_ALUNO">
             <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
             <End Role="TB_CERTIFICADO" EntitySet="TB_CERTIFICADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TB_SUBTOPICO_TB_ALUNO" Association="Self.FK_TB_SUBTOPICO_TB_ALUNO">
-            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
-            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
           </AssociationSet>
           <AssociationSet Name="FK_TB_SUBTOPICO_TB_TOPICO" Association="Self.FK_TB_SUBTOPICO_TB_TOPICO">
             <End Role="TB_TOPICO" EntitySet="TB_TOPICO" />
@@ -268,17 +233,9 @@
             <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
             <End Role="TB_ATIVIDADE_ALUNO" EntitySet="TB_ATIVIDADE_ALUNO" />
           </AssociationSet>
-          <AssociationSet Name="FK_TB_ATIVIDADE_TB_ALUNO" Association="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_TB_ALUNO">
-            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
-            <End Role="TB_ATIVIDADE" EntitySet="TB_ATIVIDADE" />
-          </AssociationSet>
           <AssociationSet Name="FK_TB_CERTIFICADO_TB_ALUNO" Association="SIGMA_OFICIALModel.FK_TB_CERTIFICADO_TB_ALUNO">
             <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
             <End Role="TB_CERTIFICADO" EntitySet="TB_CERTIFICADO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TB_SUBTOPICO_TB_ALUNO" Association="SIGMA_OFICIALModel.FK_TB_SUBTOPICO_TB_ALUNO">
-            <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
-            <End Role="TB_SUBTOPICO" EntitySet="TB_SUBTOPICO" />
           </AssociationSet>
           <AssociationSet Name="FK_TB_TOPICO_TB_ALUNO" Association="SIGMA_OFICIALModel.FK_TB_TOPICO_TB_ALUNO">
             <End Role="TB_ALUNO" EntitySet="TB_ALUNO" />
@@ -317,9 +274,7 @@
           <Property Name="NOM_LOGIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DES_SENHA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TB_ATIVIDADE_ALUNO" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_ALUNO_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_ATIVIDADE_ALUNO" />
-          <NavigationProperty Name="TB_ATIVIDADE" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_ATIVIDADE" />
           <NavigationProperty Name="TB_CERTIFICADO" Relationship="SIGMA_OFICIALModel.FK_TB_CERTIFICADO_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_CERTIFICADO" />
-          <NavigationProperty Name="TB_SUBTOPICO" Relationship="SIGMA_OFICIALModel.FK_TB_SUBTOPICO_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_SUBTOPICO" />
           <NavigationProperty Name="TB_TOPICO" Relationship="SIGMA_OFICIALModel.FK_TB_TOPICO_TB_ALUNO" FromRole="TB_ALUNO" ToRole="TB_TOPICO" />
         </EntityType>
         <EntityType Name="TB_ATIVIDADE">
@@ -327,7 +282,6 @@
             <PropertyRef Name="ID_ATIVIDADE" />
           </Key>
           <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_ALUNO" Type="Int32" />
           <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" />
           <Property Name="NOM_ATIVIDADE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DES_TITULO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -335,10 +289,9 @@
           <Property Name="DES_ATIVIDADE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NUM_PERGUNTA" Type="Int32" />
           <Property Name="DES_PERGUNTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DES_RESPOSTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DES_RESPOSTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="VAL_NOTA" Type="Double" />
           <Property Name="QTD_PROGRESSO" Type="Double" />
-          <NavigationProperty Name="TB_ALUNO" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_TB_ALUNO" FromRole="TB_ATIVIDADE" ToRole="TB_ALUNO" />
           <NavigationProperty Name="TB_ATIVIDADE_ALUNO" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_ALUNO_TB_ATIVIDADE" FromRole="TB_ATIVIDADE" ToRole="TB_ATIVIDADE_ALUNO" />
           <NavigationProperty Name="TB_SUBTOPICO" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_TB_SUBTOPICO" FromRole="TB_ATIVIDADE" ToRole="TB_SUBTOPICO" />
           <NavigationProperty Name="TB_VIDEO" Relationship="SIGMA_OFICIALModel.FK_TB_VIDEO_TB_ATIVIDADE" FromRole="TB_ATIVIDADE" ToRole="TB_VIDEO" />
@@ -368,13 +321,10 @@
             <PropertyRef Name="ID_SUBTOPICO" />
           </Key>
           <Property Name="ID_SUBTOPICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ID_ALUNO" Type="Int32" />
           <Property Name="ID_TOPICO" Type="Int32" Nullable="false" />
-          <Property Name="ID_ATIVIDADE" Type="Int32" />
           <Property Name="NOM_SUBTOPICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="QTD_PROGRESSO" Type="Double" />
           <Property Name="CHK_STATUS" Type="Boolean" />
-          <NavigationProperty Name="TB_ALUNO" Relationship="SIGMA_OFICIALModel.FK_TB_SUBTOPICO_TB_ALUNO" FromRole="TB_SUBTOPICO" ToRole="TB_ALUNO" />
           <NavigationProperty Name="TB_ATIVIDADE" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_TB_SUBTOPICO" FromRole="TB_SUBTOPICO" ToRole="TB_ATIVIDADE" />
           <NavigationProperty Name="TB_TOPICO" Relationship="SIGMA_OFICIALModel.FK_TB_SUBTOPICO_TB_TOPICO" FromRole="TB_SUBTOPICO" ToRole="TB_TOPICO" />
           <NavigationProperty Name="TB_VIDEO" Relationship="SIGMA_OFICIALModel.FK_TB_VIDEO_TB_SUBTOPICO" FromRole="TB_SUBTOPICO" ToRole="TB_VIDEO" />
@@ -415,18 +365,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TB_ATIVIDADE_TB_ALUNO">
-          <End Type="SIGMA_OFICIALModel.TB_ALUNO" Role="TB_ALUNO" Multiplicity="0..1" />
-          <End Type="SIGMA_OFICIALModel.TB_ATIVIDADE" Role="TB_ATIVIDADE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TB_ALUNO">
-              <PropertyRef Name="ID_ALUNO" />
-            </Principal>
-            <Dependent Role="TB_ATIVIDADE">
-              <PropertyRef Name="ID_ALUNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TB_CERTIFICADO_TB_ALUNO">
           <End Type="SIGMA_OFICIALModel.TB_ALUNO" Role="TB_ALUNO" Multiplicity="1" />
           <End Type="SIGMA_OFICIALModel.TB_CERTIFICADO" Role="TB_CERTIFICADO" Multiplicity="*" />
@@ -435,18 +373,6 @@
               <PropertyRef Name="ID_ALUNO" />
             </Principal>
             <Dependent Role="TB_CERTIFICADO">
-              <PropertyRef Name="ID_ALUNO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TB_SUBTOPICO_TB_ALUNO">
-          <End Type="SIGMA_OFICIALModel.TB_ALUNO" Role="TB_ALUNO" Multiplicity="0..1" />
-          <End Type="SIGMA_OFICIALModel.TB_SUBTOPICO" Role="TB_SUBTOPICO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TB_ALUNO">
-              <PropertyRef Name="ID_ALUNO" />
-            </Principal>
-            <Dependent Role="TB_SUBTOPICO">
               <PropertyRef Name="ID_ALUNO" />
             </Dependent>
           </ReferentialConstraint>
@@ -555,7 +481,6 @@
                 <ScalarProperty Name="DES_TITULO" ColumnName="DES_TITULO" />
                 <ScalarProperty Name="NOM_ATIVIDADE" ColumnName="NOM_ATIVIDADE" />
                 <ScalarProperty Name="ID_SUBTOPICO" ColumnName="ID_SUBTOPICO" />
-                <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
                 <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -585,9 +510,7 @@
                 <ScalarProperty Name="CHK_STATUS" ColumnName="CHK_STATUS" />
                 <ScalarProperty Name="QTD_PROGRESSO" ColumnName="QTD_PROGRESSO" />
                 <ScalarProperty Name="NOM_SUBTOPICO" ColumnName="NOM_SUBTOPICO" />
-                <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />
                 <ScalarProperty Name="ID_TOPICO" ColumnName="ID_TOPICO" />
-                <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
                 <ScalarProperty Name="ID_SUBTOPICO" ColumnName="ID_SUBTOPICO" />
               </MappingFragment>
             </EntityTypeMapping>

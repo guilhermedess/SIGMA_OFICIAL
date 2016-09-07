@@ -15,6 +15,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
     {
         private AlunoREP alunoREP = new AlunoREP();
         private SubTopicoREP subTopicoREP = new SubTopicoREP();
+        AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
 
         public ActionResult Cadastrar()
         {
@@ -97,8 +98,8 @@ namespace USJT.Sigma.UI.WEB.Controllers
         public void CarregarComboDistribuicao()
         {
             IEnumerable<string> opcoes = new string[] { "O - Todas", "X - Todas Pendentes", "1 - Introdução e Conceitos", "2 - Dist. Pontos ou valores", "3 - Classes ou intervalos",
-                         "4 - Elementos", "4.1 - Freq. relativa ou percentual", "4.2 - Acum. simples ou absoluta", "4.3 - Acum. relativa ou percentual",
-                         "5 - Apresentação de distribuição", "5.1 - Freq. por pontos ou valores", "5.2 - Freq. por classes ou intervalos"};
+                         "4.1 - Freq. relativa ou percentual", "4.2 - Acum. simples ou absoluta", "4.3 - Acum. relativa ou percentual",
+                         "5.1 - Freq. por pontos ou valores", "5.2 - Freq. por classes ou intervalos"};
 
             ViewBag.Opcoes = new SelectList(opcoes);
         }
@@ -110,14 +111,14 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 CarregarComboDistribuicao();
 
                 AtividadeREP atividadeREP = new AtividadeREP();
-
+                
                 dynamic meusModelos = new ExpandoObject();
 
                 aluno = (Aluno)Session["dadosAlunoLogado"];
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
 
-                //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno); ;
-                meusModelos.todas = "todas";
+                meusModelos.atividadesFeitas = /*(List<AtividadeAluno>)*/atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
+                meusModelos.todasAtividades = atividadeREP.TodasAtividades();
 
                 return View(meusModelos);
             }
@@ -135,48 +136,41 @@ namespace USJT.Sigma.UI.WEB.Controllers
             try
             {
                 var procurarAtv = ValidarComboDistribuicao(comboDistribuicao);
-                
+
                 AtividadeREP atividadeREP = new AtividadeREP();
                 dynamic meusModelos = new ExpandoObject();
 
                 aluno = (Aluno)Session["dadosAlunoLogado"];
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                meusModelos.AtividadesFeitas = null;
-                meusModelos.todas = procurarAtv;
-
-                if (procurarAtv == null || procurarAtv == "")
+                
+                if(procurarAtv == 0)
                 {
-                    TempData.Add("Mensagem", "Opa, não pode!");
+                    //meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
 
-                    CarregarComboDistribuicao();
+                    //var x = atividadeREP.TodasAtividades();
 
-                    //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
-                    meusModelos.todas = "todas";
+                    //for (int i = 0; i < x.Count - 1; i++)
+                    //{
+                    //    x.Remove(meusModelos.atividadesFeitas[i].Atividade);
+                    //}
 
-                    return View(meusModelos);
+                    //meusModelos.atividadesFeitas = x;
                 }
                 else
                 {
-                    if (procurarAtv.Equals("todas"))
+                    if(procurarAtv == 99)
                     {
-                        //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
-                        meusModelos.todas = "todas";
+                        meusModelos.todasAtividades = atividadeREP.TodasAtividades();
+                        meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
                     }
                     else
                     {
-                        if (procurarAtv.Equals("todasPendentes"))
-                        {
-                            //meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitas(aluno.IdAluno);
-                        }
-                        else
-                        {
-                            meusModelos.AtividadesFeitas = (List<Atividade>)atividadeREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, procurarAtv);
-                        }                        
+                        meusModelos.todasAtividades = atividadeREP.TodasAtividadesDeUmSubTopico(procurarAtv);
+                        meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, procurarAtv);
                     }
                 }
-                //verificar aqui
-                CarregarComboDistribuicao();
+
+                CarregarComboDistribuicao();                      
 
                 return View(meusModelos);
 
@@ -189,81 +183,67 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public string ValidarComboDistribuicao(string comboDistribuicao)
+        public int ValidarComboDistribuicao(string comboDistribuicao)
         {
-            string procurarAtv = null;
+            int procurarAtv = 99;
 
             if (comboDistribuicao.Equals("O - Todas"))
             {
-                procurarAtv = "todas";
+                procurarAtv = 99;
             }
             else
             {
                 if (comboDistribuicao.Equals("X - Todas Pendentes"))
                 {
-                    procurarAtv = "todasPendentes";
+                    procurarAtv = 0;
                 }
                 else
                 {
                     if (comboDistribuicao.Equals("1 - Introdução e Conceitos"))
                     {
-                        procurarAtv = "IntroducaoADistribuicao";
+                        procurarAtv = 1;
                     }
                     else
                     {
                         if (comboDistribuicao.Equals("2 - Dist. Pontos ou valores"))
                         {
-                            procurarAtv = "PontosValores";
+                            procurarAtv = 2;
                         }
                         else
                         {
                             if (comboDistribuicao.Equals("3 - Classes ou intervalos"))
                             {
-                                procurarAtv = "ClassesIntervalos";
+                                procurarAtv = 3;
                             }
                             else
                             {
-                                if (comboDistribuicao.Equals("4 - Elementos"))
+                                if (comboDistribuicao.Equals("4.1 - Freq. relativa ou percentual"))
                                 {
-                                    procurarAtv = "Elementos";
+                                    procurarAtv = 4;
                                 }
                                 else
                                 {
-                                    if (comboDistribuicao.Equals("4.1 - Freq. relativa ou percentual"))
+                                    if (comboDistribuicao.Equals("4.2 - Acum. simples ou absoluta"))
                                     {
-                                        procurarAtv = "RelativaPercentual";
+                                        procurarAtv = 5;
                                     }
                                     else
                                     {
-                                        if (comboDistribuicao.Equals("4.2 - Acum. simples ou absoluta"))
+                                        if (comboDistribuicao.Equals("4.3 - Acum. relativa ou percentual"))
                                         {
-                                            procurarAtv = "AcumuladaSimplesOuAbsoluta";
+                                            procurarAtv = 6;
                                         }
                                         else
                                         {
-                                            if (comboDistribuicao.Equals("4.3 - Acum. relativa ou percentual"))
+                                            if (comboDistribuicao.Equals("5.1 - Freq. por pontos ou valores"))
                                             {
-                                                procurarAtv = "AcumuladaRelativaOuPercentual";
+                                                procurarAtv = 7;
                                             }
                                             else
                                             {
-                                                if (comboDistribuicao.Equals("5 - Apresentação de distribuição"))
+                                                if (comboDistribuicao.Equals("5.2 - Freq. por classes ou intervalos"))
                                                 {
-                                                    procurarAtv = "ApresentacaoDeDistribuicaoFreq";
-                                                }
-                                                else
-                                                {
-                                                    if (comboDistribuicao.Equals("5.1 - Freq. por pontos ou valores"))
-                                                    {
-                                                        procurarAtv = "FrequenciaPontosOuValores";
-                                                    }
-                                                    else
-                                                    {
-                                                        if (comboDistribuicao.Equals("5.2 - Freq. por classes ou intervalos"))
-                                                        {
-                                                            procurarAtv = "FrequenciaClassesOuIntervalos";
-                                                        }
-                                                    }
+                                                    procurarAtv = 8;
                                                 }
                                             }
                                         }
@@ -273,7 +253,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
                         }
                     }
                 }
-
             }
 
             return procurarAtv;

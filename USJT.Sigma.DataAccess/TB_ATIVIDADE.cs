@@ -22,7 +22,6 @@ namespace USJT.Sigma.DataAccess
         }
     
         public int ID_ATIVIDADE { get; set; }
-        public Nullable<int> ID_ALUNO { get; set; }
         public int ID_SUBTOPICO { get; set; }
         public string NOM_ATIVIDADE { get; set; }
         public string DES_TITULO { get; set; }
@@ -34,7 +33,6 @@ namespace USJT.Sigma.DataAccess
         public Nullable<double> VAL_NOTA { get; set; }
         public Nullable<double> QTD_PROGRESSO { get; set; }
     
-        public virtual TB_ALUNO TB_ALUNO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_ATIVIDADE_ALUNO> TB_ATIVIDADE_ALUNO { get; set; }
         public virtual TB_SUBTOPICO TB_SUBTOPICO { get; set; }
