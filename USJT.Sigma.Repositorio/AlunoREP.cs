@@ -10,6 +10,8 @@ namespace USJT.Sigma.Repositorio
 {
     public class AlunoREP
     {
+        AtividadeREP atividadeREP = new AtividadeREP();
+        AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
         public void Cadastrar(Aluno dadosTela)
         {
             using (var conexao = new SIGMAEntities())
@@ -42,7 +44,6 @@ namespace USJT.Sigma.Repositorio
                 conexao.SaveChanges();
             }
         }
-
         public Aluno buscaDadosAluno(Aluno dadosLogin)
         {
             using (var conexao = new SIGMAEntities())
@@ -58,7 +59,6 @@ namespace USJT.Sigma.Repositorio
                 return dadosLogin;
             }
         }
-
         public void checkSubAluno(Aluno aluno, bool feito)
         {
             using (var conexao = new SIGMAEntities())
@@ -68,43 +68,21 @@ namespace USJT.Sigma.Repositorio
                 conexao.SaveChanges();
             }
         }
-
         public bool ValidarLogin(Aluno dadosLogin)
         {
             using (var conexao = new SIGMAEntities())
             {
                 return conexao.TB_ALUNO.Any(x => x.NOM_LOGIN == dadosLogin.Usuário && x.DES_SENHA == dadosLogin.Senha);
             }
+        }        
+        public double ProgressoTotal(int idAluno)
+        {
+            return (atividadeAlunoREP.PontosFeitos(idAluno) * 100) / atividadeREP.TotalPontos();
         }
-
-        //public double ProgressoTotal(int idAluno)
-        //{
-        //    using (var conexao = new SIGMAEntities())
-        //    {
-        //        var retorno = (from C in conexao.TB_ATIVIDADE
-        //                       where C.ID_ALUNO == idAluno
-        //                       select new Atividade { }).ToList();
-                
-        //        //quantidadeAtividadeFeitas / quantidadeTotalAtividadesExistentes
-        //        return (retorno.Count * 100) / 20;
-        //    }
-        //}
-
         public double ProgressoDistribuicao(int idAluno)
         {
-            using (var conexao = new SIGMAEntities())
-            {
-                var retorno = (from C in conexao.TB_ATIVIDADE
-                               where /*C.ID_ALUNO == idAluno &&*/ (C.NOM_ATIVIDADE == "Atv1IntroducaoADistribuicao" || 
-                               C.NOM_ATIVIDADE == "Atv2IntroducaoADistribuicao" || C.NOM_ATIVIDADE == "Atv3IntroducaoADistribuicao" || 
-                               C.NOM_ATIVIDADE == "Atv4IntroducaoADistribuicao")
-                               select new Atividade { }).ToList();
-
-                //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao
-                return (retorno.Count * 100) / 4;
-            }
+            return (atividadeAlunoREP.PontosFeitos(idAluno) * 100) / atividadeREP.TotalDistribuicao();
         }
-
         public double ProgressoMedidasDeTendenciaCentral(int idAluno)
         {
             using (var conexao = new SIGMAEntities())
@@ -118,7 +96,6 @@ namespace USJT.Sigma.Repositorio
                 return (retorno.Count * 100) / 7;
             }
         }
-
         public double ProgressoMedidasDeDispersao(int idAluno)
         {
             using (var conexao = new SIGMAEntities())
@@ -132,7 +109,6 @@ namespace USJT.Sigma.Repositorio
                 return (retorno.Count * 100) / 3;
             }
         }
-
         public double ProgressoAmostragemEstimadores(int idAluno)
         {
             using (var conexao = new SIGMAEntities())
@@ -148,6 +124,5 @@ namespace USJT.Sigma.Repositorio
                 return (retorno.Count * 100) / 6;
             }
         }
-
     }
 }

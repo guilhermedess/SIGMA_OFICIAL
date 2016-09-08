@@ -117,6 +117,21 @@ namespace USJT.Sigma.Repositorio
                 conexao.SaveChanges();
             }
         }
-        
+        public double PontosFeitos(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalFeito = (from C in conexao.TB_ATIVIDADE_ALUNO
+                                  where C.ID_ALUNO == idAluno
+                                  select new AtividadeAluno
+                                  {
+                                      Atividade = new Atividade {
+                                          Nota = (double)C.TB_ATIVIDADE.VAL_NOTA
+                                      }
+                                  }).ToList();
+
+                return totalFeito.Sum(x => x.Atividade.Nota);
+            }
+        }
     }
 }

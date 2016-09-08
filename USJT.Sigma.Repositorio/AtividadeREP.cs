@@ -59,6 +59,32 @@ namespace USJT.Sigma.Repositorio
                 return atividadeRecuperada.DES_RESPOSTA;
             }
         }
+        public double TotalPontos()
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalNotas = (from C in conexao.TB_ATIVIDADE
+                                  select new Atividade
+                                  {
+                                      Nota = (double)C.VAL_NOTA
+                                  }).ToList();
 
+                return totalNotas.Sum(x => x.Nota);
+            }
+        }
+        public double TotalDistribuicao()
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalNotas = (from C in conexao.TB_ATIVIDADE
+                                  where C.TB_SUBTOPICO.TB_TOPICO.ID_TOPICO == 1
+                                  select new Atividade
+                                  {
+                                      Nota = (double)C.VAL_NOTA
+                                  }).ToList();
+
+                return totalNotas.Sum(x => x.Nota);
+            }
+        }
     }
 }

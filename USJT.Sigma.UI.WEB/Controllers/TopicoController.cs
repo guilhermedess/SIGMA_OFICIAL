@@ -16,6 +16,14 @@ namespace USJT.Sigma.UI.WEB.Controllers
             Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
 
             AlunoREP alunoREP = new AlunoREP();
+
+            dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
+            dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDistribuicao(dadosAlunoLogado.IdAluno);
+
+
+            AtividadeREP atividadeREP = new AtividadeREP();
+            var x = atividadeREP.TotalDistribuicao();
+
             //dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
             //dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDistribuicao(dadosAlunoLogado.IdAluno);
             //dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = alunoREP.ProgressoMedidasDeTendenciaCentral(dadosAlunoLogado.IdAluno);
