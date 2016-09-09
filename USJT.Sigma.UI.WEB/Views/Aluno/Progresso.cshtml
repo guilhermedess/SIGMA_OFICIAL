@@ -1,41 +1,22 @@
 ﻿@model dynamic
 
 <head>
-    <link href="~/Content/wizard.css" rel="stylesheet" />
-    <script src="~/scripts/wizard.js"></script>
-    <script src="~/scripts/botoes-topico.js"></script>
-    <link href="~/Content/topico.css" rel="stylesheet" />
     <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
     <script src="~/scripts/medalhas.js"></script>
-    <script src="~/scripts/mdb.min.js"></script>
-    @*<script src="~/scripts/tether.min.js"></script>
-    <link href="~/Content/mdb.min.css" rel="stylesheet" />*@
+    <link href="~/Content/panel.css" rel="stylesheet" />
+    <link href="~/Content/nivel.css" rel="stylesheet" />
 </head>
 
 @{
-    ViewBag.Title = "Progresso";
+    ViewBag.Title = "Atividades";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
-}
-
-@*@{
-    if (Model.AtividadesFeitas != null)
-    {
-        foreach (var atividadesFeitas in Model.AtividadesFeitas)
-        {
-            <script>
-                $(document).ready(function () {
-                    $("#@atividadesFeitas.NomeAtv").removeClass("panel-red").addClass("panel-green");
-                });
-            </script>
-        }
-    }
 
     <script>
         $(document).ready(function () {
             Medalhas(@Model.Aluno.ProgressoTotal);
         });
     </script>
-}*@
+}
 
 <div class="container">
     <div class="row">
@@ -48,7 +29,7 @@
     </div>
 
     <center>
-        <div class="container row">
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 jumbotron">
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <a>
@@ -78,16 +59,227 @@
         </div>
     </center>
 
-    @Html.Partial("_PartialWizard")
+    <hr />
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Cria</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Fraldinha</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Dentinho</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Dente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Juvenil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Junior</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Pleno</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Sênior</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Master</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">Especialista</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
 
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="text-center">
-                <h2>Progresso</h2>
-                <HR NOSHADE WIDTH=250>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="offer offer-info">
+                <div class="shape">
+                    <div class="shape-text">
+                        <span>@Model.Aluno.PontosDistribuicao</span>
+                    </div>
+                </div>
+                <div class="offer-content">
+                    <h4>
+                        <strong>Distribuição de Frequência</strong>
+                    </h4>
+                    <p>
+                        <label class="label label-info">@Model.Aluno.PontosFeitosDistribuicao</label> Pontos Conquistados                    
+                        <br>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.ProgressoDistribuicao%">
+                                @Model.Aluno.ProgressoDistribuicao%
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="offer offer-info">
+                <div class="shape">
+                    <div class="shape-text">
+                        <span>@Model.Aluno.PontosMedidasDeTendenciaCentral</span>
+                    </div>
+                </div>
+                <div class="offer-content">
+                    <h4>
+                        <strong>Medidas de Tendência </strong>
+                    </h4>
+                    <p>
+                        <label class="label label-info">@Model.Aluno.PontosFeitosMedidasDeTendenciaCentral</label> Pontos Conquistados
+                        <br>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.PontosMedidasDeTendenciaCentral%">
+                                @Model.Aluno.PontosMedidasDeTendenciaCentral%
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="offer offer-info">
+                <div class="shape">
+                    <div class="shape-text">
+                        <span>@Model.Aluno.PontosMedidasDeDispersao</span>
+                    </div>
+                </div>
+                <div class="offer-content">
+                    <h4>
+                        <strong>Medidas de Dispersão</strong>
+                    </h4>
+                    <p>
+                        <label class="label label-info">@Model.Aluno.PontosFeitosMedidasDeDispersao</label> Pontos Conquistados
+                        <br>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.PontosMedidasDeDispersao%">
+                                @Model.Aluno.PontosMedidasDeDispersao%
+                            </div>
+                        </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="offer offer-info">
+                <div class="shape">
+                    <div class="shape-text">
+                        <span>@Model.Aluno.PontosAmostragemEstimadores</span>
+                    </div>
+                </div>
+                <div class="offer-content">
+                    <h4>
+                        <strong>Amostragem e Estimadores</strong>
+                    </h4>
+                    <p>
+                        <label class="label label-info">@Model.Aluno.PontosFeitosAmostragemEstimadores</label> Pontos Conquistados
+                        <br>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.PontosAmostragemEstimadores%">
+                                @Model.Aluno.PontosAmostragemEstimadores%
+                            </div>
+                        </div>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
+
+    <hr />
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -99,4 +291,3 @@
     </div>
     <br /><br />
 </div>
-

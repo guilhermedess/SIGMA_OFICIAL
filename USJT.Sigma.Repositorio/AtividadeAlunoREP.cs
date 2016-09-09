@@ -125,12 +125,58 @@ namespace USJT.Sigma.Repositorio
                                   where C.ID_ALUNO == idAluno
                                   select new AtividadeAluno
                                   {
-                                      Atividade = new Atividade {
+                                      Atividade = new Atividade
+                                      {
                                           Nota = (double)C.TB_ATIVIDADE.VAL_NOTA
                                       }
                                   }).ToList();
 
                 return totalFeito.Sum(x => x.Atividade.Nota);
+            }
+        }
+        public double PontosFeitosDeUmTopico(int idAluno, int idTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalFeito = (from C in conexao.TB_ATIVIDADE_ALUNO
+                                  where C.ID_ALUNO == idAluno && C.TB_ATIVIDADE.TB_SUBTOPICO.ID_TOPICO == idTopico
+                                  select new AtividadeAluno
+                                  {
+                                      Atividade = new Atividade
+                                      {
+                                          Nota = (double)C.TB_ATIVIDADE.VAL_NOTA
+                                      }
+                                  }).ToList();
+
+                return totalFeito.Sum(x => x.Atividade.Nota);
+            }
+        }
+        public double PontosFeitosDeUmSubTopico(int idAluno, int idSubTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalFeito = (from C in conexao.TB_ATIVIDADE_ALUNO
+                                  where C.ID_ALUNO == idAluno && C.TB_ATIVIDADE.ID_SUBTOPICO == idSubTopico
+                                  select new AtividadeAluno
+                                  {
+                                      Atividade = new Atividade
+                                      {
+                                          Nota = (double)C.TB_ATIVIDADE.VAL_NOTA
+                                      }
+                                  }).ToList();
+
+                return totalFeito.Sum(x => x.Atividade.Nota);
+            }
+        }
+        public int AtividadesFeitasDeUmTopico(int idAluno, int idTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalAtividadesFeitas = (from C in conexao.TB_ATIVIDADE_ALUNO
+                                  where C.ID_ALUNO == idAluno && C.TB_ATIVIDADE.TB_SUBTOPICO.ID_TOPICO == idTopico
+                                  select new AtividadeAluno { }).ToList();
+
+                return totalAtividadesFeitas.Count;
             }
         }
     }

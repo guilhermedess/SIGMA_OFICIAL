@@ -79,50 +79,17 @@ namespace USJT.Sigma.Repositorio
         {
             return (atividadeAlunoREP.PontosFeitos(idAluno) * 100) / atividadeREP.TotalPontos();
         }
-        public double ProgressoDistribuicao(int idAluno)
+        public double ProgressoDeUmTopico(int idAluno, int idTopico)
         {
-            return (atividadeAlunoREP.PontosFeitos(idAluno) * 100) / atividadeREP.TotalDistribuicao();
+            return (atividadeAlunoREP.PontosFeitosDeUmTopico(idAluno, idTopico) * 100) / atividadeREP.TotalPontosPossiveisDeUmTopico(idTopico);
         }
-        public double ProgressoMedidasDeTendenciaCentral(int idAluno)
+        public double ProgressoDeUmSubTopico(int idAluno, int idSubTopico)
         {
-            using (var conexao = new SIGMAEntities())
-            {
-                var retorno = (from C in conexao.TB_ATIVIDADE
-                               where /*C.ID_ALUNO == idAluno && */(C.NOM_ATIVIDADE == "AtvIntroducaoMedidasDeTendenciaCentral" ||
-                               C.NOM_ATIVIDADE == "AtvMediaSimplesPonderada" || C.NOM_ATIVIDADE == "AtvModa" || C.NOM_ATIVIDADE == "AtvMediana"
-                               || C.NOM_ATIVIDADE == "AtvMediaGeometrica" || C.NOM_ATIVIDADE == "AtvMediaHarmonica" || C.NOM_ATIVIDADE == "AtvSeparatrizes")
-                               select new Atividade { }).ToList();
-                
-                return (retorno.Count * 100) / 7;
-            }
+            return (atividadeAlunoREP.PontosFeitosDeUmSubTopico(idAluno, idSubTopico) * 100) / atividadeREP.TotalPontosPossiveisDeUmSubTopico(idSubTopico);
         }
-        public double ProgressoMedidasDeDispersao(int idAluno)
+        public double ProgressoDeUmTopicoPorQuantidade(int idAluno, int idTopico)
         {
-            using (var conexao = new SIGMAEntities())
-            {
-                var retorno = (from C in conexao.TB_ATIVIDADE
-                               where /*C.ID_ALUNO == idAluno && */(C.NOM_ATIVIDADE == "AtvDispersao" ||
-                               C.NOM_ATIVIDADE == "AtvAssimetria" || C.NOM_ATIVIDADE == "AtvCurtose")
-                               select new Atividade { }).ToList();
-
-                //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao
-                return (retorno.Count * 100) / 3;
-            }
-        }
-        public double ProgressoAmostragemEstimadores(int idAluno)
-        {
-            using (var conexao = new SIGMAEntities())
-            {
-                var retorno = (from C in conexao.TB_ATIVIDADE
-                               where /*C.ID_ALUNO == idAluno && */(C.NOM_ATIVIDADE == "AtvImpAmostragem" ||
-                               C.NOM_ATIVIDADE == "AtvConceitosFundamentaisAmostragem" || C.NOM_ATIVIDADE == "AtvAleatoriaSimples"
-                               || C.NOM_ATIVIDADE == "AtvAleatoriaEstratificada" || C.NOM_ATIVIDADE == "AtvConglomerado"
-                               || C.NOM_ATIVIDADE == "AtvSistematica")
-                               select new Atividade { }).ToList();
-
-                //quantidadeAtividadeFeitasDeDistribuicao / quantidadeTotalAtividadesExistentesDeDistribuicao
-                return (retorno.Count * 100) / 6;
-            }
+            return (atividadeAlunoREP.AtividadesFeitasDeUmTopico(idAluno, idTopico) * 100) / atividadeREP.TotalAtividadeDeUmTopico(idTopico);
         }
     }
 }

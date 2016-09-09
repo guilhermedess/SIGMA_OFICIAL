@@ -15,26 +15,18 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
 
-            AlunoREP alunoREP = new AlunoREP();
-
-            dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
-            dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDistribuicao(dadosAlunoLogado.IdAluno);
-
-
-            AtividadeREP atividadeREP = new AtividadeREP();
-            var x = atividadeREP.TotalDistribuicao();
+            //AlunoREP alunoREP = new AlunoREP();
+            //AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
 
             //dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
             //dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDistribuicao(dadosAlunoLogado.IdAluno);
-            //dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = alunoREP.ProgressoMedidasDeTendenciaCentral(dadosAlunoLogado.IdAluno);
-            //dadosAlunoLogado.ProgressoMedidasDeDispersao = alunoREP.ProgressoMedidasDeDispersao(dadosAlunoLogado.IdAluno);
-            //dadosAlunoLogado.ProgressoAmostragemEstimadores = alunoREP.ProgressoAmostragemEstimadores(dadosAlunoLogado.IdAluno);
+            //dadosAlunoLogado.PontosFeitos = atividadeAlunoREP.PontosFeitos(dadosAlunoLogado.IdAluno);
 
             return View(dadosAlunoLogado);
         }
 
         //ActionResult para gerar(.pdf) relatório com Report Viewer em ASP.NET MVC
-        [HttpPost]
+        //[HttpPost]
         public ActionResult GeraCertificado()
         {
             //responsavel por visualizar o relatorio

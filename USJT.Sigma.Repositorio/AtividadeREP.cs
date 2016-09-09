@@ -72,18 +72,43 @@ namespace USJT.Sigma.Repositorio
                 return totalNotas.Sum(x => x.Nota);
             }
         }
-        public double TotalDistribuicao()
+        public double TotalPontosPossiveisDeUmTopico(int idTopico)
         {
             using (var conexao = new SIGMAEntities())
             {
                 var totalNotas = (from C in conexao.TB_ATIVIDADE
-                                  where C.TB_SUBTOPICO.TB_TOPICO.ID_TOPICO == 1
+                                  where C.TB_SUBTOPICO.TB_TOPICO.ID_TOPICO == idTopico
                                   select new Atividade
                                   {
                                       Nota = (double)C.VAL_NOTA
                                   }).ToList();
 
                 return totalNotas.Sum(x => x.Nota);
+            }
+        }
+        public double TotalPontosPossiveisDeUmSubTopico(int idSubTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalNotas = (from C in conexao.TB_ATIVIDADE
+                                  where C.TB_SUBTOPICO.ID_SUBTOPICO == idSubTopico
+                                  select new Atividade
+                                  {
+                                      Nota = (double)C.VAL_NOTA
+                                  }).ToList();
+
+                return totalNotas.Sum(x => x.Nota);
+            }
+        }
+        public int TotalAtividadeDeUmTopico(int idTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var totalAtividades = (from C in conexao.TB_ATIVIDADE
+                                  where C.TB_SUBTOPICO.TB_TOPICO.ID_TOPICO == idTopico
+                                  select new Atividade { }).ToList();
+
+                return totalAtividades.Count;
             }
         }
     }

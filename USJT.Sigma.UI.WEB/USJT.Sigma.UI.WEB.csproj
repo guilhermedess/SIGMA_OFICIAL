@@ -160,6 +160,8 @@
     <Content Include="Content\img\topico\distribuicao.png" />
     <Content Include="Content\img\topico\hexagono.png" />
     <Content Include="Content\mega-menu.css" />
+    <Content Include="Content\nivel.css" />
+    <Content Include="Content\panel.css" />
     <Content Include="Content\progresso.css" />
     <Content Include="Content\progresso2.css" />
     <Content Include="Content\style.css" />
@@ -315,8 +317,7 @@
     <Content Include="Views\SubDistribuicao\rascunho.cshtml" />
     <Content Include="scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="scripts\jquery-3.1.0.min.map" />
-    <Content Include="Views\Aluno\Progresso.cshtml" />
-    <Content Include="Views\Aluno\_PartialWizard.cshtml" />
+    <Content Include="Views\Aluno\Atividades.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\2\_DicasPontosOuValores1.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos1.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\2\_DicasPontosOuValores2.cshtml" />
@@ -354,6 +355,7 @@
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta3.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta4.cshtml" />
     <Content Include="Views\Aluno\_PartialMensagem.cshtml" />
+    <Content Include="Views\Aluno\Progresso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

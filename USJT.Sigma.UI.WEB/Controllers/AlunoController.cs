@@ -21,7 +21,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Cadastrar(Aluno dadosAluno)
         {
@@ -41,7 +40,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Editar(Aluno dadosAluno)
         {
@@ -57,7 +55,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
 
         }
-
         [HttpPost]
         public ActionResult Login(Aluno dadosLogin)
         {
@@ -82,19 +79,16 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return new RedirectToRouteResult(new RouteValueDictionary(
                new { action = "Topicos", controller = "Topico" }));
         }
-
         public ActionResult Login()
         {
             return View();
         }
-
         public ActionResult Sair()
         {
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Aluno/Login");
         }
-
         public void CarregarComboDistribuicao()
         {
             IEnumerable<string> opcoes = new string[] { "O - Todas", "X - Todas Pendentes", "1 - Introdução e Conceitos", "2 - Dist. Pontos ou valores", "3 - Classes ou intervalos",
@@ -103,35 +97,49 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
             ViewBag.Opcoes = new SelectList(opcoes);
         }
-
-        public ActionResult Progresso(Aluno aluno)
+        public ActionResult Progresso()
         {
-            try
-            {
-                CarregarComboDistribuicao();
+            Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
 
-                AtividadeREP atividadeREP = new AtividadeREP();
-                
-                dynamic meusModelos = new ExpandoObject();
+            AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+            AtividadeREP atividadeREP = new AtividadeREP();
+            AlunoREP alunoREP = new AlunoREP();
 
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+            dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
 
-                meusModelos.atividadesFeitas = /*(List<AtividadeAluno>)*/atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
-                meusModelos.todasAtividades = atividadeREP.TodasAtividades();
+            dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 1);
+            //dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 2);
+            //dadosAlunoLogado.ProgressoMedidasDeDispersao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 3);
+            //dadosAlunoLogado.ProgressoAmostragemEstimadores = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 4);
 
-                return View(meusModelos);
-            }
-            catch (Exception)
-            {
-                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+            dadosAlunoLogado.PontosDistribuicao = atividadeREP.TotalPontosPossiveisDeUmTopico(1);
+            //dadosAlunoLogado.PontosMedidasDeTendenciaCentral = atividadeREP.TotalPossivelDeUmTopico(2);
+            //dadosAlunoLogado.PontosMedidasDeDispersao = atividadeREP.TotalPossivelDeUmTopico(3);
+            //dadosAlunoLogado.PontosAmostragemEstimadores = atividadeREP.TotalPossivelDeUmTopico(4);
 
-                return RedirectToAction("Login", "Aluno");
-            }
+            dadosAlunoLogado.PontosFeitosDistribuicao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 1);
+            //dadosAlunoLogado.PontosFeitosMedidasDeTendenciaCentral = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 2);
+            //dadosAlunoLogado.PontosFeitosMedidasDeDispersao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 3);
+            //dadosAlunoLogado.PontosFeitosAmostragemEstimadores = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 4);
+
+            dadosAlunoLogado.PDIntroducao = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 1);
+            dadosAlunoLogado.PDPontosValores = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 2);
+            dadosAlunoLogado.PDClassesIntervalos = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 3);
+            dadosAlunoLogado.PDRelativaPercentual = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 4);
+            dadosAlunoLogado.PDAcumuladaSimplesAbsoluta = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 5);
+            dadosAlunoLogado.PDAcumuladaRelativaPercentual = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 6);
+            dadosAlunoLogado.PDFreqPontosValores = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 7);
+            dadosAlunoLogado.PDFreqClassesIntervalos = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 8);
+
+            dadosAlunoLogado.ProgressoDistribuicaoPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 1);
+
+            dynamic meusModelos = new ExpandoObject();
+            meusModelos.Aluno = dadosAlunoLogado;
+
+            return View(meusModelos);
         }
-
         [HttpPost]
-        public ActionResult Progresso(Aluno aluno, string comboDistribuicao)
+        public ActionResult Atividades(Aluno aluno, string comboDistribuicao)
         {
             try
             {
@@ -182,7 +190,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 return RedirectToAction("Login", "Aluno");
             }
         }
-
         public int ValidarComboDistribuicao(string comboDistribuicao)
         {
             int procurarAtv = 99;
@@ -256,6 +263,31 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
 
             return procurarAtv;
+        }
+        public ActionResult Atividades(Aluno aluno)
+        {
+            try
+            {
+                CarregarComboDistribuicao();
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                dynamic meusModelos = new ExpandoObject();
+
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                meusModelos.atividadesFeitas = /*(List<AtividadeAluno>)*/atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
+                meusModelos.todasAtividades = atividadeREP.TodasAtividades();
+
+                return View(meusModelos);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
     }
 }

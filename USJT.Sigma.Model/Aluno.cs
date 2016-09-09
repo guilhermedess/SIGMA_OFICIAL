@@ -21,5 +21,25 @@ namespace USJT.Sigma.Model
         public double ProgressoMedidasDeTendenciaCentral { get; set; }
         public double ProgressoMedidasDeDispersao { get; set; }
         public double ProgressoAmostragemEstimadores { get; set; }
+        public double ProgressoDistribuicaoPorAtividade { get; set; }
+        public double ProgressoMedidasDeTendenciaPorAtividade { get; set; }
+        public double ProgressoMedidasDeDispersaoPorAtividade { get; set; }
+        public double ProgressoAmostragemEstimadoresPorAtividade { get; set; }
+        public double PontosDistribuicao { get; set; }
+        public double PontosMedidasDeTendenciaCentral { get; set; }
+        public double PontosMedidasDeDispersao { get; set; }
+        public double PontosAmostragemEstimadores { get; set; }
+        public double PontosFeitosDistribuicao { get; set; }
+        public double PontosFeitosMedidasDeTendenciaCentral { get; set; }
+        public double PontosFeitosMedidasDeDispersao { get; set; }
+        public double PontosFeitosAmostragemEstimadores { get; set; }
+        public double PDIntroducao { get; set; }
+        public double PDPontosValores { get; set; }
+        public double PDClassesIntervalos { get; set; }
+        public double PDRelativaPercentual { get; set; }
+        public double PDAcumuladaSimplesAbsoluta { get; set; }
+        public double PDAcumuladaRelativaPercentual { get; set; }
+        public double PDFreqPontosValores { get; set; }
+        public double PDFreqClassesIntervalos { get; set; }
     }
 }

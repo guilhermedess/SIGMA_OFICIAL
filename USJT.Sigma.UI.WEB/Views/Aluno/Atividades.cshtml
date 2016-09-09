@@ -1,4 +1,24 @@
-﻿<div class="container">
+﻿@model dynamic
+
+<head>
+    <link href="~/Content/wizard.css" rel="stylesheet" />
+    <script src="~/scripts/wizard.js"></script>
+    <script src="~/scripts/botoes-topico.js"></script>
+    <link href="~/Content/topico.css" rel="stylesheet" />
+    <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
+    <link href="~/Content/panel.css" rel="stylesheet" />
+</head>
+
+@{
+    ViewBag.Title = "Progresso";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<div class="container">
+    <div class="text-center">
+        <h2>Atividades</h2>
+        <HR NOSHADE WIDTH=250>
+    </div>
     <div class="row">
         <section>
             <div class="wizard">
@@ -56,51 +76,27 @@
 
                             <br />
 
-                            @*<div class="col-lg-3 col-md-3 col-sm-3">
-                                <!--Panel-->
-                                <div class="card text-xs-center">
-                                    <div class="card-header default-color-dark white-text">
-                                        Featured
-                                    </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">Special title treatment</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <a class="btn btn-default">Go somewhere</a>
-                                    </div>
-                                    <div class="card-footer text-muted default-color-dark white-text">
-                                        <p>2 days ago</p>
-                                    </div>
-                                </div>
-                                <!--/.Panel-->
-                            </div>
-
-                            <!--Panel-->
-                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                <div class="card">
-                                    <div class="card-header danger-color-dark white-text">
-                                        Featured
-                                    </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">Special title treatment</h4>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <a class="btn btn-danger">Go somewhere</a>
-                                    </div>
-                                </div>
-                                <!--/.Panel-->
-                            </div>*@
-
-
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
 
                                     @{
                                         foreach (var todasAtividades in Model.todasAtividades)
                                         {
-                                            <div class="col-lg-3 col-md-3 col-sm-3">
-                                                <div class="panel-group">
-                                                    <div id="@todasAtividades.IdAtividade" class="panel panel-red">
-                                                        <div class="panel-heading" title="@todasAtividades.DescricaoTitulo">@todasAtividades.DescricaoTitulo</div>
-                                                        <div class="panel-body">@todasAtividades.DescricaoAtividade</div>
+                                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                                <div id="@todasAtividades.IdAtividade" class="offer offer-danger">
+                                                    <div class="shape">
+                                                        <div class="shape-text">
+                                                            <span id="@todasAtividades.NomeAtv" class="">@todasAtividades.Nota</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="offer-content">
+                                                        <h4>
+                                                            <strong>@todasAtividades.DescricaoTitulo</strong>
+                                                        </h4>
+                                                        <p>
+                                                            @todasAtividades.DescricaoAtividade
+                                                            <br>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +106,7 @@
                                         {
                                             <script>
                                                 $(document).ready(function () {
-                                                    $("#@atividadesFeitas.Atividade.IdAtividade").removeClass("panel-red").addClass("panel-green");
+                                                    $("#@atividadesFeitas.Atividade.IdAtividade").removeClass("offer-danger").addClass("offer-success");
                                                 });
                                             </script>
                                         }

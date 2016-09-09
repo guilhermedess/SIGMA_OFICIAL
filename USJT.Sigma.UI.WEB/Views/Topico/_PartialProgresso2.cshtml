@@ -6,8 +6,12 @@
 </head>
 
 <div class="row">
+    <div class="col-lg-11 col-md-11 col-sm-11">
+        <fieldset>
+            <legend>Atividades Feitas</legend>
+        </fieldset>
+    </div>
     <div class="col-md-11">
-
         <div class="bar-chart">
             <div class="legend">
                 <div class="item">
@@ -30,9 +34,9 @@
             <div class="chart clearfix">
                 <div class="item">
                     <div class="bar">
-                        <span class="percent">@Model.ProgressoDistribuicao%</span>
+                        <span class="percent">@Model.ProgressoDistribuicaoPorAtividade%</span>
 
-                        <div class="item-progress" data-percent="@Model.ProgressoDistribuicao">
+                        <div class="item-progress" data-percent="@Model.ProgressoDistribuicaoPorAtividade">
                             <span class="title">Distribuição</span>
                         </div>
                     </div>

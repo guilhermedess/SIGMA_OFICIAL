@@ -13,175 +13,147 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="text-center text-uppercase">
-                <h2>Análise</h2>
-                <HR NOSHADE WIDTH=250>
+        <div class="text-center text-uppercase">
+            <h2>Tópicos</h2>
+            <HR NOSHADE WIDTH=250>
+        </div>
+        <div border="5px"></div>
+
+        <div class="col-md-6">
+
+            <div class="blockquote-box clearfix">
+                <div class="square pull-left">
+                    <img src="~/Content/img/topico/distribuicao.png" />
+                </div>
+                <h4>
+                    Distribuição
+                </h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+
+                <div>
+                    <span id="ocultaDistribuicao" class="cta-desc glyphicon glyphicon-resize-full" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="subDistribuicao" class="form-group cta-desc">
+                            <p>1 - Introdução e Conceitos</p>
+                            <p>2 - Distribuições por pontos ou valores</p>
+                            <p>3 - Distribuições por classes ou intervalos</p>
+                            <p>4 - Elementos de uma distribuição de frequências</p>
+                            <p>4.1 - A frequência relativa ou percentual</p>
+                            <p>4.2 - A frequência acumulada simples ou absoluta</p>
+                            <p>4.3 - A frequência acumulada relativa ou percentual</p>
+                            <p>5 - Apresentação de uma distribuição de frequência</p>
+                            <p>5.1 - Distribuição de frequências por pontos ou valores</p>
+                            <p>5.2 - Distribuição de frequências por classes ou intervalos</p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="~/SubDistribuicao/IntroducaoDistribuicao" class="btn btn-sm btn-primary">Conteúdo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blockquote-box blockquote-primary clearfix">
+                <div class="square pull-left">
+                    <img src="https://media.licdn.com/media/p/1/000/093/334/05c8cf2.png" alt="" class="" />
+                </div>
+                <h4>
+                    Medidas de Tendência Central
+                </h4>
+                <p>
+                    Lorem ipsum dolor sit amet. Integer parse posuere erat a
+                    ante. <a href="http://www.jquery2dotnet.com/search/label/jquery">jquery2dotnet</a>
+                </p>
+
+                <div>
+                    <span id="ocultaMedidasTendencia" class="cta-desc glyphicon glyphicon-resize-full" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="subMedidasTendencia" class="form-group cta-desc">
+                            <p>1 - Introdução</p>
+                            <p>2 - Média</p>
+                            <p>2.1 - Média Aritmética Simples</p>
+                            <p>2.2 - Média Aritmética Ponderada</p>
+                            <p>3 - Moda</p>
+                            <p>4 - Mediana</p>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="~/SubMedidasTendencia/IntroducaoMedidasTendencia" class="btn btn-sm btn-primary">Conteúdo</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                @Html.Partial("_PartialProgresso", Model)
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                @Html.Partial("_PartialProgresso2", Model)
-            </div>
-        </div>
-
-        <br />
-        <br />
-        @*<HR NOSHADE>*@
-
-        <div class="row">
-            <div class="text-center text-uppercase">
-                <h2>Tópicos</h2>
-                <HR NOSHADE WIDTH=250>
-            </div>
-            <div border="5px"></div>
-
-            <div class="col-md-6">
-
-                <div class="blockquote-box clearfix">
-                    <div class="square pull-left">
-                        <img src="~/Content/img/topico/distribuicao.png" />
-                    </div>
-                    <h4>
-                        Distribuição
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                        ante.
-                    </p>
-
-                    <div>
-                        <span id="ocultaDistribuicao" class="cta-desc glyphicon glyphicon-resize-full" />
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div id="subDistribuicao" class="form-group cta-desc">
-                                <p>1 - Introdução e Conceitos</p>
-                                <p>2 - Distribuições por pontos ou valores</p>
-                                <p>3 - Distribuições por classes ou intervalos</p>
-                                <p>4 - Elementos de uma distribuição de frequências</p>
-                                <p>4.1 - A frequência relativa ou percentual</p>
-                                <p>4.2 - A frequência acumulada simples ou absoluta</p>
-                                <p>4.3 - A frequência acumulada relativa ou percentual</p>
-                                <p>5 - Apresentação de uma distribuição de frequência</p>
-                                <p>5.1 - Distribuição de frequências por pontos ou valores</p>
-                                <p>5.2 - Distribuição de frequências por classes ou intervalos</p>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="~/SubDistribuicao/IntroducaoDistribuicao" class="btn btn-sm btn-primary">Conteúdo</a>
-                        </div>
-                    </div>
+        <div class="col-md-6">
+            <div class="blockquote-box blockquote-info clearfix">
+                <div class="square pull-left">
+                    <img src="~/Content/img/topico/hexagono.png" />
+                </div>
+                <h4>
+                    Medidas de Dispersão
+                </h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+                <div>
+                    <span id="ocultaMedidasDispersao" class="cta-desc glyphicon glyphicon-resize-full" />
                 </div>
 
-                <div class="blockquote-box blockquote-primary clearfix">
-                    <div class="square pull-left">
-                        <img src="https://media.licdn.com/media/p/1/000/093/334/05c8cf2.png" alt="" class="" />
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="subMedidasDispersao" class="form-group cta-desc">
+                            <p>3.1 - Dispersão</p>
+                            <p>3.2 - Assimetria</p>
+                            <p>3.3 - Curtose</p>
+                        </div>
                     </div>
-                    <h4>
-                        Medidas de Tendência Central
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet. Integer parse posuere erat a
-                        ante. <a href="http://www.jquery2dotnet.com/search/label/jquery">jquery2dotnet</a>
-                    </p>
-
                     <div>
-                        <span id="ocultaMedidasTendencia" class="cta-desc glyphicon glyphicon-resize-full" />
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div id="subMedidasTendencia" class="form-group cta-desc">
-                                <p>1 - Introdução</p>
-                                <p>2 - Média</p>
-                                <p>2.1 - Média Aritmética Simples</p>
-                                <p>2.2 - Média Aritmética Ponderada</p>
-                                <p>3 - Moda</p>
-                                <p>4 - Mediana</p>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="~/SubMedidasTendencia/IntroducaoMedidasTendencia" class="btn btn-sm btn-primary">Conteúdo</a>
-                        </div>
+                        <a href="#" class="btn btn-sm btn-primary">Conteúdo</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="blockquote-box blockquote-info clearfix">
-                    <div class="square pull-left">
-                        <img src="~/Content/img/topico/hexagono.png" />
-                    </div>
-                    <h4>
-                        Medidas de Dispersão
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                        ante.
-                    </p>
-                    <div>
-                        <span id="ocultaMedidasDispersao" class="cta-desc glyphicon glyphicon-resize-full" />
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div id="subMedidasDispersao" class="form-group cta-desc">
-                                <p>3.1 - Dispersão</p>
-                                <p>3.2 - Assimetria</p>
-                                <p>3.3 - Curtose</p>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="#" class="btn btn-sm btn-primary">Conteúdo</a>
-                        </div>
-                    </div>
+            <div class="blockquote-box blockquote-warning clearfix">
+                <div class="square pull-left">
+                    <img src="~/Content/img/topico/hexagono.png" />
+                </div>
+                <h4>
+                    Amostragem e Estimadores
+                </h4>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                    ante.
+                </p>
+                <div>
+                    <span id="ocultaAmostragem" class="cta-desc glyphicon glyphicon-resize-full" />
                 </div>
 
-
-                <div class="blockquote-box blockquote-warning clearfix">
-                    <div class="square pull-left">
-                        <img src="~/Content/img/topico/hexagono.png" />
+                <div class="row">
+                    <div class="col-md-9">
+                        <div id="subAmostragem" class="form-group cta-desc">
+                            <p>4.1 - Importância da amostragem</p>
+                            <p>4.2 - Conceitos fundamentais</p>
+                            <p>4.3 - Aleatória simples</p>
+                            <p>4.4 - Aleatória estratificada</p>
+                            <p>4.5 - Conglomerado</p>
+                            <p>4.6 - Sistemática</p>
+                        </div>
                     </div>
-                    <h4>
-                        Amostragem e Estimadores
-                    </h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
-                        ante.
-                    </p>
                     <div>
-                        <span id="ocultaAmostragem" class="cta-desc glyphicon glyphicon-resize-full" />
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div id="subAmostragem" class="form-group cta-desc">
-                                <p>4.1 - Importância da amostragem</p>
-                                <p>4.2 - Conceitos fundamentais</p>
-                                <p>4.3 - Aleatória simples</p>
-                                <p>4.4 - Aleatória estratificada</p>
-                                <p>4.5 - Conglomerado</p>
-                                <p>4.6 - Sistemática</p>
-                            </div>
-                        </div>
-                        <div>
-                            <a href="~/SubAmostragem/ImpAmostragem" class="btn btn-sm btn-primary">Conteúdo</a>
-                        </div>
+                        <a href="~/SubAmostragem/ImpAmostragem" class="btn btn-sm btn-primary">Conteúdo</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    @using (Html.BeginForm("GeraCertificado","Topico"))
-    {
-        <input type="submit" name="name" value="Certificado" />
-    }
-
 </div>
