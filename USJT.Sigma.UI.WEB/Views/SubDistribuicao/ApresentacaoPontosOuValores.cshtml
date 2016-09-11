@@ -10,6 +10,19 @@
     <script src="~/scripts/dicas3.js"></script>
     <script src="~/scripts/dicas4.js"></script>
     <script src="~/scripts/video.js"></script>
+    <script src="~/Content/grafico/jsapi.js"></script>
+    <script src="~/Content/grafico/uds_api_contents.js"></script>
+    <script src="~/Content/grafico/graficoexercicio.js"></script>
+<script type="text/javascript">
+    google.load('visualization', '1', { packages: ['table'] });
+    google.setOnLoadCallback(drawChartGfc_5_1_ex1);
+    google.setOnLoadCallback(drawChartGfc_5_1_ex1_2);
+    google.setOnLoadCallback(drawChartGfc_5_1_ex1_3);
+    google.setOnLoadCallback(drawChartGfc_5_1_ex1_4);
+    google.setOnLoadCallback(drawChartGfc_5_1_ex2);
+    google.setOnLoadCallback(drawChartGfc_5_1_ex3);
+    google.setOnLoadCallback(drawChartGfc_5_1_ex4);
+    </script>
 </head>
 
 @{
@@ -30,7 +43,7 @@
                 $("#@atividadesFeitas.Atividade.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
                 $("#@atividadesFeitas.Atividade.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
             });
-        </script>
+</script>
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
@@ -130,7 +143,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
 
-                                @* Questão 1 *@
+                                @* Questão 5.1 ex1 *@
                                 <div id="questao1">
                                     @using (Html.BeginForm())
                                     {
@@ -139,6 +152,31 @@
                                         <div class="row">
                                             <div id="divCamposAtv0" class="col-lg-12 col-md-12 col-sm-12">
 
+                                            </div>
+
+                                            <!--graficos-->
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <h3><span class="label label-info">(A)</span></h3>
+                                                <div id='gfc_5_1_ex1'></div>
+                                                <br />
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <h3><span class="label label-info">(B)</span></h3>
+                                                <div id='gfc_5_1_ex1_2'></div>
+                                                <br />
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <h3><span class="label label-info">(C)</span></h3>
+                                                <div id='gfc_5_1_ex1_3'></div>
+                                                <br />
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <h3><span class="label label-info">(D)</span></h3>
+                                                <div id='gfc_5_1_ex1_4'></div>
+                                                <br />
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -218,6 +256,19 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <fieldset>
+                                                    <legend>Resposta</legend>
+                                                </fieldset>
+                                                @Html.RadioButton("ListaDeRespostas", "a") a
+                                                <br /> <br />
+                                                @Html.RadioButton("ListaDeRespostas", "b") b
+                                                <br /> <br />
+                                                @Html.RadioButton("ListaDeRespostas", "c") c
+                                                <br /> <br />
+                                                @Html.RadioButton("ListaDeRespostas", "d") d
+                                            </div>
+
                                         </div>
 
                                         @Html.Partial("DicasDistribuicao/5.1/_DicasApresentacaoPontosOuValores1")
@@ -252,7 +303,7 @@
                             </div>
                             <div class="tab-pane" role="tabpanel" id="step2">
 
-                                @* Questão 2 *@
+                                @* Questão 5.1 ex2 *@
                                 <div id="questao2">
                                     @using (Html.BeginForm())
                                     {
@@ -261,6 +312,13 @@
                                         <div class="row">
                                             <div id="divCamposAtv1" class="col-lg-12 col-md-12 col-sm-12">
 
+                                            </div>
+
+                                            <!--graficos-->
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                @*<h3><span class="label label-info">(A)</span></h3>*@
+                                                <div id='gfc_5_1_ex2'></div>
+                                                <br />
                                             </div>
 
                                             <div class="col-lg-5 col-md-5 col-sm-5">
@@ -345,7 +403,7 @@
                             </div>
                             <div class="tab-pane" role="tabpanel" id="step3">
 
-                                @* Questão 3 *@
+                                @* Questão 5.1 ex3 *@
                                 <div id="questao3">
                                     @using (Html.BeginForm())
                                     {
@@ -354,6 +412,13 @@
                                         <div class="row">
                                             <div id="divCamposAtv2" class="col-lg-12 col-md-12 col-sm-12">
 
+                                            </div>
+
+                                            <!--graficos-->
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                @*<h3><span class="label label-info">(A)</span></h3>*@
+                                                <div id='gfc_5_1_ex3'></div>
+                                                <br />
                                             </div>
 
                                             <div class="col-lg-5 col-md-5 col-sm-5">
@@ -394,27 +459,27 @@
                                             </div>
                                         </div>
 
-                                            @Html.Partial("DicasDistribuicao/5.1/_DicasApresentacaoPontosOuValores3")
+                                        @Html.Partial("DicasDistribuicao/5.1/_DicasApresentacaoPontosOuValores3")
 
-                                            @* BOTOES FIXOS *@
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <hr />
-                                                    <div class="col-lg-5 col-md-5 col-sm-5">
-                                                        <span id="Atv3FrequenciaPontosOuValores" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv3FrequenciaPontosOuValores" class="glyphicon glyphicon-remove red icon-lg"></span>
 
-                                                    </div>
+                                                </div>
 
-                                                    <div class="col-lg-2 col-md-2 col-sm-2">
-                                                        <input id="btnDica1C" type="button" onclick="Dica1C()" value="Dicas" class="btn btn-warning" style="float: unset" />
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1C" type="button" onclick="Dica1C()" value="Dicas" class="btn btn-warning" style="float: unset" />
 
-                                                    </div>
+                                                </div>
 
-                                                    <div class="col-lg-5 col-md-5 col-sm-5">
-                                                        <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
-                                                    </div>
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
+                                        </div>
                                     }
                                 </div>
 
@@ -427,7 +492,7 @@
                             </div>
                             <div class="tab-pane" role="tabpanel" id="complete">
 
-                                @* Questão 4 *@
+                                @* Questão 5.1 ex4 *@
                                 <div id="questao4">
                                     @using (Html.BeginForm())
                                     {
@@ -436,6 +501,13 @@
                                         <div class="row">
                                             <div id="divCamposAtv3" class="col-lg-12 col-md-12 col-sm-12">
 
+                                            </div>
+
+                                            <!--graficos-->
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                @*<h3><span class="label label-info">(A)</span></h3>*@
+                                                <div id='gfc_5_1_ex4'></div>
+                                                <br />
                                             </div>
 
                                             <div class="col-lg-5 col-md-5 col-sm-5">
@@ -485,7 +557,7 @@
                                             </div>
                                         </div>
 
-                                                @Html.Partial("DicasDistribuicao/5.1/_DicasApresentacaoPontosOuValores4")
+                                        @Html.Partial("DicasDistribuicao/5.1/_DicasApresentacaoPontosOuValores4")
 
                                                     @* BOTOES FIXOS *@
                                                     <div class="row">
