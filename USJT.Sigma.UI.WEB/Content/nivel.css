@@ -16,7 +16,7 @@
 .profile-header-img > img.img-circle {
     width: 80px;
     height: 80px;
-    border: 2px solid #51D2B7;
+    border: 2px solid #5BC0DE;
 }
 
 .profile-header {
@@ -32,8 +32,9 @@
     text-align: center;
 }
 
-.label.label-default.rank-label {
-    background-color: rgb(81, 210, 183);
+.label.label-info.rank-label {
+    /*background-color: rgb(81, 210, 183);*/
+    background-color: #5BC0DE;
     padding: 5px 10px 5px 10px;
     border-radius: 27px;
 }

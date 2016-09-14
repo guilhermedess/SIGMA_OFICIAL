@@ -153,6 +153,16 @@
     <Content Include="Content\img\Distribuicao\Prata.png" />
     <Content Include="Content\img\img_sair.png" />
     <Content Include="Content\img\logo100p.png" />
+    <Content Include="Content\img\niveis_conquistados\1.png" />
+    <Content Include="Content\img\niveis_conquistados\10.png" />
+    <Content Include="Content\img\niveis_conquistados\2.png" />
+    <Content Include="Content\img\niveis_conquistados\3.png" />
+    <Content Include="Content\img\niveis_conquistados\4.png" />
+    <Content Include="Content\img\niveis_conquistados\5.png" />
+    <Content Include="Content\img\niveis_conquistados\6.png" />
+    <Content Include="Content\img\niveis_conquistados\7.png" />
+    <Content Include="Content\img\niveis_conquistados\8.png" />
+    <Content Include="Content\img\niveis_conquistados\9.png" />
     <Content Include="Content\img\slider\slider1_1360-600.png" />
     <Content Include="Content\img\slider\slider2_1360-600.png" />
     <Content Include="Content\img\slider\slider3_1360-600.png" />
