@@ -13,15 +13,15 @@
     <script src="~/Content/grafico/jsapi.js"></script>
     <script src="~/Content/grafico/uds_api_contents.js"></script>
     <script src="~/Content/grafico/graficoexercicio.js"></script>
-<script type="text/javascript">
-    google.load('visualization', '1', { packages: ['table'] });
-    google.setOnLoadCallback(drawChartGfc_5_1_ex1);
-    google.setOnLoadCallback(drawChartGfc_5_1_ex1_2);
-    google.setOnLoadCallback(drawChartGfc_5_1_ex1_3);
-    google.setOnLoadCallback(drawChartGfc_5_1_ex1_4);
-    google.setOnLoadCallback(drawChartGfc_5_1_ex2);
-    google.setOnLoadCallback(drawChartGfc_5_1_ex3);
-    google.setOnLoadCallback(drawChartGfc_5_1_ex4);
+    <script type="text/javascript">
+        google.load('visualization', '1', { packages: ['table'] });
+        google.setOnLoadCallback(drawChartGfc_5_1_ex1);
+        google.setOnLoadCallback(drawChartGfc_5_1_ex1_2);
+        google.setOnLoadCallback(drawChartGfc_5_1_ex1_3);
+        google.setOnLoadCallback(drawChartGfc_5_1_ex1_4);
+        google.setOnLoadCallback(drawChartGfc_5_1_ex2);
+        google.setOnLoadCallback(drawChartGfc_5_1_ex3);
+        google.setOnLoadCallback(drawChartGfc_5_1_ex4);
     </script>
 </head>
 
@@ -43,7 +43,7 @@
                 $("#@atividadesFeitas.Atividade.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
                 $("#@atividadesFeitas.Atividade.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
             });
-</script>
+        </script>
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
@@ -88,6 +88,7 @@
                 Distribuição de frequências por pontos ou valores
                 <span id="infoNota" title="Pontos" class="badge dir"></span>
             </legend>
+            <br />
 
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
@@ -156,119 +157,41 @@
 
                                             <!--graficos-->
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(A)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "a")
+                                                    <span class="label label-info">(A)</span>
+                                                </h3>
                                                 <div id='gfc_5_1_ex1'></div>
                                                 <br />
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(B)</span></h3>
+
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "b")
+                                                    <span class="label label-info">(B)</span>
+                                                </h3>
                                                 <div id='gfc_5_1_ex1_2'></div>
                                                 <br />
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(C)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "c")
+                                                    <span class="label label-info">(C)</span>
+                                                </h3>
                                                 <div id='gfc_5_1_ex1_3'></div>
                                                 <br />
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(D)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "d")
+                                                    <span class="label label-info">(D)</span>
+                                                </h3>
                                                 <div id='gfc_5_1_ex1_4'></div>
                                                 <br />
                                             </div>
-
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <td>1</td>
-                                                                <td>0</td>
-                                                                <td>0</td>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                                <td>1</td>
-                                                                <td>3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>2</td>
-                                                                <td>3</td>
-                                                                <td>2</td>
-                                                                <td>5</td>
-                                                                <td>1</td>
-                                                                <td>0</td>
-                                                                <td>2</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>0</td>
-                                                                <td>3</td>
-                                                                <td>1</td>
-                                                                <td>0</td>
-                                                                <td>2</td>
-                                                                <td>1</td>
-                                                                <td>0</td>
-                                                                <td>4</td>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Quantidade de Filhos</th>
-                                                                <th>Quantidade de Funcionários</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>0</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>4</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>5</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <legend>Resposta</legend>
-                                                </fieldset>
-                                                @Html.RadioButton("ListaDeRespostas", "a") a
-                                                <br /> <br />
-                                                @Html.RadioButton("ListaDeRespostas", "b") b
-                                                <br /> <br />
-                                                @Html.RadioButton("ListaDeRespostas", "c") c
-                                                <br /> <br />
-                                                @Html.RadioButton("ListaDeRespostas", "d") d
-                                            </div>
-
                                         </div>
 
                                         @Html.Partial("DicasDistribuicao/5.1/_DicasApresentacaoPontosOuValores1")
@@ -316,47 +239,11 @@
 
                                             <!--graficos-->
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                @*<h3><span class="label label-info">(A)</span></h3>*@
                                                 <div id='gfc_5_1_ex2'></div>
                                                 <br />
                                             </div>
 
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover table-striped">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Tamanho dos calçados</th>
-                                                                <th>Frequência</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>39,0</td>
-                                                                <td>1</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>38,0</td>
-                                                                <td>10</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>37,0</td>
-                                                                <td>3</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>36,0</td>
-                                                                <td>5</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>35,0</td>
-                                                                <td>6</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <fieldset>
                                                     <legend>Resposta</legend>
                                                 </fieldset>
@@ -416,7 +303,6 @@
 
                                             <!--graficos-->
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                @*<h3><span class="label label-info">(A)</span></h3>*@
                                                 <div id='gfc_5_1_ex3'></div>
                                                 <br />
                                             </div>
@@ -505,55 +391,55 @@
 
                                             <!--graficos-->
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                @*<h3><span class="label label-info">(A)</span></h3>*@
                                                 <div id='gfc_5_1_ex4'></div>
                                                 <br />
                                             </div>
 
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <th>Trimeste</th>
-                                                                <th>Alunos Matriculados</th>
+                                                                <th>Classes</th>
+                                                                <th>Frequências</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>1º</td>
-                                                                <td>546</td>
+                                                                <td>10,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>2º</td>
-                                                                <td>328</td>
+                                                                <td>15,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>3º</td>
-                                                                <td>280</td>
+                                                                <td>20,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>4º</td>
-                                                                <td>120</td>
+                                                                <td>25,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>30,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>35,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>40,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>45,5</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-
-                                            <div class="col-lg-7 col-md-7 col-sm-7">
-                                                <fieldset>
-                                                    <legend>Resposta</legend>
-                                                </fieldset>
-
-                                                @Html.RadioButton("ListaDeRespostas", "1980", true) 1980
-                                                <br /><br />
-                                                @{ var resposta8 = atividadeREP.RespostaExata(8); }
-                                                @Html.RadioButton("ListaDeRespostas", @resposta8) @resposta8
-                                                <br /><br />
-                                                @Html.RadioButton("ListaDeRespostas", "2010") 2010
-                                                <br /><br />
-                                                @Html.RadioButton("ListaDeRespostas", "1788") 1788
                                             </div>
                                         </div>
 

@@ -302,43 +302,41 @@
 
                                             <!--graficos-->
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(A)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "a")
+                                                    <span class="label label-info">(A)</span>
+                                                </h3>
                                                 <div id='gfc_4_3_ex2'></div>
                                                 <br />
                                             </div>
-                                            
+
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(B)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "b")
+                                                    <span class="label label-info">(B)</span>
+                                                </h3>
                                                 <div id='gfc_4_3_ex2_2'></div>
                                                 <br />
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(C)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "c")
+                                                    <span class="label label-info">(C)</span>
+                                                </h3>
                                                 <div id='gfc_4_3_ex2_3'></div>
                                                 <br />
                                             </div>
 
                                             <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <h3><span class="label label-info">(D)</span></h3>
+                                                <h3>
+                                                    @Html.RadioButton("ListaDeRespostas", "d")
+                                                    <span class="label label-info">(D)</span>
+                                                </h3>
                                                 <div id='gfc_4_3_ex2_4'></div>
                                                 <br />
                                             </div>
                                             <!--// graficos-->
-
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <fieldset>
-                                                    <legend>Resposta</legend>
-                                                </fieldset>
-                                                @Html.RadioButton("ListaDeRespostas", "a") a
-                                                <br /> <br />
-                                                @Html.RadioButton("ListaDeRespostas", "b") b
-                                                <br /> <br />
-                                                @Html.RadioButton("ListaDeRespostas", "c") c
-                                                <br /> <br />
-                                                @Html.RadioButton("ListaDeRespostas", "d") d
-                                            </div>
-
                                         </div>
 
                                         @Html.Partial("DicasDistribuicao/4.3/_DicasFrequenciaAcumuladaRelativaPercentual2")
@@ -525,7 +523,7 @@
 
                                         <div class="row">
                                             <div id="divCamposAtv3" class="col-lg-12 col-md-12 col-sm-12">
-                                                
+
                                             </div>
 
                                             <!--graficos-->
@@ -589,7 +587,7 @@
                                             </div>
                                         </div>
 
-                                        
+
 
                                         @Html.Partial("DicasDistribuicao/4.3/_DicasFrequenciaAcumuladaRelativaPercentual4")
 

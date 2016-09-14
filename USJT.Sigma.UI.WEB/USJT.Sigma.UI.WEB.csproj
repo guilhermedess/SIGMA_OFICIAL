@@ -336,10 +336,6 @@
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos2.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos4.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\5.2\_DicasApresentacaoClassesOuIntervalos3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\4\_DicasElementos4.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos1.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos2.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\3\_DicasClassesOuIntervalos3.cshtml" />
@@ -356,10 +352,6 @@
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual2.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual3.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.1\_DicasFrequenciaRelativaPercentual4.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia1.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia2.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia3.cshtml" />
-    <Content Include="Views\SubDistribuicao\DicasDistribuicao\5\_DicasApresentacaoDistribuicaoFrequencia4.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta1.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta2.cshtml" />
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta3.cshtml" />

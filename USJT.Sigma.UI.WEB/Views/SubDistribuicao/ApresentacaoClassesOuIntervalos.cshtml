@@ -21,8 +21,6 @@
 
 @{
     double notaTotal = 0;
-    //if (Model.Count > 0)
-    //{
     foreach (var atividadesFeitas in Model.atividadesFeitas)
     {
         <script>
@@ -34,7 +32,6 @@
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
-    //}
 
     <script>
         $(document).ready(function () {
@@ -75,6 +72,7 @@
                 Distribuição de frequência por classes ou intervalos
                 <span id="infoNota" title="Pontos" class="badge dir"></span>
             </legend>
+            <br />
 
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(6, "AcumuladaRelativaOuPercentual")" frameborder="0" allowfullscreen></iframe>
