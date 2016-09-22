@@ -29,6 +29,26 @@ namespace USJT.Sigma.Repositorio
                 return atividadeFeitas;
             }
         }
+        public List<Atividade> TodasAtividadesDeUmTopico(int idTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                List<Atividade> atividadeFeitas =
+                    (from C in conexao.TB_ATIVIDADE
+                     where C.TB_SUBTOPICO.TB_TOPICO.ID_TOPICO == idTopico
+                     select new Atividade
+                     {
+                         IdAtividade = C.ID_ATIVIDADE,
+                         NomeAtv = C.NOM_ATIVIDADE,
+                         DescricaoTitulo = C.DES_TITULO,
+                         DescricaoSubTitulo = C.DES_SUBTITULO,
+                         DescricaoAtividade = C.DES_ATIVIDADE,
+                         DescricaoPergunta = C.DES_PERGUNTA,
+                         Nota = (double)C.VAL_NOTA
+                     }).ToList();
+                return atividadeFeitas;
+            }
+        }
         public List<Atividade> TodasAtividadesDeUmSubTopico(int idSubTopico)
         {
             using (var conexao = new SIGMAEntities())

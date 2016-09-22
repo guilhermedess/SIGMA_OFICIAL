@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,71 +12,187 @@ namespace USJT.Sigma.UI.WEB.Controllers
     public class SubMedidasTendenciaController : Controller
     {
         SubTopicoREP subTopicoREP = new SubTopicoREP();
+        AtividadeREP atividadeREP = new AtividadeREP();
+        AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+        dynamic meusModelos = new ExpandoObject();
+
+        public ActionResult ConferirRespotaRecebida(Atividade atividade, string metodo, string controle)
+        {
+            Aluno aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            var respostaDoAluno = "";
+
+            foreach (var respostas in atividade.ListaDeRespostas)
+            {
+                respostaDoAluno += respostas;
+            }
+
+            if (respostaDoAluno.Equals(atividadeREP.RespostaExata(atividade.IdAtividade)))
+            {
+                //consulta atividade pra ver se ja existe
+                if (atividadeAlunoREP.ExisteAtividadeFeita(aluno.IdAluno, atividade.IdAtividade))
+                {
+                    TempData.Add("Mensagem", "Resposta Correta. Atividade feita anteriormente.");
+
+                    return RedirectToAction(metodo, controle);
+                }
+                else
+                {
+                    atividadeAlunoREP.AdicionaAtividadeAluno(aluno.IdAluno, atividade.IdAtividade);
+
+                    TempData.Add("Mensagem", "Resposta correta!");
+                }
+            }
+            else
+            {
+                TempData.Add("Mensagem", "Resposta Errada!");
+            }
+
+            return RedirectToAction(metodo, controle);
+        }
+        public ActionResult RenderizarView(int idSubTopico)
+        {
+            Aluno aluno = (Aluno)Session["dadosAlunoLogado"];
+
+            meusModelos.atividades = atividadeREP.TodasAtividadesDeUmSubTopico(idSubTopico);
+            meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
+
+            return View(meusModelos);
+        }
         public ActionResult IntroducaoMedidasTendencia()
         {
-            return View();
-        }
+            try
+            {
+                return RenderizarView(9);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         [HttpPost]
-        public ActionResult IntroducaoMedidasTendencia(Aluno aluno, Atividade atividade)
+        public ActionResult IntroducaoMedidasTendencia(Atividade atividade)
         {
-            
-            return View();
-        }
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "IntroducaoMedidasTendencia", "SubMedidasTendencia");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
-        public ActionResult Media()
-        {
-            return View();
+                return RedirectToAction("Login", "Aluno");
+            }
         }
-
-        [HttpPost]
-        public ActionResult Media(Aluno aluno, Atividade atividade)
-        {
-            return View();
-        }
-
         public ActionResult MediaSimples()
         {
-            return View();
-        }
+            try
+            {
+                return RenderizarView(10);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         [HttpPost]
-        public ActionResult MediaSimples(Aluno aluno, Atividade atividade)
+        public ActionResult MediaSimples(Atividade atividade)
         {
-            return View();
-        }
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "MediaSimples", "SubMedidasTendencia");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         public ActionResult MediaPonderada()
         {
-            return View();
-        }
+            try
+            {
+                return RenderizarView(11);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         [HttpPost]
-        public ActionResult MediaPonderada(Aluno aluno, Atividade atividade)
+        public ActionResult MediaPonderada(Atividade atividade)
         {
-            return View();
-        }
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "MediaPonderada", "SubMedidasTendencia");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         public ActionResult Moda()
         {
-            return View();
-        }
+            try
+            {
+                return RenderizarView(12);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         [HttpPost]
-        public ActionResult Moda(Aluno aluno, Atividade atividade)
+        public ActionResult Moda(Atividade atividade)
         {
-            return View();
-        }
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "Moda", "SubMedidasTendencia");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         public ActionResult Mediana()
         {
-            return View();
-        }
+            try
+            {
+                return RenderizarView(13);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
 
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
         [HttpPost]
-        public ActionResult Mediana(Aluno aluno, Atividade atividade)
+        public ActionResult Mediana(Atividade atividade)
         {
-            return View();
+            try
+            {
+                return ConferirRespotaRecebida(atividade, "Mediana", "SubMedidasTendencia");
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller (POST): Entre novamente");
+
+                return RedirectToAction("Login", "Aluno");
+            }
         }
     }
 }

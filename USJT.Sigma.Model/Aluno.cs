@@ -16,6 +16,7 @@ namespace USJT.Sigma.Model
         public DateTime DataNascimento { get; set; }
         public string Usuário { get; set; }
         public string Senha { get; set; }
+        public double TotalPontosFeitos { get; set; }
         public double ProgressoTotal { get; set; }
         public double ProgressoDistribuicao { get; set; }
         public double ProgressoMedidasDeTendenciaCentral { get; set; }
@@ -41,5 +42,11 @@ namespace USJT.Sigma.Model
         public double PDAcumuladaRelativaPercentual { get; set; }
         public double PDFreqPontosValores { get; set; }
         public double PDFreqClassesIntervalos { get; set; }
+        public double PTIntroducao { get; set; }
+        public double PTMediaSimples { get; set; }
+        public double PTMediaPonderada { get; set; }
+        public double PTModa { get; set; }
+        public double PTMediana { get; set; }
+        public int topicoSelecionadoAtv { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿@model USJT.Sigma.Model.Aluno
-
-<head>
+﻿<head>
     <script src="~/scripts/progresso2.js"></script>
     <link href="~/Content/progresso2.css" rel="stylesheet" />
 </head>
@@ -34,9 +32,9 @@
             <div class="chart clearfix">
                 <div class="item">
                     <div class="bar">
-                        <span class="percent">@Model.ProgressoDistribuicaoPorAtividade%</span>
+                        <span class="percent">@Model.Aluno.ProgressoDistribuicaoPorAtividade%</span>
 
-                        <div class="item-progress" data-percent="@Model.ProgressoDistribuicaoPorAtividade">
+                        <div class="item-progress" data-percent="@Model.Aluno.ProgressoDistribuicaoPorAtividade">
                             <span class="title">Distribuição</span>
                         </div>
                     </div>
@@ -44,9 +42,9 @@
 
                 <div class="item">
                     <div class="bar">
-                        <span class="percent">@Model.ProgressoMedidasDeTendenciaCentral%</span>
+                        <span class="percent">@Model.Aluno.ProgressoMedidasDeTendenciaPorAtividade%</span>
 
-                        <div class="item-progress" data-percent="@Model.ProgressoMedidasDeTendenciaCentral">
+                        <div class="item-progress" data-percent="@Model.Aluno.ProgressoMedidasDeTendenciaPorAtividade">
                             <span class="title">Medidas&nbsp;de&nbsp;Tendência</span>
                         </div>
                     </div>
@@ -54,9 +52,9 @@
 
                 <div class="item">
                     <div class="bar">
-                        <span class="percent">@Model.ProgressoMedidasDeDispersao%</span>
+                        <span class="percent">@Model.Aluno.ProgressoMedidasDeDispersaoPorAtividade%</span>
 
-                        <div class="item-progress" data-percent="@Model.ProgressoMedidasDeDispersao">
+                        <div class="item-progress" data-percent="@Model.Aluno.ProgressoMedidasDeDispersaoPorAtividade">
                             <span class="title">Medidas&nbsp;de&nbsp;Dispersão</span>
                         </div>
                     </div>
@@ -64,9 +62,9 @@
 
                 <div class="item">
                     <div class="bar">
-                        <span class="percent">@Model.ProgressoAmostragemEstimadores%</span>
+                        <span class="percent">@Model.Aluno.ProgressoAmostragemEstimadoresPorAtividade%</span>
 
-                        <div class="item-progress" data-percent="@Model.ProgressoAmostragemEstimadores">
+                        <div class="item-progress" data-percent="@Model.Aluno.ProgressoAmostragemEstimadoresPorAtividade">
                             <span class="title">Amostragem&nbsp;e&nbsp;Estimadores</span>
                         </div>
                     </div>

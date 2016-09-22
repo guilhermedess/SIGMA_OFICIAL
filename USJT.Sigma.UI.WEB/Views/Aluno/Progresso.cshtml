@@ -3,6 +3,7 @@
 <head>
     <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
     <script src="~/scripts/medalhas.js"></script>
+    <script src="~/scripts/conquistas.js"></script>
     <link href="~/Content/panel.css" rel="stylesheet" />
     <link href="~/Content/nivel.css" rel="stylesheet" />
 </head>
@@ -14,6 +15,7 @@
     <script>
         $(document).ready(function () {
             Medalhas(@Model.Aluno.ProgressoTotal);
+            Conquistas(@Model.Aluno.TotalPontosFeitos);
         });
     </script>
 }
@@ -30,28 +32,28 @@
 
     <center>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 jumbotron">
+            <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <a>
-                        <img id="medalhaBronze" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                        <img id="medalhaBronze" src="~/Content/img/Distribuicao/DESABILITADO2.png" title="25% dos Pontos" />
                     </a>
                     <p>Bronze</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <a>
-                        <img id="medalhaPrata" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                        <img id="medalhaPrata" src="~/Content/img/Distribuicao/DESABILITADO2.png" title="50% dos Pontos" />
                     </a>
                     <p>Prata</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <a>
-                        <img id="medalhaOuro" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                        <img id="medalhaOuro" src="~/Content/img/Distribuicao/DESABILITADO2.png" title="75% dos Pontos" />
                     </a>
                     <p>Ouro</p>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3">
                     <a>
-                        <img id="medalhaPlatina" src="~/Content/img/Distribuicao/DESABILITADO2.png" />
+                        <img id="medalhaPlatina" src="~/Content/img/Distribuicao/DESABILITADO2.png" title="100% dos Pontos" />
                     </a>
                     <p>Platina</p>
                 </div>
@@ -60,129 +62,158 @@
     </center>
 
     <hr />
+
+    <center>
         <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">                        
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/1.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Cria</span>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="cria" class="img-circle" src="~/Content/img/niveis_conquistados/1-preto.png" title="250 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Cria</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/2.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Fraldinha</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="fraldinha" class="img-circle" src="~/Content/img/niveis_conquistados/2-preto.png" title="500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Fraldinha</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/3.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Dentinho</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="dentinho" class="img-circle" src="~/Content/img/niveis_conquistados/3-preto.png" title="1000 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Dentinho</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/4.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Dente</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="dente" class="img-circle" src="~/Content/img/niveis_conquistados/4-preto.png" title="1500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Dente</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/5.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Juvenil</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="juvenil" class="img-circle" src="~/Content/img/niveis_conquistados/5-preto.png" title="2000 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Juvenil</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/6.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Junior</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="junior" class="img-circle" src="~/Content/img/niveis_conquistados/6-preto.png" title="2500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Junior</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/7.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Pleno</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="pleno" class="img-circle" src="~/Content/img/niveis_conquistados/7-preto.png" title="3000 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Pleno</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/8.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Sênior</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="senior" class="img-circle" src="~/Content/img/niveis_conquistados/8-preto.png" title="3500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Sênior</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/9.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Master</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="master" class="img-circle" src="~/Content/img/niveis_conquistados/9-preto.png" title="4000 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Master</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-1 col-md-1 col-sm-1">
-                <div class="profile-header-container">
-                    <div class="profile-header-img">
-                        <img class="img-circle" src="~/Content/img/niveis_conquistados/10.png" />
-                        <!-- badge -->
-                        <div class="rank-label-container">
-                            <span class="label label-info rank-label">Especialista</span>
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="especialista" class="img-circle" src="~/Content/img/niveis_conquistados/10-preto.png" title="4500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Especialista</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="especialista" class="img-circle" src="~/Content/img/niveis_conquistados/10-preto.png" title="4500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Especialista</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-1">
+                    <div class="profile-header-container">
+                        <div class="profile-header-img">
+                            <img id="especialista" class="img-circle" src="~/Content/img/niveis_conquistados/10-preto.png" title="4500 pontos" />
+                            <!-- badge -->
+                            <div class="rank-label-container">
+                                <span class="label label-info rank-label">Especialista</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <hr />
+    </center>
+    
+    <hr />
 
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -197,7 +228,7 @@
                         <strong>Distribuição de Frequência</strong>
                     </h4>
                     <p>
-                        <label class="label label-info">@Model.Aluno.PontosFeitosDistribuicao</label> Pontos Conquistados                    
+                        <label class="label label-info">@Model.Aluno.PontosFeitosDistribuicao</label> Pontos Conquistados
                         <br>
                         <div class="progress">
                             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.ProgressoDistribuicao%">
@@ -217,14 +248,14 @@
                 </div>
                 <div class="offer-content">
                     <h4>
-                        <strong>Medidas de Tendência </strong>
+                        <strong>Medidas de Tendência</strong>
                     </h4>
                     <p>
                         <label class="label label-info">@Model.Aluno.PontosFeitosMedidasDeTendenciaCentral</label> Pontos Conquistados
                         <br>
                         <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.PontosMedidasDeTendenciaCentral%">
-                                @Model.Aluno.PontosMedidasDeTendenciaCentral%
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: @Model.Aluno.ProgressoMedidasDeTendenciaCentral%">
+                                @Model.Aluno.ProgressoMedidasDeTendenciaCentral%
                             </div>
                         </div>
                     </p>
@@ -283,11 +314,12 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
-            @Html.Partial("~/Views/Topico/_PartialProgresso.cshtml", (USJT.Sigma.Model.Aluno)Model.Aluno)
+            @Html.Partial("_PartialProgresso")
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6">
-            @Html.Partial("~/Views/Topico/_PartialProgresso2.cshtml", (USJT.Sigma.Model.Aluno)Model.Aluno)
+            @Html.Partial("_PartialProgresso2")
         </div>
     </div>
+    <br /><br />
     <br /><br />
 </div>

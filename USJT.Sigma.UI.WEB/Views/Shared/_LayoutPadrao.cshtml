@@ -5,7 +5,7 @@
     <title>@ViewBag.Title</title>
 
     <!--Importamos os scripts do JQuery-->
-    <script src="~/scripts/jquery-3.1.0.min.js"></script> 
+    <script src="~/scripts/jquery-3.1.0.min.js"></script>
     <script src="~/scripts/jquery.maskedinput.min.js"></script>
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse js-navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="dropdown mega-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assuntos<span class="glyphicon glyphicon-chevron-down pull-right"></span></a>                            
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assuntos<span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
                             <ul class="dropdown-menu mega-dropdown-menu row">
                                 <li class="col-sm-3">
                                     <ul>
@@ -79,6 +79,7 @@
                                         <li class="divider"></li>
                                         <li><a href="~/Topico/Topicos">Tópicos<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
                                         <li><a href="~/Aluno/Progresso">Acompanhar Progresso<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                                        <li><a href="~/Aluno/Atividades">Acompanhar Atividades<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
                                         <li><a href="~/Topico/GeraCertificado">Certificado<span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
                                     </ul>
                                 </li>
@@ -105,12 +106,10 @@
                                     <ul>
                                         <li class="dropdown-header">Medidas de Tendência Central</li>
                                         <li><a href="#">Introdução</a></li>
-                                        <li><a href="#">Média simples e ponderada</a></li>
+                                        <li><a href="#">Média simples</a></li>
+                                        <li><a href="#">Média ponderada</a></li>
                                         <li><a href="#">Moda</a></li>
                                         <li><a href="#">Mediana</a></li>
-                                        <li><a href="#">Média geométrica</a></li>
-                                        <li><a href="#">Média harmônica</a></li>
-                                        <li><a href="#">Separatrizes</a></li>
                                         <li class="dropdown-header">Medidas de Dispersão</li>
                                         <li><a href="#">Dispersão</a></li>
                                         <li><a href="#">Assimetria</a></li>
@@ -138,13 +137,11 @@
                                         </form>
                                     </ul>
                                 </li>
-                            </ul>                            
+                            </ul>
                         </li>
                     </ul>
                 </div>
             </nav>
-        </div>
-
     </header>
 
     @*SECTION: CRIAMOS UMA SESSÃO PARA CARREGAR OS PARTIALMENSAGEM
@@ -155,7 +152,7 @@
         @*INSERIMOS UMA CONDIÇÃO PARA INICIALIZAR O ALERT*@
 
         @if (TempData["Mensagem"] != null)
-        {
+            {
             @Html.Partial("_PartialMensagem")
         }
 
@@ -172,6 +169,6 @@
             </div>
         </nav>
     </footer>
-
+    </div>
 </body>
 </html>

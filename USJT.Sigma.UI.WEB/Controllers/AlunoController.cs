@@ -95,7 +95,14 @@ namespace USJT.Sigma.UI.WEB.Controllers
                          "4.1 - Freq. relativa ou percentual", "4.2 - Acum. simples ou absoluta", "4.3 - Acum. relativa ou percentual",
                          "5.1 - Freq. por pontos ou valores", "5.2 - Freq. por classes ou intervalos"};
 
-            ViewBag.Opcoes = new SelectList(opcoes);
+            ViewBag.opcoesDistribuicao = new SelectList(opcoes);
+        }
+        public void CarregarComboTendencia()
+        {
+            IEnumerable<string> opcoes = new string[] { "O - Todas", "X - Todas Pendentes", "1 - Introdução", "2.1 - Média simples",
+                "2.2 - Média ponderada", "3 - Moda", "4 - Mediana"};
+
+            ViewBag.OpcoesTendencia = new SelectList(opcoes);
         }
         public ActionResult Progresso()
         {
@@ -105,20 +112,21 @@ namespace USJT.Sigma.UI.WEB.Controllers
             AtividadeREP atividadeREP = new AtividadeREP();
             AlunoREP alunoREP = new AlunoREP();
 
+            dadosAlunoLogado.TotalPontosFeitos = atividadeAlunoREP.PontosFeitos(dadosAlunoLogado.IdAluno);
             dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
 
             dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 1);
-            //dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 2);
+            dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 2);
             //dadosAlunoLogado.ProgressoMedidasDeDispersao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 3);
             //dadosAlunoLogado.ProgressoAmostragemEstimadores = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 4);
 
             dadosAlunoLogado.PontosDistribuicao = atividadeREP.TotalPontosPossiveisDeUmTopico(1);
-            //dadosAlunoLogado.PontosMedidasDeTendenciaCentral = atividadeREP.TotalPossivelDeUmTopico(2);
-            //dadosAlunoLogado.PontosMedidasDeDispersao = atividadeREP.TotalPossivelDeUmTopico(3);
-            //dadosAlunoLogado.PontosAmostragemEstimadores = atividadeREP.TotalPossivelDeUmTopico(4);
+            dadosAlunoLogado.PontosMedidasDeTendenciaCentral = atividadeREP.TotalPontosPossiveisDeUmTopico(2);
+            //dadosAlunoLogado.PontosMedidasDeDispersao = atividadeREP.TotalPontosPossiveisDeUmTopico(3);
+            //dadosAlunoLogado.PontosAmostragemEstimadores = atividadeREP.TotalPontosPossiveisDeUmTopico(4);
 
             dadosAlunoLogado.PontosFeitosDistribuicao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 1);
-            //dadosAlunoLogado.PontosFeitosMedidasDeTendenciaCentral = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 2);
+            dadosAlunoLogado.PontosFeitosMedidasDeTendenciaCentral = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 2);
             //dadosAlunoLogado.PontosFeitosMedidasDeDispersao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 3);
             //dadosAlunoLogado.PontosFeitosAmostragemEstimadores = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 4);
 
@@ -131,7 +139,15 @@ namespace USJT.Sigma.UI.WEB.Controllers
             dadosAlunoLogado.PDFreqPontosValores = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 7);
             dadosAlunoLogado.PDFreqClassesIntervalos = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 8);
 
+            dadosAlunoLogado.PTIntroducao = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 9);
+            dadosAlunoLogado.PTMediaSimples = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 10);
+            dadosAlunoLogado.PTMediaPonderada = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 11);
+            dadosAlunoLogado.PTModa = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 12);
+            dadosAlunoLogado.PTMediana = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 13);
+
+
             dadosAlunoLogado.ProgressoDistribuicaoPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 1);
+            dadosAlunoLogado.ProgressoMedidasDeTendenciaPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 2);
 
             dynamic meusModelos = new ExpandoObject();
             meusModelos.Aluno = dadosAlunoLogado;
@@ -139,7 +155,116 @@ namespace USJT.Sigma.UI.WEB.Controllers
             return View(meusModelos);
         }
         [HttpPost]
-        public ActionResult Atividades(Aluno aluno, string comboDistribuicao)
+        public ActionResult Atividades(Aluno aluno, string comboDistribuicao, string comboTendencia)
+        {
+            try
+            {
+                var valorComboDistribuicao = ValidarComboDistribuicao(comboDistribuicao);
+                var valorComboTendencia = ValidarComboTendencia(comboTendencia);
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+                dynamic meusModelos = new ExpandoObject();
+
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                if (comboDistribuicao != null)
+                {
+                    aluno.topicoSelecionadoAtv = 1;
+                }
+                else
+                {
+                    if (comboTendencia != null)
+                    {
+                        aluno.topicoSelecionadoAtv = 2;
+                    }
+                }
+
+                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                if (valorComboDistribuicao == -1 || valorComboTendencia == -1)
+                {
+
+                }
+                else
+                {
+                    if (valorComboDistribuicao == 0 || valorComboTendencia == 0)
+                    {
+                        meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                        meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
+
+                        meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                        meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
+                    }
+                    else
+                    {
+                        if (valorComboDistribuicao != 0 && valorComboDistribuicao != -100)
+                        {
+                            meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmSubTopico(valorComboDistribuicao);
+                            meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, valorComboDistribuicao);
+
+                            meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                            meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
+                        }
+                        else
+                        {
+                            if (valorComboTendencia != 0 && valorComboTendencia != -100)
+                            {
+                                meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmSubTopico(valorComboTendencia);
+                                meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, valorComboTendencia);
+
+                                meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                                meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
+                            }
+
+                        }
+                    }
+                }
+
+                CarregarComboDistribuicao();
+                CarregarComboTendencia();
+                
+
+                return View(meusModelos);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
+        public ActionResult Atividades(Aluno aluno)
+        {
+            try
+            {
+                CarregarComboDistribuicao();
+                CarregarComboTendencia();
+
+                AtividadeREP atividadeREP = new AtividadeREP();
+
+                dynamic meusModelos = new ExpandoObject();
+
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+                aluno.topicoSelecionadoAtv = 1;
+
+                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+
+                meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
+
+                meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
+
+                return View(meusModelos);
+            }
+            catch (Exception)
+            {
+                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
+
+                return RedirectToAction("Login", "Aluno");
+            }
+        }
+        public dynamic AtualizarAtividades(Aluno aluno, string comboDistribuicao)
         {
             try
             {
@@ -150,8 +275,8 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
                 aluno = (Aluno)Session["dadosAlunoLogado"];
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
-                
-                if(procurarAtv == 0)
+
+                if (procurarAtv == 0)
                 {
                     //meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
 
@@ -166,7 +291,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 }
                 else
                 {
-                    if(procurarAtv == 99)
+                    if (procurarAtv == 99)
                     {
                         meusModelos.todasAtividades = atividadeREP.TodasAtividades();
                         meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
@@ -178,9 +303,9 @@ namespace USJT.Sigma.UI.WEB.Controllers
                     }
                 }
 
-                CarregarComboDistribuicao();                      
+                CarregarComboDistribuicao();
 
-                return View(meusModelos);
+                return meusModelos;
 
             }
             catch (Exception)
@@ -192,17 +317,22 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
         public int ValidarComboDistribuicao(string comboDistribuicao)
         {
-            int procurarAtv = 99;
+            if (comboDistribuicao == null)
+            {
+                comboDistribuicao = "";
+            }
+
+            int procurarAtv = -100;
 
             if (comboDistribuicao.Equals("O - Todas"))
             {
-                procurarAtv = 99;
+                procurarAtv = 0;
             }
             else
             {
                 if (comboDistribuicao.Equals("X - Todas Pendentes"))
                 {
-                    procurarAtv = 0;
+                    procurarAtv = -1;
                 }
                 else
                 {
@@ -264,30 +394,63 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
             return procurarAtv;
         }
-        public ActionResult Atividades(Aluno aluno)
+        public int ValidarComboTendencia(string comboTendencia)
         {
-            try
+            if (comboTendencia == null)
             {
-                CarregarComboDistribuicao();
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-
-                dynamic meusModelos = new ExpandoObject();
-
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                meusModelos.atividadesFeitas = /*(List<AtividadeAluno>)*/atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
-                meusModelos.todasAtividades = atividadeREP.TodasAtividades();
-
-                return View(meusModelos);
+                comboTendencia = "";
             }
-            catch (Exception)
+
+            int procurarAtv = -100;
+
+            if (comboTendencia.Equals("O - Todas"))
             {
-                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
-
-                return RedirectToAction("Login", "Aluno");
+                procurarAtv = 0;
             }
+            else
+            {
+                if (comboTendencia.Equals("X - Todas Pendentes"))
+                {
+                    procurarAtv = -1;
+                }
+                else
+                {
+                    if (comboTendencia.Equals("1 - Introdução"))
+                    {
+                        procurarAtv = 9;
+                    }
+                    else
+                    {
+                        if (comboTendencia.Equals("2.1 - Média simples"))
+                        {
+                            procurarAtv = 10;
+                        }
+                        else
+                        {
+                            if (comboTendencia.Equals("2.2 - Média ponderada"))
+                            {
+                                procurarAtv = 11;
+                            }
+                            else
+                            {
+                                if (comboTendencia.Equals("3 - Moda"))
+                                {
+                                    procurarAtv = 12;
+                                }
+                                else
+                                {
+                                    if (comboTendencia.Equals("4 - Mediana"))
+                                    {
+                                        procurarAtv = 13;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return procurarAtv;
         }
+       
     }
 }

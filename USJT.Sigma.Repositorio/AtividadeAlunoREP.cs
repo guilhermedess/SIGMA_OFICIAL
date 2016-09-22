@@ -37,6 +37,32 @@ namespace USJT.Sigma.Repositorio
                 return atividadeFeitas;
             }
         }
+        public List<AtividadeAluno> ListaAtividadesFeitasDeUmTopico(int idAluno, int idTopico)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                List<AtividadeAluno> atividadeFeitas =
+                    (from C in conexao.TB_ATIVIDADE_ALUNO
+                     where C.ID_ALUNO == idAluno && C.TB_ATIVIDADE.TB_SUBTOPICO.TB_TOPICO.ID_TOPICO == idTopico && C.CHK_STATUS == true
+                     select new AtividadeAluno
+                     {
+                         IdAtividadeAluno = C.ID_ATIVIDADE_ALUNO,
+                         IdAtividade = C.ID_ATIVIDADE,
+                         IdAluno = C.ID_ALUNO,
+                         Atividade = new Atividade
+                         {
+                             IdAtividade = C.ID_ATIVIDADE,
+                             NomeAtv = C.TB_ATIVIDADE.NOM_ATIVIDADE,
+                             DescricaoTitulo = C.TB_ATIVIDADE.DES_TITULO,
+                             DescricaoSubTitulo = C.TB_ATIVIDADE.DES_SUBTITULO,
+                             DescricaoAtividade = C.TB_ATIVIDADE.DES_ATIVIDADE,
+                             DescricaoPergunta = C.TB_ATIVIDADE.DES_PERGUNTA,
+                             Nota = (double)C.TB_ATIVIDADE.VAL_NOTA
+                         }
+                     }).ToList();
+                return atividadeFeitas;
+            }
+        }
         public List<AtividadeAluno> AtividadesFeitasDeUmSubTopico(int idAluno, int idSubTopico)
         {
             using (var conexao = new SIGMAEntities())

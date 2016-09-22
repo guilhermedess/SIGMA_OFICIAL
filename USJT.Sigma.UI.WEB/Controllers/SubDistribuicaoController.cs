@@ -51,20 +51,20 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
             return RedirectToAction(metodo, controle);
         }
-        public ActionResult RenderizarView(Aluno aluno, int idSubTopico)
+        public ActionResult RenderizarView(int idSubTopico)
         {
-            aluno = (Aluno)Session["dadosAlunoLogado"];
+            Aluno aluno = (Aluno)Session["dadosAlunoLogado"];
 
             meusModelos.atividades = atividadeREP.TodasAtividadesDeUmSubTopico(idSubTopico);
             meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
 
             return View(meusModelos);
         }
-        public ActionResult IntroducaoDistribuicao(Aluno aluno)
+        public ActionResult IntroducaoDistribuicao()
         {
             try
             {
-                return RenderizarView(aluno, 1);
+                return RenderizarView(1);
             }
             catch (Exception)
             {
@@ -88,11 +88,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult PontosOuValores(Aluno aluno)
+        public ActionResult PontosOuValores()
         {
             try
             {
-                return RenderizarView(aluno, 2);
+                return RenderizarView(2);
             }
             catch (Exception)
             {
@@ -117,11 +117,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult ClassesOuIntervalos(Aluno aluno)
+        public ActionResult ClassesOuIntervalos()
         {
             try
             {
-                return RenderizarView(aluno, 3);
+                return RenderizarView(3);
             }
             catch (Exception)
             {
@@ -146,11 +146,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult FrequenciaRelativaPercentual(Aluno aluno)
+        public ActionResult FrequenciaRelativaPercentual()
         {
             try
             {
-                return RenderizarView(aluno, 4);
+                return RenderizarView(4);
             }
             catch (Exception)
             {
@@ -175,11 +175,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno)
+        public ActionResult FrequenciaAcumuladaSimplesAbsoluta()
         {
             try
             {
-                return RenderizarView(aluno, 5);
+                return RenderizarView(5);
             }
             catch (Exception)
             {
@@ -204,11 +204,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno)
+        public ActionResult FrequenciaAcumuladaRelativaPercentual()
         {
             try
             {
-                return RenderizarView(aluno, 6);
+                return RenderizarView(6);
             }
             catch (Exception)
             {
@@ -233,11 +233,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult ApresentacaoPontosOuValores(Aluno aluno)
+        public ActionResult ApresentacaoPontosOuValores()
         {
             try
             {
-                return RenderizarView(aluno, 7);
+                return RenderizarView(7);
             }
             catch (Exception)
             {
@@ -262,11 +262,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
 
-        public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno)
+        public ActionResult ApresentacaoClassesOuIntervalos()
         {
             try
             {
-                return RenderizarView(aluno, 8);
+                return RenderizarView(8);
             }
             catch (Exception)
             {

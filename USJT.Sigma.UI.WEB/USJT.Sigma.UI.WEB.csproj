@@ -153,15 +153,25 @@
     <Content Include="Content\img\Distribuicao\Prata.png" />
     <Content Include="Content\img\img_sair.png" />
     <Content Include="Content\img\logo100p.png" />
+    <Content Include="Content\img\niveis_conquistados\1-preto.png" />
     <Content Include="Content\img\niveis_conquistados\1.png" />
+    <Content Include="Content\img\niveis_conquistados\10-preto.png" />
     <Content Include="Content\img\niveis_conquistados\10.png" />
+    <Content Include="Content\img\niveis_conquistados\2-preto.png" />
     <Content Include="Content\img\niveis_conquistados\2.png" />
+    <Content Include="Content\img\niveis_conquistados\3-preto.png" />
     <Content Include="Content\img\niveis_conquistados\3.png" />
+    <Content Include="Content\img\niveis_conquistados\4-preto.png" />
     <Content Include="Content\img\niveis_conquistados\4.png" />
+    <Content Include="Content\img\niveis_conquistados\5-preto.png" />
     <Content Include="Content\img\niveis_conquistados\5.png" />
+    <Content Include="Content\img\niveis_conquistados\6-preto.png" />
     <Content Include="Content\img\niveis_conquistados\6.png" />
+    <Content Include="Content\img\niveis_conquistados\7-preto.png" />
     <Content Include="Content\img\niveis_conquistados\7.png" />
+    <Content Include="Content\img\niveis_conquistados\8-preto.png" />
     <Content Include="Content\img\niveis_conquistados\8.png" />
+    <Content Include="Content\img\niveis_conquistados\9-preto.png" />
     <Content Include="Content\img\niveis_conquistados\9.png" />
     <Content Include="Content\img\slider\slider1_1360-600.png" />
     <Content Include="Content\img\slider\slider2_1360-600.png" />
@@ -231,6 +241,7 @@
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\botoes-topico.js" />
+    <Content Include="scripts\conquistas.js" />
     <Content Include="scripts\dicas4.js" />
     <Content Include="scripts\dicas3.js" />
     <Content Include="scripts\dicas2.js" />
@@ -261,11 +272,13 @@
     <Content Include="scripts\jquery.maskedinput.js" />
     <Content Include="scripts\jquery.maskedinput.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="scripts\jquery.validate.js" />
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="scripts\marcacao-atividade-pontos-total.js" />
+    <Content Include="scripts\apresentacao-atividades.js" />
     <Content Include="scripts\medalhas.js" />
     <Content Include="scripts\mega-menu.js" />
     <Content Include="scripts\progresso.js" />
@@ -297,20 +310,13 @@
     <Content Include="Views\Aluno\Cadastrar.cshtml" />
     <Content Include="Views\Shared\_LayoutPadrao.cshtml" />
     <Content Include="Views\Topico\Topicos.cshtml" />
-    <Content Include="Views\SubAmostragem\_PartialAmostragem.cshtml" />
-    <Content Include="Views\SubAmostragem\AleatoriaSimples.cshtml" />
-    <Content Include="Views\SubAmostragem\AleatoriaEstratificada.cshtml" />
-    <Content Include="Views\SubAmostragem\Conglomerado.cshtml" />
-    <Content Include="Views\SubAmostragem\Sistematica.cshtml" />
     <Content Include="Views\Aluno\Login.cshtml" />
-    <Content Include="Views\SubAmostragem\Conceitos.cshtml" />
-    <Content Include="Views\SubAmostragem\ImpAmostragem.cshtml" />
-    <Content Include="Views\Topico\_PartialProgresso.cshtml" />
+    <Content Include="Views\Aluno\_PartialProgresso.cshtml" />
     <Content Include="Views\SubDistribuicao\_PartialDistribuicao.cshtml" />
     <Content Include="Views\SubDistribuicao\IntroducaoDistribuicao.cshtml" />
     <Content Include="Views\SubDistribuicao\PontosOuValores.cshtml" />
     <Content Include="Views\SubDistribuicao\ClassesOuIntervalos.cshtml" />
-    <Content Include="Views\Topico\_PartialProgresso2.cshtml" />
+    <Content Include="Views\Aluno\_PartialProgresso2.cshtml" />
     <Content Include="Views\SubDistribuicao\FrequenciaRelativaPercentual.cshtml" />
     <Content Include="Views\SubDistribuicao\FrequenciaAcumuladaSimplesAbsoluta.cshtml" />
     <Content Include="Views\SubDistribuicao\FrequenciaAcumuladaRelativaPercentual.cshtml" />
@@ -318,7 +324,6 @@
     <Content Include="Views\SubDistribuicao\ApresentacaoClassesOuIntervalos.cshtml" />
     <Content Include="Views\SubMedidasTendencia\IntroducaoMedidasTendencia.cshtml" />
     <Content Include="Views\SubMedidasTendencia\_PartialMedidasTendencia.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\Media.cshtml" />
     <Content Include="Views\SubMedidasTendencia\MediaSimples.cshtml" />
     <Content Include="Views\SubMedidasTendencia\MediaPonderada.cshtml" />
     <Content Include="Views\SubMedidasTendencia\Moda.cshtml" />
@@ -358,6 +363,22 @@
     <Content Include="Views\SubDistribuicao\DicasDistribuicao\4.2\_DicasFrequenciaAcumuladaSimplesAbsoluta4.cshtml" />
     <Content Include="Views\Aluno\_PartialMensagem.cshtml" />
     <Content Include="Views\Aluno\Progresso.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.1\_DicasMediaSimples1.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.1\_DicasMediaSimples2.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.1\_DicasMediaSimples3.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.1\_DicasMediaSimples4.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada1.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada2.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada3.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada4.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa1.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa2.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa3.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa4.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana1.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana2.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana4.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -371,7 +392,9 @@
     <Folder Include="Content\img\certificado\" />
     <Folder Include="Content\img\graficos\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\SubAmostragem\" />
     <Folder Include="Views\SubDistribuicao\DicasDistribuicao\1\" />
+    <Folder Include="Views\SubMedidasTendencia\DicasTendencia\1\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\USJT.Sigma.DataAccess\USJT.Sigma.DataAccess.csproj">
