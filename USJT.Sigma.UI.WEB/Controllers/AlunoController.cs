@@ -16,6 +16,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
         private AlunoREP alunoREP = new AlunoREP();
         private SubTopicoREP subTopicoREP = new SubTopicoREP();
         AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+        AtividadeREP atividadeREP = new AtividadeREP();
 
         public ActionResult Cadastrar()
         {
@@ -35,7 +36,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 return View();
             }
         }
-
         public ActionResult Editar()
         {
             return View();
@@ -162,7 +162,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 var valorComboDistribuicao = ValidarComboDistribuicao(comboDistribuicao);
                 var valorComboTendencia = ValidarComboTendencia(comboTendencia);
 
-                AtividadeREP atividadeREP = new AtividadeREP();
                 dynamic meusModelos = new ExpandoObject();
 
                 aluno = (Aluno)Session["dadosAlunoLogado"];
@@ -181,48 +180,10 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
 
-                if (valorComboDistribuicao == -1 || valorComboTendencia == -1)
-                {
-
-                }
-                else
-                {
-                    if (valorComboDistribuicao == 0 || valorComboTendencia == 0)
-                    {
-                        meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
-                        meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
-
-                        meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
-                        meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
-                    }
-                    else
-                    {
-                        if (valorComboDistribuicao != 0 && valorComboDistribuicao != -100)
-                        {
-                            meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmSubTopico(valorComboDistribuicao);
-                            meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, valorComboDistribuicao);
-
-                            meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
-                            meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
-                        }
-                        else
-                        {
-                            if (valorComboTendencia != 0 && valorComboTendencia != -100)
-                            {
-                                meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmSubTopico(valorComboTendencia);
-                                meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, valorComboTendencia);
-
-                                meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
-                                meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
-                            }
-
-                        }
-                    }
-                }
+                AtividadesProcuradas(aluno, meusModelos, valorComboDistribuicao, valorComboTendencia);
 
                 CarregarComboDistribuicao();
                 CarregarComboTendencia();
-                
 
                 return View(meusModelos);
             }
@@ -240,20 +201,52 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 CarregarComboDistribuicao();
                 CarregarComboTendencia();
 
-                AtividadeREP atividadeREP = new AtividadeREP();
-
                 dynamic meusModelos = new ExpandoObject();
 
                 aluno = (Aluno)Session["dadosAlunoLogado"];
                 aluno.topicoSelecionadoAtv = 1;
+                
+                List<Atividade> todasAtividadesDist = atividadeREP.TodasAtividadesDeUmTopico(1);
+                meusModelos.todasAtividadesDistribuicao = todasAtividadesDist;
+
+                List<AtividadeAluno> atividadesFeitasDist = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                meusModelos.atividadesFeitasDistribuicao = atividadesFeitasDist;
+
+                List<Atividade> todasAtividadesTend = atividadeREP.TodasAtividadesDeUmTopico(2);
+                meusModelos.todasAtividadesTendencia = todasAtividadesTend;
+
+                List<AtividadeAluno> atividadesFeitasTend = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                meusModelos.atividadesFeitasTendencia = atividadesFeitasTend;
+
+                double aux = 0;
+                foreach (var lista in atividadesFeitasDist)
+                {
+                    aux += lista.Atividade.Nota;
+                }
+                aluno.PontosFeitosDistribuicao = aux;
+
+                double aux2 = 0;
+                foreach (var lista in todasAtividadesDist)
+                {
+                    aux2 += lista.Nota;
+                }
+                aluno.PontosDistribuicao = aux2;
+
+                double aux3 = 0;
+                foreach (var lista in atividadesFeitasTend)
+                {
+                    aux3 += lista.Atividade.Nota;
+                }
+                aluno.PontosFeitosMedidasDeTendenciaCentral = aux3;
+
+                double aux4 = 0;
+                foreach (var lista in todasAtividadesTend)
+                {
+                    aux4 += lista.Nota;
+                }
+                aluno.PontosMedidasDeTendenciaCentral = aux4;
 
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
-                meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
-
-                meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
-                meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
 
                 return View(meusModelos);
             }
@@ -451,6 +444,177 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
             return procurarAtv;
         }
-       
+        public void AtividadesProcuradas(Aluno aluno, dynamic meusModelos, int valorComboDistribuicao, int valorComboTendencia)
+        {
+            if (valorComboDistribuicao == -1)
+            {
+                List<AtividadeAluno> listaDeAtividadesFeitas = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                List<Atividade> listaDeTodasAtividades = atividadeREP.TodasAtividadesDeUmTopico(1);
+
+                foreach (var feitas in listaDeAtividadesFeitas)
+                {
+                    for (int i = 0; i < listaDeTodasAtividades.Count; i++)
+                    {
+                        if (listaDeTodasAtividades[i].IdAtividade == feitas.IdAtividade)
+                        {
+                            int index = listaDeTodasAtividades.IndexOf(listaDeTodasAtividades[i]);
+                            listaDeTodasAtividades.RemoveAt(index);
+                        }
+                    }
+                }
+
+                double aux = 0;
+                foreach(var lista in listaDeTodasAtividades)
+                {
+                    aux += lista.Nota;
+                }
+                aluno.PontosDistribuicao = aux;
+                aluno.PontosFeitosDistribuicao = 0;
+
+                meusModelos.atividadesFeitasDistribuicao = null;
+                meusModelos.todasAtividadesDistribuicao = listaDeTodasAtividades;
+
+                meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
+            }
+            else
+            {
+                if (valorComboTendencia == -1)
+                {
+                    List<AtividadeAluno> listaDeAtividadesFeitas = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                    List<Atividade> listaDeTodasAtividades = atividadeREP.TodasAtividadesDeUmTopico(2);
+
+                    foreach (var feitas in listaDeAtividadesFeitas)
+
+                    {
+                        for (int i = 0; i < listaDeTodasAtividades.Count; i++)
+                        {
+                            if (listaDeTodasAtividades[i].IdAtividade == feitas.IdAtividade)
+                            {
+                                int index = listaDeTodasAtividades.IndexOf(listaDeTodasAtividades[i]);
+                                listaDeTodasAtividades.RemoveAt(index);
+                            }
+                        }
+                    }
+
+                    double aux = 0;
+                    foreach (var lista in listaDeTodasAtividades)
+                    {
+                        aux += lista.Nota;
+                    }
+                    aluno.PontosMedidasDeTendenciaCentral = aux;
+                    aluno.PontosFeitosMedidasDeTendenciaCentral = 0;
+
+                    meusModelos.atividadesFeitasTendencia = null;
+                    meusModelos.todasAtividadesTendencia = listaDeTodasAtividades;
+
+                    meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                    meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
+                }
+                else
+                {
+                    if (valorComboDistribuicao == 0 || valorComboTendencia == 0)
+                    {
+                        List<Atividade> todasAtividadesDist = atividadeREP.TodasAtividadesDeUmTopico(1);
+                        meusModelos.todasAtividadesDistribuicao = todasAtividadesDist;
+
+                        List<AtividadeAluno> atividadesFeitasDist = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                        meusModelos.atividadesFeitasDistribuicao = atividadesFeitasDist;
+
+                        List<Atividade> todasAtividadesTend = atividadeREP.TodasAtividadesDeUmTopico(2);
+                        meusModelos.todasAtividadesTendencia = todasAtividadesTend;
+
+                        List<AtividadeAluno> atividadesFeitasTend = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                        meusModelos.atividadesFeitasTendencia = atividadesFeitasTend;
+
+                        double aux = 0;
+                        foreach (var lista in atividadesFeitasDist)
+                        {
+                            aux += lista.Atividade.Nota;
+                        }
+                        aluno.PontosFeitosDistribuicao = aux;
+
+                        double aux2 = 0;
+                        foreach (var lista in todasAtividadesDist)
+                        {
+                            aux2 += lista.Nota;
+                        }
+                        aluno.PontosDistribuicao = aux2;
+
+                        double aux3 = 0;
+                        foreach (var lista in atividadesFeitasTend)
+                        {
+                            aux3 += lista.Atividade.Nota;
+                        }
+                        aluno.PontosFeitosMedidasDeTendenciaCentral = aux3;
+
+                        double aux4 = 0;
+                        foreach (var lista in todasAtividadesTend)
+                        {
+                            aux4 += lista.Nota;
+                        }
+                        aluno.PontosMedidasDeTendenciaCentral = aux4;
+                    }
+                    else
+                    {
+                        if (valorComboDistribuicao != 0 && valorComboDistribuicao != -100)
+                        {
+                            List<Atividade> todasAtividadesDist = atividadeREP.TodasAtividadesDeUmSubTopico(valorComboDistribuicao);
+                            meusModelos.todasAtividadesDistribuicao = todasAtividadesDist;
+
+                            List<AtividadeAluno> atividadesFeitasDist = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, valorComboDistribuicao);
+                            meusModelos.atividadesFeitasDistribuicao = atividadesFeitasDist;
+
+                            meusModelos.atividadesFeitasTendencia = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 2);
+                            meusModelos.todasAtividadesTendencia = atividadeREP.TodasAtividadesDeUmTopico(2);
+
+                            double aux = 0;
+                            foreach (var lista in atividadesFeitasDist)
+                            {
+                                aux += lista.Atividade.Nota;
+                            }
+                            aluno.PontosFeitosDistribuicao = aux;
+
+                            double aux2 = 0;
+                            foreach (var lista in todasAtividadesDist)
+                            {
+                                aux2 += lista.Nota;
+                            }
+                            aluno.PontosDistribuicao = aux2;
+                        }
+                        else
+                        {
+                            if (valorComboTendencia != 0 && valorComboTendencia != -100)
+                            {
+                                List<Atividade> todasAtividadesTend = atividadeREP.TodasAtividadesDeUmSubTopico(valorComboTendencia);
+                                meusModelos.todasAtividadesTendencia = todasAtividadesTend;
+                                
+                                List<AtividadeAluno> atividadesFeitasTend = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, valorComboTendencia);
+                                meusModelos.atividadesFeitasTendencia = atividadesFeitasTend;
+
+                                meusModelos.atividadesFeitasDistribuicao = atividadeAlunoREP.ListaAtividadesFeitasDeUmTopico(aluno.IdAluno, 1);
+                                meusModelos.todasAtividadesDistribuicao = atividadeREP.TodasAtividadesDeUmTopico(1);
+
+                                double aux = 0;
+                                foreach (var lista in atividadesFeitasTend)
+                                {
+                                    aux += lista.Atividade.Nota;
+                                }
+                                aluno.PontosFeitosMedidasDeTendenciaCentral = aux;
+
+                                double aux2 = 0;
+                                foreach (var lista in todasAtividadesTend)
+                                {
+                                    aux2 += lista.Nota;
+                                }
+                                aluno.PontosMedidasDeTendenciaCentral = aux2;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }

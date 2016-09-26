@@ -153,6 +153,10 @@
     <Content Include="Content\img\Distribuicao\Prata.png" />
     <Content Include="Content\img\img_sair.png" />
     <Content Include="Content\img\logo100p.png" />
+    <Content Include="Content\img\media_ponderada\mp-ex4a.png" />
+    <Content Include="Content\img\media_ponderada\mp-ex4b.png" />
+    <Content Include="Content\img\media_ponderada\mp-ex4c.png" />
+    <Content Include="Content\img\moda\lousa.png" />
     <Content Include="Content\img\niveis_conquistados\1-preto.png" />
     <Content Include="Content\img\niveis_conquistados\1.png" />
     <Content Include="Content\img\niveis_conquistados\10-preto.png" />
@@ -371,14 +375,14 @@
     <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada2.cshtml" />
     <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada3.cshtml" />
     <Content Include="Views\SubMedidasTendencia\DicasTendencia\2.2\_DicasMediaPonderada4.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa1.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa2.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa3.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasMediaModa4.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana1.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana2.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana4.cshtml" />
-    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediaMediana3.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasModa1.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasModa2.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasModa3.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\3\_DicasModa4.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediana1.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediana2.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediana3.cshtml" />
+    <Content Include="Views\SubMedidasTendencia\DicasTendencia\4\_DicasMediana4.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

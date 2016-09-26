@@ -48,5 +48,6 @@ namespace USJT.Sigma.Model
         public double PTModa { get; set; }
         public double PTMediana { get; set; }
         public int topicoSelecionadoAtv { get; set; }
+        public double Pontos { get; set; }
     }
 }

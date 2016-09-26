@@ -34,8 +34,6 @@
 
 @{
     double notaTotal = 0;
-    //if (Model.atividadesFeitas.Count > 0)
-    //{
     foreach (var atividadesFeitas in Model.atividadesFeitas)
     {
         <script>
@@ -47,7 +45,6 @@
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
-    //}
 
     <script>
         $(document).ready(function () {
@@ -91,7 +88,7 @@
             <br />
 
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
+                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(7, "FrequenciaPontosOuValores")" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div class="container-fluid">
@@ -483,7 +480,7 @@
                         @* Video de exercicio fixo para as guias *@
                         <div id="videoAtividade1">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "Atv1RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(7, "Atv1FrequenciaPontosOuValores")" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
 

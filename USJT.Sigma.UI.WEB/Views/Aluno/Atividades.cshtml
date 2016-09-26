@@ -60,33 +60,6 @@
                     </ul>
                 </div>
 
-
-                @*<script>
-                    function ComboDistribuicao(escolha) {
-                        var url = "/Aluno/Atividades";
-                        $.post(url, { comboDistribuicao: escolha }, function (data) {
-
-                            //html.empty();
-                            //$(document).empty();
-                            //$("#bodyCompleto").html(data);
-                            //location.reload(data);
-
-                            alert(escolha);
-                        });
-                    }
-                </script>*@
-
-                @*<script>
-                    function ComboDistribuicao(escolha) {
-                        var url = "/Aluno/Atividades";
-                        $.post(url, { comboDistribuicao: escolha }, function (data) {
-
-                            alert(escolha);
-                        });
-                    }
-                </script>*@
-
-
                 <div class="tab-content">
                     <div class="tab-pane" role="tabpanel" id="step1">
                         @using (Html.BeginForm())
@@ -99,52 +72,74 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <input id="btnPresentation1" type="submit" value="Procurar" class="btn btn-default" />
                                     </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <label for="info" class="btn btn-info">Pontos conquistados <span class="badge">@Model.Aluno.PontosFeitosDistribuicao</span></label>
+                                        <h3><span class="label label-info">Pontos conquistados: @Model.Aluno.PontosFeitosDistribuicao</span></h3>
+                                        <span title="Pontos" class="badge"></span>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2">
+                                        <div class="offer offer-info">
+                                            <div class="shape">
+                                                <div class="shape-text">
+                                                    <span>1222</span>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                Pontos possíveis
+                                            </p>
+                                        </div>
+                                    </div>
+                                        <h3><span class="label label-info">Pontos possíveis: @Model.Aluno.PontosDistribuicao</span></h3>                                 
                                 </div>
                             </div>
 
-                                <br />
+                            <br />
 
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        @{
-                                            foreach (var atvDistribuicao in Model.todasAtividadesDistribuicao)
-                                            {
-                                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                    <div id="@atvDistribuicao.IdAtividade" class="offer offer-danger">
-                                                        <div class="shape">
-                                                            <div class="shape-text">
-                                                                <span id="@atvDistribuicao.NomeAtv">@atvDistribuicao.Nota</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="offer-content">
-                                                            <h4>
-                                                                <strong>@atvDistribuicao.DescricaoTitulo</strong>
-                                                            </h4>
-                                                            <p>
-                                                                @atvDistribuicao.DescricaoAtividade
-                                                                <br>
-                                                            </p>
-                                                        </div>
+                            <div>
+                                @{
+                                    //if (Model.todasAtividadesDistribuicao != null) {
+                                    foreach (var atvDistribuicao in Model.todasAtividadesDistribuicao)
+                                    {
+                                        <div class="col-sm-3 col-md-3 col-lg-3">
+                                            <div id="@atvDistribuicao.IdAtividade" class="offer offer-danger">
+                                                <div class="shape">
+                                                    <div class="shape-text">
+                                                        <span id="@atvDistribuicao.NomeAtv">@atvDistribuicao.Nota</span>
                                                     </div>
                                                 </div>
-                                            }
+                                                <div class="offer-content">
+                                                    <h4>
+                                                        <strong>@atvDistribuicao.DescricaoTitulo</strong>
+                                                    </h4>
+                                                    <strong>@atvDistribuicao.DescricaoSubTitulo</strong>
+                                                    <p>
+                                                        @atvDistribuicao.DescricaoAtividade
+                                                        <br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
 
-                                            foreach (var atvFeitasDistribuicao in Model.atividadesFeitasDistribuicao)
-                                            {
-                                                <script>
-                                                    $(document).ready(function () {
-                                                        $("#@atvFeitasDistribuicao.Atividade.IdAtividade").removeClass("offer-danger").addClass("offer-success");
-                                                    });
-                                                </script>
-                                            }
+
+                                    if (Model.atividadesFeitasDistribuicao != null)
+                                    {
+                                        foreach (var atvFeitasDistribuicao in Model.atividadesFeitasDistribuicao)
+                                        {
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $("#@atvFeitasDistribuicao.Atividade.IdAtividade").removeClass("offer-danger").addClass("offer-success");
+                                                });
+                                            </script>
                                         }
-                                    </div>
-                                </div>
+                                    }
+                                }
+                            </div>
 
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-primary next-step form-group">Proximo >></button></li>
-                                </ul>
-                                            }
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary next-step form-group">Proximo >></button></li>
+                            </ul>
+                                    }
                     </div>
 
 
@@ -159,53 +154,62 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <input id="btnPresentation2" type="submit" value="Procurar" class="btn btn-default" />
                                     </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2">
+                                        <h3><span class="label label-info">Tendência: @Model.Aluno.PontosFeitosMedidasDeTendenciaCentral</span></h3>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <h3><span class="label label-info">Pontos possíveis: @Model.Aluno.PontosMedidasDeTendenciaCentral</span></h3>
+                                    </div>
                                 </div>
                             </div>
 
-                                <br />
+                            <br />
 
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12">
-                                        @{
-                                            foreach (var atvTendencia in Model.todasAtividadesTendencia)
-                                            {
-                                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                                                    <div id="@atvTendencia.IdAtividade" class="offer offer-danger">
-                                                        <div class="shape">
-                                                            <div class="shape-text">
-                                                                <span id="@atvTendencia.NomeAtv">@atvTendencia.Nota</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="offer-content">
-                                                            <h4>
-                                                                <strong>@atvTendencia.DescricaoTitulo</strong>
-                                                            </h4>
-                                                            <p>
-                                                                @atvTendencia.DescricaoAtividade
-                                                                <br>
-                                                            </p>
-                                                        </div>
+                            <div>
+                                @{
+                                    foreach (var atvTendencia in Model.todasAtividadesTendencia)
+                                    {
+                                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                            <div id="@atvTendencia.IdAtividade" class="offer offer-danger">
+                                                <div class="shape">
+                                                    <div class="shape-text">
+                                                        <span id="@atvTendencia.NomeAtv">@atvTendencia.Nota</span>
                                                     </div>
                                                 </div>
-                                            }
+                                                <div class="offer-content">
+                                                    <h4>
+                                                        <strong>@atvTendencia.DescricaoTitulo</strong>
+                                                    </h4>
+                                                    <strong>@atvTendencia.DescricaoSubTitulo</strong>
+                                                    <p>
+                                                        @atvTendencia.DescricaoAtividade
+                                                        <br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
 
-                                            foreach (var atvFeitasTendencia in Model.atividadesFeitasTendencia)
-                                            {
-                                                <script>
-                                                    $(document).ready(function () {
-                                                        $("#@atvFeitasTendencia.Atividade.IdAtividade").removeClass("offer-danger").addClass("offer-success");
-                                                    });
-                                                </script>
-                                            }
+                                    if (Model.atividadesFeitasTendencia != null)
+                                    {
+                                        foreach (var atvFeitasTendencia in Model.atividadesFeitasTendencia)
+                                        {
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $("#@atvFeitasTendencia.Atividade.IdAtividade").removeClass("offer-danger").addClass("offer-success");
+                                                });
+                                            </script>
                                         }
-                                    </div>
-                                </div>
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step form-group"><< Voltar</button></li>
-                                    <li><button type="button" class="btn btn-primary next-step form-group">Proximo >></button></li>
-                                </ul>
-                                            }
+                                    }
+                                }
+                            </div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step form-group"><< Voltar</button></li>
+                                <li><button type="button" class="btn btn-primary next-step form-group">Proximo >></button></li>
+                            </ul>
+                                    }
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="step3">
                         <h3>Step 3</h3>
                         <p>This is step 3</p>
@@ -214,6 +218,7 @@
                             <li><button type="button" class="btn btn-primary btn-info-full next-step form-group">Proximo >></button></li>
                         </ul>
                     </div>
+
                     <div class="tab-pane" role="tabpanel" id="complete">
                         <h3>Complete</h3>
                         <p>You have successfully completed all steps.</p>
@@ -225,52 +230,25 @@
     </div>
 </div>
 
-@{
-    <script>
 
-        //var x = "";
-
-        //$("#btnPresentation1").click(function () {
-        //    x = "distribuicao";
-        //})
-        //$("#btnPresentation2").click(function () {
-        //    x = "tendenciaCentral";
-        //})
-
-        function fteste(x) {
-
-            //ViewBag.z = "distribuicao"; Model.Aluno.topicoSelecionadoAtv
-            //var x = "distribuicao";
-            //var x = Model.Aluno.topicoSelecionadoAtv;
-            if (x == 1) {
-                $("#presentation1").addClass("active");
-                $("#step1").addClass("active");
-            }
-            else {
-                if (x == 2) {
-                    $("#presentation2").addClass("active");
-                    $("#step2").addClass("active");
-                }
+<script>
+    function redirecionaTopico(x) {
+        if (x == 1) {
+            $("#presentation1").addClass("active");
+            $("#step1").addClass("active");
+        }
+        else {
+            if (x == 2) {
+                $("#presentation2").addClass("active");
+                $("#step2").addClass("active");
             }
         }
-    </script>
-}
+    }
+</script>
+
 
 <script>
     @{int x = (int)Model.Aluno.topicoSelecionadoAtv; }
-    fteste(@x);
-</script>
-
-<script>
-    //$("#btnPresentation1").click(function () {
-    //    //$("#presentation1").removeClass("active");
-    //    $("#presentation1").addClass("active");
-    //    alert("teste 1");
-    //});
-    //$("#btnPresentation2").click(function () {
-    //    $("#presentation1").removeClass("active");
-    //    $("#presentation2").addClass("active");
-    //    alert("teste 2");
-    //});
+    redirecionaTopico(@x);
 </script>
 

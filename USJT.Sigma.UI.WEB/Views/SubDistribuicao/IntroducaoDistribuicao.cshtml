@@ -16,8 +16,6 @@
 
 @{
     double notaTotal = 0;
-    //if (Model.Count > 0)
-    //{
     foreach (var atividadesFeitas in Model.atividadesFeitas)
     {
         <script>
@@ -29,7 +27,6 @@
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
-    //}
 
     <script>
         $(document).ready(function () {

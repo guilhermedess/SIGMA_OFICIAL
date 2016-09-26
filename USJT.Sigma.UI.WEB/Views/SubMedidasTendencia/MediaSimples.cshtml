@@ -1,13 +1,64 @@
-﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script src="~/scripts/dica1.js"></script>
-<script src="~/scripts/dica2.js"></script>
+﻿@using USJT.Sigma.Repositorio
+@model dynamic
+
+<head>
+    <link href="~/Content/wizardAtividade.css" rel="stylesheet" />
+    <script src="~/scripts/wizard.js"></script>
+    <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
+    <script src="~/scripts/dicas1.js"></script>
+    <script src="~/scripts/dicas2.js"></script>
+    <script src="~/scripts/dicas3.js"></script>
+    <script src="~/scripts/dicas4.js"></script>
+    <script src="~/scripts/video.js"></script>
+</head>
 
 @{
-    ViewBag.Title = "MediaSimples";
+    ViewBag.Title = "Média aritmética simples";
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+    VideoREP videoREP = new VideoREP();
+    AtividadeREP atividadeREP = new AtividadeREP();
+}
+
+@{
+    double notaTotal = 0;
+    foreach (var atividadesFeitas in Model.atividadesFeitas)
+    {
+        <script>
+            $(document).ready(function () {
+                $("#@atividadesFeitas.Atividade.NomeAtv").removeClass("glyphicon glyphicon-remove red").addClass("glyphicon glyphicon-ok green");
+                $("#@atividadesFeitas.Atividade.NomeAtv" + "1").removeClass("badge-red").addClass("badge-green");
+            });
+        </script>
+
+        notaTotal += atividadesFeitas.Atividade.Nota;
+    }
+
+    <script>
+        $(document).ready(function () {
+            $("#infoNota").text("Pontos: " + "@notaTotal");
+        });
+    </script>
+}
+
+@for (int i = 0; i < Model.atividades.Count; i++)
+{
+    <div id="camposAtividade">
+        <fieldset>
+            <legend>@Model.atividades[i].DescricaoTitulo - @Model.atividades[i].DescricaoSubTitulo</legend>
+        </fieldset>
+        <p>
+            <strong>Descrição:</strong> @Model.atividades[i].DescricaoAtividade
+        </p>
+        <p>
+            <strong>@Model.atividades[i].DescricaoPergunta</strong>
+        </p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#divCamposAtv" + @i).append($("#camposAtividade"));
+        });
+    </script>
 }
 
 @Html.Partial("_PartialMedidasTendencia")
@@ -15,94 +66,359 @@
 <br />
 
 <div class="container">
-    <div class="col-lg-10 col-md-10 col-sm-10" style="float:right">        
+    <div class="col-lg-10 col-md-10 col-sm-10 jumbotron2" style="float:right">
         <fieldset>
             <legend class="h2">
-                Média Aritmética Simples
-                <input type="button" id="dica" value="Dicas" class="btn btn-default" style="float:right" />
+                Média aritmética simples
+                <span id="infoNota" title="Pontos" class="badge dir"></span>
             </legend>
 
-            @* dicas *@
-            <div id="dialog" title="Dica 1">
-                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
-                <hr />
-                <input type="button" id="dica2" value="Dica 2" class="btn btn-default" />
-            </div>
-            <div id="dialog2" title="Dica 2">
-                <p>( 7,5 + 6,3 + 8,0 + 7,2 + 6,6 + 8,4 + 9,0 + 7,2 + 8,0 + 9,5 ) / 10</p>
-                <p>Primeiro Realizamos todas as somas. Logo após dividimos por 10 que é o número de elementos.</p>
-                <p>Média: 7,8</p>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(3, "ClassesIntervalos")" frameborder="0" allowfullscreen></iframe>
             </div>
 
-            <div>
-                <p>É uma das medidas de tendência central mais utilizadas no cotidiano. É determinada pelo resultado da divisão do somatório dos números dados pela quantidade de números somados.</p>
-                <br />
-                <p><strong>Para obter a média aritmética simples, você deverá realizar as seguintes operações:</strong></p>
-                <p><strong>1º -</strong> Somar as quantidades de objeto.</p>
-                <p><strong>2º -</strong> Dividir o resultado obtido da soma das quantidades pelo número de parcelas.</p>
-            </div>
-            <br />
-            <br />
-            @using (Html.BeginForm())
-            {
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <fieldset>
-                            <legend>Exercício</legend>
-                        </fieldset>
-                        <p>
-                            <strong>No final do ano, um determinado aluno alcançou as seguintes médias:</strong><br /><br />
+                    <div class="col-lg-12 col-md-12 col-sm-12">
 
-                            Matemática: 7,5<br />
-                            Português: 6,3<br />
-                            História: 8,0<br />
-                            Geografia: 7,2<br />
-                            Inglês: 6,6<br />
-                            Espanhol: 8,4<br />
-                            Física: 9,0<br />
-                            Química: 7,2<br />
-                            Biologia: 8,0<br />
-                            Educação Física: 9,5<br /><br />
+                        <div class="wizard">
+                            <div class="wizard-inner">
+                                <div class="connecting-line"></div>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Distribuição de frequência">
+                                            <span class="round-tab">
+                                                <div><span id="Atv1MediaSimples1" title="Pontos" class="badge-red dir">@Model.atividades[0].Nota</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
 
-                            <strong>Determine a média aritmética anual do aluno.</strong>
-                        </p>
-                    </div>
+                                    <li role="presentation">
+                                        <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Medidas de Tendência Central">
+                                            <span class="round-tab">
+                                                <div><span id="Atv2MediaSimples1" title="Pontos" class="badge-red dir">@Model.atividades[1].Nota</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
 
+                                    <li role="presentation">
+                                        <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Medidas de Dispersão">
+                                            <span class="round-tab">
+                                                <div><span id="Atv3MediaSimples1" title="Pontos" class="badge-red dir">@Model.atividades[2].Nota</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <fieldset>
-                            <legend>Resposta</legend>
-                        </fieldset>
-
-                        <div>
-                            @Html.RadioButton("Resposta", false) 7,2
-                            <br /><br />
-                            @Html.RadioButton("Resposta", false) 6,8
-                            <br /><br />
-                            @Html.RadioButton("Resposta", false) 7,5
-                            <br /><br />
-                            @Html.RadioButton("Resposta", true) 7,8
-                            <br /><br />
-                            @Html.RadioButton("Resposta", false) 8,1
-                            <br /><br />
+                                    <li role="presentation">
+                                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Amostragem e Estimadores">
+                                            <span class="round-tab">
+                                                <div><span id="Atv4MediaSimples1" title="Pontos" class="badge-red dir">@Model.atividades[3].Nota</span></div>
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="step1">
+
+                                @* Questão 1 *@
+                                <div id="questao1">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.Hidden("IdAtividade", 37)
+
+                                        <div class="row">
+                                            <div id="divCamposAtv0" class="col-lg-12 col-md-12 col-sm-12">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row col-lg-12 col-md-12 col-sm-12">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Segunda</th>
+                                                            <th>Terça</th>
+                                                            <th>Quarta</th>
+                                                            <th>Quinta</th>
+                                                            <th>Sexta</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>R$ 2,20</td>
+                                                            <td>R$ 2,30</td>
+                                                            <td>R$ 2,38</td>
+                                                            <td>R$ 2,10</td>
+                                                            <td>R$ 2,25</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                                <p>
+                                                    Resposta:
+                                                    @Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                            <div>
+                                                @Html.Partial("DicasTendencia/2.1/_DicasMediaSimples1")
+                                            </div>
+
+                                            @* BOTOES FIXOS *@
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <hr />
+                                                    <div class="col-lg-5 col-md-5 col-sm-5">
+                                                        <span id="Atv1MediaSimples" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                                    </div>
+
+                                                    <div class="col-lg-2 col-md-2 col-sm-2">
+                                                        <input id="btnDica1A" type="button" onclick="Dica1A()" value="Dicas" class="btn btn-warning" style="float: unset" />
+
+                                                    </div>
+
+                                                    <div class="col-lg-5 col-md-5 col-sm-5">
+                                                        <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    }
+                                </div>
+
+                                <hr />
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step2">
+
+                                @* Questão 2 *@
+                                <div id="questao2">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.Hidden("IdAtividade", 38)
+
+                                        <div class="row">
+                                            <div id="divCamposAtv1" class="col-lg-12 col-md-12 col-sm-12">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <p>A - 15; 48; 36</p>
+                                                <p>B - 80; 71; 95; 100</p>
+                                                <p>C - 59; 84; 37; 62; 10</p>
+                                                <p>D - 1; 2; 3; 4; 5; 6</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover table-striped">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>3,5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>33</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>86,5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>50,4</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        @Html.Partial("DicasTendencia/2.1/_DicasMediaSimples2")
+
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv2MediaSimples" class="glyphicon glyphicon-remove red icon-lg"></span>
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1B" type="button" onclick="Dica1B()" value="Dicas" class="btn btn-warning" style="float: unset" />
+                                                </div>
+
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <hr />
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step">Proximo >></button></li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="step3">
+
+                                @* Questão 3 *@
+                                <div id="questao3">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.Hidden("IdAtividade", 39)
+
+                                        <div class="row">
+                                            <div id="divCamposAtv2" class="col-lg-12 col-md-12 col-sm-12">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                                <p>
+                                                    Resposta
+                                                    @Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })
+                                                </p>
+                                            </div>
+                                        </div>
+
+
+                                        @Html.Partial("DicasTendencia/2.1/_DicasMediaSimples3")
+
+                                        @* BOTOES FIXOS *@
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <hr />
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <span id="Atv3MediaSimples" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                                </div>
+
+                                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                                    <input id="btnDica1C" type="button" onclick="Dica1C()" value="Dicas" class="btn btn-warning" style="float: unset" />
+
+                                                </div>
+
+                                                <div class="col-lg-5 col-md-5 col-sm-5">
+                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <hr />
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                    <li><button type="button" class="btn btn-primary btn-info-full next-step">Proximo >></button></li>
+                                </ul>
+                            </div>
+
+                            <div class="tab-pane" role="tabpanel" id="complete">
+                                @* Questão 4 *@
+                                <div id="questao4">
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.Hidden("IdAtividade", 40)
+
+                                        <div class="row">
+                                            <div id="divCamposAtv3" class="col-lg-12 col-md-12 col-sm-12">
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <fieldset>
+                                                    <legend>Resposta</legend>
+                                                </fieldset>
+                                                @{ var resposta = atividadeREP.RespostaExata(40); }
+                                                @Html.RadioButton("ListaDeRespostas", @resposta, true) 3 pessoas.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "4") 4 pessoas.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "5") 5 pessoas.
+                                                <br /><br />
+                                                @Html.RadioButton("ListaDeRespostas", "6") 6 pessoas.
+                                            </div>
+                                        </div>
+
+                                        @Html.Partial("DicasTendencia/2.1/_DicasMediaSimples4")
+
+                                                    @* BOTOES FIXOS *@
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                            <hr />
+                                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                                                <span id="Atv4MediaSimples" class="glyphicon glyphicon-remove red icon-lg"></span>
+
+                                                            </div>
+
+                                                            <div class="col-lg-2 col-md-2 col-sm-2">
+                                                                <input id="btnDica1D" type="button" onclick="Dica1D()" value="Dicas" class="btn btn-warning" style="float: unset" />
+
+                                                            </div>
+
+                                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    }
+                                </div>
+
+                                <hr />
+
+                                <div>
+                                    <br />
+
+                                    <ul class="list-inline pull-right">
+                                        <li><button type="button" class="btn btn-default prev-step"><< Voltar</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        @* Video de exercicio fixo para as guias *@
+                        <div id="videoAtividade1">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(3, "Atv1ClassesIntervalos")" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="red">
+                                <strong>Imperrou? Assista mais 1 vídeo</strong>
+                            </p>
+                            <input type="button" id="btnVideoAtividade1" value="Assistir" class="btn btn-danger" />
+                        </div>
 
                     </div>
-
                 </div>
-                <div class="row">
-                    <hr />
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <input type="submit" name="salvarSubTopico" value="Conferir Resposta" class="btn btn-lg btn-success" style="float: right">
-                        <br />
-                    </div>
-                    <br />
-                    <hr />
-                </div>
-            }
+            </div>
         </fieldset>
-
     </div>
-
 </div>

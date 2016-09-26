@@ -1,4 +1,4 @@
-﻿@using USJT.Sigma.Repositorio
+﻿    @using USJT.Sigma.Repositorio
 @model dynamic
 
 <head>
@@ -21,8 +21,6 @@
 
 @{
     double notaTotal = 0;
-    //if (Model.atividadesFeitas.Count > 0)
-    //{
     foreach (var atividadesFeitas in Model.atividadesFeitas)
     {
         <script>
@@ -34,7 +32,6 @@
 
         notaTotal += atividadesFeitas.Atividade.Nota;
     }
-    //}
 
     <script>
         $(document).ready(function () {
@@ -77,7 +74,7 @@
             </legend>
 
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
+                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(2, "PontosValores")" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div class="container-fluid">
@@ -548,7 +545,7 @@
                         @* Video de exercicio fixo para as guias *@
                         <div id="videoAtividade1">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(4, "Atv1RelativaPercentual")" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(2, "Atv1PontosValores")" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
 
