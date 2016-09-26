@@ -1,4 +1,37 @@
-﻿function drawChartGfc_4_3_ex2() {
+﻿//teste
+google.load("visualization", "1");
+google.setOnLoadCallback(drawChart3);
+function drawChart3() {
+    var data = google.visualization.arrayToDataTable([
+           ['Element', 'Legenda'],
+           ['Copper', 8.94],
+           ['Silver', 10.49],
+           ['Gold', 19.30],
+           ['Platinum', 21.45]
+    ]);
+
+    var options = {
+        title: 'Titulo grafico',
+        //chartArea: {
+        //    left: "100%",
+        //    top: "100%",
+        //    height: "100%",
+        //    width: "100%"
+        //},
+        vAxis: { title: 'legenda vertical', titleTextStyle: { color: 'blue' } },//legenda vertical
+        hAxis: { title: 'legenda orizontal', titleTextStyle: { color: 'red' } }
+    };
+
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+    chart.draw(data, options);
+}
+// --teste
+
+
+//drawChartGfc_4_3_ex2_1
+google.load('visualization', '1', { packages: ['table'] });
+google.setOnLoadCallback(drawChartGfc_4_3_ex2_1);
+function drawChartGfc_4_3_ex2_1() {
     var data = google.visualization.arrayToDataTable([
       ["Element", "Frequência", { role: "style" }],
       ["Branco 33", 33, "#b87333"],
@@ -18,16 +51,21 @@
                      2]);
 
     var options = {
-        title: "Frequência Acumulada Percentual(%)",
-        width: 600,
-        height: 300,
+        title: "Frequência Acumulada",
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        vAxis: { title: 'Percentual(%)', titleTextStyle: { color: 'blue' } },//legenda vertical
+        hAxis: { title: 'Elementos', titleTextStyle: { color: 'blue' } }
     };
-    var chart = new google.visualization.ColumnChart(document.getElementById("gfc_4_3_ex2"));
+    var chart = new google.visualization.ColumnChart(document.getElementById("gfc_4_3_ex2_1"));
     chart.draw(view, options);
 }
 
+//drawChartGfc_4_3_ex2_2
+google.load('visualization', '1', { packages: ['table'] });
+google.setOnLoadCallback(drawChartGfc_4_3_ex2_2);
 function drawChartGfc_4_3_ex2_2() {
     var data = google.visualization.arrayToDataTable([
       ["Element", "Frequência", { role: "style" }],
@@ -48,16 +86,21 @@ function drawChartGfc_4_3_ex2_2() {
                      2]);
 
     var options = {
-        title: "Frequência Acumulada Percentual(%)",
-        width: 600,
-        height: 300,
+        title: "Frequência Acumulada",
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        vAxis: { title: 'Percentual(%)', titleTextStyle: { color: 'blue' } },//legenda vertical
+        hAxis: { title: 'Elementos', titleTextStyle: { color: 'blue' } }
     };
     var chart = new google.visualization.ColumnChart(document.getElementById("gfc_4_3_ex2_2"));
     chart.draw(view, options);
 }
 
+//drawChartGfc_4_3_ex2_3
+google.load('visualization', '1', { packages: ['table'] });
+google.setOnLoadCallback(drawChartGfc_4_3_ex2_3);
 function drawChartGfc_4_3_ex2_3() {
     var data = google.visualization.arrayToDataTable([
       ["Element", "Frequência", { role: "style" }],
@@ -78,16 +121,21 @@ function drawChartGfc_4_3_ex2_3() {
                      2]);
 
     var options = {
-        title: "Frequência Acumulada Percentual(%)",
-        width: 600,
-        height: 300,
+        title: "Frequência Acumulada",
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        vAxis: { title: 'Percentual(%)', titleTextStyle: { color: 'blue' } },//legenda vertical
+        hAxis: { title: 'Elementos', titleTextStyle: { color: 'blue' } }
     };
     var chart = new google.visualization.ColumnChart(document.getElementById("gfc_4_3_ex2_3"));
     chart.draw(view, options);
 }
 
+//drawChartGfc_4_3_ex2_4
+google.load('visualization', '1', { packages: ['table'] });
+google.setOnLoadCallback(drawChartGfc_4_3_ex2_4);
 function drawChartGfc_4_3_ex2_4() {
     var data = google.visualization.arrayToDataTable([
       ["Element", "Frequência", { role: "style" }],
@@ -108,16 +156,22 @@ function drawChartGfc_4_3_ex2_4() {
                      2]);
 
     var options = {
-        title: "Frequência Acumulada Percentual(%)",
-        width: 600,
-        height: 300,
+        title: "Frequência Acumulada",
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        vAxis: { title: 'Percentual(%)', titleTextStyle: { color: 'blue' } },//legenda vertical
+        hAxis: { title: 'Elementos', titleTextStyle: { color: 'blue' } }
     };
     var chart = new google.visualization.ColumnChart(document.getElementById("gfc_4_3_ex2_4"));
     chart.draw(view, options);
 }
 
+
+//drawChartGfc_4_3_ex4
+google.load('visualization', '1', { packages: ['table'] });
+google.setOnLoadCallback(drawChartGfc_4_3_ex4);
 function drawChartGfc_4_3_ex4() {
     var data = google.visualization.arrayToDataTable([
       ["Element", "Frequência", { role: "annotation" }],
@@ -138,16 +192,21 @@ function drawChartGfc_4_3_ex4() {
                      2]);
 
     var options = {
-        title: "Frequência Acumulada Percentual(%)",
-        width: 600,
-        height: 300,
+        title: "Frequência Acumulada",
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
+        vAxis: { title: 'Percentual(%)', titleTextStyle: { color: 'blue' } },//legenda vertical
+        hAxis: { title: 'Percentagens das classes', titleTextStyle: { color: 'blue' } }
     };
     var chart = new google.visualization.ColumnChart(document.getElementById("gfc_4_3_ex4"));
     chart.draw(view, options);
 }
 
+//drawChartGfc_5_1_ex1
+google.load('visualization', '1', { packages: ['table'] });
+google.setOnLoadCallback(drawChartGfc_5_1_ex1);
 function drawChartGfc_5_1_ex1() {
     // Create the data table.
     var data = new google.visualization.DataTable();
@@ -167,8 +226,8 @@ function drawChartGfc_5_1_ex1() {
         //'backgroundColor': '#bdc3c7', //Default: 'white'
         'legend': 'left',
         'title': 'Gráfico 1',
-        'width': 600,
-        'height': 300
+        //'width': 600,
+        //'height': 300
     };
 
     //Instanciar e desenhar o seu gráfico, passando em algumas opções.
@@ -198,8 +257,8 @@ function drawChartGfc_5_1_ex1_2() {
 
     var options = {
         title: "Gráfico 2",
-        width: 600,
-        height: 300,
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
     };
@@ -251,8 +310,8 @@ function drawChartGfc_5_1_ex1_4() {
     //opçoes para o gráfico barras
     var options = {
         title: 'Gráfico 4',
-         width: 600,
-        height: 300,
+        //width: 600,
+        //height: 300,
         vAxis: { title: 'Gráfico', titleTextStyle: { color: 'red' } }//legenda vertical
     };
     ////instanciando e desenhando o gráfico barras
@@ -277,7 +336,7 @@ function drawChartGfc_5_1_ex2() {
       ["37", 3, "gold"],
       ["36", 5, "gold"],
       ["35", 6, "gold"]
-      
+
     ]);
 
     var view = new google.visualization.DataView(data);
@@ -292,8 +351,8 @@ function drawChartGfc_5_1_ex2() {
 
     var options = {
         title: "Frequência  por pontos ou valores",
-        width: 600,
-        height: 300,
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         vAxis: { title: 'Frequência', titleTextStyle: { color: 'blue' } },//legenda vertical
@@ -326,8 +385,8 @@ function drawChartGfc_5_1_ex3() {
 
     var options = {
         title: "Frequência  por pontos ou valores",
-        width: 600,
-        height: 300,
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         vAxis: { title: 'Frequência', titleTextStyle: { color: 'blue' } },//legenda vertical
@@ -336,6 +395,7 @@ function drawChartGfc_5_1_ex3() {
     var chart = new google.visualization.ColumnChart(document.getElementById("gfc_5_1_ex3"));
     chart.draw(view, options);
 }
+
 
 function drawChartGfc_5_1_ex4() {
     var data = google.visualization.arrayToDataTable([
@@ -358,8 +418,8 @@ function drawChartGfc_5_1_ex4() {
 
     var options = {
         title: "Frequência  por pontos ou valores",
-        width: 600,
-        height: 300,
+        //width: 600,
+        //height: 300,
         bar: { groupWidth: "95%" },
         legend: { position: "none" },
         vAxis: { title: 'Alunos Matriculados', titleTextStyle: { color: 'blue' } },//legenda vertical
@@ -368,3 +428,4 @@ function drawChartGfc_5_1_ex4() {
     var chart = new google.visualization.ColumnChart(document.getElementById("gfc_5_1_ex4"));
     chart.draw(view, options);
 }
+

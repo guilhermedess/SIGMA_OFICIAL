@@ -45,3 +45,10 @@ footer h2, p {
     font-family: Helvetica, Arial;
     color: #34495e;
 }
+
+/*grafico*/
+.chart {
+    width: 100%;
+    min-height: 300px;
+}
+
