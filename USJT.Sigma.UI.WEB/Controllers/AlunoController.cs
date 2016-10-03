@@ -83,6 +83,12 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             return View();
         }
+        public ActionResult Logout()
+        {         
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Login");
+        }
         public ActionResult Sair()
         {
             FormsAuthentication.SignOut();
@@ -159,6 +165,8 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             try
             {
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+
                 if (comboDistribuicao != null)
                 {
                     aluno.topicoSelecionadoAtv = 1;
@@ -176,7 +184,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 var valorComboDistribuicao = ValidarComboDistribuicao(comboDistribuicao);
                 var valorComboTendencia = ValidarComboTendencia(comboTendencia);
                 
-                aluno = (Aluno)Session["dadosAlunoLogado"];
                 meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
                 
                 AtividadesProcuradas(aluno, meusModelos, valorComboDistribuicao, valorComboTendencia);

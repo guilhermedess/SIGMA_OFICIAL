@@ -88,7 +88,7 @@
                                         <li><a href="~/SubDistribuicao/IntroducaoDistribuicao">Distribuição</a></li>
                                         <li><a href="#">Medidas de Tendência Central</a></li>
                                         <li><a href="#">Medidas de Dispersão</a></li>
-                                        <li><a href="~/SubAmostragem/ImpAmostragem">Amostragem e Estimadores</a></li>
+                                        <li><a href="#">Amostragem e Estimadores</a></li>
                                         <li class="divider"></li>
                                         <li class="dropdown-header">Distribuição</li>
                                         <li><a href="~/SubDistribuicao/IntroducaoDistribuicao">Introdução</a></li>
@@ -126,35 +126,24 @@
                                         <li><a href="#">Conglomerado</a></li>
                                         <li><a href="#">Sistemática</a></li>
                                         <li class="divider"></li>
-                                        <li class="dropdown-header">Newsletter</li>
                                         <form class="form" role="form">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="email">Email address</label>
-                                                <input type="email" class="form-control" id="email" placeholder="Enter email">
-                                            </div>
-                                            <a href="~/Aluno/Login/Sair" class="btn btn-primary btn-block">Sair</a>
+                                            <a href="~/Aluno/logout" class="btn btn-primary btn-block">Sair</a>
                                         </form>
                                     </ul>
                                 </li>
                             </ul>
+                            
                         </li>
                     </ul>
                 </div>
             </nav>
     </header>
 
-    @*SECTION: CRIAMOS UMA SESSÃO PARA CARREGAR OS PARTIALMENSAGEM
-          (ALERTS - BOOTBOX.JS)
-        HELPER HTML (RAZOR)PARTIAL: CHAMAMOS A ESTRURA DE HTMLS *@
     <section>
-
-        @*INSERIMOS UMA CONDIÇÃO PARA INICIALIZAR O ALERT*@
-
         @if (TempData["Mensagem"] != null)
             {
             @Html.Partial("_PartialMensagem")
         }
-
     </section>
 
     <section>
