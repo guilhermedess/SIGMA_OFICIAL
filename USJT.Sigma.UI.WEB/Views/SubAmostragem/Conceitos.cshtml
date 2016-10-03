@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Conceitos";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<h2>Conceitos Básicos de Amostragem</h2>
+
+@*<form action="~/SubAmostragem/Conceitos?feito=false" method="post">*@
+
+@Html.Partial("_PartialAmostragem")
+
+@using (Html.BeginForm())
+{
+    <div class="form-group text-center">
+        <p>auheuaheasdakjsdnkajsnd</p>
+        <p>auheuaheasdakjsdnkajsnd</p>
+        <p>auheuaheasdakjsdnkajsnd</p>
+        <p>auheuaheasdakjsdnkajsnd</p>
+    </div>
+
+    <div>
+        @Html.RadioButton("Resposta", true)True
+        <br />
+        @Html.RadioButton("Resposta", false)False
+        <br />
+        @Html.RadioButton("Resposta", false)False 2
+    </div>
+
+        <div>
+            <input @*href="ImpAmostragem@false"*@ type="submit" name="salvarSubTopico" value="Salvar" class="btn btn-default">
+        </div>
+}

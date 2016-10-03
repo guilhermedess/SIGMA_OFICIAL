@@ -1,0 +1,47 @@
+﻿@model USJT.Sigma.Model.Aluno
+@*@model USJT.Sigma.Model.Atividade*@
+
+@{
+    ViewBag.Title = "ImpAmostragem";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<h2>A Importância da Amostragem</h2>
+
+@*@using (Html.BeginForm("ImpAmostragem", "SubAmostragem", "~/SubAmostragem/ImpAmostragem/true"))*@
+@*@using (Html.BeginForm())*@
+
+@*<form action="~/SubAmostragem/ImpAmostragem?feito=false" method="post">*@
+@Html.Partial("_PartialAmostragem")
+
+@using (Html.BeginForm())
+{
+    <div class="form-group text-center">
+        <p>auheuaheasdakjsdnkajsnd</p>
+
+        @*o link que vai no src virá do banco de dados*@
+        <iframe src="https://player.vimeo.com/video/166641399" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <p>
+            <a href="https://vimeo.com/166641399">Amostragem</a> from
+            <a href="https://vimeo.com/user52213471">Guilherme de Souza Silveira</a> on
+            <a href="https://vimeo.com">Vimeo</a>.
+        </p>
+    </div>
+
+    <div>
+        @*@Html.RadioButtonFor(modelAluno => modelAluno.AtividadeObj.Resposta, "true")True*@
+        @Html.RadioButton("Resposta", true)True
+        <br/>
+        @*@Html.RadioButtonFor(modelAluno => modelAluno.AtividadeObj.Resposta, "false")False*@
+        @Html.RadioButton("Resposta", false)False
+        <br/>
+        @Html.RadioButton("Resposta", false)False 2
+    </div>
+
+    <div>
+        <input @*href="ImpAmostragem@false"*@ type="submit" name="salvarSubTopico" value="Salvar" class="btn btn-default">
+        @*<button type="submit" href="/SubAmostragem/ImpAmostragem?feito=false">salvar</button>*@
+        @*<a href="/SubAmostragem/ImpAmostragem?feito=false"><b>SALVAR</b></a>*@
+    </div>
+    @*</form>*@
+}

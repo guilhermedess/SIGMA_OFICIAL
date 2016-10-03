@@ -1,0 +1,74 @@
+﻿@model USJT.Sigma.Model.Aluno
+
+<head>
+    <script src="~/scripts/progresso2.js"></script>
+    <link href="~/Content/progresso2.css" rel="stylesheet" />
+</head>
+
+<div class="row">
+    <div class="col-md-11">
+
+        <div class="bar-chart">
+            <div class="legend">
+                <div class="item">
+                    <h4>Bronze</h4>
+                </div>
+
+                <div class="item">
+                    <h4>Prata</h4>
+                </div>
+
+                <div class="item text-right">
+                    <h4>Ouro</h4>
+                </div>
+
+                <div class="item text-right">
+                    <h4>Platina</h4>
+                </div>
+            </div>
+
+            <div class="chart clearfix">
+                <div class="item">
+                    <div class="bar">
+                        <span class="percent">@Model.ProgressoDistribuicao%</span>
+
+                        <div class="item-progress" data-percent="@Model.ProgressoDistribuicao">
+                            <span class="title">Distribuição</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="bar">
+                        <span class="percent">@Model.ProgressoMedidasDeTendenciaCentral%</span>
+
+                        <div class="item-progress" data-percent="@Model.ProgressoMedidasDeTendenciaCentral">
+                            <span class="title">Medidas&nbsp;de&nbsp;Tendência</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="bar">
+                        <span class="percent">@Model.ProgressoMedidasDeDispersao%</span>
+
+                        <div class="item-progress" data-percent="@Model.ProgressoMedidasDeDispersao">
+                            <span class="title">Medidas&nbsp;de&nbsp;Dispersão</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="bar">
+                        <span class="percent">@Model.ProgressoAmostragemEstimadores%</span>
+
+                        <div class="item-progress" data-percent="@Model.ProgressoAmostragemEstimadores">
+                            <span class="title">Amostragem&nbsp;e&nbsp;Estimadores</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

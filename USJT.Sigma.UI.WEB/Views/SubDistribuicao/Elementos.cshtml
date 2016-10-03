@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Elementos de uma distribuição de frequências";
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<h2>Elementos de uma distribuição de frequências</h2>
+
+@Html.Partial("_PartialDistribuicao")
+
+@using (Html.BeginForm())
+{
+    <div class="form-group text-center">
+        <p>Elementos de uma distribuição de frequências</p>
+    </div>
+
+    <div>
+        @Html.RadioButton("Resposta", true)True
+        <br />
+        @Html.RadioButton("Resposta", false)False
+        <br />
+        @Html.RadioButton("Resposta", false)False 2
+    </div>
+
+    <div>
+        <input type="submit" name="salvarSubTopico" value="Salvar" class="btn btn-default">
+    </div>
+}
