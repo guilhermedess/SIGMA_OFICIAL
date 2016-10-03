@@ -10,6 +10,8 @@
     <script src="~/scripts/dicas3.js"></script>
     <script src="~/scripts/dicas4.js"></script>
     <script src="~/scripts/video.js"></script>
+    <script src="~/scripts/validacao-top2-2.1.js"></script>
+    <link href="~/Content/validarCampos.css" rel="stylesheet" />
 </head>
 
 @{
@@ -74,7 +76,7 @@
             </legend>
 
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(3, "ClassesIntervalos")" frameborder="0" allowfullscreen></iframe>
+                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(10, "MediaSimples")" frameborder="0" allowfullscreen></iframe>
             </div>
 
             <div class="container-fluid">
@@ -129,7 +131,7 @@
 
                                 @* Questão 1 *@
                                 <div id="questao1">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("MediaSimples", "SubMedidasTendencia", FormMethod.Post, new { Id = "form1" }))
                                     {
                                         @Html.Hidden("IdAtividade", 37)
 
@@ -139,43 +141,54 @@
                                             </div>
                                         </div>
 
-                                        <div class="row col-lg-12 col-md-12 col-sm-12">
-                                            <div class="table-responsive">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Segunda</th>
-                                                            <th>Terça</th>
-                                                            <th>Quarta</th>
-                                                            <th>Quinta</th>
-                                                            <th>Sexta</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>R$ 2,20</td>
-                                                            <td>R$ 2,30</td>
-                                                            <td>R$ 2,38</td>
-                                                            <td>R$ 2,10</td>
-                                                            <td>R$ 2,25</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                        <div class="row">
+                                            <div class="row col-lg-12 col-md-12 col-sm-12">
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Segunda</th>
+                                                                <th>Terça</th>
+                                                                <th>Quarta</th>
+                                                                <th>Quinta</th>
+                                                                <th>Sexta</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>R$ 2,20</td>
+                                                                <td>R$ 2,30</td>
+                                                                <td>R$ 2,38</td>
+                                                                <td>R$ 2,10</td>
+                                                                <td>R$ 2,25</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4">
-                                                <p>
-                                                    Resposta:
-                                                    @Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })
-                                                </p>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp1", Name = "campoResp1" })
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
 
-                                            <div>
-                                                @Html.Partial("DicasTendencia/2.1/_DicasMediaSimples1")
-                                            </div>
+
+                                        <div>
+                                            @Html.Partial("DicasTendencia/2.1/_DicasMediaSimples1")
+                                        </div>
 
                                             @* BOTOES FIXOS *@
                                             <div class="row">
@@ -192,7 +205,7 @@
                                                     </div>
 
                                                     <div class="col-lg-5 col-md-5 col-sm-5">
-                                                        <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                        <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                     </div>
                                                 </div>
                                             </div>
@@ -209,7 +222,7 @@
 
                                 @* Questão 2 *@
                                 <div id="questao2">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("MediaSimples", "SubMedidasTendencia", FormMethod.Post, new { Id = "form2" }))
                                     {
                                         @Html.Hidden("IdAtividade", 38)
 
@@ -232,19 +245,23 @@
                                                     <table class="table table-hover table-striped">
                                                         <tbody>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp2", Name = "campoResp2" })</td>
+                                                                <td></td>
                                                                 <td>3,5</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp3", Name = "campoResp3" })</td>
+                                                                <td></td>
                                                                 <td>33</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp4", Name = "campoResp4" })</td>
+                                                                <td></td>
                                                                 <td>86,5</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp5", Name = "campoResp5" })</td>
+                                                                <td></td>
                                                                 <td>50,4</td>
                                                             </tr>
                                                         </tbody>
@@ -268,7 +285,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +303,7 @@
 
                                 @* Questão 3 *@
                                 <div id="questao3">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("MediaSimples", "SubMedidasTendencia", FormMethod.Post, new { Id = "form3" }))
                                     {
                                         @Html.Hidden("IdAtividade", 39)
 
@@ -297,10 +314,18 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-4 col-md-4 col-sm-4">
-                                                <p>
-                                                    Resposta
-                                                    @Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })
-                                                </p>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp6", Name = "campoResp6" })
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -322,7 +347,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>
@@ -382,7 +407,7 @@
                                                             </div>
 
                                                             <div class="col-lg-5 col-md-5 col-sm-5">
-                                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                                <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -405,7 +430,7 @@
                         @* Video de exercicio fixo para as guias *@
                         <div id="videoAtividade1">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(3, "Atv1ClassesIntervalos")" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="816" height="459" src="@videoREP.BuscaVideoPorSubTopico(10, "Atv1MediaSimples")" frameborder="0" allowfullscreen></iframe>
                             </div>
                         </div>
 

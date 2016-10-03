@@ -10,6 +10,8 @@
     <script src="~/scripts/dicas3.js"></script>
     <script src="~/scripts/dicas4.js"></script>
     <script src="~/scripts/video.js"></script>
+    <script src="~/scripts/validacao-top1-4.2.js"></script>
+    <link href="~/Content/validarCampos.css" rel="stylesheet" />
 </head>
 
 @{
@@ -129,7 +131,7 @@
 
                                 @* Questão 1 *@
                                 <div id="questao1">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao", FormMethod.Post, new { Id = "form1" }))
                                     {
                                         @Html.Hidden("IdAtividade", 17)
 
@@ -138,7 +140,7 @@
 
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover table-striped">
                                                         <thead>
@@ -146,28 +148,33 @@
                                                                 <th>Nº de Livros</th>
                                                                 <th>Frequência (F)</th>
                                                                 <th>Frequência Acumulada</th>
+                                                                <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>3</td>
                                                                 <td>2</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp1", Name = "campoResp1" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>5</td>
                                                                 <td>1</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp2", Name = "campoResp2" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>6</td>
                                                                 <td>3</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp3", Name = "campoResp3" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>8</td>
                                                                 <td>1</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp4", Name = "campoResp4" })</td>
+                                                                <td></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -192,7 +199,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>
@@ -209,7 +216,7 @@
 
                                 @* Questão 2 *@
                                 <div id="questao2">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao", FormMethod.Post, new { Id = "form2" }))
                                     {
                                         @Html.Hidden("IdAtividade", 18)
 
@@ -227,48 +234,57 @@
                                                                     <th>Classe</th>
                                                                     <th>Frequência (F)</th>
                                                                     <th>Frequência Acumulada</th>
+                                                                    <th></th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
                                                                     <td>[4,2 ; 4,4)</td>
                                                                     <td>6</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp5", Name = "campoResp5" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[4,4 ; 4,6)</td>
                                                                     <td>8</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp6", Name = "campoResp6" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[4,6 ; 4,8)</td>
                                                                     <td>15</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp7", Name = "campoResp7" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[4,8 ; 5)</td>
                                                                     <td>33</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp8", Name = "campoResp8" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[5 ; 5,2)</td>
                                                                     <td>18</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp9", Name = "campoResp9" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[5,2 ; 5,4)</td>
                                                                     <td>13</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp10", Name = "campoResp10" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[5,4 ; 5,6)</td>
                                                                     <td>5</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp11", Name = "campoResp11" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>[5,6 ; 5,8)</td>
                                                                     <td>2</td>
-                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                    <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp12", Name = "campoResp12" })</td>
+                                                                    <td></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -292,7 +308,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>
@@ -310,7 +326,7 @@
 
                                 @* Questão 3 *@
                                 <div id="questao3">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao", FormMethod.Post, new { Id = "form3" }))
                                     {
                                         @Html.Hidden("IdAtividade", 19)
 
@@ -319,46 +335,67 @@
 
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <div class="col-lg-10 col-md-10 col-sm-10">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover table-striped">
                                                         <thead>
                                                             <tr>
                                                                 <th>Valores</th>
+                                                                <th></th>
                                                                 <th>Frequência (F)</th>
+                                                                <th></th>
                                                                 <th>Frequência Acumulada</th>
+                                                                <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>2</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp13", Name = "campoResp13" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp14", Name = "campoResp14" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp15", Name = "campoResp15" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp16", Name = "campoResp16" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp17", Name = "campoResp17" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp18", Name = "campoResp18" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp19", Name = "campoResp19" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp20", Name = "campoResp20" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp21", Name = "campoResp21" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp22", Name = "campoResp22" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp23", Name = "campoResp23" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp24", Name = "campoResp24" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp25", Name = "campoResp25" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp26", Name = "campoResp26" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>9</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp27", Name = "campoResp27" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp28", Name = "campoResp28" })</td>
+                                                                <td></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -384,7 +421,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>
@@ -402,7 +439,7 @@
 
                                 @* Questão 4 *@
                                 <div id="questao4">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao", FormMethod.Post, new { Id = "form4" }))
                                     {
                                         @Html.Hidden("IdAtividade", 20)
 
@@ -411,31 +448,39 @@
 
                                             </div>
 
-                                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                            <div class="col-lg-10 col-md-10 col-sm-10">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover table-striped">
                                                         <thead>
                                                             <tr>
                                                                 <th>Valores</th>
                                                                 <th>Frequência (F)</th>
+                                                                <th></th>
                                                                 <th>Frequência Acumulada</th>
+                                                                <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>200-250</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp29", Name = "campoResp29" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp30", Name = "campoResp30" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>251-300</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp31", Name = "campoResp31" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp32", Name = "campoResp32" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>301-350</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
-                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp33", Name = "campoResp33" })</td>
+                                                                <td></td>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp34", Name = "campoResp34" })</td>
+                                                                <td></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -460,7 +505,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>

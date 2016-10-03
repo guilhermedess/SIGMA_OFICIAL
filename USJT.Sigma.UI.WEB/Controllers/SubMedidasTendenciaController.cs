@@ -16,15 +16,20 @@ namespace USJT.Sigma.UI.WEB.Controllers
         AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
         dynamic meusModelos = new ExpandoObject();
 
-        public ActionResult ConferirRespotaRecebida(Atividade atividade, string metodo, string controle)
+        public ActionResult ConferirRespotaRecebida(Atividade atividade, FormCollection form, string metodo, string controle)
         {
             Aluno aluno = (Aluno)Session["dadosAlunoLogado"];
 
             var respostaDoAluno = "";
 
-            foreach (var respostas in atividade.ListaDeRespostas)
+            form.Remove("IdAtividade");
+
+            if (form != null)
             {
-                respostaDoAluno += respostas;
+                for (int i = 0; i < form.Count; i++)
+                {
+                    respostaDoAluno += form[i];
+                }
             }
 
             if (respostaDoAluno.Equals(atividadeREP.RespostaExata(atividade.IdAtividade)))
@@ -73,11 +78,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult IntroducaoMedidasTendencia(Atividade atividade)
+        public ActionResult IntroducaoMedidasTendencia(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "IntroducaoMedidasTendencia", "SubMedidasTendencia");
+                return ConferirRespotaRecebida(atividade, form, "IntroducaoMedidasTendencia", "SubMedidasTendencia");
             }
             catch (Exception)
             {
@@ -100,11 +105,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult MediaSimples(Atividade atividade)
+        public ActionResult MediaSimples(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "MediaSimples", "SubMedidasTendencia");
+                return ConferirRespotaRecebida(atividade, form, "MediaSimples", "SubMedidasTendencia");
             }
             catch (Exception)
             {
@@ -127,11 +132,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult MediaPonderada(Atividade atividade)
+        public ActionResult MediaPonderada(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "MediaPonderada", "SubMedidasTendencia");
+                return ConferirRespotaRecebida(atividade, form, "MediaPonderada", "SubMedidasTendencia");
             }
             catch (Exception)
             {
@@ -154,11 +159,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Moda(Atividade atividade)
+        public ActionResult Moda(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "Moda", "SubMedidasTendencia");
+                return ConferirRespotaRecebida(atividade, form, "Moda", "SubMedidasTendencia");
             }
             catch (Exception)
             {
@@ -181,11 +186,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Mediana(Atividade atividade)
+        public ActionResult Mediana(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "Mediana", "SubMedidasTendencia");
+                return ConferirRespotaRecebida(atividade, form, "Mediana", "SubMedidasTendencia");
             }
             catch (Exception)
             {

@@ -17,15 +17,20 @@ namespace USJT.Sigma.UI.WEB.Controllers
         AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
         dynamic meusModelos = new ExpandoObject();
 
-        public ActionResult ConferirRespotaRecebida(Atividade atividade, string metodo, string controle)
+        public ActionResult ConferirRespotaRecebida(Atividade atividade, FormCollection form, string metodo, string controle)
         {
             Aluno aluno = (Aluno)Session["dadosAlunoLogado"];
 
             var respostaDoAluno = "";
 
-            foreach (var respostas in atividade.ListaDeRespostas)
+            form.Remove("IdAtividade");
+
+            if (form != null)
             {
-                respostaDoAluno += respostas;
+                for (int i = 0; i < form.Count; i++)
+                {
+                    respostaDoAluno += form[i];
+                }
             }
 
             if (respostaDoAluno.Equals(atividadeREP.RespostaExata(atividade.IdAtividade)))
@@ -74,11 +79,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
             }
         }
         [HttpPost]
-        public ActionResult IntroducaoDistribuicao(Atividade atividade)
+        public ActionResult IntroducaoDistribuicao(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "IntroducaoDistribuicao", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "IntroducaoDistribuicao", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -103,11 +108,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult PontosOuValores(Aluno aluno, Atividade atividade)
+        public ActionResult PontosOuValores(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "PontosOuValores", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "PontosOuValores", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -132,11 +137,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult ClassesOuIntervalos(Aluno aluno, Atividade atividade)
+        public ActionResult ClassesOuIntervalos(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "ClassesOuIntervalos", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "ClassesOuIntervalos", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -161,11 +166,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult FrequenciaRelativaPercentual(Aluno aluno, Atividade atividade)
+        public ActionResult FrequenciaRelativaPercentual(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "FrequenciaRelativaPercentual", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "FrequenciaRelativaPercentual", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -190,11 +195,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Aluno aluno, Atividade atividade)
+        public ActionResult FrequenciaAcumuladaSimplesAbsoluta(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "FrequenciaAcumuladaSimplesAbsoluta", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -219,11 +224,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult FrequenciaAcumuladaRelativaPercentual(Aluno aluno, Atividade atividade)
+        public ActionResult FrequenciaAcumuladaRelativaPercentual(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "FrequenciaAcumuladaRelativaPercentual", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "FrequenciaAcumuladaRelativaPercentual", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -248,11 +253,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult ApresentacaoPontosOuValores(Aluno aluno, Atividade atividade)
+        public ActionResult ApresentacaoPontosOuValores(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "ApresentacaoPontosOuValores", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "ApresentacaoPontosOuValores", "SubDistribuicao");
             }
             catch (Exception)
             {
@@ -277,11 +282,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
 
         [HttpPost]
-        public ActionResult ApresentacaoClassesOuIntervalos(Aluno aluno, Atividade atividade)
+        public ActionResult ApresentacaoClassesOuIntervalos(Atividade atividade, FormCollection form)
         {
             try
             {
-                return ConferirRespotaRecebida(atividade, "ApresentacaoClassesOuIntervalos", "SubDistribuicao");
+                return ConferirRespotaRecebida(atividade, form, "ApresentacaoClassesOuIntervalos", "SubDistribuicao");
             }
             catch (Exception)
             {

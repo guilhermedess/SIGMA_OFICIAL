@@ -72,24 +72,23 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <input id="btnPresentation1" type="submit" value="Procurar" class="btn btn-default" />
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3">
-                                        <label for="info" class="btn btn-info">Pontos conquistados <span class="badge">@Model.Aluno.PontosFeitosDistribuicao</span></label>
+
+                                    <div>
+                                        <span class="label">Default</span>
+                                        <span class="label label-success arrowed"> Success</span>
+                                        <span class="label label-warning">Warning</span>
+                                        <span class="label label-important arrowed-in">Important</span>
+                                        <span class="label label-info arrowed-in-right arrowed">Info</span>
+                                        <span class="label label-inverse">Inverse</span>
+                                        <span class="label label-large label-pink arrowed-right">Larger</span>
+                                        <span class="label label-large label-yellow arrowed-in">Yellow</span>
+                                    </div>
+
+                                    @*<div class="col-lg-3 col-md-3 col-sm-3">                                        
                                         <h3><span class="label label-info">Pontos conquistados: @Model.Aluno.PontosFeitosDistribuicao</span></h3>
                                         <span title="Pontos" class="badge"></span>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2">
-                                        <div class="offer offer-info">
-                                            <div class="shape">
-                                                <div class="shape-text">
-                                                    <span>1222</span>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                Pontos possíveis
-                                            </p>
-                                        </div>
-                                    </div>
-                                        <h3><span class="label label-info">Pontos possíveis: @Model.Aluno.PontosDistribuicao</span></h3>                                 
+                                        <h3><span class="label label-info">Pontos possíveis: @Model.Aluno.PontosDistribuicao</span></h3>*@                                 
                                 </div>
                             </div>
 
@@ -97,7 +96,8 @@
 
                             <div>
                                 @{
-                                    //if (Model.todasAtividadesDistribuicao != null) {
+                                    //if (Model.todasAtividadesDistribuicao != null)
+                                    //{
                                     foreach (var atvDistribuicao in Model.todasAtividadesDistribuicao)
                                     {
                                         <div class="col-sm-3 col-md-3 col-lg-3">
@@ -119,7 +119,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    }
+                                        }
+                                    //}
 
 
                                     if (Model.atividadesFeitasDistribuicao != null)

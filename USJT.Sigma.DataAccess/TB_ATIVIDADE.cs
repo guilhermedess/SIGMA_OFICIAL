@@ -18,7 +18,6 @@ namespace USJT.Sigma.DataAccess
         public TB_ATIVIDADE()
         {
             this.TB_ATIVIDADE_ALUNO = new HashSet<TB_ATIVIDADE_ALUNO>();
-            this.TB_VIDEO = new HashSet<TB_VIDEO>();
         }
     
         public int ID_ATIVIDADE { get; set; }
@@ -31,12 +30,9 @@ namespace USJT.Sigma.DataAccess
         public string DES_PERGUNTA { get; set; }
         public string DES_RESPOSTA { get; set; }
         public Nullable<double> VAL_NOTA { get; set; }
-        public Nullable<double> QTD_PROGRESSO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_ATIVIDADE_ALUNO> TB_ATIVIDADE_ALUNO { get; set; }
         public virtual TB_SUBTOPICO TB_SUBTOPICO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TB_VIDEO> TB_VIDEO { get; set; }
     }
 }

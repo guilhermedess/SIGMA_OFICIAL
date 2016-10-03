@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace USJT.Sigma.Model
         public Double Nota { get; set; }
         public Double Progresso { get; set; }
         public string Resposta { get; set; }
-        public List<object> ListaDeRespostas { get; set; }
+        [Required]
+        public List<string> ListaDeRespostas { get; set; }
     }
 }

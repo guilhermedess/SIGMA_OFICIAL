@@ -23,7 +23,7 @@ namespace USJT.Sigma.Repositorio
         {
             using (var conexao = new SIGMAEntities())
             {
-                var videoRecuperado = conexao.TB_VIDEO.Single(modelVideo => modelVideo.ID_ATIVIDADE == idAtividade && modelVideo.NOM_VIDEO.Equals(nomeVideo));
+                var videoRecuperado = conexao.TB_VIDEO.Single(modelVideo => modelVideo.NOM_VIDEO.Equals(nomeVideo));
 
                 return videoRecuperado.DES_URL;
             }

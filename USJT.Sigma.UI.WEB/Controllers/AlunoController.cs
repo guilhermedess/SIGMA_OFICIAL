@@ -159,13 +159,6 @@ namespace USJT.Sigma.UI.WEB.Controllers
         {
             try
             {
-                var valorComboDistribuicao = ValidarComboDistribuicao(comboDistribuicao);
-                var valorComboTendencia = ValidarComboTendencia(comboTendencia);
-
-                dynamic meusModelos = new ExpandoObject();
-
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-
                 if (comboDistribuicao != null)
                 {
                     aluno.topicoSelecionadoAtv = 1;
@@ -178,8 +171,14 @@ namespace USJT.Sigma.UI.WEB.Controllers
                     }
                 }
 
-                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+                dynamic meusModelos = new ExpandoObject();
 
+                var valorComboDistribuicao = ValidarComboDistribuicao(comboDistribuicao);
+                var valorComboTendencia = ValidarComboTendencia(comboTendencia);
+                
+                aluno = (Aluno)Session["dadosAlunoLogado"];
+                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
+                
                 AtividadesProcuradas(aluno, meusModelos, valorComboDistribuicao, valorComboTendencia);
 
                 CarregarComboDistribuicao();
@@ -256,58 +255,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
                 return RedirectToAction("Login", "Aluno");
             }
-        }
-        public dynamic AtualizarAtividades(Aluno aluno, string comboDistribuicao)
-        {
-            try
-            {
-                var procurarAtv = ValidarComboDistribuicao(comboDistribuicao);
-
-                AtividadeREP atividadeREP = new AtividadeREP();
-                dynamic meusModelos = new ExpandoObject();
-
-                aluno = (Aluno)Session["dadosAlunoLogado"];
-                meusModelos.Aluno = (Aluno)Session["dadosAlunoLogado"];
-
-                if (procurarAtv == 0)
-                {
-                    //meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
-
-                    //var x = atividadeREP.TodasAtividades();
-
-                    //for (int i = 0; i < x.Count - 1; i++)
-                    //{
-                    //    x.Remove(meusModelos.atividadesFeitas[i].Atividade);
-                    //}
-
-                    //meusModelos.atividadesFeitas = x;
-                }
-                else
-                {
-                    if (procurarAtv == 99)
-                    {
-                        meusModelos.todasAtividades = atividadeREP.TodasAtividades();
-                        meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitas(aluno.IdAluno);
-                    }
-                    else
-                    {
-                        meusModelos.todasAtividades = atividadeREP.TodasAtividadesDeUmSubTopico(procurarAtv);
-                        meusModelos.atividadesFeitas = atividadeAlunoREP.AtividadesFeitasDeUmSubTopico(aluno.IdAluno, procurarAtv);
-                    }
-                }
-
-                CarregarComboDistribuicao();
-
-                return meusModelos;
-
-            }
-            catch (Exception)
-            {
-                TempData.Add("Mensagem", "Erro no Controller: 'Ao carregar a página'");
-
-                return RedirectToAction("Login", "Aluno");
-            }
-        }
+        }        
         public int ValidarComboDistribuicao(string comboDistribuicao)
         {
             if (comboDistribuicao == null)
@@ -513,7 +461,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
                 }
                 else
                 {
-                    if (valorComboDistribuicao == 0 || valorComboTendencia == 0)
+                    if ((valorComboDistribuicao == 0 || valorComboTendencia == 0) || (valorComboDistribuicao == -100 && valorComboTendencia == -100))
                     {
                         List<Atividade> todasAtividadesDist = atividadeREP.TodasAtividadesDeUmTopico(1);
                         meusModelos.todasAtividadesDistribuicao = todasAtividadesDist;

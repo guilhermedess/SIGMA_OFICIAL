@@ -58,7 +58,6 @@
     <Compile Include="AtividadeREP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubTopicoREP.cs" />
-    <Compile Include="TopicoREP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

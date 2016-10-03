@@ -141,6 +141,7 @@
     <Content Include="Content\bootstrap_social_button\assets\css\font-awesome.css" />
     <Content Include="Content\bootstrap_social_button\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\bootstrap_social_button\bootstrap-social.css" />
+    <Content Include="Content\validarCampos.css" />
     <Content Include="Content\estilocss\estilo.css" />
     <Content Include="Content\icon.css" />
     <Content Include="Content\corpo-padrao.css" />
@@ -287,6 +288,16 @@
     <Content Include="scripts\mega-menu.js" />
     <Content Include="scripts\progresso.js" />
     <Content Include="scripts\progresso2.js" />
+    <Content Include="scripts\validacao-top2-4.js" />
+    <Content Include="scripts\validacao-top2-3.js" />
+    <Content Include="scripts\validacao-top2-2.2.js" />
+    <Content Include="scripts\validacao-top2-2.1.js" />
+    <Content Include="scripts\validacao-top1-5.2.js" />
+    <Content Include="scripts\validacao-top1-5.1.js" />
+    <Content Include="scripts\validacao-top1-4.2.js" />
+    <Content Include="scripts\validacao-top1-4.3.js" />
+    <Content Include="scripts\validacao-top1-4.1.js" />
+    <Content Include="scripts\validacao-top1-2.js" />
     <Content Include="scripts\video.js" />
     <Content Include="scripts\wizard.js" />
     <Content Include="Web.config">
@@ -296,7 +307,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
-    <Compile Include="Controllers\SubAmostragemController.cs" />
     <Compile Include="Controllers\SubDistribuicaoController.cs" />
     <Compile Include="Controllers\SubMedidasTendenciaController.cs" />
     <Compile Include="Controllers\TopicoController.cs" />
@@ -396,7 +406,6 @@
     <Folder Include="Content\img\certificado\" />
     <Folder Include="Content\img\graficos\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\SubAmostragem\" />
     <Folder Include="Views\SubDistribuicao\DicasDistribuicao\1\" />
     <Folder Include="Views\SubMedidasTendencia\DicasTendencia\1\" />
   </ItemGroup>

@@ -21,12 +21,8 @@ namespace USJT.Sigma.DataAccess
         }
     
         public int ID_TOPICO { get; set; }
-        public Nullable<int> ID_ALUNO { get; set; }
         public string NOM_TOPICO { get; set; }
-        public string DES_CONTEUDO { get; set; }
-        public Nullable<double> QTD_PROGRESSO { get; set; }
     
-        public virtual TB_ALUNO TB_ALUNO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_SUBTOPICO> TB_SUBTOPICO { get; set; }
     }

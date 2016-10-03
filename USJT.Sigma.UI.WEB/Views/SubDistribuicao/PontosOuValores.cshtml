@@ -1,4 +1,4 @@
-﻿    @using USJT.Sigma.Repositorio
+﻿@using USJT.Sigma.Repositorio
 @model dynamic
 
 <head>
@@ -10,6 +10,8 @@
     <script src="~/scripts/dicas3.js"></script>
     <script src="~/scripts/dicas4.js"></script>
     <script src="~/scripts/video.js"></script>
+    <script src="~/scripts/validacao-top1-2.js"></script>
+    <link href="~/Content/validarCampos.css" rel="stylesheet" />
 </head>
 
 @{
@@ -126,10 +128,9 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
-
                                 @* Questão 1 *@
                                 <div id="questao1">
-                                    @using (Html.BeginForm())
+                                    @using (Html.BeginForm("PontosOuValores", "SubDistribuicao", FormMethod.Post, new { Id = "form" }))
                                     {
                                         @Html.Hidden("IdAtividade", 5)
 
@@ -177,39 +178,46 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-5 col-md-5 col-sm-5">
+                                            <div class="col-lg-8 col-md-8 col-sm-8">
                                                 <div class="table-responsive">
                                                     <table class="table table-hover table-striped">
                                                         <thead>
                                                             <tr>
                                                                 <th>Quantidade de Filhos</th>
                                                                 <th>Quantidade de Funcionários</th>
+                                                                <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>0</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp1", Name = "campoResp1" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>1</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp2", Name = "campoResp2" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>2</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp3", Name = "campoResp3" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>3</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp4", Name = "campoResp4" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>4</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp5", Name = "campoResp5" })</td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>5</td>
-                                                                <th>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control" })</th>
+                                                                <td>@Html.TextBox("ListaDeRespostas", "", new { @class = "form-control", Id = "campoResp6", Name = "campoResp6" })</td>
+                                                                <td></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -234,7 +242,7 @@
                                                 </div>
 
                                                 <div class="col-lg-5 col-md-5 col-sm-5">
-                                                    <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                    <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                 </div>
                                             </div>
                                         </div>
@@ -326,7 +334,7 @@
                                                             </div>
 
                                                             <div class="col-lg-5 col-md-5 col-sm-5">
-                                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                                <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -431,7 +439,7 @@
                                                             </div>
 
                                                             <div class="col-lg-5 col-md-5 col-sm-5">
-                                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                                <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -522,7 +530,7 @@
                                                             </div>
 
                                                             <div class="col-lg-5 col-md-5 col-sm-5">
-                                                                <input type="submit" name="salvarAtividade" value="Conferir Resposta" class="btn btn-lg btn-success dir">
+                                                                <input type="submit" value="Conferir Resposta" class="btn btn-lg btn-success dir">
                                                             </div>
                                                         </div>
                                                     </div>
