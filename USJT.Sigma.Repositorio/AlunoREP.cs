@@ -30,7 +30,6 @@ namespace USJT.Sigma.Repositorio
                 conexao.SaveChanges();
             }
         }
-
         public void Editar(Aluno dadosTela)
         {
             using (var conexao = new SIGMAEntities())

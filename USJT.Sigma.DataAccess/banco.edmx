@@ -40,6 +40,7 @@
           <Property Name="ID_ATIVIDADE" Type="int" Nullable="false" />
           <Property Name="ID_ALUNO" Type="int" Nullable="false" />
           <Property Name="CHK_STATUS" Type="bit" />
+          <Property Name="DAT_REALIZACAO" Type="datetime" />
         </EntityType>
         <EntityType Name="TB_CERTIFICADO">
           <Key>
@@ -254,6 +255,7 @@
           <Property Name="ID_ATIVIDADE" Type="Int32" Nullable="false" />
           <Property Name="ID_ALUNO" Type="Int32" Nullable="false" />
           <Property Name="CHK_STATUS" Type="Boolean" />
+          <Property Name="DAT_REALIZACAO" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TB_ALUNO" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_ALUNO_TB_ALUNO" FromRole="TB_ATIVIDADE_ALUNO" ToRole="TB_ALUNO" />
           <NavigationProperty Name="TB_ATIVIDADE" Relationship="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_ALUNO_TB_ATIVIDADE" FromRole="TB_ATIVIDADE_ALUNO" ToRole="TB_ATIVIDADE" />
         </EntityType>
@@ -405,6 +407,7 @@
           <EntitySetMapping Name="TB_ATIVIDADE_ALUNO">
             <EntityTypeMapping TypeName="SIGMA_OFICIALModel.TB_ATIVIDADE_ALUNO">
               <MappingFragment StoreEntitySet="TB_ATIVIDADE_ALUNO">
+                <ScalarProperty Name="DAT_REALIZACAO" ColumnName="DAT_REALIZACAO" />
                 <ScalarProperty Name="CHK_STATUS" ColumnName="CHK_STATUS" />
                 <ScalarProperty Name="ID_ALUNO" ColumnName="ID_ALUNO" />
                 <ScalarProperty Name="ID_ATIVIDADE" ColumnName="ID_ATIVIDADE" />

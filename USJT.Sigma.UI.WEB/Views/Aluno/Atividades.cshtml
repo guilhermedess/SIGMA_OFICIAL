@@ -8,6 +8,7 @@
     <link href="~/Content/corpo-padrao.css" rel="stylesheet" />
     <link href="~/Content/panel.css" rel="stylesheet" />
     <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
 @{
@@ -15,13 +16,17 @@
     Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
 }
 
-<div id="divContainer" class="container">
-    <div class="text-center">
-        <h2>Atividades</h2>
-        <HR NOSHADE WIDTH=250>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="text-center">
+                <h2>Atividades</h2>
+                <HR NOSHADE WIDTH=250>
+            </div>
+        </div>
     </div>
     <div class="row">
-        <section>
+        @*<section>*@
             <div class="wizard">
                 <div class="wizard-inner">
                     <div class="connecting-line"></div>
@@ -30,7 +35,7 @@
                         <li id="presentation1" role="presentation">
                             <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Distribuição de frequência">
                                 <span class="round-tab">
-                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <i class="fa fa-pie-chart"></i>
                                 </span>
                             </a>
                         </li>
@@ -38,14 +43,14 @@
                         <li id="presentation2" role="presentation">
                             <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Medidas de Tendência Central">
                                 <span class="round-tab">
-                                    <i class="glyphicon glyphicon-signal"></i>
+                                    <i class="fa fa-area-chart"></i>
                                 </span>
                             </a>
                         </li>
                         <li id="presentation3" role="presentation">
                             <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Medidas de Dispersão">
                                 <span class="round-tab">
-                                    <i class="glyphicon glyphicon-picture"></i>
+                                    <i class="fa fa-line-chart"></i>
                                 </span>
                             </a>
                         </li>
@@ -53,7 +58,7 @@
                         <li id="presentation4" role="presentation">
                             <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Amostragem e Estimadores">
                                 <span class="round-tab">
-                                    <i class="glyphicon glyphicon-ok"></i>
+                                    <i class="fa fa-google-wallet"></i>
                                 </span>
                             </a>
                         </li>
@@ -213,28 +218,21 @@
                             </div>
                             <ul class="list-inline pull-right">
                                 <li><button type="button" class="btn btn-default prev-step form-group"><< Voltar</button></li>
-                                <li><button type="button" class="btn btn-primary next-step form-group">Proximo >></button></li>
                             </ul>
                                     }
                     </div>
 
-                    <div class="tab-pane" role="tabpanel" id="step3">
-                        <h3>Step 3</h3>
-                        <p>This is step 3</p>
-                        <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step form-group"><< Voltar</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step form-group">Proximo >></button></li>
-                        </ul>
+                    <div class="tab-pane text-center" role="tabpanel" id="step3">
+                        <h3>Medidas de Dispersão</h3>
                     </div>
 
-                    <div class="tab-pane" role="tabpanel" id="complete">
-                        <h3>Complete</h3>
-                        <p>You have successfully completed all steps.</p>
+                    <div class="tab-pane text-center" role="tabpanel" id="complete">
+                        <h3>Amostragem e Estimadores</h3>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
-        </section>
+        @*</section>*@
     </div>
 </div>
 

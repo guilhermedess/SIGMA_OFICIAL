@@ -37,6 +37,34 @@ namespace USJT.Sigma.Repositorio
                 return atividadeFeitas;
             }
         }
+        public List<AtividadeAluno> AtividadesFeitasPorData(int idAluno)
+        {
+            using (var conexao = new SIGMAEntities())
+            {
+                var umaSemana = DateTime.Now.AddDays(-7.0);
+
+                List<AtividadeAluno> atividadeFeitas =
+                    (from C in conexao.TB_ATIVIDADE_ALUNO
+                     where C.ID_ALUNO == idAluno && C.CHK_STATUS == true && (C.DAT_REALIZACAO >= umaSemana) //continuar
+                     select new AtividadeAluno
+                     {
+                         IdAtividadeAluno = C.ID_ATIVIDADE_ALUNO,
+                         IdAtividade = C.ID_ATIVIDADE,
+                         IdAluno = C.ID_ALUNO,
+                         Atividade = new Atividade
+                         {
+                             IdAtividade = C.ID_ATIVIDADE,
+                             NomeAtv = C.TB_ATIVIDADE.NOM_ATIVIDADE,
+                             DescricaoTitulo = C.TB_ATIVIDADE.DES_TITULO,
+                             DescricaoSubTitulo = C.TB_ATIVIDADE.DES_SUBTITULO,
+                             DescricaoAtividade = C.TB_ATIVIDADE.DES_ATIVIDADE,
+                             DescricaoPergunta = C.TB_ATIVIDADE.DES_PERGUNTA,
+                             Nota = (double)C.TB_ATIVIDADE.VAL_NOTA
+                         }
+                     }).ToList();
+                return atividadeFeitas;
+            }
+        }
         public List<AtividadeAluno> ListaAtividadesFeitasDeUmTopico(int idAluno, int idTopico)
         {
             using (var conexao = new SIGMAEntities())
@@ -139,6 +167,7 @@ namespace USJT.Sigma.Repositorio
                 novaAtividadeAluno.ID_ALUNO = idAluno;
                 novaAtividadeAluno.ID_ATIVIDADE = IdAtividade;
                 novaAtividadeAluno.CHK_STATUS = true;
+                novaAtividadeAluno.DAT_REALIZACAO = DateTime.Now;
                 conexao.TB_ATIVIDADE_ALUNO.Add(novaAtividadeAluno);
                 conexao.SaveChanges();
             }

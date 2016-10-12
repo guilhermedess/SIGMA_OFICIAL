@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Guilherme Silveira\documents\visual studio 2015\Projects\USJT.Sigma\USJT.Sigma.DataAccess\banco.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Guilherme Silveira\Desktop\USJT.Sigma\USJT.Sigma\USJT.Sigma.DataAccess\banco.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

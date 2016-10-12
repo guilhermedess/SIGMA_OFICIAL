@@ -112,53 +112,60 @@ namespace USJT.Sigma.UI.WEB.Controllers
         }
         public ActionResult Progresso()
         {
-            Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
+            try
+            {
+                Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
 
-            AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
-            AtividadeREP atividadeREP = new AtividadeREP();
-            AlunoREP alunoREP = new AlunoREP();
+                AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+                AtividadeREP atividadeREP = new AtividadeREP();
+                AlunoREP alunoREP = new AlunoREP();
 
-            dadosAlunoLogado.TotalPontosFeitos = atividadeAlunoREP.PontosFeitos(dadosAlunoLogado.IdAluno);
-            dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
+                dadosAlunoLogado.TotalPontosFeitos = atividadeAlunoREP.PontosFeitos(dadosAlunoLogado.IdAluno);
+                dadosAlunoLogado.ProgressoTotal = Math.Round(alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno), 2);
 
-            dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 1);
-            dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 2);
-            //dadosAlunoLogado.ProgressoMedidasDeDispersao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 3);
-            //dadosAlunoLogado.ProgressoAmostragemEstimadores = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 4);
+                dadosAlunoLogado.ProgressoDistribuicao = Math.Round(alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 1), 2);
+                dadosAlunoLogado.ProgressoMedidasDeTendenciaCentral = Math.Round(alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 2), 2);
+                //dadosAlunoLogado.ProgressoMedidasDeDispersao = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 3);
+                //dadosAlunoLogado.ProgressoAmostragemEstimadores = alunoREP.ProgressoDeUmTopico(dadosAlunoLogado.IdAluno, 4);
 
-            dadosAlunoLogado.PontosDistribuicao = atividadeREP.TotalPontosPossiveisDeUmTopico(1);
-            dadosAlunoLogado.PontosMedidasDeTendenciaCentral = atividadeREP.TotalPontosPossiveisDeUmTopico(2);
-            //dadosAlunoLogado.PontosMedidasDeDispersao = atividadeREP.TotalPontosPossiveisDeUmTopico(3);
-            //dadosAlunoLogado.PontosAmostragemEstimadores = atividadeREP.TotalPontosPossiveisDeUmTopico(4);
+                dadosAlunoLogado.PontosDistribuicao = atividadeREP.TotalPontosPossiveisDeUmTopico(1);
+                dadosAlunoLogado.PontosMedidasDeTendenciaCentral = atividadeREP.TotalPontosPossiveisDeUmTopico(2);
+                //dadosAlunoLogado.PontosMedidasDeDispersao = atividadeREP.TotalPontosPossiveisDeUmTopico(3);
+                //dadosAlunoLogado.PontosAmostragemEstimadores = atividadeREP.TotalPontosPossiveisDeUmTopico(4);
 
-            dadosAlunoLogado.PontosFeitosDistribuicao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 1);
-            dadosAlunoLogado.PontosFeitosMedidasDeTendenciaCentral = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 2);
-            //dadosAlunoLogado.PontosFeitosMedidasDeDispersao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 3);
-            //dadosAlunoLogado.PontosFeitosAmostragemEstimadores = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 4);
+                dadosAlunoLogado.PontosFeitosDistribuicao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 1);
+                dadosAlunoLogado.PontosFeitosMedidasDeTendenciaCentral = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 2);
+                //dadosAlunoLogado.PontosFeitosMedidasDeDispersao = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 3);
+                //dadosAlunoLogado.PontosFeitosAmostragemEstimadores = atividadeAlunoREP.PontosFeitosDeUmTopico(dadosAlunoLogado.IdAluno, 4);
 
-            dadosAlunoLogado.PDIntroducao = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 1);
-            dadosAlunoLogado.PDPontosValores = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 2);
-            dadosAlunoLogado.PDClassesIntervalos = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 3);
-            dadosAlunoLogado.PDRelativaPercentual = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 4);
-            dadosAlunoLogado.PDAcumuladaSimplesAbsoluta = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 5);
-            dadosAlunoLogado.PDAcumuladaRelativaPercentual = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 6);
-            dadosAlunoLogado.PDFreqPontosValores = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 7);
-            dadosAlunoLogado.PDFreqClassesIntervalos = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 8);
+                dadosAlunoLogado.PDIntroducao = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 1), 2);
+                dadosAlunoLogado.PDPontosValores = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 2), 2);
+                dadosAlunoLogado.PDClassesIntervalos = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 3), 2);
+                dadosAlunoLogado.PDRelativaPercentual = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 4), 2);
+                dadosAlunoLogado.PDAcumuladaSimplesAbsoluta = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 5), 2);
+                dadosAlunoLogado.PDAcumuladaRelativaPercentual = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 6), 2);
+                dadosAlunoLogado.PDFreqPontosValores = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 7), 2);
+                dadosAlunoLogado.PDFreqClassesIntervalos = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 8), 2);
 
-            dadosAlunoLogado.PTIntroducao = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 9);
-            dadosAlunoLogado.PTMediaSimples = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 10);
-            dadosAlunoLogado.PTMediaPonderada = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 11);
-            dadosAlunoLogado.PTModa = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 12);
-            dadosAlunoLogado.PTMediana = alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 13);
+                dadosAlunoLogado.PTIntroducao = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 9), 2);
+                dadosAlunoLogado.PTMediaSimples = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 10), 2);
+                dadosAlunoLogado.PTMediaPonderada = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 11), 2);
+                dadosAlunoLogado.PTModa = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 12), 2);
+                dadosAlunoLogado.PTMediana = Math.Round(alunoREP.ProgressoDeUmSubTopico(dadosAlunoLogado.IdAluno, 13), 2);
 
+                dadosAlunoLogado.ProgressoDistribuicaoPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 1);
+                dadosAlunoLogado.ProgressoMedidasDeTendenciaPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 2);
 
-            dadosAlunoLogado.ProgressoDistribuicaoPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 1);
-            dadosAlunoLogado.ProgressoMedidasDeTendenciaPorAtividade = alunoREP.ProgressoDeUmTopicoPorQuantidade(dadosAlunoLogado.IdAluno, 2);
+                dynamic meusModelos = new ExpandoObject();
+                meusModelos.Aluno = dadosAlunoLogado;
 
-            dynamic meusModelos = new ExpandoObject();
-            meusModelos.Aluno = dadosAlunoLogado;
-
-            return View(meusModelos);
+                return View(meusModelos);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Login", "Aluno");
+            }
+            
         }
         [HttpPost]
         public ActionResult Atividades(Aluno aluno, string comboDistribuicao, string comboTendencia)
@@ -262,7 +269,11 @@ namespace USJT.Sigma.UI.WEB.Controllers
 
                 return RedirectToAction("Login", "Aluno");
             }
-        }        
+        }
+        public ActionResult Apresentacao()
+        {
+            return View();
+        }
         public int ValidarComboDistribuicao(string comboDistribuicao)
         {
             if (comboDistribuicao == null)

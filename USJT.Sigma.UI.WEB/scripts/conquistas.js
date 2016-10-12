@@ -63,7 +63,7 @@
                                         $("#senior").attr("src", "/Content/img/niveis_conquistados/8.png");
                                         $("#master").attr("src", "/Content/img/niveis_conquistados/9.png");
                                     } else {
-                                        if (x >= 5000) {
+                                        if (x >= 4500) {
                                             $("#cria").attr("src", "/Content/img/niveis_conquistados/1.png");
                                             $("#fraldinha").attr("src", "/Content/img/niveis_conquistados/2.png");
                                             $("#dentinho").attr("src", "/Content/img/niveis_conquistados/3.png");

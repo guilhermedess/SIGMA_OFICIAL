@@ -13,16 +13,20 @@ namespace USJT.Sigma.UI.WEB.Controllers
     {
         public ActionResult Topicos()
         {
-            Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
+            try
+            {
+                Aluno dadosAlunoLogado = (Aluno)Session["dadosAlunoLogado"];
 
-            //AlunoREP alunoREP = new AlunoREP();
-            //AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+                AtividadeAlunoREP atividadeAlunoREP = new AtividadeAlunoREP();
+                var AtvUltimaSemana = atividadeAlunoREP.AtividadesFeitasPorData(dadosAlunoLogado.IdAluno);
 
-            //dadosAlunoLogado.ProgressoTotal = alunoREP.ProgressoTotal(dadosAlunoLogado.IdAluno);
-            //dadosAlunoLogado.ProgressoDistribuicao = alunoREP.ProgressoDistribuicao(dadosAlunoLogado.IdAluno);
-            //dadosAlunoLogado.PontosFeitos = atividadeAlunoREP.PontosFeitos(dadosAlunoLogado.IdAluno);
-
-            return View(dadosAlunoLogado);
+                return View(dadosAlunoLogado);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Login", "Aluno");
+            }
+            
         }
 
         //ActionResult para gerar(.pdf) relatório com Report Viewer em ASP.NET MVC

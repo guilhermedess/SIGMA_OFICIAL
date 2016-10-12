@@ -18,6 +18,7 @@ namespace USJT.Sigma.DataAccess
         public int ID_ATIVIDADE { get; set; }
         public int ID_ALUNO { get; set; }
         public Nullable<bool> CHK_STATUS { get; set; }
+        public Nullable<System.DateTime> DAT_REALIZACAO { get; set; }
     
         public virtual TB_ALUNO TB_ALUNO { get; set; }
         public virtual TB_ATIVIDADE TB_ATIVIDADE { get; set; }

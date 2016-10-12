@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ed6914994f274ea5a0de059c66d43f20" Name="Diagram1">
-        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_ALUNO" Width="1.5" PointX="5.25" PointY="8.375" />
-        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_ATIVIDADE" Width="1.5" PointX="5.25" PointY="1.125" />
-        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_ATIVIDADE_ALUNO" Width="1.5" PointX="7.5" PointY="1.75" />
-        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_CERTIFICADO" Width="1.5" PointX="7.5" PointY="8.875" />
+        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_ALUNO" Width="1.5" PointX="5.25" PointY="8.125" />
+        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_ATIVIDADE" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_ATIVIDADE_ALUNO" Width="1.5" PointX="7.5" PointY="4.375" />
+        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_CERTIFICADO" Width="1.5" PointX="7.5" PointY="8.625" />
         <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_SUBTOPICO" Width="1.5" PointX="3" PointY="3.125" />
         <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_TOPICO" Width="1.5" PointX="0.75" PointY="3.375" />
-        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_VIDEO" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="SIGMA_OFICIALModel.TB_VIDEO" Width="1.5" PointX="5.25" PointY="1.125" />
         <AssociationConnector Association="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_ALUNO_TB_ALUNO" />
         <AssociationConnector Association="SIGMA_OFICIALModel.FK_TB_CERTIFICADO_TB_ALUNO" />
         <AssociationConnector Association="SIGMA_OFICIALModel.FK_TB_ATIVIDADE_ALUNO_TB_ATIVIDADE" />
