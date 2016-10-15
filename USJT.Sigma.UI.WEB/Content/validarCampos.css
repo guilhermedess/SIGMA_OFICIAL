@@ -1,0 +1,12 @@
+﻿#conteudo {
+	background-color: #ccc;
+	width: 50%;
+}
+
+el.error{
+	color: red;
+}
+
+el.ok {
+	color: green;
+}
