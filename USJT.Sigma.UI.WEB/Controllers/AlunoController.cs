@@ -77,7 +77,7 @@ namespace USJT.Sigma.UI.WEB.Controllers
             //MANDAMOS REDIRECIONAR PARA A ACTION LOGIN
             //return RedirectToAction("Topicos","Topico", dadosLogin);
             return new RedirectToRouteResult(new RouteValueDictionary(
-               new { action = "Topicos", controller = "Topico" }));
+               new { action = "Apresentacao", controller = "Aluno" }));
         }
         public ActionResult Login()
         {

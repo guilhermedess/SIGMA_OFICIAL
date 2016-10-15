@@ -145,9 +145,18 @@
     <Content Include="Content\font-awesome-4.6.3\css\font-awesome.css" />
     <Content Include="Content\font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\img\apresentacao\apresentacao-amostragem.jpg" />
+    <Content Include="Content\img\apresentacao\apresentacao-dispersao.jpg" />
     <Content Include="Content\img\menu\consulta-atividade.jpg" />
     <Content Include="Content\img\menu\poligono-de-frequencia.jpg" />
     <Content Include="Content\img\menu\progresso.jpg" />
+    <Content Include="Content\img\slider\1.jpg" />
+    <Content Include="Content\img\slider\2.jpeg" />
+    <Content Include="Content\img\slider\3.jpg" />
+    <Content Include="Content\img\slider\4.jpg" />
+    <Content Include="Content\img\slider\5.jpg" />
+    <Content Include="Content\login.css" />
+    <Content Include="Content\metro.css" />
     <Content Include="Content\validarCampos.css" />
     <Content Include="Content\estilocss\estilo.css" />
     <Content Include="Content\icon.css" />
@@ -326,6 +335,7 @@
     <Content Include="scripts\apresentacao-atividades.js" />
     <Content Include="scripts\medalhas.js" />
     <Content Include="scripts\mega-menu.js" />
+    <Content Include="scripts\metro.js" />
     <Content Include="scripts\progresso.js" />
     <Content Include="scripts\progresso2.js" />
     <Content Include="scripts\validacao-top2-4.js" />

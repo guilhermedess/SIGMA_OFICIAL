@@ -26,12 +26,13 @@
     <!--Importamos as bibliotecas de CSS-->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     @*<link href="~/Content/bootstrap.yeti.min.css" rel="stylesheet" />*@
-    <link href="~/Content/estilocss/estilo.css" rel="stylesheet" />
+    @*<link href="~/Content/estilocss/estilo.css" rel="stylesheet" />*@
     <!--bootstrap social button-->
     <link href="~/Content/bootstrap_social_button/bootstrap-social.css" rel="stylesheet" />
     <link href="~/Content/bootstrap_social_button/assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/login.css" rel="stylesheet" />
 </head>
-<body class="body-margem-top">
+<body>
 
     @* INSERIMOS AS MENSAGENS *@
     <section>
@@ -43,66 +44,59 @@
         }
     </section>
 
-    <!--menu -->
-    <nav class="navbar navbar-default navbar-fixed-top nav-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#menu-navegacao" aria-expanded="false">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--logo sigma-->
-                <a class="navbar-brand menu-nav-brand" href="#">
-                    <img alt="Brand" src="~/Content/img/logo100p.png">
-                </a>
-            </div>
+    <div @*class="container-fluid"*@>
+        <!-- Second navbar for sign in -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @*<a class="navbar-brand menu-nav-brand" href="#">
+                            <img alt="Brand" src="~/Content/img/logo100p.png">
+                        </a>*@
+                    <a class="navbar-brand" href="#">SIGMA</a>
+                </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="menu-navegacao">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#sobre">Sobre</a></li>
-
-                    <li>
-                        <a role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Login
-                        </a>
-                        <div class="collapse " id="collapseExample">
-                            <div class="well">
-                                <div class="row ">
-                                    @using (Html.BeginForm())
-                                    {
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                                @Html.LabelFor(x => x.Usuário, new { @class = "login-usuario" })
-                                                @Html.TextBoxFor(x => x.Usuário, new { @class = "form-control", placeholder = "Usuário", required = "required" })
-                                                @Html.ValidationMessageFor(x => x.Usuário)
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                                @Html.LabelFor(x => x.Senha, new { @class = "login-usuario" })
-                                                @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "Senha", required = "required" })
-                                                @Html.ValidationMessageFor(x => x.Senha)
-                                            </div>
-                                        </div>
-                                        <input type="submit" name="logar" id="logar" value="Logar" class="btn btn-lg btn-info" />
-                                    }
-                                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse-2">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a hreh="#">CADASTRAR</a></li>
+                        <li><a href="#">CONTATO</a></li>
+                        <li>
+                            <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">LOGIN</a>
+                        </li>
+                    </ul>
+                    <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+                        @using (Html.BeginForm("Login", "Aluno", FormMethod.Post, new { @class = "navbar-form navbar-right form-inline" }))
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Usuário, new { @class = "sr-only" })
+                                @Html.TextBoxFor(x => x.Usuário, new { @class = "form-control", placeholder = "USUÁRIO", required = "required" })
+                                @Html.ValidationMessageFor(x => x.Usuário)
                             </div>
-                        </div>
-                    </li>
+                            <div class="form-group">
+                                @Html.LabelFor(x => x.Senha, new { @class = "sr-only" })
+                                @Html.PasswordFor(x => x.Senha, new { @class = "form-control", placeholder = "SENHA", required = "required" })
+                                @Html.ValidationMessageFor(x => x.Senha)
+                            </div>
+                            <button type="submit" class="btn btn-success">LOGIN</button>
+                        }
+                        @*</form>*@
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+        @*</div>
 
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--// menu-->
-    <!--slider-->
-    <div class="container-fuil">
+
+            <!--// menu-->
+            <!--slider-->
+            <div>*@
         <div id="carrocel" class="divslider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -110,19 +104,27 @@
                     <li data-target="#carousel-example-generic" data-slide-to="0"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
                 </ol>
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="~/Content/img/slider/slider1_1360-600.png" alt="First slide">
+                        <img src="~/Content/img/slider/1.jpg" alt="First slide" ;">
 
                     </div>
                     <div class="item">
-                        <img src="~/Content/img/slider/slider2_1360-600.png" alt="Second slide">
+                        <img src="~/Content/img/slider/2.jpeg" alt="Second slide">
 
                     </div>
                     <div class="item">
-                        <img src="~/Content/img/slider/slider3_1360-600.png" alt="Second slide">
+                        <img src="~/Content/img/slider/3.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="~/Content/img/slider/4.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="~/Content/img/slider/5.jpg" alt="Second slide">
                     </div>
                 </div>
             </div>
@@ -150,14 +152,14 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <h4><strong>VALORES</strong></h4>
-                    <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
+                    <p>texto texto texto texto thiago texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
                     <p>texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto texto</p>
                 </div>
             </div>
             <!--img sobre-->
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div><img src="~/Content/img/sobre/sobre_1600-400.png" class="img-responsive grayscale" /></div>
+
                 </div>
             </div>
         </div>

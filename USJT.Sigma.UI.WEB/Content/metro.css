@@ -24,7 +24,7 @@ body {
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
 .btn-nav:hover {
-    color: #42A4DD;
+    color: #000;
     cursor: pointer;
     -webkit-transition: color 1s; /* For Safari 3.1 to 6.0 */
     transition: color 1s;
